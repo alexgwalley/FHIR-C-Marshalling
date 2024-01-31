@@ -116,8 +116,6 @@ namespace FHIR_Marshalling
 
             Console.WriteLine("Native Speed Multiplier: " + (nativeGigabytesPerSecond / FirelyGigabytesPerSecond));
             Console.WriteLine("Marshalling Speed Multiplier: " + (gigabytesPerSecond / FirelyGigabytesPerSecond));
-
-            NativeMethods.ND_Cleanup();
         }
 
     }
