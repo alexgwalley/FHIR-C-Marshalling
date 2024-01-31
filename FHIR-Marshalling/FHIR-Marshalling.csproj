@@ -1580,10 +1580,10 @@
   <ItemGroup>
     <Compile Include="CodeGen.cs" />
     <Compile Include="cs_generated_classes.cs" />
-    <Compile Include="generated.cs" />
+    <Compile Include="GeneratedMarshalling.cs" />
     <Compile Include="MainClass.cs" />
-    <Compile Include="ManualDeserialization.cs" />
-    <Compile Include="Manual_Classes.cs" />
+    <Compile Include="ManualClasses.cs" />
+    <Compile Include="NativeFHIRDeserializer.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

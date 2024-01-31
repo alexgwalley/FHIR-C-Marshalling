@@ -40,7 +40,7 @@ namespace MarshallingTests
         {
 
             var funcs = new List<string>();
-            var keys = MainClass.nativeToFirely.Keys;
+            var keys = CodeGen.NativeToFirely.Keys;
             foreach(var key in keys)
             {
                 if (key == typeof(Resource)) continue;
@@ -50,9 +50,9 @@ namespace MarshallingTests
                 funcs.Add(liquidator);
             }
 
-            funcs.Add(CodeGen.GetDeserializeResource(MainClass.nativeToFirely));
+            funcs.Add(CodeGen.GetDeserializeResource(CodeGen.NativeToFirely));
 
-            using(var file = new StreamWriter("D:/Programming Stuff/FHIR-Marshalling/MarshallingTests/Output/generated.cs"))
+            using(var file = new StreamWriter("D:/Programming Stuff/FHIR-Marshalling/MarshallingTests/Output/GeneratedMarshalling.cs"))
             {
                 file.WriteLine("using Hl7.Fhir.Model;");
                 file.WriteLine("using FHIR_Marshalling;");
