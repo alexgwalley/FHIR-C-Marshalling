@@ -1,0 +1,583 @@
+{
+  "resourceType": "Bundle",
+  "id": "fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "fc2a091d-e9fa-4441-b550-b9f69d1ed7f0.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "fc2a091d-e9fa-4441-b550-b9f69d1ed7f0.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu_numerator_good_timeframe.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_1.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "hospice_check.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: 9072970765425994084  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2135-2",
+            "display": "Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Nicolle Morar"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "M"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Worcester",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "fc2a091d-e9fa-4441-b550-b9f69d1ed7f0"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "fc2a091d-e9fa-4441-b550-b9f69d1ed7f0"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-46-4718"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Conn",
+        "given": [ "Myron" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-373-4228",
+        "use": "home"
+      } ],
+      "gender": "male",
+      "birthDate": "1993-05-30",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 42.535014981908255
+          }, {
+            "url": "longitude",
+            "valueDecimal": -71.05538288671629
+          } ]
+        } ],
+        "line": [ "508 Schaden Junction Unit 42" ],
+        "city": "Peabody",
+        "state": "MA",
+        "postalCode": "01940",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:a1504843-fd81-d72e-4e7c-d133d8699f12",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "a1504843-fd81-d72e-4e7c-d133d8699f12",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "89b9747f-534f-4b1d-841f-5b6458ed6923",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+        "display": "Myron Conn"
+      },
+      "billablePeriod": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-01-01T00:15:00+00:00"
+      },
+      "created": "2024-01-01T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:713c52b6-5389-a07a-445e-d1adfb6208b7",
+          "display": "Alc Abuse & Dep ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99214"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-01-01T00:00:00+00:00",
+          "end": "2024-01-01T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:713c52b6-5389-a07a-445e-d1adfb6208b7",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "713c52b6-5389-a07a-445e-d1adfb6208b7",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "5bf04be2-2279-4903-b5c9-3ba84216a47f",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F10.29",
+          "display": "[F10.29] Alcohol dependence with unspecified alcohol-induced disorder"
+        } ],
+        "text": "[F10.29] Alcohol dependence with unspecified alcohol-induced disorder"
+      },
+      "subject": {
+        "reference": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0"
+      },
+      "onsetDateTime": "2024-01-01T00:00:00+00:00",
+      "recordedDate": "2024-01-01T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:8dee2137-355e-bcf8-5ce9-63f89edc3fcb",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "8dee2137-355e-bcf8-5ce9-63f89edc3fcb",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "0e30aba5-b3a8-426d-8e8e-23bfbea7e3da",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+        "display": "Myron Conn"
+      },
+      "billablePeriod": {
+        "start": "2027-05-26T00:00:00+00:00",
+        "end": "2027-05-26T00:15:00+00:00"
+      },
+      "created": "2027-05-26T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:115646e0-120c-de54-9619-61e89e8858c1",
+          "display": "Filler ICD"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://snomed.info/sct/731000124108",
+            "code": "385763009",
+            "display": "Hospice care (regime/therapy)"
+          } ],
+          "text": "Hospice care (regime/therapy)"
+        },
+        "servicedPeriod": {
+          "start": "2027-05-26T00:00:00+00:00",
+          "end": "2027-05-26T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:115646e0-120c-de54-9619-61e89e8858c1",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "115646e0-120c-de54-9619-61e89e8858c1",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "9db3a5e2-c5b4-41eb-b079-4f6d25442487",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O76",
+          "display": "[O76] Abnormality in fetal heart rate and rhythm complicating labor and delivery"
+        } ],
+        "text": "[O76] Abnormality in fetal heart rate and rhythm complicating labor and delivery"
+      },
+      "subject": {
+        "reference": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0"
+      },
+      "onsetDateTime": "2027-05-26T00:00:00+00:00",
+      "recordedDate": "2027-05-26T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:0759dfe8-3678-78c1-002a-fc69574f7a08",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "0759dfe8-3678-78c1-002a-fc69574f7a08",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "SN3"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+        "display": "Myron Conn"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:be979f25-291a-1c2c-7273-6e9b9c277a5b",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "be979f25-291a-1c2c-7273-6e9b9c277a5b",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:fc2a091d-e9fa-4441-b550-b9f69d1ed7f0",
+        "display": "Myron Conn"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

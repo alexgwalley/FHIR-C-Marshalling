@@ -1,0 +1,1269 @@
+{
+  "resourceType": "Bundle",
+  "id": "da231b8c-de53-2178-ecb0-441f9c498428",
+  "type": "transaction",
+  "entry": [ {
+    "fullUrl": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "5538f551-1633-35ca-a72a-a314c91a87ab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999999995"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hinojosa",
+        "given": [ "Daniela" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "60 HOSPITAL ROAD" ],
+        "city": "LEOMINSTER",
+        "state": "MA",
+        "postalCode": "01453",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Practitioner",
+      "ifNoneExist": "identifier=http://hl7.org/fhir/sid/us-npi|9999999995"
+    }
+  }, {
+    "fullUrl": "urn:uuid:5dc7885c-c9d3-8850-44f1-cb3a2a2d3e3a",
+    "resource": {
+      "resourceType": "PractitionerRole",
+      "id": "5dc7885c-c9d3-8850-44f1-cb3a2a2d3e3a",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole" ]
+      },
+      "practitioner": {
+        "identifier": {
+          "system": "http://hl7.org/fhir/sid/us-npi",
+          "value": "9999999995"
+        },
+        "display": "Dr. Daniela Hinojosa"
+      },
+      "organization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "363d3504-18f8-37de-8fbb-f52a59fd61b1"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "code": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "specialty": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "location": [ {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "d0e312f3-0a19-3089-af0e-db79b3aee7ab"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "9784662000"
+      }, {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "PractitionerRole"
+    }
+  }, {
+    "fullUrl": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "5538f551-1633-35ca-a72a-a314c91a87ab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999999995"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hinojosa",
+        "given": [ "Daniela" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "60 HOSPITAL ROAD" ],
+        "city": "LEOMINSTER",
+        "state": "MA",
+        "postalCode": "01453",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Practitioner",
+      "ifNoneExist": "identifier=http://hl7.org/fhir/sid/us-npi|9999999995"
+    }
+  }, {
+    "fullUrl": "urn:uuid:e8e51f88-da9e-7400-fcf5-6c84b547a7de",
+    "resource": {
+      "resourceType": "PractitionerRole",
+      "id": "e8e51f88-da9e-7400-fcf5-6c84b547a7de",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole" ]
+      },
+      "practitioner": {
+        "identifier": {
+          "system": "http://hl7.org/fhir/sid/us-npi",
+          "value": "9999999995"
+        },
+        "display": "Dr. Daniela Hinojosa"
+      },
+      "organization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "363d3504-18f8-37de-8fbb-f52a59fd61b1"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "code": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "specialty": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "location": [ {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "d0e312f3-0a19-3089-af0e-db79b3aee7ab"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "9784662000"
+      }, {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "PractitionerRole"
+    }
+  }, {
+    "fullUrl": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "5538f551-1633-35ca-a72a-a314c91a87ab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999999995"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hinojosa",
+        "given": [ "Daniela" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "60 HOSPITAL ROAD" ],
+        "city": "LEOMINSTER",
+        "state": "MA",
+        "postalCode": "01453",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Practitioner",
+      "ifNoneExist": "identifier=http://hl7.org/fhir/sid/us-npi|9999999995"
+    }
+  }, {
+    "fullUrl": "urn:uuid:8e5d1fd1-6799-b143-66d3-748062603423",
+    "resource": {
+      "resourceType": "PractitionerRole",
+      "id": "8e5d1fd1-6799-b143-66d3-748062603423",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole" ]
+      },
+      "practitioner": {
+        "identifier": {
+          "system": "http://hl7.org/fhir/sid/us-npi",
+          "value": "9999999995"
+        },
+        "display": "Dr. Daniela Hinojosa"
+      },
+      "organization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "363d3504-18f8-37de-8fbb-f52a59fd61b1"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "code": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "specialty": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "location": [ {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "d0e312f3-0a19-3089-af0e-db79b3aee7ab"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "9784662000"
+      }, {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "PractitionerRole"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "da231b8c-de53-2178-ecb0-441f9c498428.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "da231b8c-de53-2178-ecb0-441f9c498428.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_1.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_check.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_2.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": true
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "da231b8c-de53-2178-ecb0-441f9c498428",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: 7977760238997869749  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2054-5",
+            "display": "Black or African American"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Black or African American"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Gaynell Haley"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "F"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Fall River",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "da231b8c-de53-2178-ecb0-441f9c498428"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "da231b8c-de53-2178-ecb0-441f9c498428"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-38-1131"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "King",
+        "given": [ "Alishia", "Claudine" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-486-8403",
+        "use": "home"
+      } ],
+      "gender": "female",
+      "birthDate": "2005-05-02",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 42.34852800298231
+          }, {
+            "url": "longitude",
+            "valueDecimal": -70.96883892451817
+          } ]
+        } ],
+        "line": [ "819 Hahn Lock Suite 0" ],
+        "city": "Boston",
+        "state": "MA",
+        "postalCode": "02113",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:ba832303-9fb4-8a58-47f2-8b2d4ce47985",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "ba832303-9fb4-8a58-47f2-8b2d4ce47985",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "5d28585c-47d1-49cd-80f0-27a826514b68",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "ba832303-9fb4-8a58-47f2-8b2d4ce47985"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "https://www.nubc.org/CodeSystem/RevenueCodes",
+          "code": "0520"
+        } ]
+      } ],
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2024-03-01T00:00:00+00:00",
+          "end": "2024-03-01T00:15:00+00:00"
+        },
+        "individual": {
+          "reference": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+          "display": "Dr. Daniela Hinojosa"
+        }
+      } ],
+      "period": {
+        "start": "2024-03-01T00:00:00+00:00",
+        "end": "2024-03-01T00:15:00+00:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+          "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:2d6d6ac1-9e19-b1e6-d5af-7efba7cc6f8c",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "2d6d6ac1-9e19-b1e6-d5af-7efba7cc6f8c",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "39dd058d-7b8c-472f-8705-91fc507fcea5",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct/731000124108",
+          "code": "723930006",
+          "display": "Mood disorder with mixed manic and depressive symptoms caused by alcohol (disorder)"
+        } ],
+        "text": "Mood disorder with mixed manic and depressive symptoms caused by alcohol (disorder)"
+      },
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428"
+      },
+      "encounter": {
+        "reference": "urn:uuid:ba832303-9fb4-8a58-47f2-8b2d4ce47985"
+      },
+      "onsetDateTime": "2024-03-01T00:00:00+00:00",
+      "recordedDate": "2024-03-01T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:2fa85539-7d1d-a1e4-3c01-74713e50e563",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "2fa85539-7d1d-a1e4-3c01-74713e50e563",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "4adb7488-b173-4413-88ce-4f0d1eec95ef",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "2fa85539-7d1d-a1e4-3c01-74713e50e563"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "https://www.nubc.org/CodeSystem/RevenueCodes",
+          "code": "0520"
+        } ]
+      } ],
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2024-03-01T00:00:00+00:00",
+          "end": "2024-03-01T00:15:00+00:00"
+        },
+        "individual": {
+          "reference": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+          "display": "Dr. Daniela Hinojosa"
+        }
+      } ],
+      "period": {
+        "start": "2024-03-01T00:00:00+00:00",
+        "end": "2024-03-01T00:15:00+00:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+          "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:5a78b2ec-2097-3d86-7dae-d0eb966ed29b",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "5a78b2ec-2097-3d86-7dae-d0eb966ed29b",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "9bf11b45-cf89-4e33-8947-85cf4023cf37",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O92.70",
+          "display": "[O92.70] Unspecified disorders of lactation"
+        } ],
+        "text": "[O92.70] Unspecified disorders of lactation"
+      },
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428"
+      },
+      "encounter": {
+        "reference": "urn:uuid:2fa85539-7d1d-a1e4-3c01-74713e50e563"
+      },
+      "onsetDateTime": "2024-03-01T00:00:00+00:00",
+      "recordedDate": "2024-03-01T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:4229e602-f57e-ec34-8109-7332621ce835",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "4229e602-f57e-ec34-8109-7332621ce835",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "3676e0c0-e9c9-46f9-b422-db2b5a8d9425",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia King"
+      },
+      "billablePeriod": {
+        "start": "2024-03-01T00:00:00+00:00",
+        "end": "2024-03-01T00:15:00+00:00"
+      },
+      "created": "2024-03-01T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:b4e8a408-e56c-af64-07c0-a90f18cb5a0e",
+          "display": "Opioid Abuse & Dep ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "https://www.nubc.org/CodeSystem/RevenueCodes",
+            "code": "0520"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-03-01T00:00:00+00:00",
+          "end": "2024-03-01T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:b4e8a408-e56c-af64-07c0-a90f18cb5a0e",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "b4e8a408-e56c-af64-07c0-a90f18cb5a0e",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "6feebda2-5941-446c-a6ef-b6786b3f1544",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F11.181",
+          "display": "[F11.181] Opioid abuse with opioid-induced sexual dysfunction"
+        } ],
+        "text": "[F11.181] Opioid abuse with opioid-induced sexual dysfunction"
+      },
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428"
+      },
+      "onsetDateTime": "2024-03-01T00:00:00+00:00",
+      "recordedDate": "2024-03-01T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:4573d34a-eeb7-4f70-a0fb-59ff375b484d",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "4573d34a-eeb7-4f70-a0fb-59ff375b484d",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "e2510331-2815-4c5c-ba94-e6b68a9f1160",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia King"
+      },
+      "billablePeriod": {
+        "start": "2024-03-01T00:00:00+00:00",
+        "end": "2024-03-01T00:15:00+00:00"
+      },
+      "created": "2024-03-01T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:add2aed7-7b28-1751-de12-d211d797be2a",
+          "display": "Filler ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "https://www.nubc.org/CodeSystem/RevenueCodes",
+            "code": "0520"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-03-01T00:00:00+00:00",
+          "end": "2024-03-01T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:add2aed7-7b28-1751-de12-d211d797be2a",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "add2aed7-7b28-1751-de12-d211d797be2a",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "1fce1fe0-8796-4179-8eb2-26ab557640d7",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "Z34.93",
+          "display": "[Z34.93] Encounter for supervision of normal pregnancy, unspecified, third trimester"
+        } ],
+        "text": "[Z34.93] Encounter for supervision of normal pregnancy, unspecified, third trimester"
+      },
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428"
+      },
+      "onsetDateTime": "2024-03-01T00:00:00+00:00",
+      "recordedDate": "2024-03-01T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:2f9d8773-3540-3489-9373-6e0024e8ee68",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "2f9d8773-3540-3489-9373-6e0024e8ee68",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "dc0a4bc7-7da2-4029-b73e-839f4f72238c",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "2f9d8773-3540-3489-9373-6e0024e8ee68"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "https://www.nubc.org/CodeSystem/RevenueCodes",
+          "code": "0201"
+        } ]
+      } ],
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2024-03-01T00:00:00+00:00",
+          "end": "2024-03-01T00:15:00+00:00"
+        },
+        "individual": {
+          "reference": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+          "display": "Dr. Daniela Hinojosa"
+        }
+      } ],
+      "period": {
+        "start": "2024-03-01T00:00:00+00:00",
+        "end": "2024-03-01T00:15:00+00:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+          "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:fb4b186c-b8e9-4212-9236-68b0b9ac53e3",
+    "resource": {
+      "resourceType": "Procedure",
+      "id": "fb4b186c-b8e9-4212-9236-68b0b9ac53e3",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "dbc86cb1-6aaf-4a23-80c9-6a0ee22d3f50",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "status": "completed",
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct/731000124108",
+          "code": "170936009",
+          "display": "Shared care - hospice and general practitioner (finding)"
+        } ],
+        "text": "Shared care - hospice and general practitioner (finding)"
+      },
+      "subject": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428"
+      },
+      "encounter": {
+        "reference": "urn:uuid:2f9d8773-3540-3489-9373-6e0024e8ee68"
+      },
+      "performedPeriod": {
+        "start": "2024-03-01T00:00:00+00:00",
+        "end": "2024-03-01T00:15:00+00:00"
+      },
+      "location": {
+        "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:18071800-095b-6cb7-01ed-b0d9037cdbcb",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "18071800-095b-6cb7-01ed-b0d9037cdbcb",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MMP"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:c5111c23-c849-b5d3-0db2-a2b7c085f870",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "c5111c23-c849-b5d3-0db2-a2b7c085f870",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:2afbca68-ad73-6c17-e5bc-57438a55c93f",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "2afbca68-ad73-6c17-e5bc-57438a55c93f",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "HMO"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "period": {
+        "start": "2024-07-18T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:14d18433-ef15-cac0-1bfe-3f700437734c",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "14d18433-ef15-cac0-1bfe-3f700437734c",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:da231b8c-de53-2178-ecb0-441f9c498428",
+        "display": "Alishia Claudine King"
+      },
+      "period": {
+        "start": "2024-07-18T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

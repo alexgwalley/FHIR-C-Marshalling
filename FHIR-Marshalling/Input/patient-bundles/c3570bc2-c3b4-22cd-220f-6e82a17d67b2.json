@@ -1,0 +1,505 @@
+{
+  "resourceType": "Bundle",
+  "id": "c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "c3570bc2-c3b4-22cd-220f-6e82a17d67b2.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "c3570bc2-c3b4-22cd-220f-6e82a17d67b2.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu_numerator_bad_timeframe.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_1.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: -5669367957003104904  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Carlee Watsica"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "F"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Springfield",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "c3570bc2-c3b4-22cd-220f-6e82a17d67b2"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "c3570bc2-c3b4-22cd-220f-6e82a17d67b2"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-43-1253"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Jast",
+        "given": [ "Aracely", "Latrina" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-986-8293",
+        "use": "home"
+      } ],
+      "gender": "female",
+      "birthDate": "1989-04-27",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 41.70560985824368
+          }, {
+            "url": "longitude",
+            "valueDecimal": -71.17351163985718
+          } ]
+        } ],
+        "line": [ "434 Larson Stravenue Unit 67" ],
+        "city": "Fall River",
+        "state": "MA",
+        "postalCode": "02747",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:0a19e870-8f5d-3999-eac4-8e9a10a2e17b",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "0a19e870-8f5d-3999-eac4-8e9a10a2e17b",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "89b9747f-534f-4b1d-841f-5b6458ed6923",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+        "display": "Aracely Jast"
+      },
+      "billablePeriod": {
+        "start": "2025-07-29T00:00:00+00:00",
+        "end": "2025-07-29T00:15:00+00:00"
+      },
+      "created": "2025-07-29T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:d4218542-7d8b-a71b-d587-70be49b1c9b7",
+          "display": "Alc Abuse & Dep ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99204"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2025-07-29T00:00:00+00:00",
+          "end": "2025-07-29T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:d4218542-7d8b-a71b-d587-70be49b1c9b7",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "d4218542-7d8b-a71b-d587-70be49b1c9b7",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "5bf04be2-2279-4903-b5c9-3ba84216a47f",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F10.151",
+          "display": "[F10.151] Alcohol abuse with alcohol-induced psychotic disorder with hallucinations"
+        } ],
+        "text": "[F10.151] Alcohol abuse with alcohol-induced psychotic disorder with hallucinations"
+      },
+      "subject": {
+        "reference": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2"
+      },
+      "onsetDateTime": "2025-07-29T00:00:00+00:00",
+      "recordedDate": "2025-07-29T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:cbeaf9b2-876a-d22d-9595-20ba56d94b1e",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "cbeaf9b2-876a-d22d-9595-20ba56d94b1e",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "HMO"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+        "display": "Aracely Latrina Jast"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:a28c1a65-138e-7ced-38e9-91bbc544b4b6",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "a28c1a65-138e-7ced-38e9-91bbc544b4b6",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+        "display": "Aracely Latrina Jast"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:eff0ffad-c7f7-c86e-cc1f-b0070fe8c7cb",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "eff0ffad-c7f7-c86e-cc1f-b0070fe8c7cb",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MMP"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+        "display": "Aracely Latrina Jast"
+      },
+      "period": {
+        "start": "2024-08-09T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:2ccca0e5-3bb6-68a8-4db1-b7d0d2298eff",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "2ccca0e5-3bb6-68a8-4db1-b7d0d2298eff",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:c3570bc2-c3b4-22cd-220f-6e82a17d67b2",
+        "display": "Aracely Latrina Jast"
+      },
+      "period": {
+        "start": "2024-08-09T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

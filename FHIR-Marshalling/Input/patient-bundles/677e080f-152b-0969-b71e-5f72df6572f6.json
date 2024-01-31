@@ -1,0 +1,566 @@
+{
+  "resourceType": "Bundle",
+  "id": "677e080f-152b-0969-b71e-5f72df6572f6",
+  "type": "transaction",
+  "entry": [ {
+    "fullUrl": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "5538f551-1633-35ca-a72a-a314c91a87ab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999999995"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hinojosa",
+        "given": [ "Daniela" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "60 HOSPITAL ROAD" ],
+        "city": "LEOMINSTER",
+        "state": "MA",
+        "postalCode": "01453",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Practitioner",
+      "ifNoneExist": "identifier=http://hl7.org/fhir/sid/us-npi|9999999995"
+    }
+  }, {
+    "fullUrl": "urn:uuid:b8bfa8f0-e5c1-f4c1-d7de-4fe949607661",
+    "resource": {
+      "resourceType": "PractitionerRole",
+      "id": "b8bfa8f0-e5c1-f4c1-d7de-4fe949607661",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole" ]
+      },
+      "practitioner": {
+        "identifier": {
+          "system": "http://hl7.org/fhir/sid/us-npi",
+          "value": "9999999995"
+        },
+        "display": "Dr. Daniela Hinojosa"
+      },
+      "organization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "363d3504-18f8-37de-8fbb-f52a59fd61b1"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "code": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "specialty": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "location": [ {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "d0e312f3-0a19-3089-af0e-db79b3aee7ab"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "9784662000"
+      }, {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "PractitionerRole"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "677e080f-152b-0969-b71e-5f72df6572f6.scorekey",
+      "parameter": [ {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "677e080f-152b-0969-b71e-5f72df6572f6.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu_numerator_good_timeframe.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:677e080f-152b-0969-b71e-5f72df6572f6",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "677e080f-152b-0969-b71e-5f72df6572f6",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: -2698089219737536554  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Tyesha Schroeder"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "M"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Shrewsbury",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "677e080f-152b-0969-b71e-5f72df6572f6"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "677e080f-152b-0969-b71e-5f72df6572f6"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-65-4660"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Glover",
+        "given": [ "Wilber", "Alex" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-242-3897",
+        "use": "home"
+      } ],
+      "gender": "male",
+      "birthDate": "2010-01-27",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 41.55087405363303
+          }, {
+            "url": "longitude",
+            "valueDecimal": -70.62789554906266
+          } ]
+        } ],
+        "line": [ "236 Kunze Club Suite 73" ],
+        "city": "Falmouth",
+        "state": "MA",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:6113d193-9efc-cd98-b7e0-4c612c30103e",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "6113d193-9efc-cd98-b7e0-4c612c30103e",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "4adb7488-b173-4413-88ce-4f0d1eec95ef",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "6113d193-9efc-cd98-b7e0-4c612c30103e"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "https://www.nubc.org/CodeSystem/RevenueCodes",
+          "code": "0983"
+        } ]
+      } ],
+      "subject": {
+        "reference": "urn:uuid:677e080f-152b-0969-b71e-5f72df6572f6",
+        "display": "Wilber Alex Glover"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2024-04-30T00:00:00+00:00",
+          "end": "2024-04-30T00:15:00+00:00"
+        },
+        "individual": {
+          "reference": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+          "display": "Dr. Daniela Hinojosa"
+        }
+      } ],
+      "period": {
+        "start": "2024-04-30T00:00:00+00:00",
+        "end": "2024-04-30T00:15:00+00:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+          "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:6cdff725-0da5-c4e3-cfd8-d12e218a5a6b",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "6cdff725-0da5-c4e3-cfd8-d12e218a5a6b",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "9bf11b45-cf89-4e33-8947-85cf4023cf37",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O36.1193",
+          "display": "[O36.1193] Maternal care for Anti-A sensitization, unspecified trimester, fetus 3"
+        } ],
+        "text": "[O36.1193] Maternal care for Anti-A sensitization, unspecified trimester, fetus 3"
+      },
+      "subject": {
+        "reference": "urn:uuid:677e080f-152b-0969-b71e-5f72df6572f6"
+      },
+      "encounter": {
+        "reference": "urn:uuid:6113d193-9efc-cd98-b7e0-4c612c30103e"
+      },
+      "onsetDateTime": "2024-04-30T00:00:00+00:00",
+      "recordedDate": "2024-04-30T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:895853d5-7756-7738-2af2-ebebd7af06fa",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "895853d5-7756-7738-2af2-ebebd7af06fa",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MOS"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:677e080f-152b-0969-b71e-5f72df6572f6",
+        "display": "Wilber Alex Glover"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:b67dea41-bbe1-4cdf-af01-7643b990ce8e",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "b67dea41-bbe1-4cdf-af01-7643b990ce8e",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:677e080f-152b-0969-b71e-5f72df6572f6",
+        "display": "Wilber Alex Glover"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

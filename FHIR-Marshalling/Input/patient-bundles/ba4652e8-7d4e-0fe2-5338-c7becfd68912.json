@@ -1,0 +1,572 @@
+{
+  "resourceType": "Bundle",
+  "id": "ba4652e8-7d4e-0fe2-5338-c7becfd68912",
+  "type": "transaction",
+  "entry": [ {
+    "fullUrl": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "5538f551-1633-35ca-a72a-a314c91a87ab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999999995"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hinojosa",
+        "given": [ "Daniela" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "60 HOSPITAL ROAD" ],
+        "city": "LEOMINSTER",
+        "state": "MA",
+        "postalCode": "01453",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Practitioner",
+      "ifNoneExist": "identifier=http://hl7.org/fhir/sid/us-npi|9999999995"
+    }
+  }, {
+    "fullUrl": "urn:uuid:2ba17ef6-2c98-2273-aa3a-26db995459b2",
+    "resource": {
+      "resourceType": "PractitionerRole",
+      "id": "2ba17ef6-2c98-2273-aa3a-26db995459b2",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole" ]
+      },
+      "practitioner": {
+        "identifier": {
+          "system": "http://hl7.org/fhir/sid/us-npi",
+          "value": "9999999995"
+        },
+        "display": "Dr. Daniela Hinojosa"
+      },
+      "organization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "363d3504-18f8-37de-8fbb-f52a59fd61b1"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "code": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "specialty": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "location": [ {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "d0e312f3-0a19-3089-af0e-db79b3aee7ab"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "9784662000"
+      }, {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "PractitionerRole"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "ba4652e8-7d4e-0fe2-5338-c7becfd68912.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "ba4652e8-7d4e-0fe2-5338-c7becfd68912.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu_numerator_bad_timeframe.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_3.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:ba4652e8-7d4e-0fe2-5338-c7becfd68912",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "ba4652e8-7d4e-0fe2-5338-c7becfd68912",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: 7595899928203890853  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Vanna Pfeffer"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "M"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "New Bedford",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "ba4652e8-7d4e-0fe2-5338-c7becfd68912"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "ba4652e8-7d4e-0fe2-5338-c7becfd68912"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-21-5717"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Bosco",
+        "given": [ "Danilo" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-167-8585",
+        "use": "home"
+      } ],
+      "gender": "male",
+      "birthDate": "1990-03-11",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 42.549153272327935
+          }, {
+            "url": "longitude",
+            "valueDecimal": -71.37325378272378
+          } ]
+        } ],
+        "line": [ "429 Franecki Haven" ],
+        "city": "Carlisle",
+        "state": "MA",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:df4ef626-7c56-45b9-1c16-546834ea2d5f",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "df4ef626-7c56-45b9-1c16-546834ea2d5f",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "e3601090-272e-4937-b51e-d931c8466357",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "df4ef626-7c56-45b9-1c16-546834ea2d5f"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "http://www.ama-assn.org/go/cpt",
+          "code": "99385"
+        } ]
+      } ],
+      "subject": {
+        "reference": "urn:uuid:ba4652e8-7d4e-0fe2-5338-c7becfd68912",
+        "display": "Danilo Bosco"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2025-12-26T00:00:00+00:00",
+          "end": "2025-12-26T00:15:00+00:00"
+        },
+        "individual": {
+          "reference": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+          "display": "Dr. Daniela Hinojosa"
+        }
+      } ],
+      "period": {
+        "start": "2025-12-26T00:00:00+00:00",
+        "end": "2025-12-26T00:15:00+00:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+          "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:b7a24aa2-e337-0e21-1e84-2ab2dde95dd1",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "b7a24aa2-e337-0e21-1e84-2ab2dde95dd1",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "13d38ef1-1eef-41fb-a4b8-edfd210ef545",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F16.180",
+          "display": "[F16.180] Hallucinogen abuse with hallucinogen-induced anxiety disorder"
+        } ],
+        "text": "[F16.180] Hallucinogen abuse with hallucinogen-induced anxiety disorder"
+      },
+      "subject": {
+        "reference": "urn:uuid:ba4652e8-7d4e-0fe2-5338-c7becfd68912"
+      },
+      "encounter": {
+        "reference": "urn:uuid:df4ef626-7c56-45b9-1c16-546834ea2d5f"
+      },
+      "onsetDateTime": "2025-12-26T00:00:00+00:00",
+      "recordedDate": "2025-12-26T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:efc5171e-9297-7526-23c2-2a227b8120ad",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "efc5171e-9297-7526-23c2-2a227b8120ad",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MMO"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:ba4652e8-7d4e-0fe2-5338-c7becfd68912",
+        "display": "Danilo Bosco"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:bc1d5a9a-2263-f0c4-9b8f-04383db47fa3",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "bc1d5a9a-2263-f0c4-9b8f-04383db47fa3",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:ba4652e8-7d4e-0fe2-5338-c7becfd68912",
+        "display": "Danilo Bosco"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

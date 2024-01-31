@@ -1,0 +1,613 @@
+{
+  "resourceType": "Bundle",
+  "id": "12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+  "type": "transaction",
+  "entry": [ {
+    "fullUrl": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "5538f551-1633-35ca-a72a-a314c91a87ab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999999995"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hinojosa",
+        "given": [ "Daniela" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "60 HOSPITAL ROAD" ],
+        "city": "LEOMINSTER",
+        "state": "MA",
+        "postalCode": "01453",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Practitioner",
+      "ifNoneExist": "identifier=http://hl7.org/fhir/sid/us-npi|9999999995"
+    }
+  }, {
+    "fullUrl": "urn:uuid:c3846dfa-2ab1-9799-7cd3-05a1261348a6",
+    "resource": {
+      "resourceType": "PractitionerRole",
+      "id": "c3846dfa-2ab1-9799-7cd3-05a1261348a6",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole" ]
+      },
+      "practitioner": {
+        "identifier": {
+          "system": "http://hl7.org/fhir/sid/us-npi",
+          "value": "9999999995"
+        },
+        "display": "Dr. Daniela Hinojosa"
+      },
+      "organization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "363d3504-18f8-37de-8fbb-f52a59fd61b1"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "code": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "specialty": [ {
+        "coding": [ {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "208D00000X",
+          "display": "General Practice"
+        } ],
+        "text": "General Practice"
+      } ],
+      "location": [ {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "d0e312f3-0a19-3089-af0e-db79b3aee7ab"
+        },
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "9784662000"
+      }, {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Daniela.Hinojosa@example.com",
+        "use": "work"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "PractitionerRole"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu_numerator_bad_timeframe.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_2.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": false
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: -3904141993932687825  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2054-5",
+            "display": "Black or African American"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Black or African American"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Pura Huels"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "M"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Woburn",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-39-4080"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Wilkinson",
+        "given": [ "Gino" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-858-4727",
+        "use": "home"
+      } ],
+      "gender": "male",
+      "birthDate": "1996-10-13",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 42.4103866213503
+          }, {
+            "url": "longitude",
+            "valueDecimal": -71.03804363508424
+          } ]
+        } ],
+        "line": [ "346 Hudson Gardens" ],
+        "city": "Boston",
+        "state": "MA",
+        "postalCode": "02126",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:97137ded-5219-ba18-f486-3f3a6b04e75c",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "97137ded-5219-ba18-f486-3f3a6b04e75c",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "2de1cbee-fc9e-43b2-9034-7d9e24e6cad6",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "97137ded-5219-ba18-f486-3f3a6b04e75c"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "http://www.ama-assn.org/go/cpt",
+          "code": "99241"
+        } ]
+      } ],
+      "subject": {
+        "reference": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+        "display": "Gino Wilkinson"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2025-04-30T00:00:00+00:00",
+          "end": "2025-04-30T00:15:00+00:00"
+        },
+        "individual": {
+          "reference": "urn:uuid:5538f551-1633-35ca-a72a-a314c91a87ab",
+          "display": "Dr. Daniela Hinojosa"
+        }
+      } ],
+      "period": {
+        "start": "2025-04-30T00:00:00+00:00",
+        "end": "2025-04-30T00:15:00+00:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location?identifier=https://github.com/synthetichealth/synthea|d0e312f3-0a19-3089-af0e-db79b3aee7ab",
+          "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:7fde2061-5c78-ad3a-520e-57650bd96b57",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "7fde2061-5c78-ad3a-520e-57650bd96b57",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "703f6f5d-0494-40d0-8af4-883fa9a413a5",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F11.159",
+          "display": "[F11.159] Opioid abuse with opioid-induced psychotic disorder, unspecified"
+        } ],
+        "text": "[F11.159] Opioid abuse with opioid-induced psychotic disorder, unspecified"
+      },
+      "subject": {
+        "reference": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e"
+      },
+      "encounter": {
+        "reference": "urn:uuid:97137ded-5219-ba18-f486-3f3a6b04e75c"
+      },
+      "onsetDateTime": "2025-04-30T00:00:00+00:00",
+      "recordedDate": "2025-04-30T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:0e8baec5-d475-5b11-d0c3-b7121ac50d78",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "0e8baec5-d475-5b11-d0c3-b7121ac50d78",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MMP"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+        "display": "Gino Wilkinson"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:4678a490-3772-5cb4-aef6-bcbb8dd88192",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "4678a490-3772-5cb4-aef6-bcbb8dd88192",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+        "display": "Gino Wilkinson"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:41c0b483-cb30-7810-eccc-fe46125faba9",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "41c0b483-cb30-7810-eccc-fe46125faba9",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MRB"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+        "display": "Gino Wilkinson"
+      },
+      "period": {
+        "start": "2024-07-02T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:9ff2a4af-fb03-c578-64b7-b7e168c35968",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "9ff2a4af-fb03-c578-64b7-b7e168c35968",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:12bfa2f1-8b23-d623-6b58-f6b4ac22cd7e",
+        "display": "Gino Wilkinson"
+      },
+      "period": {
+        "start": "2024-07-02T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

@@ -1,0 +1,1028 @@
+{
+  "resourceType": "Bundle",
+  "id": "b616c1aa-fd35-a071-1351-e857232bdbb8",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "b616c1aa-fd35-a071-1351-e857232bdbb8.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "b616c1aa-fd35-a071-1351-e857232bdbb8.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_1.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_check.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_2.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": true
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": true
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "b616c1aa-fd35-a071-1351-e857232bdbb8",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: -5670100988019675159  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Leanora Kling"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "M"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "North Attleborough",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "b616c1aa-fd35-a071-1351-e857232bdbb8"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "b616c1aa-fd35-a071-1351-e857232bdbb8"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-19-5901"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Pfeffer",
+        "given": [ "Christian" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-950-9928",
+        "use": "home"
+      } ],
+      "gender": "male",
+      "birthDate": "2004-01-21",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 41.857005088000136
+          }, {
+            "url": "longitude",
+            "valueDecimal": -70.75628019683629
+          } ]
+        } ],
+        "line": [ "809 Barton Annex Suite 13" ],
+        "city": "Carver",
+        "state": "MA",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:7be025c5-f40c-a6bd-4df8-141dac90907b",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "7be025c5-f40c-a6bd-4df8-141dac90907b",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "3676e0c0-e9c9-46f9-b422-db2b5a8d9425",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "billablePeriod": {
+        "start": "2024-08-28T00:00:00+00:00",
+        "end": "2024-08-28T00:15:00+00:00"
+      },
+      "created": "2024-08-28T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:6012467c-77eb-b041-2b5a-674f3e5efe9a",
+          "display": "Opioid Abuse & Dep ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99212"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-08-28T00:00:00+00:00",
+          "end": "2024-08-28T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:6012467c-77eb-b041-2b5a-674f3e5efe9a",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "6012467c-77eb-b041-2b5a-674f3e5efe9a",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "6feebda2-5941-446c-a6ef-b6786b3f1544",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F11.282",
+          "display": "[F11.282] Opioid dependence with opioid-induced sleep disorder"
+        } ],
+        "text": "[F11.282] Opioid dependence with opioid-induced sleep disorder"
+      },
+      "subject": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8"
+      },
+      "onsetDateTime": "2024-08-28T00:00:00+00:00",
+      "recordedDate": "2024-08-28T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:eb197005-399b-c5c1-cd33-159b33df3e4f",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "eb197005-399b-c5c1-cd33-159b33df3e4f",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "e2510331-2815-4c5c-ba94-e6b68a9f1160",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "billablePeriod": {
+        "start": "2024-08-28T00:00:00+00:00",
+        "end": "2024-08-28T00:15:00+00:00"
+      },
+      "created": "2024-08-28T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:02a12f72-eb40-85de-55c1-232e168936d0",
+          "display": "Filler ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99212"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-08-28T00:00:00+00:00",
+          "end": "2024-08-28T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:02a12f72-eb40-85de-55c1-232e168936d0",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "02a12f72-eb40-85de-55c1-232e168936d0",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "1fce1fe0-8796-4179-8eb2-26ab557640d7",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O98.612",
+          "display": "[O98.612] Protozoal diseases complicating pregnancy, second trimester"
+        } ],
+        "text": "[O98.612] Protozoal diseases complicating pregnancy, second trimester"
+      },
+      "subject": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8"
+      },
+      "onsetDateTime": "2024-08-28T00:00:00+00:00",
+      "recordedDate": "2024-08-28T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:3dd7918e-b695-609b-f53f-33b49c5f724d",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "3dd7918e-b695-609b-f53f-33b49c5f724d",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "89b9747f-534f-4b1d-841f-5b6458ed6923",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "billablePeriod": {
+        "start": "2024-08-28T00:00:00+00:00",
+        "end": "2024-08-28T00:15:00+00:00"
+      },
+      "created": "2024-08-28T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:3b91dd30-8768-651f-9dbb-3ec7f9d72b54",
+          "display": "Alc Abuse & Dep ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99212"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-08-28T00:00:00+00:00",
+          "end": "2024-08-28T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:3b91dd30-8768-651f-9dbb-3ec7f9d72b54",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "3b91dd30-8768-651f-9dbb-3ec7f9d72b54",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "5bf04be2-2279-4903-b5c9-3ba84216a47f",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F10.230",
+          "display": "[F10.230] Alcohol dependence with withdrawal, uncomplicated"
+        } ],
+        "text": "[F10.230] Alcohol dependence with withdrawal, uncomplicated"
+      },
+      "subject": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8"
+      },
+      "onsetDateTime": "2024-08-28T00:00:00+00:00",
+      "recordedDate": "2024-08-28T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:0e521ed2-09cd-a7b8-f050-97a338694c76",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "0e521ed2-09cd-a7b8-f050-97a338694c76",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "e2510331-2815-4c5c-ba94-e6b68a9f1160",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "billablePeriod": {
+        "start": "2024-08-28T00:00:00+00:00",
+        "end": "2024-08-28T00:15:00+00:00"
+      },
+      "created": "2024-08-28T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:40e1595f-0314-8423-85ce-3c1bf141462b",
+          "display": "Filler ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99212"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-08-28T00:00:00+00:00",
+          "end": "2024-08-28T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:40e1595f-0314-8423-85ce-3c1bf141462b",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "40e1595f-0314-8423-85ce-3c1bf141462b",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "1fce1fe0-8796-4179-8eb2-26ab557640d7",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O98.612",
+          "display": "[O98.612] Protozoal diseases complicating pregnancy, second trimester"
+        } ],
+        "text": "[O98.612] Protozoal diseases complicating pregnancy, second trimester"
+      },
+      "subject": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8"
+      },
+      "onsetDateTime": "2024-08-28T00:00:00+00:00",
+      "recordedDate": "2024-08-28T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:4d1b704f-3d58-400a-76fe-9ed15368def2",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "4d1b704f-3d58-400a-76fe-9ed15368def2",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "e2510331-2815-4c5c-ba94-e6b68a9f1160",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "billablePeriod": {
+        "start": "2024-08-28T00:00:00+00:00",
+        "end": "2024-08-28T00:15:00+00:00"
+      },
+      "created": "2024-08-28T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:b2c71ef7-2319-d1cd-fa65-60a0511e61bc",
+          "display": "Filler ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99212"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2024-08-28T00:00:00+00:00",
+          "end": "2024-08-28T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:b2c71ef7-2319-d1cd-fa65-60a0511e61bc",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "b2c71ef7-2319-d1cd-fa65-60a0511e61bc",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "1fce1fe0-8796-4179-8eb2-26ab557640d7",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O98.612",
+          "display": "[O98.612] Protozoal diseases complicating pregnancy, second trimester"
+        } ],
+        "text": "[O98.612] Protozoal diseases complicating pregnancy, second trimester"
+      },
+      "subject": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8"
+      },
+      "onsetDateTime": "2024-08-28T00:00:00+00:00",
+      "recordedDate": "2024-08-28T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:2f25911c-6ae8-cf85-119a-ad5b12f4ce8a",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "2f25911c-6ae8-cf85-119a-ad5b12f4ce8a",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "0e30aba5-b3a8-426d-8e8e-23bfbea7e3da",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "billablePeriod": {
+        "start": "2024-05-30T00:00:00+00:00",
+        "end": "2024-05-30T00:15:00+00:00"
+      },
+      "created": "2024-05-30T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:bc8a70ca-1efd-ca45-8eb3-2fbc2733f154",
+          "display": "Filler ICD"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+            "code": "G9478",
+            "display": "Services performed by other qualified therapist in the hospice setting, each 15 minutes (G9478)"
+          } ],
+          "text": "Services performed by other qualified therapist in the hospice setting, each 15 minutes (G9478)"
+        },
+        "servicedPeriod": {
+          "start": "2024-05-30T00:00:00+00:00",
+          "end": "2024-05-30T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:bc8a70ca-1efd-ca45-8eb3-2fbc2733f154",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "bc8a70ca-1efd-ca45-8eb3-2fbc2733f154",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "9db3a5e2-c5b4-41eb-b079-4f6d25442487",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O99.612",
+          "display": "[O99.612] Diseases of the digestive system complicating pregnancy, second trimester"
+        } ],
+        "text": "[O99.612] Diseases of the digestive system complicating pregnancy, second trimester"
+      },
+      "subject": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8"
+      },
+      "onsetDateTime": "2024-05-30T00:00:00+00:00",
+      "recordedDate": "2024-05-30T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:e5067d62-b208-99a2-5d9e-d0963ae8832d",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "e5067d62-b208-99a2-5d9e-d0963ae8832d",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MP"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:d13bfffa-4599-5b75-9557-b54cce72b9a3",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "d13bfffa-4599-5b75-9557-b54cce72b9a3",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:b616c1aa-fd35-a071-1351-e857232bdbb8",
+        "display": "Christian Pfeffer"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}

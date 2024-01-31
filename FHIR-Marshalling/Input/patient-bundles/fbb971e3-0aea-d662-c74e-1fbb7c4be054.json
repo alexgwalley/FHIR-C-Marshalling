@@ -1,0 +1,623 @@
+{
+  "resourceType": "Bundle",
+  "id": "fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "fbb971e3-0aea-d662-c74e-1fbb7c4be054.scorekey",
+      "parameter": [ {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "ContinuousEnrollment",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "RequiredExclusion",
+        "valueBoolean": true
+      } ]
+    }
+  }, {
+    "resource": {
+      "resourceType": "Parameters",
+      "id": "fbb971e3-0aea-d662-c74e-1fbb7c4be054.all-params",
+      "parameter": [ {
+        "name": "dsu_continuous_enrollment.json Module.Start Date",
+        "valueString": "01/01/2024"
+      }, {
+        "name": "dsu_numerator_bad_timeframe.json Module.Measurement_Period_End",
+        "valueString": "12/31/2024"
+      }, {
+        "name": "dsu.json Module.Prior_Year_Start",
+        "valueString": "01/01/2022"
+      }, {
+        "name": "dsu.json Module.Prior_Year_End",
+        "valueString": "12/31/2023"
+      }, {
+        "name": "dsu_denominator.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_3.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_continuous_enrollment.json Module.ContinuousEnrollment",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_denominator.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_denominator.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.ContinuousEnrollment",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Denominator",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_check.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.ContinuousEnrollment",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_numerator_check.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.RequiredExclusion",
+        "valueBoolean": true
+      }, {
+        "name": "dsu.json Module.Numerator_4",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_3",
+        "valueBoolean": false
+      }, {
+        "name": "dsu_initial_population.json Module.InitialPopulation",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_2",
+        "valueBoolean": false
+      }, {
+        "name": "dsu.json Module.Numerator_1",
+        "valueBoolean": false
+      }, {
+        "name": "hospice_required_exclusion.json Module.RequiredExclusion",
+        "valueBoolean": true
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: 79d417f\n .   Person seed: -5912217569440312001  Population seed: 1703176669956</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Luetta Parisian"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "F"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Braintree",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "fbb971e3-0aea-d662-c74e-1fbb7c4be054"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "fbb971e3-0aea-d662-c74e-1fbb7c4be054"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-21-9918"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Wolff",
+        "given": [ "Debi", "Tyler" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-911-2603",
+        "use": "home"
+      } ],
+      "gender": "female",
+      "birthDate": "2011-08-31",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 42.38295790530412
+          }, {
+            "url": "longitude",
+            "valueDecimal": -71.75657622507954
+          } ]
+        } ],
+        "line": [ "479 Schaefer Vista" ],
+        "city": "Worcester",
+        "state": "MA",
+        "postalCode": "01606",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "S",
+          "display": "Never Married"
+        } ],
+        "text": "Never Married"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English"
+          } ],
+          "text": "English"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:6d450cf8-fc7b-e260-9281-0b1f5f9b433d",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "6d450cf8-fc7b-e260-9281-0b1f5f9b433d",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "c7ca1964-4fe0-4bba-a9e9-0f09136b2a9f",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+        "display": "Debi Wolff"
+      },
+      "billablePeriod": {
+        "start": "2026-05-01T00:00:00+00:00",
+        "end": "2026-05-01T00:15:00+00:00"
+      },
+      "created": "2026-05-01T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:348c740c-a934-7dd5-3a09-d70bf268f743",
+          "display": "Other Drug Abuse & Dep ICD 10 Dx Only"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.ama-assn.org/go/cpt",
+            "code": "99215"
+          } ]
+        },
+        "servicedPeriod": {
+          "start": "2026-05-01T00:00:00+00:00",
+          "end": "2026-05-01T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:348c740c-a934-7dd5-3a09-d70bf268f743",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "348c740c-a934-7dd5-3a09-d70bf268f743",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "300b2d42-ec78-4961-930c-1db934d6f11b",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F19.24",
+          "display": "[F19.24] Other psychoactive substance dependence with psychoactive substance-induced mood disorder"
+        } ],
+        "text": "[F19.24] Other psychoactive substance dependence with psychoactive substance-induced mood disorder"
+      },
+      "subject": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054"
+      },
+      "onsetDateTime": "2026-05-01T00:00:00+00:00",
+      "recordedDate": "2026-05-01T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:ab75b76f-e8e2-5fc4-22eb-b40d8cb413d9",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "ab75b76f-e8e2-5fc4-22eb-b40d8cb413d9",
+      "meta": {
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "0e30aba5-b3a8-426d-8e8e-23bfbea7e3da",
+          "display": "Synthea State Id that generated the resource"
+        }, {
+          "system": "https://ncqa.org/fhir/CodeSystem/hedis-data-source",
+          "code": "administrative"
+        } ]
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+        "display": "Debi Wolff"
+      },
+      "billablePeriod": {
+        "start": "2024-09-27T00:00:00+00:00",
+        "end": "2024-09-27T00:15:00+00:00"
+      },
+      "created": "2024-09-27T00:15:00+00:00",
+      "provider": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|363d3504-18f8-37de-8fbb-f52a59fd61b1",
+        "display": "\"HEALTHALLIANCE HOSPITALS, INC\""
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "urn:uuid:06aa2510-9683-3e1d-97b4-64ec2e1b1558",
+          "display": "Filler ICD"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+            "code": "G0182",
+            "display": "Physician supervision of a patient under a medicare-approved hospice (patient not present) requiring complex and multidisciplinary care modalities involving regular physician development and/or revision of care plans, review of subsequent reports of patient status, review of laboratory and other studies, communication (including telephone calls) with other health care professionals involved in the patient\\u0027s care, integration of new information into the medical treatment plan and/or adjustment of medical therapy, within a calendar month, 30 minutes or more (G0182)"
+          } ],
+          "text": "Physician supervision of a patient under a medicare-approved hospice (patient not present) requiring complex and multidisciplinary care modalities involving regular physician development and/or revision of care plans, review of subsequent reports of patient status, review of laboratory and other studies, communication (including telephone calls) with other health care professionals involved in the patient\\u0027s care, integration of new information into the medical treatment plan and/or adjustment of medical therapy, within a calendar month, 30 minutes or more (G0182)"
+        },
+        "servicedPeriod": {
+          "start": "2024-09-27T00:00:00+00:00",
+          "end": "2024-09-27T00:15:00+00:00"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "urn:uuid:06aa2510-9683-3e1d-97b4-64ec2e1b1558",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "06aa2510-9683-3e1d-97b4-64ec2e1b1558",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ],
+        "tag": [ {
+          "system": "https://ncqa.org/fhir/CodeSystem/synthea-state-id",
+          "code": "9db3a5e2-c5b4-41eb-b079-4f6d25442487",
+          "display": "Synthea State Id that generated the resource"
+        } ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "O36.72X1",
+          "display": "[O36.72X1] Maternal care for viable fetus in abdominal pregnancy, second trimester, fetus 1"
+        } ],
+        "text": "[O36.72X1] Maternal care for viable fetus in abdominal pregnancy, second trimester, fetus 1"
+      },
+      "subject": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054"
+      },
+      "onsetDateTime": "2024-09-27T00:00:00+00:00",
+      "recordedDate": "2024-09-27T00:00:00+00:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:4e17ed3a-5153-1197-faa2-1ec4e619a452",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "4e17ed3a-5153-1197-faa2-1ec4e619a452",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MLI"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+        "display": "Debi Tyler Wolff"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:aadb8414-b477-32e5-39ab-b02fdbdb97e7",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "aadb8414-b477-32e5-39ab-b02fdbdb97e7",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+        "display": "Debi Tyler Wolff"
+      },
+      "period": {
+        "start": "2024-01-01T00:00:00+00:00",
+        "end": "2024-06-29T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:4d9f1770-ba21-9727-ffc1-76a3938d4956",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "4d9f1770-ba21-9727-ffc1-76a3938d4956",
+      "type": {
+        "coding": [ {
+          "system": "https://ncqa.org/fhir/codesystem/hedis-coverage-type",
+          "code": "MMP"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+        "display": "Debi Tyler Wolff"
+      },
+      "period": {
+        "start": "2024-07-09T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:81551cc5-b446-dfa3-be5d-c61981250cd6",
+    "resource": {
+      "resourceType": "Coverage",
+      "id": "81551cc5-b446-dfa3-be5d-c61981250cd6",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "MCPOL"
+        } ]
+      },
+      "beneficiary": {
+        "reference": "urn:uuid:fbb971e3-0aea-d662-c74e-1fbb7c4be054",
+        "display": "Debi Tyler Wolff"
+      },
+      "period": {
+        "start": "2024-07-09T00:00:00+00:00",
+        "end": "2024-12-31T00:00:00+00:00"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:null",
+    "resource": {
+      "resourceType": "MeasureReport",
+      "status": "complete",
+      "type": "individual",
+      "measure": "\"http://fhir.ncqa.org/measures/hedis/aab_hedis_my2023\""
+    }
+  } ]
+}
