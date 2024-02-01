@@ -9,27 +9,11 @@ using System.Threading.Tasks;
 
 namespace FHIR_Marshalling
 {
-    internal static class ManualClasses
-    {
-        public static Type GetResourceType(this ResourceType type)
-        {
-            switch(type)
-            {
-                case ResourceType.Resource: return typeof(Resource);
-                case ResourceType.Account: return typeof(Account);
-                case ResourceType.Bundle_Entry: return typeof(Bundle_Entry);
-                case ResourceType.StructureDefinition: return typeof(StructureDefinition);
-            }
-
-            return null;
-        }
-    }
-
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct String8
     {
-[FieldOffset(0)] public readonly byte* str;
-[FieldOffset(8)] public readonly UIntPtr size;
+        [FieldOffset(0)] public readonly byte* str;
+        [FieldOffset(8)] public readonly UIntPtr size;
 
         public string? ToString()
         {
@@ -49,8 +33,8 @@ namespace FHIR_Marshalling
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct String16
     {
-[FieldOffset(0)] public readonly char* str;
-[FieldOffset(8)] public readonly UIntPtr size;
+        [FieldOffset(0)] public readonly char* str;
+        [FieldOffset(8)] public readonly UIntPtr size;
 
         public string? ToString()
         {
@@ -105,8 +89,6 @@ namespace FHIR_Marshalling
     };
 
 
-
-
     [StructLayout(LayoutKind.Sequential, Size = 16)]
     public struct ISO8601_Time
     {
@@ -123,7 +105,20 @@ namespace FHIR_Marshalling
 
         public ushort year;
         public ushort millisecond;
-        public byte precision;
+        public Precision precision;
+
+        public enum Precision
+        {
+            Year,
+            Month,
+            Day,
+            Hour,
+            Minute,
+            Second,
+            Millisecond,
+            TimezoneMinute,
+            TimezoneSecond,
+        };
 
         public DateTimeOffset? ToDateTimeOffset()
         {
@@ -133,15 +128,15 @@ namespace FHIR_Marshalling
                 timespan = new TimeSpan(timezone_hour * (timezone_char == '-' ? -1 : 1), timezone_minute, 0);
             }
 
-            if (precision > 14)
+            if (precision >= Precision.Millisecond)
             {
                 return new DateTimeOffset(year, month, day, hour, minute, second, (int)millisecond, timespan);
             }
-            else if (precision == 14)
+            else if (precision == Precision.Second)
             {
                 return new DateTimeOffset(year, month, day, hour, minute, second, timespan);
             }
-            else if(precision == 8)
+            else if(precision == Precision.Day)
             {
                 return new DateTimeOffset(year, month, day, 0, 0, 0, timespan);
             }
@@ -156,15 +151,15 @@ namespace FHIR_Marshalling
 
         public Date? ToFhirDate()
         {
-            if(precision == 8)
+            if(precision == Precision.Day)
             {
                 return new Date(year, month, day);
             }
-            else if (precision == 6)
+            else if (precision == Precision.Month)
             {
                 return new Date(year, month);
             }
-            else if (precision == 4)
+            else if (precision == Precision.Year)
             {
                 return new Date(year);
             }
@@ -174,7 +169,7 @@ namespace FHIR_Marshalling
 
         public Time? ToFhirTime()
         {
-            if(precision > 8)
+            if(precision >= Precision.Hour)
             {
                 new Time(hour, minute, second);
             }
@@ -184,7 +179,7 @@ namespace FHIR_Marshalling
 
         public FhirDateTime? ToFhirDateTime()
         {
-            if(precision >= 14)
+            if(precision >= Precision.Second)
             {
                 TimeSpan timespan = TimeSpan.Zero;
                 if (timezone_char != 'Z')
@@ -194,15 +189,15 @@ namespace FHIR_Marshalling
 
                 return new FhirDateTime(year, month, day, hour, minute, second, timespan);
             }
-            else if(precision == 8)
+            else if(precision == Precision.Day)
             {
                 return new FhirDateTime(year, month, day);
             }
-            else if (precision == 6)
+            else if (precision == Precision.Month)
             {
                 return new FhirDateTime(year, month);
             }
-            else if (precision == 4)
+            else if (precision == Precision.Year)
             {
                 return new FhirDateTime(year);
             }
