@@ -52,7 +52,7 @@ namespace MarshallingTests
 
             funcs.Add(CodeGen.GetDeserializeResource(CodeGen.NativeToFirely));
 
-            using(var file = new StreamWriter("D:/Programming Stuff/FHIR-Marshalling/MarshallingTests/Output/GeneratedMarshalling.cs"))
+            using(var file = new StreamWriter("D:/Programming Stuff/FHIR-C-Marshalling/MarshallingTests/Output/GeneratedMarshalling.cs"))
             {
                 file.WriteLine("using Hl7.Fhir.Model;");
                 file.WriteLine("using FHIR_Marshalling;");

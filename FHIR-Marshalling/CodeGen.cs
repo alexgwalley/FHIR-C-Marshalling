@@ -368,23 +368,31 @@ namespace FHIR_Marshalling
                             string underlyingFullName = underlying.FullName.Replace("+", ".");
 
                             string nativeFieldAccessor = AccessorForNative("in_native", nativeType, member.NativeField);
+                            /*
                             builder.AppendLine($"switch({nativeFieldAccessor}.ToString()) {{");
                             builder.IndentedAmount += 1;
                             foreach (var entry in member.EnumEntries)
                             {
                                 builder.AppendLine($"case \"{entry.EnumLiteral.Literal}\": {{");
                                 builder.IndentedAmount += 1;
+                            */
 
                                 var newCode = $"new Code<{underlyingFullName}> ()";
                                 builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {newCode};");
+                                /*
                                 builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.ObjectValue = {underlyingFullName}.{entry.Value};");
+                                */
+                                //builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = new Code<{underlyingFullName}>({underlyingFullName}.{entry.Value});");
 
+                                builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.ObjectValue = {nativeFieldAccessor}.ToString();");
+/*
                                 builder.IndentedAmount -= 1;
                                 builder.AppendLine($"}} break;");
                             }
 
                             builder.IndentedAmount -= 1;
                             builder.AppendLine("}");
+                            */
                         }
                         break;
 
@@ -439,24 +447,34 @@ namespace FHIR_Marshalling
 
                         builder.IndentedAmount += 1;
 
+                            /*
                         builder.AppendLine($"switch({nativeFieldAccessor}.ToString()) {{");
                         builder.IndentedAmount += 1;
                         foreach (var entry in member.EnumEntries)
                         {
                             builder.AppendLine($"case \"{entry.EnumLiteral.Literal}\": {{");
                             builder.IndentedAmount += 1;
+                            */
 
                             var newCode = $"new Code<{underlyingFullName}> ()";
                             builder.AppendLine($"var __code = {newCode};");
-                            builder.AppendLine($"__code.ObjectValue = {underlyingFullName}.{entry.Value};");
-                            builder.AppendLine($"{listName}.Add(__code);");
+                            //builder.AppendLine($"__code.ObjectValue = {underlyingFullName}.{entry.Value};");
+                            builder.AppendLine($"__code.ObjectValue = {nativeFieldAccessor}.ToString();");
 
+                                /*
+                            builder.AppendLine($"var __code = new Code<{underlyingFullName}>({underlyingFullName}.{entry.Value});");
+                                */
+
+                            builder.AppendLine($"{listName}.Add(__code);");
+/*
                             builder.IndentedAmount -= 1;
                             builder.AppendLine($"}} break;");
                         }
 
                         builder.IndentedAmount -= 1;
                         builder.AppendLine("}");
+*/
+
                         builder.AppendLine("}");
                         builder.AppendLine("");
                         builder.IndentedAmount -= 1;

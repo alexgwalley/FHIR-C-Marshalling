@@ -11,7 +11,9 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 /*
  *  TODO(agw):
@@ -30,11 +32,11 @@ namespace FHIR_Marshalling
     {
         public static void Main(string[] args)
         {
-            var dirs = Directory.EnumerateFiles("Input/patient-bundles");
+            var dirs = Directory.EnumerateFiles("");
             /*
             dirs = new string[]
             {
-                "D:/Programming Stuff/FHIR-Marshalling/FHIR-Marshalling/bin/x64/Debug/Input/patient-bundles/008a1536-cf42-6f72-657b-c14e201ee475.json"
+                ""
             };
             */
 
@@ -46,42 +48,73 @@ namespace FHIR_Marshalling
             double firelyTime = 0;
             double marshallingTime = 0;
             double dllTime = 0;
+            double onlyDeserializeTime = 0;
+            double copyFileTime = 0;
 
             double totalGigabytes = 0;
             Stopwatch sw = new Stopwatch();
 
+            sw.Start();
+            //foreach(var d in dirs)
+            Parallel.ForEach(dirs, d =>
+            {
+                var bundle = nativeDeserializer.DeserializeFile(d);
+                if (bundle != null)
+                {
+                    Console.WriteLine(bundle.Id);
+                }
+                else
+                {
+                    Console.WriteLine("Bundle was null");
+                }
+            });
+            sw.Stop();
+            double ticks;
+            double nano;
+            double ms;
+            ticks = sw.ElapsedTicks; 
+            nano = 1000000000.0 * ticks / Stopwatch.Frequency;
+            ms = nano / 1000000.0;
+            dllTime += ms;
+
+            /*
             foreach (var fileName in dirs)
             {
+
                 Console.WriteLine(fileName);
-                IntPtr intPtr = IntPtr.Zero;
+                double ticks;
+                double nano;
+                double ms;
 
                 sw.Restart();
-                var codeGenBundle  =nativeDeserializer.DeserializeFile(fileName);
-                NativeMethods.ND_DeserializeFile(fileName, ref intPtr);
+                var fileStream = File.Open(fileName, FileMode.Open);
+                var codeGenBundle = nativeDeserializer.DeserializeStream(fileStream);
+                fileStream.Close();
                 sw.Stop();
-                double ticks = sw.ElapsedTicks; 
-                double nano = 1000000000.0 * ticks / Stopwatch.Frequency;
-                double ms = nano / 1000000.0;
+                ticks = sw.ElapsedTicks; 
+                nano = 1000000000.0 * ticks / Stopwatch.Frequency;
+                ms = nano / 1000000.0;
                 dllTime += ms;
 
-                /*
                 using(StreamWriter writer = new StreamWriter("Output/profiles-others-native.json"))
                 {
                     string str = JsonSerializer.Serialize(codeGenBundle, options);
                     writer.Write(str);
                 }
-                */
             }
+                */
 
-            foreach (var fileName in dirs)
-            {
-                var jsonInput = File.ReadAllText(fileName);
                 sw.Restart();
-                var patient = Serializer.DeserializeFromJson(jsonInput) as Hl7.Fhir.Model.Bundle;
+                Parallel.ForEach(dirs, d =>
+                {
+                    var jsonInput = File.ReadAllText(d);
+                    var patient = Serializer.DeserializeFromJson(jsonInput) as Hl7.Fhir.Model.Bundle;
+                });
                 sw.Stop();
-                double ticks = sw.ElapsedTicks; 
-                double nano = 1000000000.0 * ticks / Stopwatch.Frequency;
-                double ms = nano / 1000000.0;
+
+                ticks = sw.ElapsedTicks; 
+                nano = 1000000000.0 * ticks / Stopwatch.Frequency;
+                ms = nano / 1000000.0;
                 firelyTime += ms;
 
                 /*
@@ -92,23 +125,29 @@ namespace FHIR_Marshalling
                 }
                 */
 
-                var fileInfo = new FileInfo(fileName);
+            foreach(var d in dirs)
+            {
+                var fileInfo = new FileInfo(d);
                 totalGigabytes += (double)fileInfo.Length / (double)(1024 * 1024 * 1024);
             }
 
             Console.WriteLine("Native Deserialize Time: " + dllTime);
             Console.WriteLine("Code Gen Time: " + marshallingTime);
+            Console.WriteLine("Copy File Time: " + copyFileTime);
             Console.WriteLine("Firely Time: " + firelyTime);
             Console.WriteLine("Total Gigabytes: " + totalGigabytes);
 
-            double nativeSeconds = (dllTime) / (double)1000;
+            double nativeSeconds = (onlyDeserializeTime) / (double)1000;
             double nativeGigabytesPerSecond = totalGigabytes / nativeSeconds;
             Console.WriteLine("Native GB/s: " + nativeGigabytesPerSecond);
+
+            double copyFileSeconds = (copyFileTime) / (double)1000;
+            double copyGigabytesPerSecond = totalGigabytes / copyFileSeconds;
+            Console.WriteLine("Copy File GB/s: " + copyGigabytesPerSecond);
 
             double seconds = (dllTime + marshallingTime) / (double)1000;
             double gigabytesPerSecond = totalGigabytes / seconds;
             Console.WriteLine("GB/s: " + gigabytesPerSecond);
-
 
             double FirelySeconds = firelyTime / (double)1000;
             double FirelyGigabytesPerSecond = totalGigabytes / FirelySeconds;

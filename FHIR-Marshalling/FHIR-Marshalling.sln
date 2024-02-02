@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHIR-Marshalling", "FHIR-Marshalling.csproj", "{A38EADF3-9A12-4AE5-A27B-55095720DF88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHIR-Marshalling", "FHIR-Marshalling.csproj", "{A38EADF3-9A12-4AE5-A27B-55095720DF88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarshallingTests", "..\MarshallingTests\MarshallingTests.csproj", "{E3B94B6C-D897-4745-8F45-D7E6E98F09F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarshallingTests", "..\MarshallingTests\MarshallingTests.csproj", "{E3B94B6C-D897-4745-8F45-D7E6E98F09F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.Fhir.Base", "..\..\firely-net-sdk\src\Hl7.Fhir.Base\Hl7.Fhir.Base.csproj", "{D20469A4-7E9F-4DD9-AE58-6CF0AE5E3D63}"
 EndProject
@@ -23,10 +23,10 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|x64.ActiveCfg = Debug|x64
-		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|x64.Build.0 = Debug|x64
+		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|Any CPU.Build.0 = Debug|x64
+		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.Debug|x64.Build.0 = Debug|Any CPU
 		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.FullDebug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.FullDebug|Any CPU.Build.0 = Debug|Any CPU
 		{A38EADF3-9A12-4AE5-A27B-55095720DF88}.FullDebug|x64.ActiveCfg = Debug|x64

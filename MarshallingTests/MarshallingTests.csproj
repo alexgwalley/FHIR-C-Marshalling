@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Compile Remove="Output\generated.cs" />
+    <Compile Remove="Output\GeneratedMarshalling.cs" />
   </ItemGroup>
 
   <ItemGroup>

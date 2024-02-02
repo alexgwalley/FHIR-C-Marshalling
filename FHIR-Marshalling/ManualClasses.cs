@@ -123,7 +123,7 @@ namespace FHIR_Marshalling
         public DateTimeOffset? ToDateTimeOffset()
         {
             TimeSpan timespan = TimeSpan.Zero;
-            if (timezone_char != 'Z')
+            if (timezone_char != 'Z' && timezone_char != 0)
             {
                 timespan = new TimeSpan(timezone_hour * (timezone_char == '-' ? -1 : 1), timezone_minute, 0);
             }

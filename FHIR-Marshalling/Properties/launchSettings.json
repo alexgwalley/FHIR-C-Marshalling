@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "FHIR-Marshalling": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Programming Stuff\\FHIR-C-Marshalling\\FHIR-Marshalling",
+      "nativeDebugging": true
+    }
+  }
+}
