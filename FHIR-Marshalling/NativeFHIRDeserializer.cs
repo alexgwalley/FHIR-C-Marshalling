@@ -10,7 +10,7 @@ namespace FHIR_Marshalling
     internal unsafe static class NativeMethods
     { 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void ND_Init();
+        public static extern void ND_Init(Int32 num_contexts);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ND_Cleanup();
@@ -24,9 +24,9 @@ namespace FHIR_Marshalling
 
     public class NativeFHIRDeserializer
     {
-        public NativeFHIRDeserializer()
+        public NativeFHIRDeserializer(int num_contexts = 0)
         {
-            NativeMethods.ND_Init();
+            NativeMethods.ND_Init(num_contexts);
         }
 
         ~NativeFHIRDeserializer()

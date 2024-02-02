@@ -43,7 +43,7 @@ namespace FHIR_Marshalling
             IFhirSerializationEngine Serializer = FhirSerializationEngineFactory.Ostrich(ModelInfo.ModelInspector);
             var options = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
 
-            var nativeDeserializer = new NativeFHIRDeserializer();
+            var nativeDeserializer = new NativeFHIRDeserializer(10);
 
             double firelyTime = 0;
             double marshallingTime = 0;
