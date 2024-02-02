@@ -146,7 +146,11 @@ namespace FHIR_Marshalling
 
         public Instant? ToFhirInstant()
         {
-            return new Instant(ToDateTimeOffset());
+            if(precision != 0)
+            {
+                return new Instant(ToDateTimeOffset());
+            }
+            return null;
         }
 
         public Date? ToFhirDate()
