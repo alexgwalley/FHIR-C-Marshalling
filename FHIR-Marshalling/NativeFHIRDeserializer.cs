@@ -40,16 +40,8 @@ namespace FHIR_Marshalling
         public static readonly int SIMDJSON_PADDING = 64;
         public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
         {
-            // TODO(agw): may not support seek stream.CanSeek
-            /*
-            stream.Seek(0, SeekOrigin.End);
-            var streamLen = stream.Position;
-            stream.Seek(0, SeekOrigin.Begin);
-            */
-
-            var memoryStream = new MemoryStream();
+            MemoryStream memoryStream = new MemoryStream();
             stream.CopyTo(memoryStream);
-            var streamLen = stream.Position;
 
             byte[] buffer = new byte[SIMDJSON_PADDING];
             memoryStream.Write(buffer, 0, buffer.Length);
@@ -75,7 +67,6 @@ namespace FHIR_Marshalling
             var context = NativeMethods.ND_DeserializeFile(fileName, ref intPtr);
             var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
             NativeMethods.ND_FreeContext(context);
-
 
             return res;
         }

@@ -1,4 +1,5 @@
 using FHIR_Marshalling;
+using Hl7.Fhir.Model;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -14,25 +15,26 @@ namespace MarshallingTests
             var sw = Stopwatch.StartNew();
             for(int i = 0; i < 100_000; i++)
             {
-                bundle.IdElement = new Hl7.Fhir.Model.Id(null);
+                var uri = new FhirUri();
+                uri.ObjectValue = "test";
             }
             sw.Stop();
             double ticks = sw.ElapsedTicks;
             double nano = 1000000000.0 * ticks / Stopwatch.Frequency;
             double ms = nano / 1000000.0;
-            Debug.WriteLine("new Null Elapsed: " + ms);
+            Debug.WriteLine("Option 1: " + ms);
 
 
             sw = Stopwatch.StartNew();
             for(int i = 0; i < 100_000; i++)
             {
-                bundle.Id = null;
+                var uri = new FhirUri("test");
             }
             sw.Stop();
             ticks = sw.ElapsedTicks;
             nano = 1000000000.0 * ticks / Stopwatch.Frequency;
             ms = nano / 1000000.0;
-            Debug.WriteLine("Direct Null Elapsed: " + ms);
+            Debug.WriteLine("Option 2: " + ms);
         }
 
         [TestMethod]

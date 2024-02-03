@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Marshalling-DLL\Marshalling-DLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="deserialization_dll.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

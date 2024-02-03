@@ -61,7 +61,8 @@ namespace FHIR_Marshalling
             //Parallel.ForEach(dirs, d =>
             {
                 Hl7.Fhir.Model.Bundle bundle = new Hl7.Fhir.Model.Bundle();
-                bundle = (Hl7.Fhir.Model.Bundle)nativeDeserializer.DeserializeFile(d);
+                var stream = File.Open(d, FileMode.Open);
+                bundle = (Hl7.Fhir.Model.Bundle)nativeDeserializer.DeserializeStream(stream);
                 if (doSingle)
                 {
                     using (StreamWriter writer = new StreamWriter("D:/Programming Stuff/FHIR-C-Marshalling/FHIR-Marshalling/Output/profiles-others-native.json"))
@@ -70,7 +71,7 @@ namespace FHIR_Marshalling
                         writer.Write(str);
                     }
                 }
-            //});
+           // });
             }
             sw.Stop();
             double ticks;
@@ -124,12 +125,12 @@ namespace FHIR_Marshalling
                     }
                 });
                 sw.Stop();
+            */
 
                 ticks = sw.ElapsedTicks; 
                 nano = 1000000000.0 * ticks / Stopwatch.Frequency;
                 ms = nano / 1000000.0;
                 firelyTime += ms;
-            */
 
                 /*
                 using(StreamWriter writer = new StreamWriter("Output/profiles-others-firely.json"))
