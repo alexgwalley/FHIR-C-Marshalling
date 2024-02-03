@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,9 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\firely-net-sdk\src\Hl7.Fhir.Base\Hl7.Fhir.Base.csproj" />
-    <ProjectReference Include="..\..\firely-net-sdk\src\Hl7.Fhir.Conformance\Hl7.Fhir.Conformance.csproj" />
-    <ProjectReference Include="..\..\firely-net-sdk\src\Hl7.Fhir.R4\Hl7.Fhir.R4.csproj" />
     <ProjectReference Include="..\FHIR-Marshalling\FHIR-Marshalling.csproj" />
   </ItemGroup>
 

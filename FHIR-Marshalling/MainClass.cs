@@ -32,13 +32,15 @@ namespace FHIR_Marshalling
     {
         public static void Main(string[] args)
         {
-            var dirs = Directory.EnumerateFiles("");
-            /*
-            dirs = new string[]
+            var dirs = Directory.EnumerateFiles("D:/Programming Stuff/FHIR-Marshalling/FHIR-Marshalling/Input/patient-bundles");
+            bool doSingle = false;
+            if(doSingle)
             {
-                ""
-            };
-            */
+                dirs = new string[]
+                {
+                    "D:/Programming Stuff/FHIR-Marshalling/FHIR-Marshalling/Input/patient-bundles/0a95ab64-050d-590b-4310-a084df00ac88.json"
+                };
+            }
 
             IFhirSerializationEngine Serializer = FhirSerializationEngineFactory.Ostrich(ModelInfo.ModelInspector);
             var options = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
@@ -55,19 +57,21 @@ namespace FHIR_Marshalling
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
-            //foreach(var d in dirs)
-            Parallel.ForEach(dirs, d =>
+            foreach (var d in dirs)
+            //Parallel.ForEach(dirs, d =>
             {
-                var bundle = nativeDeserializer.DeserializeFile(d);
-                if (bundle != null)
+                Hl7.Fhir.Model.Bundle bundle = new Hl7.Fhir.Model.Bundle();
+                bundle = (Hl7.Fhir.Model.Bundle)nativeDeserializer.DeserializeFile(d);
+                if (doSingle)
                 {
-                    Console.WriteLine(bundle.Id);
+                    using (StreamWriter writer = new StreamWriter("D:/Programming Stuff/FHIR-C-Marshalling/FHIR-Marshalling/Output/profiles-others-native.json"))
+                    {
+                        string str = JsonSerializer.Serialize(bundle, options);
+                        writer.Write(str);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Bundle was null");
-                }
-            });
+            //});
+            }
             sw.Stop();
             double ticks;
             double nano;
@@ -102,13 +106,22 @@ namespace FHIR_Marshalling
                     writer.Write(str);
                 }
             }
-                */
+            */
 
+            /*
                 sw.Restart();
                 Parallel.ForEach(dirs, d =>
                 {
                     var jsonInput = File.ReadAllText(d);
                     var patient = Serializer.DeserializeFromJson(jsonInput) as Hl7.Fhir.Model.Bundle;
+                    if (doSingle)
+                    {
+                        using (StreamWriter writer = new StreamWriter("D:/Programming Stuff/FHIR-C-Marshalling/FHIR-Marshalling/Output/profiles-others-firely.json"))
+                        {
+                            string str = JsonSerializer.Serialize(patient, options);
+                            writer.Write(str);
+                        }
+                    }
                 });
                 sw.Stop();
 
@@ -116,6 +129,7 @@ namespace FHIR_Marshalling
                 nano = 1000000000.0 * ticks / Stopwatch.Frequency;
                 ms = nano / 1000000.0;
                 firelyTime += ms;
+            */
 
                 /*
                 using(StreamWriter writer = new StreamWriter("Output/profiles-others-firely.json"))

@@ -82,8 +82,11 @@ public static Hl7.Fhir.Model.Account? Marshal_Account(FHIR_Marshalling.Account* 
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Account.AccountStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Account.AccountStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -346,8 +349,11 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -532,8 +538,11 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 		
 		}
 		
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.ActivityDefinition.RequestResourceType> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 552)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 552)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.ActivityDefinition.RequestResourceType> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	var _profile_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 568)).ToString();
 	if(_profile_temp != null) {
 		fhirInstance.ProfileElement = new Hl7.Fhir.Model.Canonical(_profile_temp);
@@ -543,10 +552,16 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 584)));
 	}
 	
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 592)).ToString();
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 608)).ToString();
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 592)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 608)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 624)).GetValue());
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
@@ -737,8 +752,11 @@ public static Hl7.Fhir.Model.ActivityDefinition.ParticipantComponent? Marshal_Ac
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ActionParticipantType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ActionParticipantType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Role = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
@@ -860,8 +878,11 @@ public static Hl7.Fhir.Model.AdverseEvent? Marshal_AdverseEvent(FHIR_Marshalling
 		fhirInstance.Identifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 120)));
 	}
 	
-	fhirInstance.ActualityElement = new Code<Hl7.Fhir.Model.AdverseEvent.AdverseEventActuality> ();
-	fhirInstance.ActualityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	var __temp_codeActualityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	if(__temp_codeActualityElement != null) {
+		fhirInstance.ActualityElement = new Code<Hl7.Fhir.Model.AdverseEvent.AdverseEventActuality> ();
+		fhirInstance.ActualityElement.ObjectValue = __temp_codeActualityElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 144)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 144)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 144)); i++)
@@ -1187,8 +1208,11 @@ public static Hl7.Fhir.Model.AllergyIntolerance? Marshal_AllergyIntolerance(FHIR
 		fhirInstance.VerificationStatus = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 144)));
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 168)) > 0) {
 		var _category_list  = new List<Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory>>((int)(*(System.UIntPtr*)((byte*)in_native + 168)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 168)); i++)
@@ -1202,8 +1226,11 @@ public static Hl7.Fhir.Model.AllergyIntolerance? Marshal_AllergyIntolerance(FHIR
 		
 		}
 		
-	fhirInstance.CriticalityElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality> ();
-	fhirInstance.CriticalityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeCriticalityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeCriticalityElement != null) {
+		fhirInstance.CriticalityElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality> ();
+		fhirInstance.CriticalityElement.ObjectValue = __temp_codeCriticalityElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 200)) != null) {
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 200)));
 	}
@@ -1352,8 +1379,11 @@ public static Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent? Marshal_Aller
 		fhirInstance.OnsetElement = _onset_temp;
 	}
 	
-	fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity> ();
-	fhirInstance.SeverityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
+	var __temp_codeSeverityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
+	if(__temp_codeSeverityElement != null) {
+		fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity> ();
+		fhirInstance.SeverityElement.ObjectValue = __temp_codeSeverityElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 128)) != null) {
 		fhirInstance.ExposureRoute = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 128)));
 	}
@@ -1449,8 +1479,11 @@ public static Hl7.Fhir.Model.Appointment? Marshal_Appointment(FHIR_Marshalling.A
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Appointment.AppointmentStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Appointment.AppointmentStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.CancelationReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -1672,10 +1705,16 @@ public static Hl7.Fhir.Model.Appointment.ParticipantComponent? Marshal_Appointme
 		fhirInstance.Actor = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
 	
-	fhirInstance.RequiredElement = new Code<Hl7.Fhir.Model.Appointment.ParticipantRequired> ();
-	fhirInstance.RequiredElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ParticipationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToString();
+	var __temp_codeRequiredElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
+	if(__temp_codeRequiredElement != null) {
+		fhirInstance.RequiredElement = new Code<Hl7.Fhir.Model.Appointment.ParticipantRequired> ();
+		fhirInstance.RequiredElement.ObjectValue = __temp_codeRequiredElement;
+	}
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ParticipationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 112)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 112)));
 	}
@@ -1789,8 +1828,11 @@ public static Hl7.Fhir.Model.AppointmentResponse? Marshal_AppointmentResponse(FH
 		fhirInstance.Actor = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 192)));
 	}
 	
-	fhirInstance.ParticipantStatusElement = new Code<Hl7.Fhir.Model.ParticipationStatus> ();
-	fhirInstance.ParticipantStatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeParticipantStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeParticipantStatusElement != null) {
+		fhirInstance.ParticipantStatusElement = new Code<Hl7.Fhir.Model.ParticipationStatus> ();
+		fhirInstance.ParticipantStatusElement.ObjectValue = __temp_codeParticipantStatusElement;
+	}
 	var _comment_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
 	if(_comment_temp != null) {
 		fhirInstance.CommentElement = new Hl7.Fhir.Model.FhirString(_comment_temp);
@@ -1879,8 +1921,11 @@ public static Hl7.Fhir.Model.AuditEvent? Marshal_AuditEvent(FHIR_Marshalling.Aud
 		
 	}
 	
-	fhirInstance.ActionElement = new Code<Hl7.Fhir.Model.AuditEvent.AuditEventAction> ();
-	fhirInstance.ActionElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	var __temp_codeActionElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeActionElement != null) {
+		fhirInstance.ActionElement = new Code<Hl7.Fhir.Model.AuditEvent.AuditEventAction> ();
+		fhirInstance.ActionElement.ObjectValue = __temp_codeActionElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 160)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 160)));
 	}
@@ -1890,8 +1935,11 @@ public static Hl7.Fhir.Model.AuditEvent? Marshal_AuditEvent(FHIR_Marshalling.Aud
 		fhirInstance.RecordedElement = _recorded_temp;
 	}
 	
-	fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.AuditEvent.AuditEventOutcome> ();
-	fhirInstance.OutcomeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeOutcomeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeOutcomeElement != null) {
+		fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.AuditEvent.AuditEventOutcome> ();
+		fhirInstance.OutcomeElement.ObjectValue = __temp_codeOutcomeElement;
+	}
 	var _outcomeDesc_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
 	if(_outcomeDesc_temp != null) {
 		fhirInstance.OutcomeDescElement = new Hl7.Fhir.Model.FhirString(_outcomeDesc_temp);
@@ -2088,8 +2136,11 @@ public static Hl7.Fhir.Model.AuditEvent.NetworkComponent? Marshal_AuditEvent_Age
 		fhirInstance.AddressElement = new Hl7.Fhir.Model.FhirString(_address_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.AuditEvent.AuditEventAgentNetworkType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.AuditEvent.AuditEventAgentNetworkType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	return fhirInstance;
 }
 
@@ -2522,14 +2573,20 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct? Marshal_BiologicallyDer
 		
 	}
 	
-	fhirInstance.ProductCategoryElement = new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductCategory> ();
-	fhirInstance.ProductCategoryElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeProductCategoryElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeProductCategoryElement != null) {
+		fhirInstance.ProductCategoryElement = new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductCategory> ();
+		fhirInstance.ProductCategoryElement.ObjectValue = __temp_codeProductCategoryElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.ProductCode = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 176)) > 0) {
 		var _request_list  = new List<Hl7.Fhir.Model.ResourceReference>((int)(*(System.UIntPtr*)((byte*)in_native + 176)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 176)); i++)
@@ -2814,8 +2871,11 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct.StorageComponent? Marsha
 		fhirInstance.TemperatureElement = _temperature_temp;
 	}
 	
-	fhirInstance.ScaleElement = new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStorageScale> ();
-	fhirInstance.ScaleElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeScaleElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeScaleElement != null) {
+		fhirInstance.ScaleElement = new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStorageScale> ();
+		fhirInstance.ScaleElement.ObjectValue = __temp_codeScaleElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 104)) != null) {
 		fhirInstance.Duration = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 104)));
 	}
@@ -2976,8 +3036,11 @@ public static Hl7.Fhir.Model.Bundle? Marshal_Bundle(FHIR_Marshalling.Bundle* in_
 		fhirInstance.Identifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 64)));
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Bundle.BundleType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Bundle.BundleType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _timestamp_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 88)).ToFhirInstant();
 	if(_timestamp_temp != null) {
 		fhirInstance.TimestampElement = _timestamp_temp;
@@ -3170,8 +3233,11 @@ public static Hl7.Fhir.Model.Bundle.SearchComponent? Marshal_Bundle_Entry_Search
 		
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Bundle.SearchEntryMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Bundle.SearchEntryMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _score_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).DecimalValue());
 	if(_score_temp != null) {
 		fhirInstance.ScoreElement = _score_temp;
@@ -3214,8 +3280,11 @@ public static Hl7.Fhir.Model.Bundle.RequestComponent? Marshal_Bundle_Entry_Reque
 		
 	}
 	
-	fhirInstance.MethodElement = new Code<Hl7.Fhir.Model.Bundle.HTTPVerb> ();
-	fhirInstance.MethodElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeMethodElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeMethodElement != null) {
+		fhirInstance.MethodElement = new Code<Hl7.Fhir.Model.Bundle.HTTPVerb> ();
+		fhirInstance.MethodElement.ObjectValue = __temp_codeMethodElement;
+	}
 	var _url_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_url_temp != null) {
 		fhirInstance.UrlElement = new Hl7.Fhir.Model.FhirUri(_url_temp);
@@ -3389,8 +3458,11 @@ public static Hl7.Fhir.Model.CapabilityStatement? Marshal_CapabilityStatement(FH
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -3457,8 +3529,11 @@ public static Hl7.Fhir.Model.CapabilityStatement? Marshal_CapabilityStatement(FH
 		fhirInstance.CopyrightElement = new Hl7.Fhir.Model.Markdown(_copyright_temp);
 	}
 	
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.CapabilityStatementKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.CapabilityStatementKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 352)) > 0) {
 		var _instantiates_list  = new List<Canonical>((int)(*(System.UIntPtr*)((byte*)in_native + 352)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 352)); i++)
@@ -3493,8 +3568,11 @@ public static Hl7.Fhir.Model.CapabilityStatement? Marshal_CapabilityStatement(FH
 		fhirInstance.Implementation = Marshal_CapabilityStatement_Implementation((*(FHIR_Marshalling.CapabilityStatement_Implementation**)((byte*)in_native + 392)));
 	}
 	
-	fhirInstance.FhirVersionElement = new Code<Hl7.Fhir.Model.FHIRVersion> ();
-	fhirInstance.FhirVersionElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	var __temp_codeFhirVersionElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	if(__temp_codeFhirVersionElement != null) {
+		fhirInstance.FhirVersionElement = new Code<Hl7.Fhir.Model.FHIRVersion> ();
+		fhirInstance.FhirVersionElement.ObjectValue = __temp_codeFhirVersionElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 416)) > 0) {
 		var _format_list  = new List<Code>((int)(*(System.UIntPtr*)((byte*)in_native + 416)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 416)); i++)
@@ -3710,8 +3788,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.RestComponent? Marshal_Capabili
 		
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.RestfulCapabilityMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.RestfulCapabilityMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.Markdown(_documentation_temp);
@@ -3918,8 +3999,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.ResourceComponent? Marshal_Capa
 		
 	}
 	
-	fhirInstance.VersioningElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ResourceVersionPolicy> ();
-	fhirInstance.VersioningElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeVersioningElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeVersioningElement != null) {
+		fhirInstance.VersioningElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ResourceVersionPolicy> ();
+		fhirInstance.VersioningElement.ObjectValue = __temp_codeVersioningElement;
+	}
 	var _readHistory_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).GetValue());
 	if(_readHistory_temp != null) {
 		fhirInstance.ReadHistoryElement = _readHistory_temp;
@@ -3935,15 +4019,21 @@ public static Hl7.Fhir.Model.CapabilityStatement.ResourceComponent? Marshal_Capa
 		fhirInstance.ConditionalCreateElement = _conditionalCreate_temp;
 	}
 	
-	fhirInstance.ConditionalReadElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ConditionalReadStatus> ();
-	fhirInstance.ConditionalReadElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	var __temp_codeConditionalReadElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	if(__temp_codeConditionalReadElement != null) {
+		fhirInstance.ConditionalReadElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ConditionalReadStatus> ();
+		fhirInstance.ConditionalReadElement.ObjectValue = __temp_codeConditionalReadElement;
+	}
 	var _conditionalUpdate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 192)).GetValue());
 	if(_conditionalUpdate_temp != null) {
 		fhirInstance.ConditionalUpdateElement = _conditionalUpdate_temp;
 	}
 	
-	fhirInstance.ConditionalDeleteElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ConditionalDeleteStatus> ();
-	fhirInstance.ConditionalDeleteElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeConditionalDeleteElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeConditionalDeleteElement != null) {
+		fhirInstance.ConditionalDeleteElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ConditionalDeleteStatus> ();
+		fhirInstance.ConditionalDeleteElement.ObjectValue = __temp_codeConditionalDeleteElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 216)) > 0) {
 		var _referencePolicy_list  = new List<Code<Hl7.Fhir.Model.CapabilityStatement.ReferenceHandlingPolicy>>((int)(*(System.UIntPtr*)((byte*)in_native + 216)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 216)); i++)
@@ -4044,8 +4134,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.ResourceInteractionComponent? M
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.TypeRestfulInteraction> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.TypeRestfulInteraction> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.Markdown(_documentation_temp);
@@ -4098,8 +4191,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.SearchParamComponent? Marshal_C
 		fhirInstance.DefinitionElement = new Hl7.Fhir.Model.Canonical(_definition_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.SearchParamType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.SearchParamType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.Markdown(_documentation_temp);
@@ -4194,8 +4290,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.SystemInteractionComponent? Mar
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.SystemRestfulInteraction> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.SystemRestfulInteraction> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.Markdown(_documentation_temp);
@@ -4355,8 +4454,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.SupportedMessageComponent? Mars
 		
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.EventCapabilityMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.EventCapabilityMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _definition_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_definition_temp != null) {
 		fhirInstance.DefinitionElement = new Hl7.Fhir.Model.Canonical(_definition_temp);
@@ -4399,8 +4501,11 @@ public static Hl7.Fhir.Model.CapabilityStatement.DocumentComponent? Marshal_Capa
 		
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.DocumentMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.CapabilityStatement.DocumentMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.Markdown(_documentation_temp);
@@ -4552,10 +4657,16 @@ public static Hl7.Fhir.Model.CarePlan? Marshal_CarePlan(FHIR_Marshalling.CarePla
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.CarePlan.CarePlanIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.CarePlan.CarePlanIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 248)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 248)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 248)); i++)
@@ -4801,8 +4912,11 @@ public static Hl7.Fhir.Model.CarePlan.DetailComponent? Marshal_CarePlan_Activity
 		
 	}
 	
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.CarePlan.CarePlanActivityKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.CarePlan.CarePlanActivityKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 72)) > 0) {
 		var _instantiatesCanonical_list  = new List<Canonical>((int)(*(System.UIntPtr*)((byte*)in_native + 72)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 72)); i++)
@@ -4869,8 +4983,11 @@ public static Hl7.Fhir.Model.CarePlan.DetailComponent? Marshal_CarePlan_Activity
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.CarePlan.CarePlanActivityStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.CarePlan.CarePlanActivityStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 176)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 176)));
 	}
@@ -5022,8 +5139,11 @@ public static Hl7.Fhir.Model.CareTeam? Marshal_CareTeam(FHIR_Marshalling.CareTea
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.CareTeam.CareTeamStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.CareTeam.CareTeamStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -5302,8 +5422,11 @@ public static Hl7.Fhir.Model.CatalogEntry? Marshal_CatalogEntry(FHIR_Marshalling
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 208)) != null) {
 		fhirInstance.ValidityPeriod = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 208)));
 	}
@@ -5391,8 +5514,11 @@ public static Hl7.Fhir.Model.CatalogEntry.RelatedEntryComponent? Marshal_Catalog
 		
 	}
 	
-	fhirInstance.RelationtypeElement = new Code<Hl7.Fhir.Model.CatalogEntry.CatalogEntryRelationType> ();
-	fhirInstance.RelationtypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeRelationtypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeRelationtypeElement != null) {
+		fhirInstance.RelationtypeElement = new Code<Hl7.Fhir.Model.CatalogEntry.CatalogEntryRelationType> ();
+		fhirInstance.RelationtypeElement.ObjectValue = __temp_codeRelationtypeElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Item = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
@@ -5502,8 +5628,11 @@ public static Hl7.Fhir.Model.ChargeItem? Marshal_ChargeItem(FHIR_Marshalling.Cha
 		
 		}
 		
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ChargeItem.ChargeItemStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ChargeItem.ChargeItemStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 184)) > 0) {
 		var _partOf_list  = new List<Hl7.Fhir.Model.ResourceReference>((int)(*(System.UIntPtr*)((byte*)in_native + 184)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 184)); i++)
@@ -5862,8 +5991,11 @@ public static Hl7.Fhir.Model.ChargeItemDefinition? Marshal_ChargeItemDefinition(
 		
 		}
 		
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -6129,8 +6261,11 @@ public static Hl7.Fhir.Model.ChargeItemDefinition.PriceComponentComponent? Marsh
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.InvoicePriceComponentType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.InvoicePriceComponentType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
@@ -6223,8 +6358,11 @@ public static Hl7.Fhir.Model.Claim? Marshal_Claim(FHIR_Marshalling.Claim* in_nat
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -6233,8 +6371,11 @@ public static Hl7.Fhir.Model.Claim? Marshal_Claim(FHIR_Marshalling.Claim* in_nat
 		fhirInstance.SubType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)));
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ClaimUseCode> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ClaimUseCode> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)));
 	}
@@ -7462,8 +7603,11 @@ public static Hl7.Fhir.Model.ClaimResponse? Marshal_ClaimResponse(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -7472,8 +7616,11 @@ public static Hl7.Fhir.Model.ClaimResponse? Marshal_ClaimResponse(FHIR_Marshalli
 		fhirInstance.SubType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)));
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ClaimUseCode> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ClaimUseCode> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)));
 	}
@@ -7495,8 +7642,11 @@ public static Hl7.Fhir.Model.ClaimResponse? Marshal_ClaimResponse(FHIR_Marshalli
 		fhirInstance.Request = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 224)));
 	}
 	
-	fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
-	fhirInstance.OutcomeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeOutcomeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeOutcomeElement != null) {
+		fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
+		fhirInstance.OutcomeElement.ObjectValue = __temp_codeOutcomeElement;
+	}
 	var _disposition_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 248)).ToString();
 	if(_disposition_temp != null) {
 		fhirInstance.DispositionElement = new Hl7.Fhir.Model.FhirString(_disposition_temp);
@@ -8467,8 +8617,11 @@ public static Hl7.Fhir.Model.ClaimResponse.NoteComponent? Marshal_ClaimResponse_
 		fhirInstance.NumberElement = _number_temp;
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NoteType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NoteType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _text_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
 	if(_text_temp != null) {
 		fhirInstance.TextElement = new Hl7.Fhir.Model.FhirString(_text_temp);
@@ -8673,8 +8826,11 @@ public static Hl7.Fhir.Model.ClinicalImpression? Marshal_ClinicalImpression(FHIR
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ClinicalImpression.ClinicalImpressionStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ClinicalImpression.ClinicalImpressionStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -9026,8 +9182,11 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -9104,8 +9263,11 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.ValueSetElement = new Hl7.Fhir.Model.Canonical(_valueSet_temp);
 	}
 	
-	fhirInstance.HierarchyMeaningElement = new Code<Hl7.Fhir.Model.CodeSystem.CodeSystemHierarchyMeaning> ();
-	fhirInstance.HierarchyMeaningElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 376)).ToString();
+	var __temp_codeHierarchyMeaningElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 376)).ToString();
+	if(__temp_codeHierarchyMeaningElement != null) {
+		fhirInstance.HierarchyMeaningElement = new Code<Hl7.Fhir.Model.CodeSystem.CodeSystemHierarchyMeaning> ();
+		fhirInstance.HierarchyMeaningElement.ObjectValue = __temp_codeHierarchyMeaningElement;
+	}
 	var _compositional_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 392)).GetValue());
 	if(_compositional_temp != null) {
 		fhirInstance.CompositionalElement = _compositional_temp;
@@ -9116,8 +9278,11 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.VersionNeededElement = _versionNeeded_temp;
 	}
 	
-	fhirInstance.ContentElement = new Code<Hl7.Fhir.Model.CodeSystemContentMode> ();
-	fhirInstance.ContentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 408)).ToString();
+	var __temp_codeContentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 408)).ToString();
+	if(__temp_codeContentElement != null) {
+		fhirInstance.ContentElement = new Code<Hl7.Fhir.Model.CodeSystemContentMode> ();
+		fhirInstance.ContentElement.ObjectValue = __temp_codeContentElement;
+	}
 	var _supplements_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 424)).ToString();
 	if(_supplements_temp != null) {
 		fhirInstance.SupplementsElement = new Hl7.Fhir.Model.Canonical(_supplements_temp);
@@ -9281,8 +9446,11 @@ public static Hl7.Fhir.Model.CodeSystem.PropertyComponent? Marshal_CodeSystem_Pr
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.CodeSystem.PropertyType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.CodeSystem.PropertyType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	return fhirInstance;
 }
 
@@ -9645,8 +9813,11 @@ public static Hl7.Fhir.Model.Communication? Marshal_Communication(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EventStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EventStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 232)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 232)));
 	}
@@ -9663,8 +9834,11 @@ public static Hl7.Fhir.Model.Communication? Marshal_Communication(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 272)) > 0) {
 		var _medium_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 272)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 272)); i++)
@@ -9939,8 +10113,11 @@ public static Hl7.Fhir.Model.CommunicationRequest? Marshal_CommunicationRequest(
 		fhirInstance.GroupIdentifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 168)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 192)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 192)));
 	}
@@ -9957,8 +10134,11 @@ public static Hl7.Fhir.Model.CommunicationRequest? Marshal_CommunicationRequest(
 		
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
@@ -10221,8 +10401,11 @@ public static Hl7.Fhir.Model.CompartmentDefinition? Marshal_CompartmentDefinitio
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -10272,8 +10455,11 @@ public static Hl7.Fhir.Model.CompartmentDefinition? Marshal_CompartmentDefinitio
 		fhirInstance.PurposeElement = new Hl7.Fhir.Model.Markdown(_purpose_temp);
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CompartmentType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 288)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 288)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CompartmentType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	var _search_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 304)).GetValue());
 	if(_search_temp != null) {
 		fhirInstance.SearchElement = _search_temp;
@@ -10328,8 +10514,11 @@ public static Hl7.Fhir.Model.CompartmentDefinition.ResourceComponent? Marshal_Co
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 72)) > 0) {
 		var _param_list  = new List<FhirString>((int)(*(System.UIntPtr*)((byte*)in_native + 72)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 72)); i++)
@@ -10419,8 +10608,11 @@ public static Hl7.Fhir.Model.Composition? Marshal_Composition(FHIR_Marshalling.C
 		fhirInstance.Identifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 120)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.CompositionStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.CompositionStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 144)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 144)));
 	}
@@ -10467,8 +10659,11 @@ public static Hl7.Fhir.Model.Composition? Marshal_Composition(FHIR_Marshalling.C
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.ConfidentialityElement = new Code<Hl7.Fhir.Model.Composition.V3ConfidentialityClassification> ();
-	fhirInstance.ConfidentialityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeConfidentialityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeConfidentialityElement != null) {
+		fhirInstance.ConfidentialityElement = new Code<Hl7.Fhir.Model.Composition.V3ConfidentialityClassification> ();
+		fhirInstance.ConfidentialityElement.ObjectValue = __temp_codeConfidentialityElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 248)) > 0) {
 		var _attester_list  = new List<Hl7.Fhir.Model.Composition.AttesterComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 248)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 248)); i++)
@@ -10558,8 +10753,11 @@ public static Hl7.Fhir.Model.Composition.AttesterComponent? Marshal_Composition_
 		
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Composition.CompositionAttestationMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Composition.CompositionAttestationMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _time_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 72)).ToFhirDateTime();
 	if(_time_temp != null) {
 		fhirInstance.TimeElement = _time_temp;
@@ -10606,8 +10804,11 @@ public static Hl7.Fhir.Model.Composition.RelatesToComponent? Marshal_Composition
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.DocumentRelationshipType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.DocumentRelationshipType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	switch((*(FHIR_Marshalling.Composition_RelatesTo.TargetType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.Composition_RelatesTo.TargetType.Identifier: {
 			var _targetIdentifier__union = &(*(FHIR_Marshalling.Composition_RelatesTo.TargetUnion*)((byte*)in_native + 72));
@@ -10753,8 +10954,11 @@ public static Hl7.Fhir.Model.Composition.SectionComponent? Marshal_Composition_S
 		fhirInstance.Text = Marshal_Narrative((*(FHIR_Marshalling.Narrative**)((byte*)in_native + 104)));
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.ListMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.ListMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 128)) != null) {
 		fhirInstance.OrderedBy = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 128)));
 	}
@@ -10878,8 +11082,11 @@ public static Hl7.Fhir.Model.ConceptMap? Marshal_ConceptMap(FHIR_Marshalling.Con
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -11165,8 +11372,11 @@ public static Hl7.Fhir.Model.ConceptMap.TargetElementComponent? Marshal_ConceptM
 		fhirInstance.DisplayElement = new Hl7.Fhir.Model.FhirString(_display_temp);
 	}
 	
-	fhirInstance.EquivalenceElement = new Code<Hl7.Fhir.Model.ConceptMapEquivalence> ();
-	fhirInstance.EquivalenceElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeEquivalenceElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeEquivalenceElement != null) {
+		fhirInstance.EquivalenceElement = new Code<Hl7.Fhir.Model.ConceptMapEquivalence> ();
+		fhirInstance.EquivalenceElement.ObjectValue = __temp_codeEquivalenceElement;
+	}
 	var _comment_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
 	if(_comment_temp != null) {
 		fhirInstance.CommentElement = new Hl7.Fhir.Model.FhirString(_comment_temp);
@@ -11290,8 +11500,11 @@ public static Hl7.Fhir.Model.ConceptMap.UnmappedComponent? Marshal_ConceptMap_Gr
 		
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.ConceptMap.ConceptMapGroupUnmappedMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.ConceptMap.ConceptMapGroupUnmappedMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _code_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_code_temp != null) {
 		fhirInstance.CodeElement = new Hl7.Fhir.Model.Code(_code_temp);
@@ -11742,8 +11955,11 @@ public static Hl7.Fhir.Model.Consent? Marshal_Consent(FHIR_Marshalling.Consent* 
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Consent.ConsentState> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Consent.ConsentState> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Scope = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -11974,8 +12190,11 @@ public static Hl7.Fhir.Model.Consent.provisionComponent? Marshal_Consent_Provisi
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Consent.ConsentProvisionType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Consent.ConsentProvisionType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)));
 	}
@@ -12162,8 +12381,11 @@ public static Hl7.Fhir.Model.Consent.provisionDataComponent? Marshal_Consent_Pro
 		
 	}
 	
-	fhirInstance.MeaningElement = new Code<Hl7.Fhir.Model.Consent.ConsentDataMeaning> ();
-	fhirInstance.MeaningElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeMeaningElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeMeaningElement != null) {
+		fhirInstance.MeaningElement = new Code<Hl7.Fhir.Model.Consent.ConsentDataMeaning> ();
+		fhirInstance.MeaningElement.ObjectValue = __temp_codeMeaningElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Reference = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
@@ -12257,8 +12479,11 @@ public static Hl7.Fhir.Model.Contract? Marshal_Contract(FHIR_Marshalling.Contrac
 		fhirInstance.VersionElement = new Hl7.Fhir.Model.FhirString(_version_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Contract.ContractResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Contract.ContractResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)) != null) {
 		fhirInstance.LegalState = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)));
 	}
@@ -12559,8 +12784,11 @@ public static Hl7.Fhir.Model.Contract.ContentDefinitionComponent? Marshal_Contra
 		fhirInstance.PublicationDateElement = _publicationDate_temp;
 	}
 	
-	fhirInstance.PublicationStatusElement = new Code<Hl7.Fhir.Model.Contract.ContractResourcePublicationStatusCodes> ();
-	fhirInstance.PublicationStatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToString();
+	var __temp_codePublicationStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToString();
+	if(__temp_codePublicationStatusElement != null) {
+		fhirInstance.PublicationStatusElement = new Code<Hl7.Fhir.Model.Contract.ContractResourcePublicationStatusCodes> ();
+		fhirInstance.PublicationStatusElement.ObjectValue = __temp_codePublicationStatusElement;
+	}
 	var _copyright_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
 	if(_copyright_temp != null) {
 		fhirInstance.CopyrightElement = new Hl7.Fhir.Model.Markdown(_copyright_temp);
@@ -14017,8 +14245,11 @@ public static Hl7.Fhir.Model.Coverage? Marshal_Coverage(FHIR_Marshalling.Coverag
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -14358,8 +14589,11 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest? Marshal_CoverageEligibi
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Priority = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -14792,8 +15026,11 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse? Marshal_CoverageEligib
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _purpose_list  = new List<Code<Hl7.Fhir.Model.CoverageEligibilityResponse.EligibilityResponsePurpose>>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -14837,8 +15074,11 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse? Marshal_CoverageEligib
 		fhirInstance.Request = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 224)));
 	}
 	
-	fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
-	fhirInstance.OutcomeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeOutcomeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeOutcomeElement != null) {
+		fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
+		fhirInstance.OutcomeElement.ObjectValue = __temp_codeOutcomeElement;
+	}
 	var _disposition_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 248)).ToString();
 	if(_disposition_temp != null) {
 		fhirInstance.DispositionElement = new Hl7.Fhir.Model.FhirString(_disposition_temp);
@@ -15264,14 +15504,20 @@ public static Hl7.Fhir.Model.DetectedIssue? Marshal_DetectedIssue(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ObservationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ObservationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.DetectedIssue.DetectedIssueSeverity> ();
-	fhirInstance.SeverityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeSeverityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeSeverityElement != null) {
+		fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.DetectedIssue.DetectedIssueSeverity> ();
+		fhirInstance.SeverityElement.ObjectValue = __temp_codeSeverityElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 176)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 176)));
 	}
@@ -15545,8 +15791,11 @@ public static Hl7.Fhir.Model.Device? Marshal_Device(FHIR_Marshalling.Device* in_
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Device.FHIRDeviceStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Device.FHIRDeviceStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 176)) > 0) {
 		var _statusReason_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 176)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 176)); i++)
@@ -15773,8 +16022,11 @@ public static Hl7.Fhir.Model.Device.UdiCarrierComponent? Marshal_Device_UdiCarri
 		fhirInstance.CarrierHRFElement = new Hl7.Fhir.Model.FhirString(_carrierHRF_temp);
 	}
 	
-	fhirInstance.EntryTypeElement = new Code<Hl7.Fhir.Model.Device.UDIEntryType> ();
-	fhirInstance.EntryTypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeEntryTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeEntryTypeElement != null) {
+		fhirInstance.EntryTypeElement = new Code<Hl7.Fhir.Model.Device.UDIEntryType> ();
+		fhirInstance.EntryTypeElement.ObjectValue = __temp_codeEntryTypeElement;
+	}
 	return fhirInstance;
 }
 
@@ -15817,8 +16069,11 @@ public static Hl7.Fhir.Model.Device.DeviceNameComponent? Marshal_Device_DeviceNa
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.DeviceNameType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.DeviceNameType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	return fhirInstance;
 }
 
@@ -16347,8 +16602,11 @@ public static Hl7.Fhir.Model.DeviceDefinition.DeviceNameComponent? Marshal_Devic
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.DeviceNameType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.DeviceNameType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	return fhirInstance;
 }
 
@@ -16660,12 +16918,21 @@ public static Hl7.Fhir.Model.DeviceMetric? Marshal_DeviceMetric(FHIR_Marshalling
 		fhirInstance.Parent = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 160)));
 	}
 	
-	fhirInstance.OperationalStatusElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricOperationalStatus> ();
-	fhirInstance.OperationalStatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
-	fhirInstance.ColorElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricColor> ();
-	fhirInstance.ColorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
-	fhirInstance.CategoryElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCategory> ();
-	fhirInstance.CategoryElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeOperationalStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeOperationalStatusElement != null) {
+		fhirInstance.OperationalStatusElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricOperationalStatus> ();
+		fhirInstance.OperationalStatusElement.ObjectValue = __temp_codeOperationalStatusElement;
+	}
+	var __temp_codeColorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeColorElement != null) {
+		fhirInstance.ColorElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricColor> ();
+		fhirInstance.ColorElement.ObjectValue = __temp_codeColorElement;
+	}
+	var __temp_codeCategoryElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeCategoryElement != null) {
+		fhirInstance.CategoryElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCategory> ();
+		fhirInstance.CategoryElement.ObjectValue = __temp_codeCategoryElement;
+	}
 	if((*(FHIR_Marshalling.Timing**)((byte*)in_native + 216)) != null) {
 		fhirInstance.MeasurementPeriod = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)in_native + 216)));
 	}
@@ -16719,10 +16986,16 @@ public static Hl7.Fhir.Model.DeviceMetric.CalibrationComponent? Marshal_DeviceMe
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
-	fhirInstance.StateElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationState> ();
-	fhirInstance.StateElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
+	var __temp_codeStateElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeStateElement != null) {
+		fhirInstance.StateElement = new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationState> ();
+		fhirInstance.StateElement.ObjectValue = __temp_codeStateElement;
+	}
 	var _time_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 88)).ToFhirInstant();
 	if(_time_temp != null) {
 		fhirInstance.TimeElement = _time_temp;
@@ -16861,12 +17134,21 @@ public static Hl7.Fhir.Model.DeviceRequest? Marshal_DeviceRequest(FHIR_Marshalli
 		fhirInstance.GroupIdentifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 200)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	switch((*(FHIR_Marshalling.DeviceRequest.CodeType*)((byte*)in_native + 264))) {
 		case FHIR_Marshalling.DeviceRequest.CodeType.Reference: {
 			var _codeReference__union = &(*(FHIR_Marshalling.DeviceRequest.CodeUnion*)((byte*)in_native + 256));
@@ -17166,8 +17448,11 @@ public static Hl7.Fhir.Model.DeviceUseStatement? Marshal_DeviceUseStatement(FHIR
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DeviceUseStatement.DeviceUseStatementStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DeviceUseStatement.DeviceUseStatementStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 168)) != null) {
 		fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 168)));
 	}
@@ -17347,8 +17632,11 @@ public static Hl7.Fhir.Model.DiagnosticReport? Marshal_DiagnosticReport(FHIR_Mar
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DiagnosticReport.DiagnosticReportStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DiagnosticReport.DiagnosticReportStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 168)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 168)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 168)); i++)
@@ -17621,8 +17909,11 @@ public static Hl7.Fhir.Model.DocumentManifest? Marshal_DocumentManifest(FHIR_Mar
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DocumentReferenceStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DocumentReferenceStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)));
 	}
@@ -17822,10 +18113,16 @@ public static Hl7.Fhir.Model.DocumentReference? Marshal_DocumentReference(FHIR_M
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DocumentReferenceStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
-	fhirInstance.DocStatusElement = new Code<Hl7.Fhir.Model.CompositionStatus> ();
-	fhirInstance.DocStatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.DocumentReferenceStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeDocStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeDocStatusElement != null) {
+		fhirInstance.DocStatusElement = new Code<Hl7.Fhir.Model.CompositionStatus> ();
+		fhirInstance.DocStatusElement.ObjectValue = __temp_codeDocStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 176)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 176)));
 	}
@@ -17953,8 +18250,11 @@ public static Hl7.Fhir.Model.DocumentReference.RelatesToComponent? Marshal_Docum
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.DocumentRelationshipType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.DocumentRelationshipType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Target = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
@@ -18192,8 +18492,11 @@ public static Hl7.Fhir.Model.EffectEvidenceSynthesis? Marshal_EffectEvidenceSynt
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 216)).ToFhirDateTime();
 	if(_date_temp != null) {
 		fhirInstance.DateElement = _date_temp;
@@ -18506,8 +18809,11 @@ public static Hl7.Fhir.Model.EffectEvidenceSynthesis.ResultsByExposureComponent?
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	fhirInstance.ExposureStateElement = new Code<Hl7.Fhir.Model.EffectEvidenceSynthesis.ExposureStateCode> ();
-	fhirInstance.ExposureStateElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeExposureStateElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeExposureStateElement != null) {
+		fhirInstance.ExposureStateElement = new Code<Hl7.Fhir.Model.EffectEvidenceSynthesis.ExposureStateCode> ();
+		fhirInstance.ExposureStateElement.ObjectValue = __temp_codeExposureStateElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)) != null) {
 		fhirInstance.VariantState = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)));
 	}
@@ -18860,8 +19166,11 @@ public static Hl7.Fhir.Model.Encounter? Marshal_Encounter(FHIR_Marshalling.Encou
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Encounter.EncounterStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Encounter.EncounterStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _statusHistory_list  = new List<Hl7.Fhir.Model.Encounter.StatusHistoryComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -19079,8 +19388,11 @@ public static Hl7.Fhir.Model.Encounter.StatusHistoryComponent? Marshal_Encounter
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Encounter.EncounterStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Encounter.EncounterStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)));
 	}
@@ -19375,8 +19687,11 @@ public static Hl7.Fhir.Model.Encounter.LocationComponent? Marshal_Encounter_Loca
 		fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 56)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Encounter.EncounterLocationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Encounter.EncounterLocationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 80)) != null) {
 		fhirInstance.PhysicalType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 80)));
 	}
@@ -19464,8 +19779,11 @@ public static Hl7.Fhir.Model.Endpoint? Marshal_Endpoint(FHIR_Marshalling.Endpoin
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Endpoint.EndpointStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Endpoint.EndpointStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Coding**)((byte*)in_native + 152)) != null) {
 		fhirInstance.ConnectionType = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)in_native + 152)));
 	}
@@ -19617,8 +19935,11 @@ public static Hl7.Fhir.Model.EnrollmentRequest? Marshal_EnrollmentRequest(FHIR_M
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _created_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 152)).ToFhirDateTime();
 	if(_created_temp != null) {
 		fhirInstance.CreatedElement = _created_temp;
@@ -19719,14 +20040,20 @@ public static Hl7.Fhir.Model.EnrollmentResponse? Marshal_EnrollmentResponse(FHIR
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Request = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
-	fhirInstance.OutcomeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeOutcomeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeOutcomeElement != null) {
+		fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
+		fhirInstance.OutcomeElement.ObjectValue = __temp_codeOutcomeElement;
+	}
 	var _disposition_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
 	if(_disposition_temp != null) {
 		fhirInstance.DispositionElement = new Hl7.Fhir.Model.FhirString(_disposition_temp);
@@ -19824,8 +20151,11 @@ public static Hl7.Fhir.Model.EpisodeOfCare? Marshal_EpisodeOfCare(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EpisodeOfCare.EpisodeOfCareStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EpisodeOfCare.EpisodeOfCareStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _statusHistory_list  = new List<Hl7.Fhir.Model.EpisodeOfCare.StatusHistoryComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -19951,8 +20281,11 @@ public static Hl7.Fhir.Model.EpisodeOfCare.StatusHistoryComponent? Marshal_Episo
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EpisodeOfCare.EpisodeOfCareStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EpisodeOfCare.EpisodeOfCareStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)));
 	}
@@ -20111,8 +20444,11 @@ public static Hl7.Fhir.Model.EventDefinition? Marshal_EventDefinition(FHIR_Marsh
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -20405,8 +20741,11 @@ public static Hl7.Fhir.Model.Evidence? Marshal_Evidence(FHIR_Marshalling.Evidenc
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 248)).ToFhirDateTime();
 	if(_date_temp != null) {
 		fhirInstance.DateElement = _date_temp;
@@ -20698,8 +21037,11 @@ public static Hl7.Fhir.Model.EvidenceVariable? Marshal_EvidenceVariable(FHIR_Mar
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 248)).ToFhirDateTime();
 	if(_date_temp != null) {
 		fhirInstance.DateElement = _date_temp;
@@ -20854,8 +21196,11 @@ public static Hl7.Fhir.Model.EvidenceVariable? Marshal_EvidenceVariable(FHIR_Mar
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.VariableTypeCode> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 512)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 512)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.VariableTypeCode> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 528)) > 0) {
 		var _characteristic_list  = new List<Hl7.Fhir.Model.EvidenceVariable.CharacteristicComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 528)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 528)); i++)
@@ -20994,8 +21339,11 @@ public static Hl7.Fhir.Model.EvidenceVariable.CharacteristicComponent? Marshal_E
 		fhirInstance.TimeFromStart = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)in_native + 144)));
 	}
 	
-	fhirInstance.GroupMeasureElement = new Code<Hl7.Fhir.Model.GroupMeasureCode> ();
-	fhirInstance.GroupMeasureElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeGroupMeasureElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeGroupMeasureElement != null) {
+		fhirInstance.GroupMeasureElement = new Code<Hl7.Fhir.Model.GroupMeasureCode> ();
+		fhirInstance.GroupMeasureElement.ObjectValue = __temp_codeGroupMeasureElement;
+	}
 	return fhirInstance;
 }
 
@@ -21090,8 +21438,11 @@ public static Hl7.Fhir.Model.ExampleScenario? Marshal_ExampleScenario(FHIR_Marsh
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -21244,8 +21595,11 @@ public static Hl7.Fhir.Model.ExampleScenario.ActorComponent? Marshal_ExampleScen
 		fhirInstance.ActorIdElement = new Hl7.Fhir.Model.FhirString(_actorId_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ExampleScenario.ExampleScenarioActorType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ExampleScenario.ExampleScenarioActorType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _name_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
 	if(_name_temp != null) {
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
@@ -21788,8 +22142,11 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit? Marshal_ExplanationOfBenefit(
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ExplanationOfBenefit.ExplanationOfBenefitStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ExplanationOfBenefit.ExplanationOfBenefitStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -21798,8 +22155,11 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit? Marshal_ExplanationOfBenefit(
 		fhirInstance.SubType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)));
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ClaimUseCode> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ClaimUseCode> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)));
 	}
@@ -21877,8 +22237,11 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit? Marshal_ExplanationOfBenefit(
 		fhirInstance.ClaimResponse = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 328)));
 	}
 	
-	fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
-	fhirInstance.OutcomeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	var __temp_codeOutcomeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	if(__temp_codeOutcomeElement != null) {
+		fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
+		fhirInstance.OutcomeElement.ObjectValue = __temp_codeOutcomeElement;
+	}
 	var _disposition_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 352)).ToString();
 	if(_disposition_temp != null) {
 		fhirInstance.DispositionElement = new Hl7.Fhir.Model.FhirString(_disposition_temp);
@@ -23741,8 +24104,11 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.NoteComponent? Marshal_Explana
 		fhirInstance.NumberElement = _number_temp;
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NoteType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NoteType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _text_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
 	if(_text_temp != null) {
 		fhirInstance.TextElement = new Hl7.Fhir.Model.FhirString(_text_temp);
@@ -24010,8 +24376,11 @@ public static Hl7.Fhir.Model.FamilyMemberHistory? Marshal_FamilyMemberHistory(FH
 		
 		}
 		
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)) != null) {
 		fhirInstance.DataAbsentReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)));
 	}
@@ -24327,8 +24696,11 @@ public static Hl7.Fhir.Model.Flag? Marshal_Flag(FHIR_Marshalling.Flag* in_native
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Flag.FlagStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Flag.FlagStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -24440,8 +24812,11 @@ public static Hl7.Fhir.Model.Goal? Marshal_Goal(FHIR_Marshalling.Goal* in_native
 		
 	}
 	
-	fhirInstance.LifecycleStatusElement = new Code<Hl7.Fhir.Model.Goal.GoalLifecycleStatus> ();
-	fhirInstance.LifecycleStatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeLifecycleStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeLifecycleStatusElement != null) {
+		fhirInstance.LifecycleStatusElement = new Code<Hl7.Fhir.Model.Goal.GoalLifecycleStatus> ();
+		fhirInstance.LifecycleStatusElement.ObjectValue = __temp_codeLifecycleStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.AchievementStatus = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -24735,8 +25110,11 @@ public static Hl7.Fhir.Model.GraphDefinition? Marshal_GraphDefinition(FHIR_Marsh
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -24798,8 +25176,11 @@ public static Hl7.Fhir.Model.GraphDefinition? Marshal_GraphDefinition(FHIR_Marsh
 		fhirInstance.PurposeElement = new Hl7.Fhir.Model.Markdown(_purpose_temp);
 	}
 	
-	fhirInstance.StartElement = new Code<Hl7.Fhir.Model.ResourceType> ();
-	fhirInstance.StartElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 304)).ToString();
+	var __temp_codeStartElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 304)).ToString();
+	if(__temp_codeStartElement != null) {
+		fhirInstance.StartElement = new Code<Hl7.Fhir.Model.ResourceType> ();
+		fhirInstance.StartElement.ObjectValue = __temp_codeStartElement;
+	}
 	var _profile_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 320)).ToString();
 	if(_profile_temp != null) {
 		fhirInstance.ProfileElement = new Hl7.Fhir.Model.Canonical(_profile_temp);
@@ -24928,8 +25309,11 @@ public static Hl7.Fhir.Model.GraphDefinition.TargetComponent? Marshal_GraphDefin
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _params_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_params_temp != null) {
 		fhirInstance.ParamsElement = new Hl7.Fhir.Model.FhirString(_params_temp);
@@ -25001,12 +25385,21 @@ public static Hl7.Fhir.Model.GraphDefinition.CompartmentComponent? Marshal_Graph
 		
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.GraphDefinition.GraphCompartmentUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CompartmentType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
-	fhirInstance.RuleElement = new Code<Hl7.Fhir.Model.GraphDefinition.GraphCompartmentRule> ();
-	fhirInstance.RuleElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.GraphDefinition.GraphCompartmentUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CompartmentType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
+	var __temp_codeRuleElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeRuleElement != null) {
+		fhirInstance.RuleElement = new Code<Hl7.Fhir.Model.GraphDefinition.GraphCompartmentRule> ();
+		fhirInstance.RuleElement.ObjectValue = __temp_codeRuleElement;
+	}
 	var _expression_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
 	if(_expression_temp != null) {
 		fhirInstance.ExpressionElement = new Hl7.Fhir.Model.FhirString(_expression_temp);
@@ -25101,8 +25494,11 @@ public static Hl7.Fhir.Model.Group? Marshal_Group(FHIR_Marshalling.Group* in_nat
 		fhirInstance.ActiveElement = _active_temp;
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Group.GroupType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Group.GroupType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _actual_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).GetValue());
 	if(_actual_temp != null) {
 		fhirInstance.ActualElement = _actual_temp;
@@ -25384,8 +25780,11 @@ public static Hl7.Fhir.Model.GuidanceResponse? Marshal_GuidanceResponse(FHIR_Mar
 			fhirInstance.Module = _module_primative;
 		} break;
 	}
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.GuidanceResponse.GuidanceResponseStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.GuidanceResponse.GuidanceResponseStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)) != null) {
 		fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)));
 	}
@@ -26004,8 +26403,11 @@ public static Hl7.Fhir.Model.ImagingStudy? Marshal_ImagingStudy(FHIR_Marshalling
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ImagingStudy.ImagingStudyStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ImagingStudy.ImagingStudyStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _modality_list  = new List<Hl7.Fhir.Model.Coding>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -26456,8 +26858,11 @@ public static Hl7.Fhir.Model.Immunization? Marshal_Immunization(FHIR_Marshalling
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Immunization.ImmunizationStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Immunization.ImmunizationStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
@@ -26964,8 +27369,11 @@ public static Hl7.Fhir.Model.ImmunizationEvaluation? Marshal_ImmunizationEvaluat
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ImmunizationEvaluation.ImmunizationEvaluationStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ImmunizationEvaluation.ImmunizationEvaluationStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 152)));
 	}
@@ -27429,8 +27837,11 @@ public static Hl7.Fhir.Model.ImplementationGuide? Marshal_ImplementationGuide(FH
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -27497,8 +27908,11 @@ public static Hl7.Fhir.Model.ImplementationGuide? Marshal_ImplementationGuide(FH
 		fhirInstance.PackageIdElement = new Hl7.Fhir.Model.Id(_packageId_temp);
 	}
 	
-	fhirInstance.LicenseElement = new Code<Hl7.Fhir.Model.ImplementationGuide.SPDXLicense> ();
-	fhirInstance.LicenseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	var __temp_codeLicenseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	if(__temp_codeLicenseElement != null) {
+		fhirInstance.LicenseElement = new Code<Hl7.Fhir.Model.ImplementationGuide.SPDXLicense> ();
+		fhirInstance.LicenseElement.ObjectValue = __temp_codeLicenseElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 352)) > 0) {
 		var _fhirVersion_list  = new List<Code<Hl7.Fhir.Model.FHIRVersion>>((int)(*(System.UIntPtr*)((byte*)in_native + 352)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 352)); i++)
@@ -27633,8 +28047,11 @@ public static Hl7.Fhir.Model.ImplementationGuide.GlobalComponent? Marshal_Implem
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _profile_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_profile_temp != null) {
 		fhirInstance.ProfileElement = new Hl7.Fhir.Model.Canonical(_profile_temp);
@@ -27914,8 +28331,11 @@ public static Hl7.Fhir.Model.ImplementationGuide.PageComponent? Marshal_Implemen
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.GenerationElement = new Code<Hl7.Fhir.Model.ImplementationGuide.GuidePageGeneration> ();
-	fhirInstance.GenerationElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToString();
+	var __temp_codeGenerationElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToString();
+	if(__temp_codeGenerationElement != null) {
+		fhirInstance.GenerationElement = new Code<Hl7.Fhir.Model.ImplementationGuide.GuidePageGeneration> ();
+		fhirInstance.GenerationElement.ObjectValue = __temp_codeGenerationElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 112)) > 0) {
 		var _page_list  = new List<Hl7.Fhir.Model.ImplementationGuide.PageComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 112)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 112)); i++)
@@ -27965,8 +28385,11 @@ public static Hl7.Fhir.Model.ImplementationGuide.ParameterComponent? Marshal_Imp
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.ImplementationGuide.GuideParameterCode> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.ImplementationGuide.GuideParameterCode> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = new Hl7.Fhir.Model.FhirString(_value_temp);
@@ -28314,8 +28737,11 @@ public static Hl7.Fhir.Model.InsurancePlan? Marshal_InsurancePlan(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _type_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -29061,8 +29487,11 @@ public static Hl7.Fhir.Model.Invoice? Marshal_Invoice(FHIR_Marshalling.Invoice* 
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Invoice.InvoiceStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Invoice.InvoiceStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _cancelledReason_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
 	if(_cancelledReason_temp != null) {
 		fhirInstance.CancelledReasonElement = new Hl7.Fhir.Model.FhirString(_cancelledReason_temp);
@@ -29304,8 +29733,11 @@ public static Hl7.Fhir.Model.Invoice.PriceComponentComponent? Marshal_Invoice_Li
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.InvoicePriceComponentType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.InvoicePriceComponentType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
@@ -29423,8 +29855,11 @@ public static Hl7.Fhir.Model.Library? Marshal_Library(FHIR_Marshalling.Library* 
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -29761,8 +30196,11 @@ public static Hl7.Fhir.Model.Linkage.ItemComponent? Marshal_Linkage_Item(FHIR_Ma
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Linkage.LinkageType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Linkage.LinkageType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Resource = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
@@ -29846,10 +30284,16 @@ public static Hl7.Fhir.Model.List? Marshal_List(FHIR_Marshalling.List* in_native
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.List.ListStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.ListMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.List.ListStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.ListMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _title_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
 	if(_title_temp != null) {
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
@@ -30042,8 +30486,11 @@ public static Hl7.Fhir.Model.Location? Marshal_Location(FHIR_Marshalling.Locatio
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Location.LocationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Location.LocationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Coding**)((byte*)in_native + 152)) != null) {
 		fhirInstance.OperationalStatus = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)in_native + 152)));
 	}
@@ -30071,8 +30518,11 @@ public static Hl7.Fhir.Model.Location? Marshal_Location(FHIR_Marshalling.Locatio
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Location.LocationMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Location.LocationMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 224)) > 0) {
 		var _type_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 224)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 224)); i++)
@@ -30367,8 +30817,11 @@ public static Hl7.Fhir.Model.Measure? Marshal_Measure(FHIR_Marshalling.Measure* 
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -31017,10 +31470,16 @@ public static Hl7.Fhir.Model.MeasureReport? Marshal_MeasureReport(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _measure_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
 	if(_measure_temp != null) {
 		fhirInstance.MeasureElement = new Hl7.Fhir.Model.Canonical(_measure_temp);
@@ -31518,8 +31977,11 @@ public static Hl7.Fhir.Model.Media? Marshal_Media(FHIR_Marshalling.Media* in_nat
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EventStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EventStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)));
 	}
@@ -31706,8 +32168,11 @@ public static Hl7.Fhir.Model.Medication? Marshal_Medication(FHIR_Marshalling.Med
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 136)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Medication.MedicationStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Medication.MedicationStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 160)) != null) {
 		fhirInstance.Manufacturer = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 160)));
 	}
@@ -31947,8 +32412,11 @@ public static Hl7.Fhir.Model.MedicationAdministration? Marshal_MedicationAdminis
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationAdministration.MedicationAdministrationStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationAdministration.MedicationAdministrationStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 184)) > 0) {
 		var _statusReason_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 184)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 184)); i++)
@@ -32300,8 +32768,11 @@ public static Hl7.Fhir.Model.MedicationDispense? Marshal_MedicationDispense(FHIR
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationDispense.MedicationDispenseStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationDispense.MedicationDispenseStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	switch((*(FHIR_Marshalling.MedicationDispense.StatusReasonType*)((byte*)in_native + 176))) {
 		case FHIR_Marshalling.MedicationDispense.StatusReasonType.CodeableConcept: {
 			var _statusReasonCodeableConcept__union = &(*(FHIR_Marshalling.MedicationDispense.StatusReasonUnion*)((byte*)in_native + 168));
@@ -32658,8 +33129,11 @@ public static Hl7.Fhir.Model.MedicationKnowledge? Marshal_MedicationKnowledge(FH
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 120)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationKnowledge.MedicationKnowledgeStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationKnowledge.MedicationKnowledgeStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 144)) != null) {
 		fhirInstance.Manufacturer = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 144)));
 	}
@@ -33822,14 +34296,20 @@ public static Hl7.Fhir.Model.MedicationRequest? Marshal_MedicationRequest(FHIR_M
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationRequest.MedicationrequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationRequest.MedicationrequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.MedicationRequest.MedicationRequestIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.MedicationRequest.MedicationRequestIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 176)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 176)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 176)); i++)
@@ -33842,8 +34322,11 @@ public static Hl7.Fhir.Model.MedicationRequest? Marshal_MedicationRequest(FHIR_M
 		
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).GetValue());
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
@@ -34327,8 +34810,11 @@ public static Hl7.Fhir.Model.MedicationStatement? Marshal_MedicationStatement(FH
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationStatement.MedicationStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.MedicationStatement.MedicationStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 184)) > 0) {
 		var _statusReason_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 184)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 184)); i++)
@@ -37299,8 +37785,11 @@ public static Hl7.Fhir.Model.MessageDefinition? Marshal_MessageDefinition(FHIR_M
 		
 		}
 		
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -37399,8 +37888,11 @@ public static Hl7.Fhir.Model.MessageDefinition? Marshal_MessageDefinition(FHIR_M
 			fhirInstance.Event = _event_primative;
 		} break;
 	}
-	fhirInstance.CategoryElement = new Code<Hl7.Fhir.Model.MessageDefinition.MessageSignificanceCategory> ();
-	fhirInstance.CategoryElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 424)).ToString();
+	var __temp_codeCategoryElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 424)).ToString();
+	if(__temp_codeCategoryElement != null) {
+		fhirInstance.CategoryElement = new Code<Hl7.Fhir.Model.MessageDefinition.MessageSignificanceCategory> ();
+		fhirInstance.CategoryElement.ObjectValue = __temp_codeCategoryElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 440)) > 0) {
 		var _focus_list  = new List<Hl7.Fhir.Model.MessageDefinition.FocusComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 440)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 440)); i++)
@@ -37413,8 +37905,11 @@ public static Hl7.Fhir.Model.MessageDefinition? Marshal_MessageDefinition(FHIR_M
 		
 	}
 	
-	fhirInstance.ResponseRequiredElement = new Code<Hl7.Fhir.Model.MessageheaderResponseRequest> ();
-	fhirInstance.ResponseRequiredElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 456)).ToString();
+	var __temp_codeResponseRequiredElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 456)).ToString();
+	if(__temp_codeResponseRequiredElement != null) {
+		fhirInstance.ResponseRequiredElement = new Code<Hl7.Fhir.Model.MessageheaderResponseRequest> ();
+		fhirInstance.ResponseRequiredElement.ObjectValue = __temp_codeResponseRequiredElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 472)) > 0) {
 		var _allowedResponse_list  = new List<Hl7.Fhir.Model.MessageDefinition.AllowedResponseComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 472)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 472)); i++)
@@ -37477,8 +37972,11 @@ public static Hl7.Fhir.Model.MessageDefinition.FocusComponent? Marshal_MessageDe
 		
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.ResourceType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	var _profile_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_profile_temp != null) {
 		fhirInstance.ProfileElement = new Hl7.Fhir.Model.Canonical(_profile_temp);
@@ -37837,8 +38335,11 @@ public static Hl7.Fhir.Model.MessageHeader.ResponseComponent? Marshal_MessageHea
 		fhirInstance.IdentifierElement = new Hl7.Fhir.Model.Id(_identifier_temp);
 	}
 	
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.MessageHeader.ResponseType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.MessageHeader.ResponseType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 88)) != null) {
 		fhirInstance.Details = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 88)));
 	}
@@ -37922,8 +38423,11 @@ public static Hl7.Fhir.Model.MolecularSequence? Marshal_MolecularSequence(FHIR_M
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.SequenceType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.SequenceType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _coordinateSystem_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 152)).GetValue());
 	if(_coordinateSystem_temp != null) {
 		fhirInstance.CoordinateSystemElement = _coordinateSystem_temp;
@@ -38069,8 +38573,11 @@ public static Hl7.Fhir.Model.MolecularSequence.ReferenceSeqComponent? Marshal_Mo
 		fhirInstance.GenomeBuildElement = new Hl7.Fhir.Model.FhirString(_genomeBuild_temp);
 	}
 	
-	fhirInstance.OrientationElement = new Code<Hl7.Fhir.Model.MolecularSequence.OrientationType> ();
-	fhirInstance.OrientationElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
+	var __temp_codeOrientationElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
+	if(__temp_codeOrientationElement != null) {
+		fhirInstance.OrientationElement = new Code<Hl7.Fhir.Model.MolecularSequence.OrientationType> ();
+		fhirInstance.OrientationElement.ObjectValue = __temp_codeOrientationElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 96)) != null) {
 		fhirInstance.ReferenceSeqId = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 96)));
 	}
@@ -38084,8 +38591,11 @@ public static Hl7.Fhir.Model.MolecularSequence.ReferenceSeqComponent? Marshal_Mo
 		fhirInstance.ReferenceSeqStringElement = new Hl7.Fhir.Model.FhirString(_referenceSeqString_temp);
 	}
 	
-	fhirInstance.StrandElement = new Code<Hl7.Fhir.Model.MolecularSequence.StrandType> ();
-	fhirInstance.StrandElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	var __temp_codeStrandElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	if(__temp_codeStrandElement != null) {
+		fhirInstance.StrandElement = new Code<Hl7.Fhir.Model.MolecularSequence.StrandType> ();
+		fhirInstance.StrandElement.ObjectValue = __temp_codeStrandElement;
+	}
 	var _windowStart_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 144)).GetValue());
 	if(_windowStart_temp != null) {
 		fhirInstance.WindowStartElement = _windowStart_temp;
@@ -38199,8 +38709,11 @@ public static Hl7.Fhir.Model.MolecularSequence.QualityComponent? Marshal_Molecul
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.QualityType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.QualityType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
 		fhirInstance.StandardSequence = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
@@ -38425,8 +38938,11 @@ public static Hl7.Fhir.Model.MolecularSequence.RepositoryComponent? Marshal_Mole
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.RepositoryType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.RepositoryType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _url_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_url_temp != null) {
 		fhirInstance.UrlElement = new Hl7.Fhir.Model.FhirUri(_url_temp);
@@ -38677,10 +39193,16 @@ public static Hl7.Fhir.Model.NamingSystem? Marshal_NamingSystem(FHIR_Marshalling
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.NamingSystem.NamingSystemType> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.NamingSystem.NamingSystemType> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 168)).ToFhirDateTime();
 	if(_date_temp != null) {
 		fhirInstance.DateElement = _date_temp;
@@ -38795,8 +39317,11 @@ public static Hl7.Fhir.Model.NamingSystem.UniqueIdComponent? Marshal_NamingSyste
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NamingSystem.NamingSystemIdentifierType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NamingSystem.NamingSystemIdentifierType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = new Hl7.Fhir.Model.FhirString(_value_temp);
@@ -38934,10 +39459,16 @@ public static Hl7.Fhir.Model.NutritionOrder? Marshal_NutritionOrder(FHIR_Marshal
 		
 		}
 		
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 216)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 216)));
 	}
@@ -39528,8 +40059,11 @@ public static Hl7.Fhir.Model.Observation? Marshal_Observation(FHIR_Marshalling.O
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ObservationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ObservationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 184)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 184)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 184)); i++)
@@ -40212,8 +40746,11 @@ public static Hl7.Fhir.Model.ObservationDefinition.QualifiedIntervalComponent? M
 		
 	}
 	
-	fhirInstance.CategoryElement = new Code<Hl7.Fhir.Model.ObservationDefinition.ObservationRangeCategory> ();
-	fhirInstance.CategoryElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCategoryElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCategoryElement != null) {
+		fhirInstance.CategoryElement = new Code<Hl7.Fhir.Model.ObservationDefinition.ObservationRangeCategory> ();
+		fhirInstance.CategoryElement.ObjectValue = __temp_codeCategoryElement;
+	}
 	if((*(FHIR_Marshalling.Range**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Range = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)in_native + 72)));
 	}
@@ -40234,8 +40771,11 @@ public static Hl7.Fhir.Model.ObservationDefinition.QualifiedIntervalComponent? M
 		
 	}
 	
-	fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
-	fhirInstance.GenderElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	var __temp_codeGenderElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	if(__temp_codeGenderElement != null) {
+		fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
+		fhirInstance.GenderElement.ObjectValue = __temp_codeGenderElement;
+	}
 	if((*(FHIR_Marshalling.Range**)((byte*)in_native + 120)) != null) {
 		fhirInstance.Age = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)in_native + 120)));
 	}
@@ -40336,10 +40876,16 @@ public static Hl7.Fhir.Model.OperationDefinition? Marshal_OperationDefinition(FH
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.OperationDefinition.OperationKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.OperationDefinition.OperationKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -40525,8 +41071,11 @@ public static Hl7.Fhir.Model.OperationDefinition.ParameterComponent? Marshal_Ope
 		fhirInstance.NameElement = new Hl7.Fhir.Model.Code(_name_temp);
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.OperationParameterUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.OperationParameterUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	var _min_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
@@ -40542,8 +41091,11 @@ public static Hl7.Fhir.Model.OperationDefinition.ParameterComponent? Marshal_Ope
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.FhirString(_documentation_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.FHIRAllTypes> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.FHIRAllTypes> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 144)) > 0) {
 		var _targetProfile_list  = new List<Canonical>((int)(*(System.UIntPtr*)((byte*)in_native + 144)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 144)); i++)
@@ -40557,8 +41109,11 @@ public static Hl7.Fhir.Model.OperationDefinition.ParameterComponent? Marshal_Ope
 		
 		}
 		
-	fhirInstance.SearchTypeElement = new Code<Hl7.Fhir.Model.SearchParamType> ();
-	fhirInstance.SearchTypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeSearchTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeSearchTypeElement != null) {
+		fhirInstance.SearchTypeElement = new Code<Hl7.Fhir.Model.SearchParamType> ();
+		fhirInstance.SearchTypeElement.ObjectValue = __temp_codeSearchTypeElement;
+	}
 	if((*(FHIR_Marshalling.OperationDefinition_Parameter_Binding**)((byte*)in_native + 176)) != null) {
 		fhirInstance.Binding = Marshal_OperationDefinition_Parameter_Binding((*(FHIR_Marshalling.OperationDefinition_Parameter_Binding**)((byte*)in_native + 176)));
 	}
@@ -40624,8 +41179,11 @@ public static Hl7.Fhir.Model.OperationDefinition.BindingComponent? Marshal_Opera
 		
 	}
 	
-	fhirInstance.StrengthElement = new Code<Hl7.Fhir.Model.BindingStrength> ();
-	fhirInstance.StrengthElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeStrengthElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeStrengthElement != null) {
+		fhirInstance.StrengthElement = new Code<Hl7.Fhir.Model.BindingStrength> ();
+		fhirInstance.StrengthElement.ObjectValue = __temp_codeStrengthElement;
+	}
 	var _valueSet_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_valueSet_temp != null) {
 		fhirInstance.ValueSetElement = new Hl7.Fhir.Model.Canonical(_valueSet_temp);
@@ -40849,10 +41407,16 @@ public static Hl7.Fhir.Model.OperationOutcome.IssueComponent? Marshal_OperationO
 		
 	}
 	
-	fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.OperationOutcome.IssueSeverity> ();
-	fhirInstance.SeverityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
-	fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.OperationOutcome.IssueType> ();
-	fhirInstance.CodeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeSeverityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeSeverityElement != null) {
+		fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.OperationOutcome.IssueSeverity> ();
+		fhirInstance.SeverityElement.ObjectValue = __temp_codeSeverityElement;
+	}
+	var __temp_codeCodeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeCodeElement != null) {
+		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.OperationOutcome.IssueType> ();
+		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)) != null) {
 		fhirInstance.Details = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)));
 	}
@@ -41797,8 +42361,11 @@ public static Hl7.Fhir.Model.Patient? Marshal_Patient(FHIR_Marshalling.Patient* 
 		
 	}
 	
-	fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
-	fhirInstance.GenderElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	var __temp_codeGenderElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	if(__temp_codeGenderElement != null) {
+		fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
+		fhirInstance.GenderElement.ObjectValue = __temp_codeGenderElement;
+	}
 	var _birthDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 192)).ToFhirDate();
 	if(_birthDate_temp != null) {
 		fhirInstance.BirthDateElement = _birthDate_temp;
@@ -41977,8 +42544,11 @@ public static Hl7.Fhir.Model.Patient.ContactComponent? Marshal_Patient_Contact(F
 		fhirInstance.Address = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)in_native + 96)));
 	}
 	
-	fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
-	fhirInstance.GenderElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	var __temp_codeGenderElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	if(__temp_codeGenderElement != null) {
+		fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
+		fhirInstance.GenderElement.ObjectValue = __temp_codeGenderElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 120)) != null) {
 		fhirInstance.Organization = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 120)));
 	}
@@ -42074,8 +42644,11 @@ public static Hl7.Fhir.Model.Patient.LinkComponent? Marshal_Patient_Link(FHIR_Ma
 		fhirInstance.Other = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 56)));
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Patient.LinkType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Patient.LinkType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	return fhirInstance;
 }
 
@@ -42155,8 +42728,11 @@ public static Hl7.Fhir.Model.PaymentNotice? Marshal_PaymentNotice(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Request = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 152)));
 	}
@@ -42278,8 +42854,11 @@ public static Hl7.Fhir.Model.PaymentReconciliation? Marshal_PaymentReconciliatio
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 152)));
 	}
@@ -42301,8 +42880,11 @@ public static Hl7.Fhir.Model.PaymentReconciliation? Marshal_PaymentReconciliatio
 		fhirInstance.Requestor = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 192)));
 	}
 	
-	fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
-	fhirInstance.OutcomeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeOutcomeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeOutcomeElement != null) {
+		fhirInstance.OutcomeElement = new Code<Hl7.Fhir.Model.ClaimProcessingCodes> ();
+		fhirInstance.OutcomeElement.ObjectValue = __temp_codeOutcomeElement;
+	}
 	var _disposition_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
 	if(_disposition_temp != null) {
 		fhirInstance.DispositionElement = new Hl7.Fhir.Model.FhirString(_disposition_temp);
@@ -42464,8 +43046,11 @@ public static Hl7.Fhir.Model.PaymentReconciliation.NotesComponent? Marshal_Payme
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NoteType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.NoteType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _text_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_text_temp != null) {
 		fhirInstance.TextElement = new Hl7.Fhir.Model.FhirString(_text_temp);
@@ -42574,8 +43159,11 @@ public static Hl7.Fhir.Model.Person? Marshal_Person(FHIR_Marshalling.Person* in_
 		
 	}
 	
-	fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
-	fhirInstance.GenderElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeGenderElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeGenderElement != null) {
+		fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
+		fhirInstance.GenderElement.ObjectValue = __temp_codeGenderElement;
+	}
 	var _birthDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 184)).ToFhirDate();
 	if(_birthDate_temp != null) {
 		fhirInstance.BirthDateElement = _birthDate_temp;
@@ -42659,8 +43247,11 @@ public static Hl7.Fhir.Model.Person.LinkComponent? Marshal_Person_Link(FHIR_Mars
 		fhirInstance.Target = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 56)));
 	}
 	
-	fhirInstance.AssuranceElement = new Code<Hl7.Fhir.Model.Person.IdentityAssuranceLevel> ();
-	fhirInstance.AssuranceElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeAssuranceElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeAssuranceElement != null) {
+		fhirInstance.AssuranceElement = new Code<Hl7.Fhir.Model.Person.IdentityAssuranceLevel> ();
+		fhirInstance.AssuranceElement.ObjectValue = __temp_codeAssuranceElement;
+	}
 	return fhirInstance;
 }
 
@@ -42769,8 +43360,11 @@ public static Hl7.Fhir.Model.PlanDefinition? Marshal_PlanDefinition(FHIR_Marshal
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 216)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 240)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -43190,8 +43784,11 @@ public static Hl7.Fhir.Model.PlanDefinition.ActionComponent? Marshal_PlanDefinit
 		fhirInstance.TextEquivalentElement = new Hl7.Fhir.Model.FhirString(_textEquivalent_temp);
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 120)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 120)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 136)) > 0) {
 		var _code_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 136)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 136)); i++)
@@ -43368,16 +43965,31 @@ public static Hl7.Fhir.Model.PlanDefinition.ActionComponent? Marshal_PlanDefinit
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 336)));
 	}
 	
-	fhirInstance.GroupingBehaviorElement = new Code<Hl7.Fhir.Model.ActionGroupingBehavior> ();
-	fhirInstance.GroupingBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 344)).ToString();
-	fhirInstance.SelectionBehaviorElement = new Code<Hl7.Fhir.Model.ActionSelectionBehavior> ();
-	fhirInstance.SelectionBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 360)).ToString();
-	fhirInstance.RequiredBehaviorElement = new Code<Hl7.Fhir.Model.ActionRequiredBehavior> ();
-	fhirInstance.RequiredBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 376)).ToString();
-	fhirInstance.PrecheckBehaviorElement = new Code<Hl7.Fhir.Model.ActionPrecheckBehavior> ();
-	fhirInstance.PrecheckBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 392)).ToString();
-	fhirInstance.CardinalityBehaviorElement = new Code<Hl7.Fhir.Model.ActionCardinalityBehavior> ();
-	fhirInstance.CardinalityBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 408)).ToString();
+	var __temp_codeGroupingBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 344)).ToString();
+	if(__temp_codeGroupingBehaviorElement != null) {
+		fhirInstance.GroupingBehaviorElement = new Code<Hl7.Fhir.Model.ActionGroupingBehavior> ();
+		fhirInstance.GroupingBehaviorElement.ObjectValue = __temp_codeGroupingBehaviorElement;
+	}
+	var __temp_codeSelectionBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 360)).ToString();
+	if(__temp_codeSelectionBehaviorElement != null) {
+		fhirInstance.SelectionBehaviorElement = new Code<Hl7.Fhir.Model.ActionSelectionBehavior> ();
+		fhirInstance.SelectionBehaviorElement.ObjectValue = __temp_codeSelectionBehaviorElement;
+	}
+	var __temp_codeRequiredBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 376)).ToString();
+	if(__temp_codeRequiredBehaviorElement != null) {
+		fhirInstance.RequiredBehaviorElement = new Code<Hl7.Fhir.Model.ActionRequiredBehavior> ();
+		fhirInstance.RequiredBehaviorElement.ObjectValue = __temp_codeRequiredBehaviorElement;
+	}
+	var __temp_codePrecheckBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 392)).ToString();
+	if(__temp_codePrecheckBehaviorElement != null) {
+		fhirInstance.PrecheckBehaviorElement = new Code<Hl7.Fhir.Model.ActionPrecheckBehavior> ();
+		fhirInstance.PrecheckBehaviorElement.ObjectValue = __temp_codePrecheckBehaviorElement;
+	}
+	var __temp_codeCardinalityBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 408)).ToString();
+	if(__temp_codeCardinalityBehaviorElement != null) {
+		fhirInstance.CardinalityBehaviorElement = new Code<Hl7.Fhir.Model.ActionCardinalityBehavior> ();
+		fhirInstance.CardinalityBehaviorElement.ObjectValue = __temp_codeCardinalityBehaviorElement;
+	}
 	switch((*(FHIR_Marshalling.PlanDefinition_Action.DefinitionType*)((byte*)in_native + 440))) {
 		case FHIR_Marshalling.PlanDefinition_Action.DefinitionType.Canonical: {
 			var _definitionCanonical__union = &(*(FHIR_Marshalling.PlanDefinition_Action.DefinitionUnion*)((byte*)in_native + 424));
@@ -43458,8 +44070,11 @@ public static Hl7.Fhir.Model.PlanDefinition.ConditionComponent? Marshal_PlanDefi
 		
 	}
 	
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.ActionConditionKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.ActionConditionKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	if((*(FHIR_Marshalling.Expression**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Expression = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)in_native + 72)));
 	}
@@ -43506,8 +44121,11 @@ public static Hl7.Fhir.Model.PlanDefinition.RelatedActionComponent? Marshal_Plan
 		fhirInstance.ActionIdElement = new Hl7.Fhir.Model.Id(_actionId_temp);
 	}
 	
-	fhirInstance.RelationshipElement = new Code<Hl7.Fhir.Model.ActionRelationshipType> ();
-	fhirInstance.RelationshipElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeRelationshipElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeRelationshipElement != null) {
+		fhirInstance.RelationshipElement = new Code<Hl7.Fhir.Model.ActionRelationshipType> ();
+		fhirInstance.RelationshipElement.ObjectValue = __temp_codeRelationshipElement;
+	}
 	switch((*(FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetType.Duration: {
 			var _offsetDuration__union = &(*(FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetUnion*)((byte*)in_native + 88));
@@ -43559,8 +44177,11 @@ public static Hl7.Fhir.Model.PlanDefinition.ParticipantComponent? Marshal_PlanDe
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ActionParticipantType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ActionParticipantType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Role = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
@@ -43731,8 +44352,11 @@ public static Hl7.Fhir.Model.Practitioner? Marshal_Practitioner(FHIR_Marshalling
 		
 	}
 	
-	fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
-	fhirInstance.GenderElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	var __temp_codeGenderElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	if(__temp_codeGenderElement != null) {
+		fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
+		fhirInstance.GenderElement.ObjectValue = __temp_codeGenderElement;
+	}
 	var _birthDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 208)).ToFhirDate();
 	if(_birthDate_temp != null) {
 		fhirInstance.BirthDateElement = _birthDate_temp;
@@ -44272,8 +44896,11 @@ public static Hl7.Fhir.Model.Procedure? Marshal_Procedure(FHIR_Marshalling.Proce
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EventStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.EventStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 216)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 216)));
 	}
@@ -44843,8 +45470,11 @@ public static Hl7.Fhir.Model.Provenance.EntityComponent? Marshal_Provenance_Enti
 		
 	}
 	
-	fhirInstance.RoleElement = new Code<Hl7.Fhir.Model.Provenance.ProvenanceEntityRole> ();
-	fhirInstance.RoleElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeRoleElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeRoleElement != null) {
+		fhirInstance.RoleElement = new Code<Hl7.Fhir.Model.Provenance.ProvenanceEntityRole> ();
+		fhirInstance.RoleElement.ObjectValue = __temp_codeRoleElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)) != null) {
 		fhirInstance.What = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
@@ -44973,8 +45603,11 @@ public static Hl7.Fhir.Model.Questionnaire? Marshal_Questionnaire(FHIR_Marshalli
 		
 		}
 		
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -45161,8 +45794,11 @@ public static Hl7.Fhir.Model.Questionnaire.ItemComponent? Marshal_Questionnaire_
 		fhirInstance.TextElement = new Hl7.Fhir.Model.FhirString(_text_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Questionnaire.QuestionnaireItemType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Questionnaire.QuestionnaireItemType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _enableWhen_list  = new List<Hl7.Fhir.Model.Questionnaire.EnableWhenComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -45175,8 +45811,11 @@ public static Hl7.Fhir.Model.Questionnaire.ItemComponent? Marshal_Questionnaire_
 		
 	}
 	
-	fhirInstance.EnableBehaviorElement = new Code<Hl7.Fhir.Model.Questionnaire.EnableWhenBehavior> ();
-	fhirInstance.EnableBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeEnableBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeEnableBehaviorElement != null) {
+		fhirInstance.EnableBehaviorElement = new Code<Hl7.Fhir.Model.Questionnaire.EnableWhenBehavior> ();
+		fhirInstance.EnableBehaviorElement.ObjectValue = __temp_codeEnableBehaviorElement;
+	}
 	var _required_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
 	if(_required_temp != null) {
 		fhirInstance.RequiredElement = _required_temp;
@@ -45280,8 +45919,11 @@ public static Hl7.Fhir.Model.Questionnaire.EnableWhenComponent? Marshal_Question
 		fhirInstance.QuestionElement = new Hl7.Fhir.Model.FhirString(_question_temp);
 	}
 	
-	fhirInstance.OperatorElement = new Code<Hl7.Fhir.Model.Questionnaire.QuestionnaireItemOperator> ();
-	fhirInstance.OperatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeOperatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeOperatorElement != null) {
+		fhirInstance.OperatorElement = new Code<Hl7.Fhir.Model.Questionnaire.QuestionnaireItemOperator> ();
+		fhirInstance.OperatorElement.ObjectValue = __temp_codeOperatorElement;
+	}
 	switch((*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Boolean: {
 			var _answerBoolean__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
@@ -45620,8 +46262,11 @@ public static Hl7.Fhir.Model.QuestionnaireResponse? Marshal_QuestionnaireRespons
 		fhirInstance.QuestionnaireElement = new Hl7.Fhir.Model.Canonical(_questionnaire_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.QuestionnaireResponse.QuestionnaireResponseStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.QuestionnaireResponse.QuestionnaireResponseStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 192)) != null) {
 		fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 192)));
 	}
@@ -45972,8 +46617,11 @@ public static Hl7.Fhir.Model.RelatedPerson? Marshal_RelatedPerson(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
-	fhirInstance.GenderElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeGenderElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeGenderElement != null) {
+		fhirInstance.GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender> ();
+		fhirInstance.GenderElement.ObjectValue = __temp_codeGenderElement;
+	}
 	var _birthDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 216)).ToFhirDate();
 	if(_birthDate_temp != null) {
 		fhirInstance.BirthDateElement = _birthDate_temp;
@@ -46198,12 +46846,21 @@ public static Hl7.Fhir.Model.RequestGroup? Marshal_RequestGroup(FHIR_Marshalling
 		fhirInstance.GroupIdentifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 200)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 256)) != null) {
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 256)));
 	}
@@ -46330,8 +46987,11 @@ public static Hl7.Fhir.Model.RequestGroup.ActionComponent? Marshal_RequestGroup_
 		fhirInstance.TextEquivalentElement = new Hl7.Fhir.Model.FhirString(_textEquivalent_temp);
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 120)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 120)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 136)) > 0) {
 		var _code_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 136)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 136)); i++)
@@ -46433,16 +47093,31 @@ public static Hl7.Fhir.Model.RequestGroup.ActionComponent? Marshal_RequestGroup_
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 240)));
 	}
 	
-	fhirInstance.GroupingBehaviorElement = new Code<Hl7.Fhir.Model.ActionGroupingBehavior> ();
-	fhirInstance.GroupingBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 248)).ToString();
-	fhirInstance.SelectionBehaviorElement = new Code<Hl7.Fhir.Model.ActionSelectionBehavior> ();
-	fhirInstance.SelectionBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 264)).ToString();
-	fhirInstance.RequiredBehaviorElement = new Code<Hl7.Fhir.Model.ActionRequiredBehavior> ();
-	fhirInstance.RequiredBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 280)).ToString();
-	fhirInstance.PrecheckBehaviorElement = new Code<Hl7.Fhir.Model.ActionPrecheckBehavior> ();
-	fhirInstance.PrecheckBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 296)).ToString();
-	fhirInstance.CardinalityBehaviorElement = new Code<Hl7.Fhir.Model.ActionCardinalityBehavior> ();
-	fhirInstance.CardinalityBehaviorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 312)).ToString();
+	var __temp_codeGroupingBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 248)).ToString();
+	if(__temp_codeGroupingBehaviorElement != null) {
+		fhirInstance.GroupingBehaviorElement = new Code<Hl7.Fhir.Model.ActionGroupingBehavior> ();
+		fhirInstance.GroupingBehaviorElement.ObjectValue = __temp_codeGroupingBehaviorElement;
+	}
+	var __temp_codeSelectionBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 264)).ToString();
+	if(__temp_codeSelectionBehaviorElement != null) {
+		fhirInstance.SelectionBehaviorElement = new Code<Hl7.Fhir.Model.ActionSelectionBehavior> ();
+		fhirInstance.SelectionBehaviorElement.ObjectValue = __temp_codeSelectionBehaviorElement;
+	}
+	var __temp_codeRequiredBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 280)).ToString();
+	if(__temp_codeRequiredBehaviorElement != null) {
+		fhirInstance.RequiredBehaviorElement = new Code<Hl7.Fhir.Model.ActionRequiredBehavior> ();
+		fhirInstance.RequiredBehaviorElement.ObjectValue = __temp_codeRequiredBehaviorElement;
+	}
+	var __temp_codePrecheckBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 296)).ToString();
+	if(__temp_codePrecheckBehaviorElement != null) {
+		fhirInstance.PrecheckBehaviorElement = new Code<Hl7.Fhir.Model.ActionPrecheckBehavior> ();
+		fhirInstance.PrecheckBehaviorElement.ObjectValue = __temp_codePrecheckBehaviorElement;
+	}
+	var __temp_codeCardinalityBehaviorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 312)).ToString();
+	if(__temp_codeCardinalityBehaviorElement != null) {
+		fhirInstance.CardinalityBehaviorElement = new Code<Hl7.Fhir.Model.ActionCardinalityBehavior> ();
+		fhirInstance.CardinalityBehaviorElement.ObjectValue = __temp_codeCardinalityBehaviorElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 328)) != null) {
 		fhirInstance.Resource = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 328)));
 	}
@@ -46496,8 +47171,11 @@ public static Hl7.Fhir.Model.RequestGroup.ConditionComponent? Marshal_RequestGro
 		
 	}
 	
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.ActionConditionKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.ActionConditionKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	if((*(FHIR_Marshalling.Expression**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Expression = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)in_native + 72)));
 	}
@@ -46544,8 +47222,11 @@ public static Hl7.Fhir.Model.RequestGroup.RelatedActionComponent? Marshal_Reques
 		fhirInstance.ActionIdElement = new Hl7.Fhir.Model.Id(_actionId_temp);
 	}
 	
-	fhirInstance.RelationshipElement = new Code<Hl7.Fhir.Model.ActionRelationshipType> ();
-	fhirInstance.RelationshipElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeRelationshipElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeRelationshipElement != null) {
+		fhirInstance.RelationshipElement = new Code<Hl7.Fhir.Model.ActionRelationshipType> ();
+		fhirInstance.RelationshipElement.ObjectValue = __temp_codeRelationshipElement;
+	}
 	switch((*(FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetType.Duration: {
 			var _offsetDuration__union = &(*(FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetUnion*)((byte*)in_native + 88));
@@ -46669,8 +47350,11 @@ public static Hl7.Fhir.Model.ResearchDefinition? Marshal_ResearchDefinition(FHIR
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -46993,8 +47677,11 @@ public static Hl7.Fhir.Model.ResearchElementDefinition? Marshal_ResearchElementD
 		fhirInstance.SubtitleElement = new Hl7.Fhir.Model.FhirString(_subtitle_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 232)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -47192,10 +47879,16 @@ public static Hl7.Fhir.Model.ResearchElementDefinition? Marshal_ResearchElementD
 		
 		}
 		
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ResearchElementDefinition.ResearchElementType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 584)).ToString();
-	fhirInstance.VariableTypeElement = new Code<Hl7.Fhir.Model.VariableTypeCode> ();
-	fhirInstance.VariableTypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 600)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 584)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ResearchElementDefinition.ResearchElementType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
+	var __temp_codeVariableTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 600)).ToString();
+	if(__temp_codeVariableTypeElement != null) {
+		fhirInstance.VariableTypeElement = new Code<Hl7.Fhir.Model.VariableTypeCode> ();
+		fhirInstance.VariableTypeElement.ObjectValue = __temp_codeVariableTypeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 616)) > 0) {
 		var _characteristic_list  = new List<Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 616)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 616)); i++)
@@ -47326,8 +48019,11 @@ public static Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent? 
 		fhirInstance.StudyEffectiveTimeFromStart = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.StudyEffectiveGroupMeasureElement = new Code<Hl7.Fhir.Model.GroupMeasureCode> ();
-	fhirInstance.StudyEffectiveGroupMeasureElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeStudyEffectiveGroupMeasureElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeStudyEffectiveGroupMeasureElement != null) {
+		fhirInstance.StudyEffectiveGroupMeasureElement = new Code<Hl7.Fhir.Model.GroupMeasureCode> ();
+		fhirInstance.StudyEffectiveGroupMeasureElement.ObjectValue = __temp_codeStudyEffectiveGroupMeasureElement;
+	}
 	var _participantEffectiveDescription_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToString();
 	if(_participantEffectiveDescription_temp != null) {
 		fhirInstance.ParticipantEffectiveDescriptionElement = new Hl7.Fhir.Model.FhirString(_participantEffectiveDescription_temp);
@@ -47362,8 +48058,11 @@ public static Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent? 
 		fhirInstance.ParticipantEffectiveTimeFromStart = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)in_native + 216)));
 	}
 	
-	fhirInstance.ParticipantEffectiveGroupMeasureElement = new Code<Hl7.Fhir.Model.GroupMeasureCode> ();
-	fhirInstance.ParticipantEffectiveGroupMeasureElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	var __temp_codeParticipantEffectiveGroupMeasureElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	if(__temp_codeParticipantEffectiveGroupMeasureElement != null) {
+		fhirInstance.ParticipantEffectiveGroupMeasureElement = new Code<Hl7.Fhir.Model.GroupMeasureCode> ();
+		fhirInstance.ParticipantEffectiveGroupMeasureElement.ObjectValue = __temp_codeParticipantEffectiveGroupMeasureElement;
+	}
 	return fhirInstance;
 }
 
@@ -47472,8 +48171,11 @@ public static Hl7.Fhir.Model.ResearchStudy? Marshal_ResearchStudy(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ResearchStudy.ResearchStudyStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ResearchStudy.ResearchStudyStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 200)) != null) {
 		fhirInstance.PrimaryPurposeType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 200)));
 	}
@@ -47823,8 +48525,11 @@ public static Hl7.Fhir.Model.ResearchSubject? Marshal_ResearchSubject(FHIR_Marsh
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ResearchSubject.ResearchSubjectStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ResearchSubject.ResearchSubjectStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Period**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 152)));
 	}
@@ -47938,8 +48643,11 @@ public static Hl7.Fhir.Model.RiskAssessment? Marshal_RiskAssessment(FHIR_Marshal
 		fhirInstance.Parent = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 144)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ObservationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.ObservationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 168)) != null) {
 		fhirInstance.Method = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 168)));
 	}
@@ -48223,8 +48931,11 @@ public static Hl7.Fhir.Model.RiskEvidenceSynthesis? Marshal_RiskEvidenceSynthesi
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 216)).ToFhirDateTime();
 	if(_date_temp != null) {
 		fhirInstance.DateElement = _date_temp;
@@ -48970,8 +49681,11 @@ public static Hl7.Fhir.Model.SearchParameter? Marshal_SearchParameter(FHIR_Marsh
 		fhirInstance.DerivedFromElement = new Hl7.Fhir.Model.Canonical(_derivedFrom_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -49051,8 +49765,11 @@ public static Hl7.Fhir.Model.SearchParameter? Marshal_SearchParameter(FHIR_Marsh
 		
 		}
 		
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.SearchParamType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 352)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 352)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.SearchParamType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _expression_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 368)).ToString();
 	if(_expression_temp != null) {
 		fhirInstance.ExpressionElement = new Hl7.Fhir.Model.FhirString(_expression_temp);
@@ -49063,8 +49780,11 @@ public static Hl7.Fhir.Model.SearchParameter? Marshal_SearchParameter(FHIR_Marsh
 		fhirInstance.XpathElement = new Hl7.Fhir.Model.FhirString(_xpath_temp);
 	}
 	
-	fhirInstance.XpathUsageElement = new Code<Hl7.Fhir.Model.SearchParameter.XPathUsageType> ();
-	fhirInstance.XpathUsageElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	var __temp_codeXpathUsageElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	if(__temp_codeXpathUsageElement != null) {
+		fhirInstance.XpathUsageElement = new Code<Hl7.Fhir.Model.SearchParameter.XPathUsageType> ();
+		fhirInstance.XpathUsageElement.ObjectValue = __temp_codeXpathUsageElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 416)) > 0) {
 		var _target_list  = new List<Code<Hl7.Fhir.Model.ResourceType>>((int)(*(System.UIntPtr*)((byte*)in_native + 416)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 416)); i++)
@@ -49319,10 +50039,16 @@ public static Hl7.Fhir.Model.ServiceRequest? Marshal_ServiceRequest(FHIR_Marshal
 		fhirInstance.Requisition = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 200)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.RequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.RequestIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 240)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 240)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 240)); i++)
@@ -49335,8 +50061,11 @@ public static Hl7.Fhir.Model.ServiceRequest? Marshal_ServiceRequest(FHIR_Marshal
 		
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 272)).GetValue());
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
@@ -49691,8 +50420,11 @@ public static Hl7.Fhir.Model.Slot? Marshal_Slot(FHIR_Marshalling.Slot* in_native
 		fhirInstance.Schedule = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 192)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Slot.SlotStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Slot.SlotStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _start_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 216)).ToFhirInstant();
 	if(_start_temp != null) {
 		fhirInstance.StartElement = _start_temp;
@@ -49796,8 +50528,11 @@ public static Hl7.Fhir.Model.Specimen? Marshal_Specimen(FHIR_Marshalling.Specime
 		fhirInstance.AccessionIdentifier = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 136)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Specimen.SpecimenStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Specimen.SpecimenStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 160)));
 	}
@@ -50284,8 +51019,11 @@ public static Hl7.Fhir.Model.SpecimenDefinition.TypeTestedComponent? Marshal_Spe
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 64)));
 	}
 	
-	fhirInstance.PreferenceElement = new Code<Hl7.Fhir.Model.SpecimenDefinition.SpecimenContainedPreference> ();
-	fhirInstance.PreferenceElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codePreferenceElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codePreferenceElement != null) {
+		fhirInstance.PreferenceElement = new Code<Hl7.Fhir.Model.SpecimenDefinition.SpecimenContainedPreference> ();
+		fhirInstance.PreferenceElement.ObjectValue = __temp_codePreferenceElement;
+	}
 	if((*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container**)((byte*)in_native + 88)) != null) {
 		fhirInstance.Container = Marshal_SpecimenDefinition_TypeTested_Container((*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container**)((byte*)in_native + 88)));
 	}
@@ -50616,8 +51354,11 @@ public static Hl7.Fhir.Model.StructureDefinition? Marshal_StructureDefinition(FH
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -50696,8 +51437,11 @@ public static Hl7.Fhir.Model.StructureDefinition? Marshal_StructureDefinition(FH
 		
 	}
 	
-	fhirInstance.FhirVersionElement = new Code<Hl7.Fhir.Model.FHIRVersion> ();
-	fhirInstance.FhirVersionElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 368)).ToString();
+	var __temp_codeFhirVersionElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 368)).ToString();
+	if(__temp_codeFhirVersionElement != null) {
+		fhirInstance.FhirVersionElement = new Code<Hl7.Fhir.Model.FHIRVersion> ();
+		fhirInstance.FhirVersionElement.ObjectValue = __temp_codeFhirVersionElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 384)) > 0) {
 		var _mapping_list  = new List<Hl7.Fhir.Model.StructureDefinition.MappingComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 384)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 384)); i++)
@@ -50710,8 +51454,11 @@ public static Hl7.Fhir.Model.StructureDefinition? Marshal_StructureDefinition(FH
 		
 	}
 	
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.StructureDefinition.StructureDefinitionKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.StructureDefinition.StructureDefinitionKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	var _abstract_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 416)).GetValue());
 	if(_abstract_temp != null) {
 		fhirInstance.AbstractElement = _abstract_temp;
@@ -50752,8 +51499,11 @@ public static Hl7.Fhir.Model.StructureDefinition? Marshal_StructureDefinition(FH
 		fhirInstance.BaseDefinitionElement = new Hl7.Fhir.Model.Canonical(_baseDefinition_temp);
 	}
 	
-	fhirInstance.DerivationElement = new Code<Hl7.Fhir.Model.StructureDefinition.TypeDerivationRule> ();
-	fhirInstance.DerivationElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 488)).ToString();
+	var __temp_codeDerivationElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 488)).ToString();
+	if(__temp_codeDerivationElement != null) {
+		fhirInstance.DerivationElement = new Code<Hl7.Fhir.Model.StructureDefinition.TypeDerivationRule> ();
+		fhirInstance.DerivationElement.ObjectValue = __temp_codeDerivationElement;
+	}
 	if((*(FHIR_Marshalling.StructureDefinition_Snapshot**)((byte*)in_native + 504)) != null) {
 		fhirInstance.Snapshot = Marshal_StructureDefinition_Snapshot((*(FHIR_Marshalling.StructureDefinition_Snapshot**)((byte*)in_native + 504)));
 	}
@@ -50856,8 +51606,11 @@ public static Hl7.Fhir.Model.StructureDefinition.ContextComponent? Marshal_Struc
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.StructureDefinition.ExtensionContextType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.StructureDefinition.ExtensionContextType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _expression_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_expression_temp != null) {
 		fhirInstance.ExpressionElement = new Hl7.Fhir.Model.FhirString(_expression_temp);
@@ -51060,8 +51813,11 @@ public static Hl7.Fhir.Model.StructureMap? Marshal_StructureMap(FHIR_Marshalling
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -51207,8 +51963,11 @@ public static Hl7.Fhir.Model.StructureMap.StructureComponent? Marshal_StructureM
 		fhirInstance.UrlElement = new Hl7.Fhir.Model.Canonical(_url_temp);
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapModelMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapModelMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _alias_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
 	if(_alias_temp != null) {
 		fhirInstance.AliasElement = new Hl7.Fhir.Model.FhirString(_alias_temp);
@@ -51266,8 +52025,11 @@ public static Hl7.Fhir.Model.StructureMap.GroupComponent? Marshal_StructureMap_G
 		fhirInstance.ExtendsElement = new Hl7.Fhir.Model.Id(_extends_temp);
 	}
 	
-	fhirInstance.TypeModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapGroupTypeMode> ();
-	fhirInstance.TypeModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeTypeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeTypeModeElement != null) {
+		fhirInstance.TypeModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapGroupTypeMode> ();
+		fhirInstance.TypeModeElement.ObjectValue = __temp_codeTypeModeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.FhirString(_documentation_temp);
@@ -51344,8 +52106,11 @@ public static Hl7.Fhir.Model.StructureMap.InputComponent? Marshal_StructureMap_G
 		fhirInstance.TypeElement = new Hl7.Fhir.Model.FhirString(_type_temp);
 	}
 	
-	fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapInputMode> ();
-	fhirInstance.ModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeModeElement != null) {
+		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapInputMode> ();
+		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
+	}
 	var _documentation_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
 	if(_documentation_temp != null) {
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.FhirString(_documentation_temp);
@@ -51805,8 +52570,11 @@ public static Hl7.Fhir.Model.StructureMap.SourceComponent? Marshal_StructureMap_
 		fhirInstance.ElementElement = new Hl7.Fhir.Model.FhirString(_element_temp);
 	}
 	
-	fhirInstance.ListModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapSourceListMode> ();
-	fhirInstance.ListModeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeListModeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeListModeElement != null) {
+		fhirInstance.ListModeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapSourceListMode> ();
+		fhirInstance.ListModeElement.ObjectValue = __temp_codeListModeElement;
+	}
 	var _variable_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
 	if(_variable_temp != null) {
 		fhirInstance.VariableElement = new Hl7.Fhir.Model.Id(_variable_temp);
@@ -51869,8 +52637,11 @@ public static Hl7.Fhir.Model.StructureMap.TargetComponent? Marshal_StructureMap_
 		fhirInstance.ContextElement = new Hl7.Fhir.Model.Id(_context_temp);
 	}
 	
-	fhirInstance.ContextTypeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapContextType> ();
-	fhirInstance.ContextTypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeContextTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeContextTypeElement != null) {
+		fhirInstance.ContextTypeElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapContextType> ();
+		fhirInstance.ContextTypeElement.ObjectValue = __temp_codeContextTypeElement;
+	}
 	var _element_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
 	if(_element_temp != null) {
 		fhirInstance.ElementElement = new Hl7.Fhir.Model.FhirString(_element_temp);
@@ -51899,8 +52670,11 @@ public static Hl7.Fhir.Model.StructureMap.TargetComponent? Marshal_StructureMap_
 		fhirInstance.ListRuleIdElement = new Hl7.Fhir.Model.Id(_listRuleId_temp);
 	}
 	
-	fhirInstance.TransformElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapTransform> ();
-	fhirInstance.TransformElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	var __temp_codeTransformElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToString();
+	if(__temp_codeTransformElement != null) {
+		fhirInstance.TransformElement = new Code<Hl7.Fhir.Model.StructureMap.StructureMapTransform> ();
+		fhirInstance.TransformElement.ObjectValue = __temp_codeTransformElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 168)) > 0) {
 		var _parameter_list  = new List<Hl7.Fhir.Model.StructureMap.ParameterComponent>((int)(*(System.UIntPtr*)((byte*)in_native + 168)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 168)); i++)
@@ -52101,8 +52875,11 @@ public static Hl7.Fhir.Model.Subscription? Marshal_Subscription(FHIR_Marshalling
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Subscription.SubscriptionStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 120)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 120)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Subscription.SubscriptionStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 136)) > 0) {
 		var _contact_list  = new List<Hl7.Fhir.Model.ContactPoint>((int)(*(System.UIntPtr*)((byte*)in_native + 136)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 136)); i++)
@@ -52176,8 +52953,11 @@ public static Hl7.Fhir.Model.Subscription.ChannelComponent? Marshal_Subscription
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Subscription.SubscriptionChannelType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Subscription.SubscriptionChannelType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _endpoint_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_endpoint_temp != null) {
 		fhirInstance.EndpointElement = new Hl7.Fhir.Model.FhirUrl(_endpoint_temp);
@@ -52280,8 +53060,11 @@ public static Hl7.Fhir.Model.Substance? Marshal_Substance(FHIR_Marshalling.Subst
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Substance.FHIRSubstanceStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Substance.FHIRSubstanceStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 152)) > 0) {
 		var _category_list  = new List<Hl7.Fhir.Model.CodeableConcept>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
@@ -55329,8 +56112,11 @@ public static Hl7.Fhir.Model.SupplyDelivery? Marshal_SupplyDelivery(FHIR_Marshal
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.SupplyDelivery.SupplyDeliveryStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.SupplyDelivery.SupplyDeliveryStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)) != null) {
 		fhirInstance.Patient = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 184)));
 	}
@@ -55516,14 +56302,20 @@ public static Hl7.Fhir.Model.SupplyRequest? Marshal_SupplyRequest(FHIR_Marshalli
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.SupplyRequest.SupplyRequestStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.SupplyRequest.SupplyRequestStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)) != null) {
 		fhirInstance.Category = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	switch((*(FHIR_Marshalling.SupplyRequest.ItemType*)((byte*)in_native + 184))) {
 		case FHIR_Marshalling.SupplyRequest.ItemType.CodeableConcept: {
 			var _itemCodeableConcept__union = &(*(FHIR_Marshalling.SupplyRequest.ItemUnion*)((byte*)in_native + 176));
@@ -55809,8 +56601,11 @@ public static Hl7.Fhir.Model.Task? Marshal_Task(FHIR_Marshalling.Task* in_native
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Task.TaskStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Task.TaskStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 224)) != null) {
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 224)));
 	}
@@ -55819,10 +56614,16 @@ public static Hl7.Fhir.Model.Task? Marshal_Task(FHIR_Marshalling.Task* in_native
 		fhirInstance.BusinessStatus = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 232)));
 	}
 	
-	fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.Task.TaskIntent> ();
-	fhirInstance.IntentElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
-	fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
-	fhirInstance.PriorityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	var __temp_codeIntentElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
+	if(__temp_codeIntentElement != null) {
+		fhirInstance.IntentElement = new Code<Hl7.Fhir.Model.Task.TaskIntent> ();
+		fhirInstance.IntentElement.ObjectValue = __temp_codeIntentElement;
+	}
+	var __temp_codePriorityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	if(__temp_codePriorityElement != null) {
+		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
+		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 272)) != null) {
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 272)));
 	}
@@ -56775,8 +57576,11 @@ public static Hl7.Fhir.Model.TerminologyCapabilities? Marshal_TerminologyCapabil
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -56843,8 +57647,11 @@ public static Hl7.Fhir.Model.TerminologyCapabilities? Marshal_TerminologyCapabil
 		fhirInstance.CopyrightElement = new Hl7.Fhir.Model.Markdown(_copyright_temp);
 	}
 	
-	fhirInstance.KindElement = new Code<Hl7.Fhir.Model.CapabilityStatementKind> ();
-	fhirInstance.KindElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	var __temp_codeKindElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 336)).ToString();
+	if(__temp_codeKindElement != null) {
+		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.CapabilityStatementKind> ();
+		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
+	}
 	if((*(FHIR_Marshalling.TerminologyCapabilities_Software**)((byte*)in_native + 352)) != null) {
 		fhirInstance.Software = Marshal_TerminologyCapabilities_Software((*(FHIR_Marshalling.TerminologyCapabilities_Software**)((byte*)in_native + 352)));
 	}
@@ -56874,8 +57681,11 @@ public static Hl7.Fhir.Model.TerminologyCapabilities? Marshal_TerminologyCapabil
 		fhirInstance.Expansion = Marshal_TerminologyCapabilities_Expansion((*(FHIR_Marshalling.TerminologyCapabilities_Expansion**)((byte*)in_native + 392)));
 	}
 	
-	fhirInstance.CodeSearchElement = new Code<Hl7.Fhir.Model.TerminologyCapabilities.CodeSearchSupport> ();
-	fhirInstance.CodeSearchElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	var __temp_codeCodeSearchElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 400)).ToString();
+	if(__temp_codeCodeSearchElement != null) {
+		fhirInstance.CodeSearchElement = new Code<Hl7.Fhir.Model.TerminologyCapabilities.CodeSearchSupport> ();
+		fhirInstance.CodeSearchElement.ObjectValue = __temp_codeCodeSearchElement;
+	}
 	if((*(FHIR_Marshalling.TerminologyCapabilities_ValidateCode**)((byte*)in_native + 416)) != null) {
 		fhirInstance.ValidateCode = Marshal_TerminologyCapabilities_ValidateCode((*(FHIR_Marshalling.TerminologyCapabilities_ValidateCode**)((byte*)in_native + 416)));
 	}
@@ -57504,14 +58314,20 @@ public static Hl7.Fhir.Model.TestReport? Marshal_TestReport(FHIR_Marshalling.Tes
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.TestReport.TestReportStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.TestReport.TestReportStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 160)) != null) {
 		fhirInstance.TestScript = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 160)));
 	}
 	
-	fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportResult> ();
-	fhirInstance.ResultElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codeResultElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codeResultElement != null) {
+		fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportResult> ();
+		fhirInstance.ResultElement.ObjectValue = __temp_codeResultElement;
+	}
 	var _score_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).DecimalValue());
 	if(_score_temp != null) {
 		fhirInstance.ScoreElement = _score_temp;
@@ -57596,8 +58412,11 @@ public static Hl7.Fhir.Model.TestReport.ParticipantComponent? Marshal_TestReport
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.TestReport.TestReportParticipantType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.TestReport.TestReportParticipantType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _uri_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_uri_temp != null) {
 		fhirInstance.UriElement = new Hl7.Fhir.Model.FhirUri(_uri_temp);
@@ -57739,8 +58558,11 @@ public static Hl7.Fhir.Model.TestReport.OperationComponent? Marshal_TestReport_S
 		
 	}
 	
-	fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportActionResult> ();
-	fhirInstance.ResultElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeResultElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeResultElement != null) {
+		fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportActionResult> ();
+		fhirInstance.ResultElement.ObjectValue = __temp_codeResultElement;
+	}
 	var _message_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_message_temp != null) {
 		fhirInstance.MessageElement = new Hl7.Fhir.Model.Markdown(_message_temp);
@@ -57788,8 +58610,11 @@ public static Hl7.Fhir.Model.TestReport.AssertComponent? Marshal_TestReport_Setu
 		
 	}
 	
-	fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportActionResult> ();
-	fhirInstance.ResultElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeResultElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeResultElement != null) {
+		fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportActionResult> ();
+		fhirInstance.ResultElement.ObjectValue = __temp_codeResultElement;
+	}
 	var _message_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_message_temp != null) {
 		fhirInstance.MessageElement = new Hl7.Fhir.Model.Markdown(_message_temp);
@@ -58085,8 +58910,11 @@ public static Hl7.Fhir.Model.TestScript? Marshal_TestScript(FHIR_Marshalling.Tes
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -58787,8 +59615,11 @@ public static Hl7.Fhir.Model.TestScript.OperationComponent? Marshal_TestScript_S
 		fhirInstance.Type = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)in_native + 56)));
 	}
 	
-	fhirInstance.ResourceElement = new Code<Hl7.Fhir.Model.FHIRDefinedType> ();
-	fhirInstance.ResourceElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeResourceElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeResourceElement != null) {
+		fhirInstance.ResourceElement = new Code<Hl7.Fhir.Model.FHIRDefinedType> ();
+		fhirInstance.ResourceElement.ObjectValue = __temp_codeResourceElement;
+	}
 	var _label_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
 	if(_label_temp != null) {
 		fhirInstance.LabelElement = new Hl7.Fhir.Model.FhirString(_label_temp);
@@ -58819,8 +59650,11 @@ public static Hl7.Fhir.Model.TestScript.OperationComponent? Marshal_TestScript_S
 		fhirInstance.EncodeRequestUrlElement = _encodeRequestUrl_temp;
 	}
 	
-	fhirInstance.MethodElement = new Code<Hl7.Fhir.Model.TestScript.TestScriptRequestMethodCode> ();
-	fhirInstance.MethodElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeMethodElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeMethodElement != null) {
+		fhirInstance.MethodElement = new Code<Hl7.Fhir.Model.TestScript.TestScriptRequestMethodCode> ();
+		fhirInstance.MethodElement.ObjectValue = __temp_codeMethodElement;
+	}
 	var _origin_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 176)).GetValue());
 	if(_origin_temp != null) {
 		fhirInstance.OriginElement = _origin_temp;
@@ -58962,8 +59796,11 @@ public static Hl7.Fhir.Model.TestScript.AssertComponent? Marshal_TestScript_Setu
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	fhirInstance.DirectionElement = new Code<Hl7.Fhir.Model.TestScript.AssertionDirectionType> ();
-	fhirInstance.DirectionElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	var __temp_codeDirectionElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
+	if(__temp_codeDirectionElement != null) {
+		fhirInstance.DirectionElement = new Code<Hl7.Fhir.Model.TestScript.AssertionDirectionType> ();
+		fhirInstance.DirectionElement.ObjectValue = __temp_codeDirectionElement;
+	}
 	var _compareToSourceId_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
 	if(_compareToSourceId_temp != null) {
 		fhirInstance.CompareToSourceIdElement = new Hl7.Fhir.Model.FhirString(_compareToSourceId_temp);
@@ -59004,24 +59841,36 @@ public static Hl7.Fhir.Model.TestScript.AssertComponent? Marshal_TestScript_Setu
 		fhirInstance.NavigationLinksElement = _navigationLinks_temp;
 	}
 	
-	fhirInstance.OperatorElement = new Code<Hl7.Fhir.Model.TestScript.AssertionOperatorType> ();
-	fhirInstance.OperatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	var __temp_codeOperatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToString();
+	if(__temp_codeOperatorElement != null) {
+		fhirInstance.OperatorElement = new Code<Hl7.Fhir.Model.TestScript.AssertionOperatorType> ();
+		fhirInstance.OperatorElement.ObjectValue = __temp_codeOperatorElement;
+	}
 	var _path_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToString();
 	if(_path_temp != null) {
 		fhirInstance.PathElement = new Hl7.Fhir.Model.FhirString(_path_temp);
 	}
 	
-	fhirInstance.RequestMethodElement = new Code<Hl7.Fhir.Model.TestScript.TestScriptRequestMethodCode> ();
-	fhirInstance.RequestMethodElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	var __temp_codeRequestMethodElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 256)).ToString();
+	if(__temp_codeRequestMethodElement != null) {
+		fhirInstance.RequestMethodElement = new Code<Hl7.Fhir.Model.TestScript.TestScriptRequestMethodCode> ();
+		fhirInstance.RequestMethodElement.ObjectValue = __temp_codeRequestMethodElement;
+	}
 	var _requestURL_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 272)).ToString();
 	if(_requestURL_temp != null) {
 		fhirInstance.RequestURLElement = new Hl7.Fhir.Model.FhirString(_requestURL_temp);
 	}
 	
-	fhirInstance.ResourceElement = new Code<Hl7.Fhir.Model.FHIRDefinedType> ();
-	fhirInstance.ResourceElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 288)).ToString();
-	fhirInstance.ResponseElement = new Code<Hl7.Fhir.Model.TestScript.AssertionResponseTypes> ();
-	fhirInstance.ResponseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 304)).ToString();
+	var __temp_codeResourceElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 288)).ToString();
+	if(__temp_codeResourceElement != null) {
+		fhirInstance.ResourceElement = new Code<Hl7.Fhir.Model.FHIRDefinedType> ();
+		fhirInstance.ResourceElement.ObjectValue = __temp_codeResourceElement;
+	}
+	var __temp_codeResponseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 304)).ToString();
+	if(__temp_codeResponseElement != null) {
+		fhirInstance.ResponseElement = new Code<Hl7.Fhir.Model.TestScript.AssertionResponseTypes> ();
+		fhirInstance.ResponseElement.ObjectValue = __temp_codeResponseElement;
+	}
 	var _responseCode_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 320)).ToString();
 	if(_responseCode_temp != null) {
 		fhirInstance.ResponseCodeElement = new Hl7.Fhir.Model.FhirString(_responseCode_temp);
@@ -59340,8 +60189,11 @@ public static Hl7.Fhir.Model.ValueSet? Marshal_ValueSet(FHIR_Marshalling.ValueSe
 		fhirInstance.TitleElement = new Hl7.Fhir.Model.FhirString(_title_temp);
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 200)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
@@ -59728,8 +60580,11 @@ public static Hl7.Fhir.Model.ValueSet.FilterComponent? Marshal_ValueSet_Compose_
 		fhirInstance.PropertyElement = new Hl7.Fhir.Model.Code(_property_temp);
 	}
 	
-	fhirInstance.OpElement = new Code<Hl7.Fhir.Model.FilterOperator> ();
-	fhirInstance.OpElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeOpElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeOpElement != null) {
+		fhirInstance.OpElement = new Code<Hl7.Fhir.Model.FilterOperator> ();
+		fhirInstance.OpElement.ObjectValue = __temp_codeOpElement;
+	}
 	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = new Hl7.Fhir.Model.FhirString(_value_temp);
@@ -60085,8 +60940,11 @@ public static Hl7.Fhir.Model.VerificationResult? Marshal_VerificationResult(FHIR
 		fhirInstance.Need = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 152)));
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.VerificationResult.StatusCode> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.VerificationResult.StatusCode> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _statusDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 176)).ToFhirDateTime();
 	if(_statusDate_temp != null) {
 		fhirInstance.StatusDateElement = _statusDate_temp;
@@ -60445,8 +61303,11 @@ public static Hl7.Fhir.Model.VisionPrescription? Marshal_VisionPrescription(FHIR
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _created_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 152)).ToFhirDateTime();
 	if(_created_temp != null) {
 		fhirInstance.CreatedElement = _created_temp;
@@ -60522,8 +61383,11 @@ public static Hl7.Fhir.Model.VisionPrescription.LensSpecificationComponent? Mars
 		fhirInstance.Product = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	fhirInstance.EyeElement = new Code<Hl7.Fhir.Model.VisionPrescription.VisionEyes> ();
-	fhirInstance.EyeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	var __temp_codeEyeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToString();
+	if(__temp_codeEyeElement != null) {
+		fhirInstance.EyeElement = new Code<Hl7.Fhir.Model.VisionPrescription.VisionEyes> ();
+		fhirInstance.EyeElement.ObjectValue = __temp_codeEyeElement;
+	}
 	var _sphere_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
 	if(_sphere_temp != null) {
 		fhirInstance.SphereElement = _sphere_temp;
@@ -60639,8 +61503,11 @@ public static Hl7.Fhir.Model.VisionPrescription.PrismComponent? Marshal_VisionPr
 		fhirInstance.AmountElement = _amount_temp;
 	}
 	
-	fhirInstance.BaseElement = new Code<Hl7.Fhir.Model.VisionPrescription.VisionBase> ();
-	fhirInstance.BaseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeBaseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeBaseElement != null) {
+		fhirInstance.BaseElement = new Code<Hl7.Fhir.Model.VisionPrescription.VisionBase> ();
+		fhirInstance.BaseElement.ObjectValue = __temp_codeBaseElement;
+	}
 	return fhirInstance;
 }
 
@@ -60666,10 +61533,16 @@ public static Hl7.Fhir.Model.Address? Marshal_Address(FHIR_Marshalling.Address* 
 		
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.Address.AddressUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Address.AddressType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.Address.AddressUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Address.AddressType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _text_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_text_temp != null) {
 		fhirInstance.TextElement = new Hl7.Fhir.Model.FhirString(_text_temp);
@@ -60747,8 +61620,11 @@ public static Hl7.Fhir.Model.Age? Marshal_Age(FHIR_Marshalling.Age* in_native) {
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
-	fhirInstance.ComparatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeComparatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeComparatorElement != null) {
+		fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
+		fhirInstance.ComparatorElement.ObjectValue = __temp_codeComparatorElement;
+	}
 	var _unit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_unit_temp != null) {
 		fhirInstance.UnitElement = new Hl7.Fhir.Model.FhirString(_unit_temp);
@@ -61043,15 +61919,21 @@ public static Hl7.Fhir.Model.ContactPoint? Marshal_ContactPoint(FHIR_Marshalling
 		
 	}
 	
-	fhirInstance.SystemElement = new Code<Hl7.Fhir.Model.ContactPoint.ContactPointSystem> ();
-	fhirInstance.SystemElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeSystemElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeSystemElement != null) {
+		fhirInstance.SystemElement = new Code<Hl7.Fhir.Model.ContactPoint.ContactPointSystem> ();
+		fhirInstance.SystemElement.ObjectValue = __temp_codeSystemElement;
+	}
 	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = new Hl7.Fhir.Model.FhirString(_value_temp);
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ContactPoint.ContactPointUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ContactPoint.ContactPointUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	var _rank_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
 	if(_rank_temp != null) {
 		fhirInstance.RankElement = _rank_temp;
@@ -61086,8 +61968,11 @@ public static Hl7.Fhir.Model.Contributor? Marshal_Contributor(FHIR_Marshalling.C
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Contributor.ContributorType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Contributor.ContributorType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _name_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_name_temp != null) {
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
@@ -61135,8 +62020,11 @@ public static Hl7.Fhir.Model.Count? Marshal_Count(FHIR_Marshalling.Count* in_nat
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
-	fhirInstance.ComparatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeComparatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeComparatorElement != null) {
+		fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
+		fhirInstance.ComparatorElement.ObjectValue = __temp_codeComparatorElement;
+	}
 	var _unit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_unit_temp != null) {
 		fhirInstance.UnitElement = new Hl7.Fhir.Model.FhirString(_unit_temp);
@@ -61177,8 +62065,11 @@ public static Hl7.Fhir.Model.DataRequirement? Marshal_DataRequirement(FHIR_Marsh
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.FHIRAllTypes> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.FHIRAllTypes> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 56)) > 0) {
 		var _profile_list  = new List<Canonical>((int)(*(System.UIntPtr*)((byte*)in_native + 56)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 56)); i++)
@@ -61396,8 +62287,11 @@ public static Hl7.Fhir.Model.DataRequirement.SortComponent? Marshal_DataRequirem
 		fhirInstance.PathElement = new Hl7.Fhir.Model.FhirString(_path_temp);
 	}
 	
-	fhirInstance.DirectionElement = new Code<Hl7.Fhir.Model.DataRequirement.SortDirection> ();
-	fhirInstance.DirectionElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeDirectionElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeDirectionElement != null) {
+		fhirInstance.DirectionElement = new Code<Hl7.Fhir.Model.DataRequirement.SortDirection> ();
+		fhirInstance.DirectionElement.ObjectValue = __temp_codeDirectionElement;
+	}
 	return fhirInstance;
 }
 
@@ -61428,8 +62322,11 @@ public static Hl7.Fhir.Model.Distance? Marshal_Distance(FHIR_Marshalling.Distanc
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
-	fhirInstance.ComparatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeComparatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeComparatorElement != null) {
+		fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
+		fhirInstance.ComparatorElement.ObjectValue = __temp_codeComparatorElement;
+	}
 	var _unit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_unit_temp != null) {
 		fhirInstance.UnitElement = new Hl7.Fhir.Model.FhirString(_unit_temp);
@@ -61655,8 +62552,11 @@ public static Hl7.Fhir.Model.Duration? Marshal_Duration(FHIR_Marshalling.Duratio
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
-	fhirInstance.ComparatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeComparatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeComparatorElement != null) {
+		fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
+		fhirInstance.ComparatorElement.ObjectValue = __temp_codeComparatorElement;
+	}
 	var _unit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_unit_temp != null) {
 		fhirInstance.UnitElement = new Hl7.Fhir.Model.FhirString(_unit_temp);
@@ -62944,8 +63844,11 @@ public static Hl7.Fhir.Model.ElementDefinition.SlicingComponent? Marshal_Element
 		fhirInstance.OrderedElement = _ordered_temp;
 	}
 	
-	fhirInstance.RulesElement = new Code<Hl7.Fhir.Model.ElementDefinition.SlicingRules> ();
-	fhirInstance.RulesElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
+	var __temp_codeRulesElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
+	if(__temp_codeRulesElement != null) {
+		fhirInstance.RulesElement = new Code<Hl7.Fhir.Model.ElementDefinition.SlicingRules> ();
+		fhirInstance.RulesElement.ObjectValue = __temp_codeRulesElement;
+	}
 	return fhirInstance;
 }
 
@@ -62971,8 +63874,11 @@ public static Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent? Marshal_E
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ElementDefinition.DiscriminatorType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.ElementDefinition.DiscriminatorType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _path_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_path_temp != null) {
 		fhirInstance.PathElement = new Hl7.Fhir.Model.FhirString(_path_temp);
@@ -63087,8 +63993,11 @@ public static Hl7.Fhir.Model.ElementDefinition.TypeRefComponent? Marshal_Element
 		
 		}
 		
-	fhirInstance.VersioningElement = new Code<Hl7.Fhir.Model.ElementDefinition.ReferenceVersionRules> ();
-	fhirInstance.VersioningElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	var __temp_codeVersioningElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	if(__temp_codeVersioningElement != null) {
+		fhirInstance.VersioningElement = new Code<Hl7.Fhir.Model.ElementDefinition.ReferenceVersionRules> ();
+		fhirInstance.VersioningElement.ObjectValue = __temp_codeVersioningElement;
+	}
 	return fhirInstance;
 }
 
@@ -63451,8 +64360,11 @@ public static Hl7.Fhir.Model.ElementDefinition.ConstraintComponent? Marshal_Elem
 		fhirInstance.RequirementsElement = new Hl7.Fhir.Model.Markdown(_requirements_temp);
 	}
 	
-	fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.ConstraintSeverity> ();
-	fhirInstance.SeverityElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	var __temp_codeSeverityElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
+	if(__temp_codeSeverityElement != null) {
+		fhirInstance.SeverityElement = new Code<Hl7.Fhir.Model.ConstraintSeverity> ();
+		fhirInstance.SeverityElement.ObjectValue = __temp_codeSeverityElement;
+	}
 	var _human_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
 	if(_human_temp != null) {
 		fhirInstance.HumanElement = new Hl7.Fhir.Model.FhirString(_human_temp);
@@ -63498,8 +64410,11 @@ public static Hl7.Fhir.Model.ElementDefinition.ElementDefinitionBindingComponent
 		
 	}
 	
-	fhirInstance.StrengthElement = new Code<Hl7.Fhir.Model.BindingStrength> ();
-	fhirInstance.StrengthElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeStrengthElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeStrengthElement != null) {
+		fhirInstance.StrengthElement = new Code<Hl7.Fhir.Model.BindingStrength> ();
+		fhirInstance.StrengthElement.ObjectValue = __temp_codeStrengthElement;
+	}
 	var _description_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_description_temp != null) {
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.Markdown(_description_temp);
@@ -63957,8 +64872,11 @@ public static Hl7.Fhir.Model.HumanName? Marshal_HumanName(FHIR_Marshalling.Human
 		
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.HumanName.NameUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.HumanName.NameUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	var _text_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_text_temp != null) {
 		fhirInstance.TextElement = new Hl7.Fhir.Model.FhirString(_text_temp);
@@ -64037,8 +64955,11 @@ public static Hl7.Fhir.Model.Identifier? Marshal_Identifier(FHIR_Marshalling.Ide
 		
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.Identifier.IdentifierUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.Identifier.IdentifierUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)) != null) {
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
@@ -64226,8 +65147,11 @@ public static Hl7.Fhir.Model.Money? Marshal_Money(FHIR_Marshalling.Money* in_nat
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.CurrencyElement = new Code<Hl7.Fhir.Model.Money.Currencies> ();
-	fhirInstance.CurrencyElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeCurrencyElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeCurrencyElement != null) {
+		fhirInstance.CurrencyElement = new Code<Hl7.Fhir.Model.Money.Currencies> ();
+		fhirInstance.CurrencyElement.ObjectValue = __temp_codeCurrencyElement;
+	}
 	return fhirInstance;
 }
 
@@ -64253,8 +65177,11 @@ public static Hl7.Fhir.Model.Narrative? Marshal_Narrative(FHIR_Marshalling.Narra
 		
 	}
 	
-	fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Narrative.NarrativeStatus> ();
-	fhirInstance.StatusElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeStatusElement != null) {
+		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.Narrative.NarrativeStatus> ();
+		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
+	}
 	var _div_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_div_temp != null) {
 		fhirInstance.Div = _div_temp;
@@ -64290,8 +65217,11 @@ public static Hl7.Fhir.Model.ParameterDefinition? Marshal_ParameterDefinition(FH
 		fhirInstance.NameElement = new Hl7.Fhir.Model.Code(_name_temp);
 	}
 	
-	fhirInstance.UseElement = new Code<Hl7.Fhir.Model.OperationParameterUse> ();
-	fhirInstance.UseElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeUseElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeUseElement != null) {
+		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.OperationParameterUse> ();
+		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
+	}
 	var _min_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
@@ -64307,8 +65237,11 @@ public static Hl7.Fhir.Model.ParameterDefinition? Marshal_ParameterDefinition(FH
 		fhirInstance.DocumentationElement = new Hl7.Fhir.Model.FhirString(_documentation_temp);
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.FHIRAllTypes> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.FHIRAllTypes> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _profile_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
 	if(_profile_temp != null) {
 		fhirInstance.ProfileElement = new Hl7.Fhir.Model.Canonical(_profile_temp);
@@ -64611,8 +65544,11 @@ public static Hl7.Fhir.Model.Quantity? Marshal_Quantity(FHIR_Marshalling.Quantit
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
-	fhirInstance.ComparatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeComparatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeComparatorElement != null) {
+		fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
+		fhirInstance.ComparatorElement.ObjectValue = __temp_codeComparatorElement;
+	}
 	var _unit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_unit_temp != null) {
 		fhirInstance.UnitElement = new Hl7.Fhir.Model.FhirString(_unit_temp);
@@ -64763,8 +65699,11 @@ public static Hl7.Fhir.Model.RelatedArtifact? Marshal_RelatedArtifact(FHIR_Marsh
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _label_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_label_temp != null) {
 		fhirInstance.LabelElement = new Hl7.Fhir.Model.FhirString(_label_temp);
@@ -65146,8 +66085,11 @@ public static Hl7.Fhir.Model.Timing.RepeatComponent? Marshal_Timing_Repeat(FHIR_
 		fhirInstance.DurationMaxElement = _durationMax_temp;
 	}
 	
-	fhirInstance.DurationUnitElement = new Code<Hl7.Fhir.Model.Timing.UnitsOfTime> ();
-	fhirInstance.DurationUnitElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	var __temp_codeDurationUnitElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 104)).ToString();
+	if(__temp_codeDurationUnitElement != null) {
+		fhirInstance.DurationUnitElement = new Code<Hl7.Fhir.Model.Timing.UnitsOfTime> ();
+		fhirInstance.DurationUnitElement.ObjectValue = __temp_codeDurationUnitElement;
+	}
 	var _frequency_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 120)).GetValue());
 	if(_frequency_temp != null) {
 		fhirInstance.FrequencyElement = _frequency_temp;
@@ -65168,8 +66110,11 @@ public static Hl7.Fhir.Model.Timing.RepeatComponent? Marshal_Timing_Repeat(FHIR_
 		fhirInstance.PeriodMaxElement = _periodMax_temp;
 	}
 	
-	fhirInstance.PeriodUnitElement = new Code<Hl7.Fhir.Model.Timing.UnitsOfTime> ();
-	fhirInstance.PeriodUnitElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	var __temp_codePeriodUnitElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
+	if(__temp_codePeriodUnitElement != null) {
+		fhirInstance.PeriodUnitElement = new Code<Hl7.Fhir.Model.Timing.UnitsOfTime> ();
+		fhirInstance.PeriodUnitElement.ObjectValue = __temp_codePeriodUnitElement;
+	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 184)) > 0) {
 		var _dayOfWeek_list  = new List<Code<Hl7.Fhir.Model.DaysOfWeek>>((int)(*(System.UIntPtr*)((byte*)in_native + 184)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 184)); i++)
@@ -65238,8 +66183,11 @@ public static Hl7.Fhir.Model.TriggerDefinition? Marshal_TriggerDefinition(FHIR_M
 		
 	}
 	
-	fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.TriggerDefinition.TriggerType> ();
-	fhirInstance.TypeElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	var __temp_codeTypeElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToString();
+	if(__temp_codeTypeElement != null) {
+		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.TriggerDefinition.TriggerType> ();
+		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
+	}
 	var _name_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
 	if(_name_temp != null) {
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
@@ -65370,8 +66318,11 @@ public static Hl7.Fhir.Model.Quantity? Marshal_SimpleQuantity(FHIR_Marshalling.S
 		fhirInstance.ValueElement = _value_temp;
 	}
 	
-	fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
-	fhirInstance.ComparatorElement.ObjectValue = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	var __temp_codeComparatorElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToString();
+	if(__temp_codeComparatorElement != null) {
+		fhirInstance.ComparatorElement = new Code<Hl7.Fhir.Model.Quantity.QuantityComparator> ();
+		fhirInstance.ComparatorElement.ObjectValue = __temp_codeComparatorElement;
+	}
 	var _unit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToString();
 	if(_unit_temp != null) {
 		fhirInstance.UnitElement = new Hl7.Fhir.Model.FhirString(_unit_temp);

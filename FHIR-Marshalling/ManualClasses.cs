@@ -122,6 +122,7 @@ namespace FHIR_Marshalling
 
         public DateTimeOffset? ToDateTimeOffset()
         {
+            if (year == 0) return null;
             TimeSpan timespan = TimeSpan.Zero;
             if (timezone_char != 'Z' && timezone_char != 0)
             {
@@ -146,6 +147,7 @@ namespace FHIR_Marshalling
 
         public Instant? ToFhirInstant()
         {
+            if (year == 0) return null;
             if(precision != 0)
             {
                 return new Instant(ToDateTimeOffset());
@@ -155,6 +157,7 @@ namespace FHIR_Marshalling
 
         public Date? ToFhirDate()
         {
+            if (year == 0) return null;
             if(precision == Precision.Day)
             {
                 return new Date(year, month, day);
@@ -183,6 +186,7 @@ namespace FHIR_Marshalling
 
         public FhirDateTime? ToFhirDateTime()
         {
+            if (year == 0) return null;
             if(precision >= Precision.Second)
             {
                 TimeSpan timespan = TimeSpan.Zero;

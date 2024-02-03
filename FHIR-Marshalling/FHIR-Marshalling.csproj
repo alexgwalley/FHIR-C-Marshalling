@@ -5,12 +5,17 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="bin\x64\Debug\Output\profiles-others-firely.json" />
+    <Content Include="bin\x64\Debug\Output\profiles-others-native.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Hl7.Fhir.R4" Version="5.5.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="bin\Debug\Output\" />
     <Folder Include="Input\" />
     <Folder Include="Output\" />
   </ItemGroup>
