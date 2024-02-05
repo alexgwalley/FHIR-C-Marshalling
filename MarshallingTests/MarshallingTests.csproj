@@ -9,6 +9,14 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Output\generated.cs" />
     <Compile Remove="Output\GeneratedMarshalling.cs" />
@@ -26,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="bin\Debug\net6\Output\" />
     <Folder Include="Output\" />
   </ItemGroup>
 

@@ -45,7 +45,7 @@ namespace MarshallingTests
             var keys = CodeGen.NativeToFirely.Keys;
             foreach(var key in keys)
             {
-                if (key == typeof(Resource)) continue;
+                if (key == typeof(FHIR_Marshalling.Resource)) continue;
 
                 var mappingInfo = CodeGen.GetFirelyMappingInfo(key);
                 var liquidator = CodeGen.GetFhirLiquidator(key, mappingInfo);
@@ -54,7 +54,7 @@ namespace MarshallingTests
 
             funcs.Add(CodeGen.GetDeserializeResource(CodeGen.NativeToFirely));
 
-            using(var file = new StreamWriter("D:/Programming Stuff/FHIR-C-Marshalling/MarshallingTests/Output/GeneratedMarshalling.cs"))
+            using(var file = new StreamWriter("Output/GeneratedMarshalling.cs"))
             {
                 file.WriteLine("using Hl7.Fhir.Model;");
                 file.WriteLine("using FHIR_Marshalling;");

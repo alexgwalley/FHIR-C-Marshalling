@@ -27,6 +27,12 @@ namespace FHIR_Marshalling
             // TODO(agw): add error handling
             return decimal.Parse(ToString());
         }
+
+        public FhirDecimal?  ToFhirDecimal()
+        {
+            if((int)size == 0) return null;
+            return new FhirDecimal(decimal.Parse(ToString()));
+        }
     }
 
     [StructLayout(LayoutKind.Explicit)]
@@ -53,6 +59,23 @@ namespace FHIR_Marshalling
         {
             if(HasValue == 0) return null;
             return Value;
+        }
+
+        public Integer? ToFhirInteger()
+        {
+            if (HasValue == 0) return null;
+            return new Integer(HasValue);
+        }
+        public UnsignedInt? ToFhirUnsignedInt()
+        {
+            if (HasValue == 0) return null;
+            return new UnsignedInt(HasValue);
+        }
+
+        public PositiveInt? ToFhirPositiveInt()
+        {
+            if (HasValue == 0) return null;
+            return new PositiveInt(HasValue);
         }
 
     };
@@ -83,6 +106,13 @@ namespace FHIR_Marshalling
         {
             if(HasValue == 0) return null;
             return Value == 1;
+        }
+
+        public FhirBoolean? ToFhirBoolean()
+        {
+            if (HasValue == 0) return null;
+            return new FhirBoolean(Value == 1);
+
         }
 
     };

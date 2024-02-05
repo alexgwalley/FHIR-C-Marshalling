@@ -90,13 +90,13 @@ namespace FHIR_Marshalling
             new ConversionEntry{ FirelyType = typeof(Date), ExpectedNativeType = typeof(ISO8601_Time), SingleFormatString = "{0}.ToFhirDate()" },
             new ConversionEntry{ FirelyType = typeof(FhirDateTime), ExpectedNativeType = typeof(ISO8601_Time), SingleFormatString = "{0}.ToFhirDateTime()" },
             new ConversionEntry{ FirelyType = typeof(Time), ExpectedNativeType = typeof(ISO8601_Time), SingleFormatString = "{0}.ToFhirTime()" },
-            new ConversionEntry{ FirelyType = typeof(FhirBoolean), ExpectedNativeType = typeof(NullableBoolean), SingleFormatString = "new FhirBoolean({0}.GetValue())" },
+            new ConversionEntry{ FirelyType = typeof(FhirBoolean), ExpectedNativeType = typeof(NullableBoolean), SingleFormatString = "{0}.ToFhirBoolean()" },
             new ConversionEntry{ FirelyType = typeof(decimal), ExpectedNativeType = typeof(String8), SingleFormatString = "{0}.DecimalValue()" },
             new ConversionEntry{ FirelyType = typeof(string), ExpectedNativeType = typeof(String8), SingleFormatString = "{0}.ToString()" },
-            new ConversionEntry{ FirelyType = typeof(FhirDecimal), ExpectedNativeType = typeof(String8), SingleFormatString = "new FhirDecimal({0}.DecimalValue())" },
-            new ConversionEntry{ FirelyType = typeof(Integer), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = $"new Integer({{0}}.{nameof(NullableInt32.GetValue)}())" },
-            new ConversionEntry{ FirelyType = typeof(PositiveInt), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = $"new PositiveInt({{0}}.{nameof(NullableInt32.GetValue)}())" },
-            new ConversionEntry{ FirelyType = typeof(UnsignedInt), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = $"new UnsignedInt({{0}}.{nameof(NullableInt32.GetValue)}())" },
+            new ConversionEntry{ FirelyType = typeof(FhirDecimal), ExpectedNativeType = typeof(String8), SingleFormatString = "{0}.ToFhirDecimal()" },
+            new ConversionEntry{ FirelyType = typeof(Integer), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = "{0}.ToFhirInteger()" },
+            new ConversionEntry{ FirelyType = typeof(PositiveInt), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = "{0}.ToFhirPositiveInt()" },
+            new ConversionEntry{ FirelyType = typeof(UnsignedInt), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = "{0}.ToFhirUnsignedInt()" },
             new ConversionEntry{ FirelyType = typeof(Integer64), ExpectedNativeType = typeof(long), SingleFormatString = $"new Integer64({{0}}.{nameof(NullableInt32.GetValue)}())" },
         };
 
@@ -258,6 +258,86 @@ namespace FHIR_Marshalling
             return result;
         }
 
+        public static void NullCheckAssignment(IndentedStringBuilder builder, string nativeFieldAccessor,
+                                            Type nativeType, string nativeFieldName,
+                                            Type firelyType, string firelyFieldName,
+                                            string firelyInstance)
+
+        {
+            if (firelyType == typeof(Base64Binary))
+            {
+                var primativeName = AppendValueCreation(builder, nativeType, nativeFieldName, nativeFieldAccessor, firelyType);
+                builder.AppendLine($"{firelyInstance}.{firelyFieldName} = {primativeName};");
+                builder.AppendLine("");
+            }
+            else if (IsNativePrimative(nativeType))
+            {
+                if (HasDirectConversion(firelyType))
+                {
+                    string firelyFromCS = FirelyPrimativeFromNativePrimative(nativeType, firelyType, nativeFieldAccessor);
+                    string tempName = $"{nativeFieldName}_temp";
+                    builder.AppendLine($"var {tempName} = {firelyFromCS};");
+                    builder.AppendLine($"if({tempName} != null) {{");
+                    builder.IndentedAmount += 1;
+
+                    builder.AppendLine($"{firelyInstance}.{firelyFieldName} = {tempName};");
+
+                    builder.IndentedAmount -= 1;
+                    builder.AppendLine($"}}");
+                    builder.AppendLine("");
+                }
+                else
+                {
+                    if (nativeType == firelyType)
+                    {
+                        builder.AppendLine($"{firelyInstance}.{firelyFieldName} = {nativeFieldAccessor};");
+                        builder.AppendLine("");
+                    }
+                    else if (CSTypeFromNativeType.TryGetValue(nativeType, out Type csType))
+                    {
+                        if (csType == firelyType)
+                        {
+                            builder.AppendLine($"{firelyInstance}.{firelyFieldName} = {nativeFieldAccessor};");
+                            builder.AppendLine("");
+                        }
+
+                        var constructor = firelyType.GetConstructor(new Type[] { csType });
+                        if (constructor != null)
+                        {
+                            var csPrimative = CSPrimativeFromNativePrimative(nativeType, nativeFieldAccessor);
+                            string tempName = $"{nativeFieldName}_temp";
+                            builder.AppendLine($"var {tempName} = {csPrimative};");
+                            builder.AppendLine($"if({tempName} != null) {{");
+                            builder.IndentedAmount += 1;
+
+                            builder.AppendLine($"{firelyInstance}.{firelyFieldName} = new {firelyType.FullName}({tempName});");
+
+                            builder.IndentedAmount -= 1;
+                            builder.AppendLine($"}}");
+                            builder.AppendLine("");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!NativeToFirely.ContainsKey(nativeType)) { throw new NotImplementedException(); }
+
+                string className = nativeType.Name;
+
+                builder.AppendLine($"if({nativeFieldAccessor} != null) {{");
+                builder.IndentedAmount += 1;
+
+                string deserializeCall = $"Marshal_{className}({nativeFieldAccessor})";
+                builder.AppendLine($"{firelyInstance}.{firelyFieldName} = {deserializeCall};");
+
+                builder.IndentedAmount -= 1;
+                builder.AppendLine($"}}");
+                builder.AppendLine("");
+            }
+
+        }
+
         public static string GetFhirLiquidator(Type nativeType, MappingInfo info)
         {
             var builder = new IndentedStringBuilder();
@@ -288,77 +368,10 @@ namespace FHIR_Marshalling
                     case MemberTypeEnum.Primative:
                         {
                             string nativeFieldAccessor = AccessorForNative("in_native", nativeType, member.NativeField);
-                            if(member.FirelyType == typeof(Base64Binary))
-                            {
-                                var primativeName = AppendValueCreation(builder, member.NativeType, member.NativeFieldName, nativeFieldAccessor, member.FirelyType);
-                                builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {primativeName};");
-                                builder.AppendLine("");
-                            }
-                            else if (IsNativePrimative(member.NativeType))
-                            {
-                                if (HasDirectConversion(member.FirelyType))
-                                {
-                                    string firelyFromCS = FirelyPrimativeFromNativePrimative(member.NativeType, member.FirelyType, nativeFieldAccessor);
-                                    string tempName = $"{member.NativeFieldName}_temp";
-                                    builder.AppendLine($"var {tempName} = {firelyFromCS};");
-                                    builder.AppendLine($"if({tempName} != null) {{");
-                                    builder.IndentedAmount += 1;
-
-                                    builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {tempName};");
-
-                                    builder.IndentedAmount -= 1;
-                                    builder.AppendLine($"}}");
-                                    builder.AppendLine("");
-                                }
-                                else
-                                {
-                                    if (member.NativeType == member.FirelyType)
-                                    {
-                                        builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {nativeFieldAccessor};");
-                                        builder.AppendLine("");
-                                    }
-                                    else if (CSTypeFromNativeType.TryGetValue(member.NativeType, out Type csType))
-                                    {
-                                        if (csType == member.FirelyType)
-                                        {
-                                            builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {nativeFieldAccessor};");
-                                            builder.AppendLine("");
-                                        }
-
-                                        var constructor = member.FirelyType.GetConstructor(new Type[] { csType });
-                                        if (constructor != null)
-                                        {
-                                            var csPrimative = CSPrimativeFromNativePrimative(member.NativeType, nativeFieldAccessor);
-                                            string tempName = $"{member.NativeFieldName}_temp";
-                                            builder.AppendLine($"var {tempName} = {csPrimative};");
-                                            builder.AppendLine($"if({tempName} != null) {{");
-                                            builder.IndentedAmount += 1;
-
-                                            builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = new {member.FirelyType.FullName}({tempName});");
-
-                                            builder.IndentedAmount -= 1;
-                                            builder.AppendLine($"}}");
-                                            builder.AppendLine("");
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (!NativeToFirely.ContainsKey(member.NativeType)) { throw new NotImplementedException(); }
-
-                                string className = member.NativeType.Name;
-
-                                builder.AppendLine($"if({nativeFieldAccessor} != null) {{");
-                                builder.IndentedAmount += 1;
-
-                                string deserializeCall = $"Marshal_{className}({nativeFieldAccessor})";
-                                builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {deserializeCall};");
-
-                                builder.IndentedAmount -= 1;
-                                builder.AppendLine($"}}");
-                                builder.AppendLine("");
-                            }
+                            NullCheckAssignment(builder, nativeFieldAccessor,
+                                member.NativeType, member.NativeFieldName,
+                                member.FirelyType, member.FirelyFieldName,
+                                firelyInstance);
                         }
                         break;
                         
@@ -419,8 +432,16 @@ namespace FHIR_Marshalling
                                 builder.AppendLine($"var {unionStructName} = &{unionAccessor};");
 
                                 string unionFieldAccessor = AccessorForNative(unionStructName, member.NativeType, entry.NativeField);
+
+                                NullCheckAssignment(builder, unionFieldAccessor,
+                                    entry.NativeType, member.NativeFieldName,
+                                    entry.FirelyType, member.FirelyFieldName,
+                                    firelyInstance);
+
+                                /*
                                 var primativeName = AppendValueCreation(builder, entry.NativeType, member.NativeFieldName, unionFieldAccessor, entry.FirelyType);
                                 builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {primativeName};");
+                                */
 
                                 builder.IndentedAmount -= 1;
                                 builder.AppendLine($"}} break;");

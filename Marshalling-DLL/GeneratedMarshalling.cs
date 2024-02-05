@@ -190,7 +190,7 @@ public static Hl7.Fhir.Model.Account.CoverageComponent? Marshal_Account_Coverage
 		fhirInstance.Coverage = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 56)));
 	}
 	
-	var _priority_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _priority_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirPositiveInt();
 	if(_priority_temp != null) {
 		fhirInstance.PriorityElement = _priority_temp;
 	}
@@ -236,7 +236,7 @@ public static Hl7.Fhir.Model.Account.GuarantorComponent? Marshal_Account_Guarant
 		fhirInstance.Party = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 56)));
 	}
 	
-	var _onHold_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _onHold_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_onHold_temp != null) {
 		fhirInstance.OnHoldElement = _onHold_temp;
 	}
@@ -354,7 +354,7 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -362,15 +362,17 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 	switch((*(FHIR_Marshalling.ActivityDefinition.SubjectType*)((byte*)in_native + 248))) {
 		case FHIR_Marshalling.ActivityDefinition.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.ActivityDefinition.SubjectUnion*)((byte*)in_native + 240));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.ActivityDefinition.SubjectUnion*)((byte*)in_native + 240));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 256)).ToFhirDateTime();
@@ -562,7 +564,7 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
 		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
 	}
-	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 624)).GetValue());
+	var _doNotPerform_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 624)).ToFhirBoolean();
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
 	}
@@ -570,38 +572,46 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 	switch((*(FHIR_Marshalling.ActivityDefinition.TimingType*)((byte*)in_native + 648))) {
 		case FHIR_Marshalling.ActivityDefinition.TimingType.Timing: {
 			var _timingTiming__union = &(*(FHIR_Marshalling.ActivityDefinition.TimingUnion*)((byte*)in_native + 632));
-			var _timing_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.TimingType.DateTime: {
 			var _timingDateTime__union = &(*(FHIR_Marshalling.ActivityDefinition.TimingUnion*)((byte*)in_native + 632));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.TimingType.Age: {
 			var _timingAge__union = &(*(FHIR_Marshalling.ActivityDefinition.TimingUnion*)((byte*)in_native + 632));
-			var _timing_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.TimingType.Period: {
 			var _timingPeriod__union = &(*(FHIR_Marshalling.ActivityDefinition.TimingUnion*)((byte*)in_native + 632));
-			var _timing_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.TimingType.Range: {
 			var _timingRange__union = &(*(FHIR_Marshalling.ActivityDefinition.TimingUnion*)((byte*)in_native + 632));
-			var _timing_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.TimingType.Duration: {
 			var _timingDuration__union = &(*(FHIR_Marshalling.ActivityDefinition.TimingUnion*)((byte*)in_native + 632));
-			var _timing_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 656)) != null) {
@@ -623,15 +633,17 @@ public static Hl7.Fhir.Model.ActivityDefinition? Marshal_ActivityDefinition(FHIR
 	switch((*(FHIR_Marshalling.ActivityDefinition.ProductType*)((byte*)in_native + 688))) {
 		case FHIR_Marshalling.ActivityDefinition.ProductType.Reference: {
 			var _productReference__union = &(*(FHIR_Marshalling.ActivityDefinition.ProductUnion*)((byte*)in_native + 680));
-			var _product_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)) != null) {
+				fhirInstance.Product = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)));
+			}
 			
-			fhirInstance.Product = _product_primative;
 		} break;
 		case FHIR_Marshalling.ActivityDefinition.ProductType.CodeableConcept: {
 			var _productCodeableConcept__union = &(*(FHIR_Marshalling.ActivityDefinition.ProductUnion*)((byte*)in_native + 680));
-			var _product_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)) != null) {
+				fhirInstance.Product = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Product = _product_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 696)) != null) {
@@ -1246,32 +1258,40 @@ public static Hl7.Fhir.Model.AllergyIntolerance? Marshal_AllergyIntolerance(FHIR
 	switch((*(FHIR_Marshalling.AllergyIntolerance.OnsetType*)((byte*)in_native + 240))) {
 		case FHIR_Marshalling.AllergyIntolerance.OnsetType.DateTime: {
 			var _onsetDateTime__union = &(*(FHIR_Marshalling.AllergyIntolerance.OnsetUnion*)((byte*)in_native + 224));
-			var _onset_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_onsetDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Onset = _onset_primative;
+			var _onset_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_onsetDateTime__union + 0)).ToFhirDateTime();
+			if(_onset_temp != null) {
+				fhirInstance.Onset = _onset_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.AllergyIntolerance.OnsetType.Age: {
 			var _onsetAge__union = &(*(FHIR_Marshalling.AllergyIntolerance.OnsetUnion*)((byte*)in_native + 224));
-			var _onset_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.AllergyIntolerance.OnsetType.Period: {
 			var _onsetPeriod__union = &(*(FHIR_Marshalling.AllergyIntolerance.OnsetUnion*)((byte*)in_native + 224));
-			var _onset_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.AllergyIntolerance.OnsetType.Range: {
 			var _onsetRange__union = &(*(FHIR_Marshalling.AllergyIntolerance.OnsetUnion*)((byte*)in_native + 224));
-			var _onset_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.AllergyIntolerance.OnsetType.String: {
 			var _onsetString__union = &(*(FHIR_Marshalling.AllergyIntolerance.OnsetUnion*)((byte*)in_native + 224));
-			var _onset_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_onsetString__union + 0)).ToString();
-			var _onset_primative =  (_onset_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_onset_primative_temp);
-			fhirInstance.Onset = _onset_primative;
+			var _onset_temp = (*(FHIR_Marshalling.String8*)((byte*)_onsetString__union + 0)).ToString();
+			if(_onset_temp != null) {
+				fhirInstance.Onset = new Hl7.Fhir.Model.FhirString(_onset_temp);
+			}
+			
 		} break;
 	}
 	var _recordedDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 248)).ToFhirDateTime();
@@ -1552,7 +1572,7 @@ public static Hl7.Fhir.Model.Appointment? Marshal_Appointment(FHIR_Marshalling.A
 		
 	}
 	
-	var _priority_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 248)).GetValue());
+	var _priority_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 248)).ToFhirUnsignedInt();
 	if(_priority_temp != null) {
 		fhirInstance.PriorityElement = _priority_temp;
 	}
@@ -1584,7 +1604,7 @@ public static Hl7.Fhir.Model.Appointment? Marshal_Appointment(FHIR_Marshalling.A
 		fhirInstance.EndElement = _end_temp;
 	}
 	
-	var _minutesDuration_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 320)).GetValue());
+	var _minutesDuration_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 320)).ToFhirPositiveInt();
 	if(_minutesDuration_temp != null) {
 		fhirInstance.MinutesDurationElement = _minutesDuration_temp;
 	}
@@ -2052,7 +2072,7 @@ public static Hl7.Fhir.Model.AuditEvent.AgentComponent? Marshal_AuditEvent_Agent
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	var _requestor_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 120)).GetValue());
+	var _requestor_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 120)).ToFhirBoolean();
 	if(_requestor_temp != null) {
 		fhirInstance.RequestorElement = _requestor_temp;
 	}
@@ -2339,9 +2359,11 @@ public static Hl7.Fhir.Model.AuditEvent.DetailComponent? Marshal_AuditEvent_Enti
 	switch((*(FHIR_Marshalling.AuditEvent_Entity_Detail.ValueType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.AuditEvent_Entity_Detail.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.AuditEvent_Entity_Detail.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.AuditEvent_Entity_Detail.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.AuditEvent_Entity_Detail.ValueUnion*)((byte*)in_native + 72));
@@ -2352,6 +2374,7 @@ public static Hl7.Fhir.Model.AuditEvent.DetailComponent? Marshal_AuditEvent_Enti
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 	}
 	return fhirInstance;
@@ -2599,7 +2622,7 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct? Marshal_BiologicallyDer
 		
 	}
 	
-	var _quantity_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 192)).GetValue());
+	var _quantity_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 192)).ToFhirInteger();
 	if(_quantity_temp != null) {
 		fhirInstance.QuantityElement = _quantity_temp;
 	}
@@ -2696,14 +2719,18 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct.CollectionComponent? Mar
 	switch((*(FHIR_Marshalling.BiologicallyDerivedProduct_Collection.CollectedType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.BiologicallyDerivedProduct_Collection.CollectedType.DateTime: {
 			var _collectedDateTime__union = &(*(FHIR_Marshalling.BiologicallyDerivedProduct_Collection.CollectedUnion*)((byte*)in_native + 72));
-			var _collected_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_collectedDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Collected = _collected_primative;
+			var _collected_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_collectedDateTime__union + 0)).ToFhirDateTime();
+			if(_collected_temp != null) {
+				fhirInstance.Collected = _collected_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.BiologicallyDerivedProduct_Collection.CollectedType.Period: {
 			var _collectedPeriod__union = &(*(FHIR_Marshalling.BiologicallyDerivedProduct_Collection.CollectedUnion*)((byte*)in_native + 72));
-			var _collected_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_collectedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_collectedPeriod__union + 0)) != null) {
+				fhirInstance.Collected = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_collectedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Collected = _collected_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -2759,14 +2786,18 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct.ProcessingComponent? Mar
 	switch((*(FHIR_Marshalling.BiologicallyDerivedProduct_Processing.TimeType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.BiologicallyDerivedProduct_Processing.TimeType.DateTime: {
 			var _timeDateTime__union = &(*(FHIR_Marshalling.BiologicallyDerivedProduct_Processing.TimeUnion*)((byte*)in_native + 88));
-			var _time_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timeDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Time = _time_primative;
+			var _time_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timeDateTime__union + 0)).ToFhirDateTime();
+			if(_time_temp != null) {
+				fhirInstance.Time = _time_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.BiologicallyDerivedProduct_Processing.TimeType.Period: {
 			var _timePeriod__union = &(*(FHIR_Marshalling.BiologicallyDerivedProduct_Processing.TimeUnion*)((byte*)in_native + 88));
-			var _time_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)) != null) {
+				fhirInstance.Time = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)));
+			}
 			
-			fhirInstance.Time = _time_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -2814,14 +2845,18 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct.ManipulationComponent? M
 	switch((*(FHIR_Marshalling.BiologicallyDerivedProduct_Manipulation.TimeType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.BiologicallyDerivedProduct_Manipulation.TimeType.DateTime: {
 			var _timeDateTime__union = &(*(FHIR_Marshalling.BiologicallyDerivedProduct_Manipulation.TimeUnion*)((byte*)in_native + 72));
-			var _time_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timeDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Time = _time_primative;
+			var _time_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timeDateTime__union + 0)).ToFhirDateTime();
+			if(_time_temp != null) {
+				fhirInstance.Time = _time_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.BiologicallyDerivedProduct_Manipulation.TimeType.Period: {
 			var _timePeriod__union = &(*(FHIR_Marshalling.BiologicallyDerivedProduct_Manipulation.TimeUnion*)((byte*)in_native + 72));
-			var _time_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)) != null) {
+				fhirInstance.Time = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)));
+			}
 			
-			fhirInstance.Time = _time_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -2866,7 +2901,7 @@ public static Hl7.Fhir.Model.BiologicallyDerivedProduct.StorageComponent? Marsha
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	var _temperature_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).DecimalValue());
+	var _temperature_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToFhirDecimal();
 	if(_temperature_temp != null) {
 		fhirInstance.TemperatureElement = _temperature_temp;
 	}
@@ -2959,7 +2994,7 @@ public static Hl7.Fhir.Model.BodyStructure? Marshal_BodyStructure(FHIR_Marshalli
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -3046,7 +3081,7 @@ public static Hl7.Fhir.Model.Bundle? Marshal_Bundle(FHIR_Marshalling.Bundle* in_
 		fhirInstance.TimestampElement = _timestamp_temp;
 	}
 	
-	var _total_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).GetValue());
+	var _total_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).ToFhirUnsignedInt();
 	if(_total_temp != null) {
 		fhirInstance.TotalElement = _total_temp;
 	}
@@ -3238,7 +3273,7 @@ public static Hl7.Fhir.Model.Bundle.SearchComponent? Marshal_Bundle_Entry_Search
 		fhirInstance.ModeElement = new Code<Hl7.Fhir.Model.Bundle.SearchEntryMode> ();
 		fhirInstance.ModeElement.ObjectValue = __temp_codeModeElement;
 	}
-	var _score_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).DecimalValue());
+	var _score_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToFhirDecimal();
 	if(_score_temp != null) {
 		fhirInstance.ScoreElement = _score_temp;
 	}
@@ -3463,7 +3498,7 @@ public static Hl7.Fhir.Model.CapabilityStatement? Marshal_CapabilityStatement(FH
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -3900,7 +3935,7 @@ public static Hl7.Fhir.Model.CapabilityStatement.SecurityComponent? Marshal_Capa
 		
 	}
 	
-	var _cors_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _cors_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_cors_temp != null) {
 		fhirInstance.CorsElement = _cors_temp;
 	}
@@ -4004,17 +4039,17 @@ public static Hl7.Fhir.Model.CapabilityStatement.ResourceComponent? Marshal_Capa
 		fhirInstance.VersioningElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ResourceVersionPolicy> ();
 		fhirInstance.VersioningElement.ObjectValue = __temp_codeVersioningElement;
 	}
-	var _readHistory_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).GetValue());
+	var _readHistory_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).ToFhirBoolean();
 	if(_readHistory_temp != null) {
 		fhirInstance.ReadHistoryElement = _readHistory_temp;
 	}
 	
-	var _updateCreate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).GetValue());
+	var _updateCreate_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).ToFhirBoolean();
 	if(_updateCreate_temp != null) {
 		fhirInstance.UpdateCreateElement = _updateCreate_temp;
 	}
 	
-	var _conditionalCreate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 168)).GetValue());
+	var _conditionalCreate_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 168)).ToFhirBoolean();
 	if(_conditionalCreate_temp != null) {
 		fhirInstance.ConditionalCreateElement = _conditionalCreate_temp;
 	}
@@ -4024,7 +4059,7 @@ public static Hl7.Fhir.Model.CapabilityStatement.ResourceComponent? Marshal_Capa
 		fhirInstance.ConditionalReadElement = new Code<Hl7.Fhir.Model.CapabilityStatement.ConditionalReadStatus> ();
 		fhirInstance.ConditionalReadElement.ObjectValue = __temp_codeConditionalReadElement;
 	}
-	var _conditionalUpdate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 192)).GetValue());
+	var _conditionalUpdate_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 192)).ToFhirBoolean();
 	if(_conditionalUpdate_temp != null) {
 		fhirInstance.ConditionalUpdateElement = _conditionalUpdate_temp;
 	}
@@ -4349,7 +4384,7 @@ public static Hl7.Fhir.Model.CapabilityStatement.MessagingComponent? Marshal_Cap
 		
 	}
 	
-	var _reliableCache_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _reliableCache_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirUnsignedInt();
 	if(_reliableCache_temp != null) {
 		fhirInstance.ReliableCacheElement = _reliableCache_temp;
 	}
@@ -4992,7 +5027,7 @@ public static Hl7.Fhir.Model.CarePlan.DetailComponent? Marshal_CarePlan_Activity
 		fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 176)));
 	}
 	
-	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
+	var _doNotPerform_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).ToFhirBoolean();
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
 	}
@@ -5000,21 +5035,25 @@ public static Hl7.Fhir.Model.CarePlan.DetailComponent? Marshal_CarePlan_Activity
 	switch((*(FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledType*)((byte*)in_native + 208))) {
 		case FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledType.Timing: {
 			var _scheduledTiming__union = &(*(FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledUnion*)((byte*)in_native + 192));
-			var _scheduled_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_scheduledTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_scheduledTiming__union + 0)) != null) {
+				fhirInstance.Scheduled = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_scheduledTiming__union + 0)));
+			}
 			
-			fhirInstance.Scheduled = _scheduled_primative;
 		} break;
 		case FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledType.Period: {
 			var _scheduledPeriod__union = &(*(FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledUnion*)((byte*)in_native + 192));
-			var _scheduled_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_scheduledPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_scheduledPeriod__union + 0)) != null) {
+				fhirInstance.Scheduled = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_scheduledPeriod__union + 0)));
+			}
 			
-			fhirInstance.Scheduled = _scheduled_primative;
 		} break;
 		case FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledType.String: {
 			var _scheduledString__union = &(*(FHIR_Marshalling.CarePlan_Activity_Detail.ScheduledUnion*)((byte*)in_native + 192));
-			var _scheduled_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_scheduledString__union + 0)).ToString();
-			var _scheduled_primative =  (_scheduled_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_scheduled_primative_temp);
-			fhirInstance.Scheduled = _scheduled_primative;
+			var _scheduled_temp = (*(FHIR_Marshalling.String8*)((byte*)_scheduledString__union + 0)).ToString();
+			if(_scheduled_temp != null) {
+				fhirInstance.Scheduled = new Hl7.Fhir.Model.FhirString(_scheduled_temp);
+			}
+			
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 216)) != null) {
@@ -5036,15 +5075,17 @@ public static Hl7.Fhir.Model.CarePlan.DetailComponent? Marshal_CarePlan_Activity
 	switch((*(FHIR_Marshalling.CarePlan_Activity_Detail.ProductType*)((byte*)in_native + 248))) {
 		case FHIR_Marshalling.CarePlan_Activity_Detail.ProductType.CodeableConcept: {
 			var _productCodeableConcept__union = &(*(FHIR_Marshalling.CarePlan_Activity_Detail.ProductUnion*)((byte*)in_native + 240));
-			var _product_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)) != null) {
+				fhirInstance.Product = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Product = _product_primative;
 		} break;
 		case FHIR_Marshalling.CarePlan_Activity_Detail.ProductType.Reference: {
 			var _productReference__union = &(*(FHIR_Marshalling.CarePlan_Activity_Detail.ProductUnion*)((byte*)in_native + 240));
-			var _product_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)) != null) {
+				fhirInstance.Product = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)));
+			}
 			
-			fhirInstance.Product = _product_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 256)) != null) {
@@ -5389,7 +5430,7 @@ public static Hl7.Fhir.Model.CatalogEntry? Marshal_CatalogEntry(FHIR_Marshalling
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 136)));
 	}
 	
-	var _orderable_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 144)).GetValue());
+	var _orderable_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 144)).ToFhirBoolean();
 	if(_orderable_temp != null) {
 		fhirInstance.OrderableElement = _orderable_temp;
 	}
@@ -5660,20 +5701,25 @@ public static Hl7.Fhir.Model.ChargeItem? Marshal_ChargeItem(FHIR_Marshalling.Cha
 	switch((*(FHIR_Marshalling.ChargeItem.OccurrenceType*)((byte*)in_native + 240))) {
 		case FHIR_Marshalling.ChargeItem.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.ChargeItem.OccurrenceUnion*)((byte*)in_native + 224));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ChargeItem.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.ChargeItem.OccurrenceUnion*)((byte*)in_native + 224));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 		case FHIR_Marshalling.ChargeItem.OccurrenceType.Timing: {
 			var _occurrenceTiming__union = &(*(FHIR_Marshalling.ChargeItem.OccurrenceUnion*)((byte*)in_native + 224));
-			var _occurrence_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 248)) > 0) {
@@ -5716,7 +5762,7 @@ public static Hl7.Fhir.Model.ChargeItem? Marshal_ChargeItem(FHIR_Marshalling.Cha
 		
 	}
 	
-	var _factorOverride_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 312)).DecimalValue());
+	var _factorOverride_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 312)).ToFhirDecimal();
 	if(_factorOverride_temp != null) {
 		fhirInstance.FactorOverrideElement = _factorOverride_temp;
 	}
@@ -5766,15 +5812,17 @@ public static Hl7.Fhir.Model.ChargeItem? Marshal_ChargeItem(FHIR_Marshalling.Cha
 	switch((*(FHIR_Marshalling.ChargeItem.ProductType*)((byte*)in_native + 416))) {
 		case FHIR_Marshalling.ChargeItem.ProductType.Reference: {
 			var _productReference__union = &(*(FHIR_Marshalling.ChargeItem.ProductUnion*)((byte*)in_native + 408));
-			var _product_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)) != null) {
+				fhirInstance.Product = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_productReference__union + 0)));
+			}
 			
-			fhirInstance.Product = _product_primative;
 		} break;
 		case FHIR_Marshalling.ChargeItem.ProductType.CodeableConcept: {
 			var _productCodeableConcept__union = &(*(FHIR_Marshalling.ChargeItem.ProductUnion*)((byte*)in_native + 408));
-			var _product_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)) != null) {
+				fhirInstance.Product = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_productCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Product = _product_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 424)) > 0) {
@@ -5996,7 +6044,7 @@ public static Hl7.Fhir.Model.ChargeItemDefinition? Marshal_ChargeItemDefinition(
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -6270,7 +6318,7 @@ public static Hl7.Fhir.Model.ChargeItemDefinition.PriceComponentComponent? Marsh
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -6652,7 +6700,7 @@ public static Hl7.Fhir.Model.Claim.CareTeamComponent? Marshal_Claim_CareTeam(FHI
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -6661,7 +6709,7 @@ public static Hl7.Fhir.Model.Claim.CareTeamComponent? Marshal_Claim_CareTeam(FHI
 		fhirInstance.Provider = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 64)));
 	}
 	
-	var _responsible_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _responsible_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_responsible_temp != null) {
 		fhirInstance.ResponsibleElement = _responsible_temp;
 	}
@@ -6711,7 +6759,7 @@ public static Hl7.Fhir.Model.Claim.SupportingInformationComponent? Marshal_Claim
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -6727,45 +6775,57 @@ public static Hl7.Fhir.Model.Claim.SupportingInformationComponent? Marshal_Claim
 	switch((*(FHIR_Marshalling.Claim_SupportingInfo.TimingType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.Claim_SupportingInfo.TimingType.Date: {
 			var _timingDate__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.TimingUnion*)((byte*)in_native + 80));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDate__union + 0)).ToFhirDate();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDate__union + 0)).ToFhirDate();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Claim_SupportingInfo.TimingType.Period: {
 			var _timingPeriod__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.TimingUnion*)((byte*)in_native + 80));
-			var _timing_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.Claim_SupportingInfo.ValueType*)((byte*)in_native + 120))) {
 		case FHIR_Marshalling.Claim_SupportingInfo.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Claim_SupportingInfo.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Claim_SupportingInfo.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Claim_SupportingInfo.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Claim_SupportingInfo.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Claim_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 128)) != null) {
@@ -6809,7 +6869,7 @@ public static Hl7.Fhir.Model.Claim.DiagnosisComponent? Marshal_Claim_Diagnosis(F
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -6817,15 +6877,17 @@ public static Hl7.Fhir.Model.Claim.DiagnosisComponent? Marshal_Claim_Diagnosis(F
 	switch((*(FHIR_Marshalling.Claim_Diagnosis.DiagnosisType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Claim_Diagnosis.DiagnosisType.CodeableConcept: {
 			var _diagnosisCodeableConcept__union = &(*(FHIR_Marshalling.Claim_Diagnosis.DiagnosisUnion*)((byte*)in_native + 64));
-			var _diagnosis_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)) != null) {
+				fhirInstance.Diagnosis = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Diagnosis = _diagnosis_primative;
 		} break;
 		case FHIR_Marshalling.Claim_Diagnosis.DiagnosisType.Reference: {
 			var _diagnosisReference__union = &(*(FHIR_Marshalling.Claim_Diagnosis.DiagnosisUnion*)((byte*)in_native + 64));
-			var _diagnosis_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)) != null) {
+				fhirInstance.Diagnosis = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)));
+			}
 			
-			fhirInstance.Diagnosis = _diagnosis_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 80)) > 0) {
@@ -6885,7 +6947,7 @@ public static Hl7.Fhir.Model.Claim.ProcedureComponent? Marshal_Claim_Procedure(F
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -6910,15 +6972,17 @@ public static Hl7.Fhir.Model.Claim.ProcedureComponent? Marshal_Claim_Procedure(F
 	switch((*(FHIR_Marshalling.Claim_Procedure.ProcedureType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.Claim_Procedure.ProcedureType.CodeableConcept: {
 			var _procedureCodeableConcept__union = &(*(FHIR_Marshalling.Claim_Procedure.ProcedureUnion*)((byte*)in_native + 96));
-			var _procedure_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_procedureCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_procedureCodeableConcept__union + 0)) != null) {
+				fhirInstance.Procedure = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_procedureCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Procedure = _procedure_primative;
 		} break;
 		case FHIR_Marshalling.Claim_Procedure.ProcedureType.Reference: {
 			var _procedureReference__union = &(*(FHIR_Marshalling.Claim_Procedure.ProcedureUnion*)((byte*)in_native + 96));
-			var _procedure_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_procedureReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_procedureReference__union + 0)) != null) {
+				fhirInstance.Procedure = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_procedureReference__union + 0)));
+			}
 			
-			fhirInstance.Procedure = _procedure_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 112)) > 0) {
@@ -6970,12 +7034,12 @@ public static Hl7.Fhir.Model.Claim.InsuranceComponent? Marshal_Claim_Insurance(F
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
 	
-	var _focal_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _focal_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_focal_temp != null) {
 		fhirInstance.FocalElement = _focal_temp;
 	}
@@ -7059,15 +7123,17 @@ public static Hl7.Fhir.Model.Claim.AccidentComponent? Marshal_Claim_Accident(FHI
 	switch((*(FHIR_Marshalling.Claim_Accident.LocationType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.Claim_Accident.LocationType.Address: {
 			var _locationAddress__union = &(*(FHIR_Marshalling.Claim_Accident.LocationUnion*)((byte*)in_native + 80));
-			var _location_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.Claim_Accident.LocationType.Reference: {
 			var _locationReference__union = &(*(FHIR_Marshalling.Claim_Accident.LocationUnion*)((byte*)in_native + 80));
-			var _location_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -7107,7 +7173,7 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -7116,7 +7182,7 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 		var _careTeamSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 64)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 64)); i++)
 		{
-			var _careTeamSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].GetValue());
+			var _careTeamSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].ToFhirPositiveInt();
 			_careTeamSequence_list.Add(_careTeamSequence_primative);
 			}
 			
@@ -7128,7 +7194,7 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 		var _diagnosisSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 80)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 80)); i++)
 		{
-			var _diagnosisSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 88))[i].GetValue());
+			var _diagnosisSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 88))[i].ToFhirPositiveInt();
 			_diagnosisSequence_list.Add(_diagnosisSequence_primative);
 			}
 			
@@ -7140,7 +7206,7 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 		var _procedureSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 96)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 96)); i++)
 		{
-			var _procedureSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 104))[i].GetValue());
+			var _procedureSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 104))[i].ToFhirPositiveInt();
 			_procedureSequence_list.Add(_procedureSequence_primative);
 			}
 			
@@ -7152,7 +7218,7 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 		var _informationSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 112)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 112)); i++)
 		{
-			var _informationSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 120))[i].GetValue());
+			var _informationSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 120))[i].ToFhirPositiveInt();
 			_informationSequence_list.Add(_informationSequence_primative);
 			}
 			
@@ -7199,34 +7265,41 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 	switch((*(FHIR_Marshalling.Claim_Item.ServicedType*)((byte*)in_native + 200))) {
 		case FHIR_Marshalling.Claim_Item.ServicedType.Date: {
 			var _servicedDate__union = &(*(FHIR_Marshalling.Claim_Item.ServicedUnion*)((byte*)in_native + 184));
-			var _serviced_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
-			fhirInstance.Serviced = _serviced_primative;
+			var _serviced_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
+			if(_serviced_temp != null) {
+				fhirInstance.Serviced = _serviced_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Claim_Item.ServicedType.Period: {
 			var _servicedPeriod__union = &(*(FHIR_Marshalling.Claim_Item.ServicedUnion*)((byte*)in_native + 184));
-			var _serviced_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)) != null) {
+				fhirInstance.Serviced = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Serviced = _serviced_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.Claim_Item.LocationType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.Claim_Item.LocationType.CodeableConcept: {
 			var _locationCodeableConcept__union = &(*(FHIR_Marshalling.Claim_Item.LocationUnion*)((byte*)in_native + 208));
-			var _location_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Location = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.Claim_Item.LocationType.Address: {
 			var _locationAddress__union = &(*(FHIR_Marshalling.Claim_Item.LocationUnion*)((byte*)in_native + 208));
-			var _location_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.Claim_Item.LocationType.Reference: {
 			var _locationReference__union = &(*(FHIR_Marshalling.Claim_Item.LocationUnion*)((byte*)in_native + 208));
-			var _location_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 224)) != null) {
@@ -7237,7 +7310,7 @@ public static Hl7.Fhir.Model.Claim.ItemComponent? Marshal_Claim_Item(FHIR_Marsha
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 232)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -7335,7 +7408,7 @@ public static Hl7.Fhir.Model.Claim.DetailComponent? Marshal_Claim_Item_Detail(FH
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -7384,7 +7457,7 @@ public static Hl7.Fhir.Model.Claim.DetailComponent? Marshal_Claim_Item_Detail(FH
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 128)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -7454,7 +7527,7 @@ public static Hl7.Fhir.Model.Claim.SubDetailComponent? Marshal_Claim_Item_Detail
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -7503,7 +7576,7 @@ public static Hl7.Fhir.Model.Claim.SubDetailComponent? Marshal_Claim_Item_Detail
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 128)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -7814,7 +7887,7 @@ public static Hl7.Fhir.Model.ClaimResponse.ItemComponent? Marshal_ClaimResponse_
 		
 	}
 	
-	var _itemSequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _itemSequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_itemSequence_temp != null) {
 		fhirInstance.ItemSequenceElement = _itemSequence_temp;
 	}
@@ -7823,7 +7896,7 @@ public static Hl7.Fhir.Model.ClaimResponse.ItemComponent? Marshal_ClaimResponse_
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 64)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 64)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -7904,7 +7977,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AdjudicationComponent? Marshal_ClaimR
 		fhirInstance.Amount = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 72)));
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -7946,7 +8019,7 @@ public static Hl7.Fhir.Model.ClaimResponse.ItemDetailComponent? Marshal_ClaimRes
 		
 	}
 	
-	var _detailSequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _detailSequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_detailSequence_temp != null) {
 		fhirInstance.DetailSequenceElement = _detailSequence_temp;
 	}
@@ -7955,7 +8028,7 @@ public static Hl7.Fhir.Model.ClaimResponse.ItemDetailComponent? Marshal_ClaimRes
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 64)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 64)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -8024,7 +8097,7 @@ public static Hl7.Fhir.Model.ClaimResponse.SubDetailComponent? Marshal_ClaimResp
 		
 	}
 	
-	var _subDetailSequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _subDetailSequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_subDetailSequence_temp != null) {
 		fhirInstance.SubDetailSequenceElement = _subDetailSequence_temp;
 	}
@@ -8033,7 +8106,7 @@ public static Hl7.Fhir.Model.ClaimResponse.SubDetailComponent? Marshal_ClaimResp
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 64)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 64)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -8094,7 +8167,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemComponent? Marshal_ClaimResp
 		var _itemSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 56)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 56)); i++)
 		{
-			var _itemSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].GetValue());
+			var _itemSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].ToFhirPositiveInt();
 			_itemSequence_list.Add(_itemSequence_primative);
 			}
 			
@@ -8106,7 +8179,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemComponent? Marshal_ClaimResp
 		var _detailSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 72)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 72)); i++)
 		{
-			var _detailSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 80))[i].GetValue());
+			var _detailSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 80))[i].ToFhirPositiveInt();
 			_detailSequence_list.Add(_detailSequence_primative);
 			}
 			
@@ -8118,7 +8191,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemComponent? Marshal_ClaimResp
 		var _subdetailSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 88)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 88)); i++)
 		{
-			var _subdetailSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].GetValue());
+			var _subdetailSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].ToFhirPositiveInt();
 			_subdetailSequence_list.Add(_subdetailSequence_primative);
 			}
 			
@@ -8169,34 +8242,41 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemComponent? Marshal_ClaimResp
 	switch((*(FHIR_Marshalling.ClaimResponse_AddItem.ServicedType*)((byte*)in_native + 176))) {
 		case FHIR_Marshalling.ClaimResponse_AddItem.ServicedType.Date: {
 			var _servicedDate__union = &(*(FHIR_Marshalling.ClaimResponse_AddItem.ServicedUnion*)((byte*)in_native + 160));
-			var _serviced_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
-			fhirInstance.Serviced = _serviced_primative;
+			var _serviced_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
+			if(_serviced_temp != null) {
+				fhirInstance.Serviced = _serviced_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ClaimResponse_AddItem.ServicedType.Period: {
 			var _servicedPeriod__union = &(*(FHIR_Marshalling.ClaimResponse_AddItem.ServicedUnion*)((byte*)in_native + 160));
-			var _serviced_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)) != null) {
+				fhirInstance.Serviced = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Serviced = _serviced_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ClaimResponse_AddItem.LocationType*)((byte*)in_native + 192))) {
 		case FHIR_Marshalling.ClaimResponse_AddItem.LocationType.CodeableConcept: {
 			var _locationCodeableConcept__union = &(*(FHIR_Marshalling.ClaimResponse_AddItem.LocationUnion*)((byte*)in_native + 184));
-			var _location_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Location = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ClaimResponse_AddItem.LocationType.Address: {
 			var _locationAddress__union = &(*(FHIR_Marshalling.ClaimResponse_AddItem.LocationUnion*)((byte*)in_native + 184));
-			var _location_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ClaimResponse_AddItem.LocationType.Reference: {
 			var _locationReference__union = &(*(FHIR_Marshalling.ClaimResponse_AddItem.LocationUnion*)((byte*)in_native + 184));
-			var _location_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 200)) != null) {
@@ -8207,7 +8287,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemComponent? Marshal_ClaimResp
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 208)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -8236,7 +8316,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemComponent? Marshal_ClaimResp
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 264)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 264)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 272))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 272))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -8329,7 +8409,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemDetailComponent? Marshal_Cla
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 88)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -8342,7 +8422,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemDetailComponent? Marshal_Cla
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 120)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -8435,7 +8515,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemSubDetailComponent? Marshal_
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 88)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -8448,7 +8528,7 @@ public static Hl7.Fhir.Model.ClaimResponse.AddedItemSubDetailComponent? Marshal_
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 120)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -8612,7 +8692,7 @@ public static Hl7.Fhir.Model.ClaimResponse.NoteComponent? Marshal_ClaimResponse_
 		
 	}
 	
-	var _number_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _number_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_number_temp != null) {
 		fhirInstance.NumberElement = _number_temp;
 	}
@@ -8668,12 +8748,12 @@ public static Hl7.Fhir.Model.ClaimResponse.InsuranceComponent? Marshal_ClaimResp
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
 	
-	var _focal_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _focal_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_focal_temp != null) {
 		fhirInstance.FocalElement = _focal_temp;
 	}
@@ -8728,17 +8808,17 @@ public static Hl7.Fhir.Model.ClaimResponse.ErrorComponent? Marshal_ClaimResponse
 		
 	}
 	
-	var _itemSequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _itemSequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_itemSequence_temp != null) {
 		fhirInstance.ItemSequenceElement = _itemSequence_temp;
 	}
 	
-	var _detailSequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _detailSequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirPositiveInt();
 	if(_detailSequence_temp != null) {
 		fhirInstance.DetailSequenceElement = _detailSequence_temp;
 	}
 	
-	var _subDetailSequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _subDetailSequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirPositiveInt();
 	if(_subDetailSequence_temp != null) {
 		fhirInstance.SubDetailSequenceElement = _subDetailSequence_temp;
 	}
@@ -8855,14 +8935,18 @@ public static Hl7.Fhir.Model.ClinicalImpression? Marshal_ClinicalImpression(FHIR
 	switch((*(FHIR_Marshalling.ClinicalImpression.EffectiveType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.ClinicalImpression.EffectiveType.DateTime: {
 			var _effectiveDateTime__union = &(*(FHIR_Marshalling.ClinicalImpression.EffectiveUnion*)((byte*)in_native + 200));
-			var _effective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Effective = _effective_primative;
+			var _effective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_effective_temp != null) {
+				fhirInstance.Effective = _effective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ClinicalImpression.EffectiveType.Period: {
 			var _effectivePeriod__union = &(*(FHIR_Marshalling.ClinicalImpression.EffectiveUnion*)((byte*)in_native + 200));
-			var _effective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)) != null) {
+				fhirInstance.Effective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.Effective = _effective_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 224)).ToFhirDateTime();
@@ -9187,7 +9271,7 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -9253,7 +9337,7 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.CopyrightElement = new Hl7.Fhir.Model.Markdown(_copyright_temp);
 	}
 	
-	var _caseSensitive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 352)).GetValue());
+	var _caseSensitive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 352)).ToFhirBoolean();
 	if(_caseSensitive_temp != null) {
 		fhirInstance.CaseSensitiveElement = _caseSensitive_temp;
 	}
@@ -9268,12 +9352,12 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.HierarchyMeaningElement = new Code<Hl7.Fhir.Model.CodeSystem.CodeSystemHierarchyMeaning> ();
 		fhirInstance.HierarchyMeaningElement.ObjectValue = __temp_codeHierarchyMeaningElement;
 	}
-	var _compositional_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 392)).GetValue());
+	var _compositional_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 392)).ToFhirBoolean();
 	if(_compositional_temp != null) {
 		fhirInstance.CompositionalElement = _compositional_temp;
 	}
 	
-	var _versionNeeded_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 400)).GetValue());
+	var _versionNeeded_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 400)).ToFhirBoolean();
 	if(_versionNeeded_temp != null) {
 		fhirInstance.VersionNeededElement = _versionNeeded_temp;
 	}
@@ -9288,7 +9372,7 @@ public static Hl7.Fhir.Model.CodeSystem? Marshal_CodeSystem(FHIR_Marshalling.Cod
 		fhirInstance.SupplementsElement = new Hl7.Fhir.Model.Canonical(_supplements_temp);
 	}
 	
-	var _count_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 440)).GetValue());
+	var _count_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 440)).ToFhirUnsignedInt();
 	if(_count_temp != null) {
 		fhirInstance.CountElement = _count_temp;
 	}
@@ -9635,41 +9719,58 @@ public static Hl7.Fhir.Model.CodeSystem.ConceptPropertyComponent? Marshal_CodeSy
 	switch((*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CodeSystem_Concept_Property.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.CodeSystem_Concept_Property.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -9989,21 +10090,25 @@ public static Hl7.Fhir.Model.Communication.PayloadComponent? Marshal_Communicati
 	switch((*(FHIR_Marshalling.Communication_Payload.ContentType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Communication_Payload.ContentType.String: {
 			var _contentString__union = &(*(FHIR_Marshalling.Communication_Payload.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_contentString__union + 0)).ToString();
-			var _content_primative =  (_content_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_content_primative_temp);
-			fhirInstance.Content = _content_primative;
+			var _content_temp = (*(FHIR_Marshalling.String8*)((byte*)_contentString__union + 0)).ToString();
+			if(_content_temp != null) {
+				fhirInstance.Content = new Hl7.Fhir.Model.FhirString(_content_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Communication_Payload.ContentType.Attachment: {
 			var _contentAttachment__union = &(*(FHIR_Marshalling.Communication_Payload.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 		case FHIR_Marshalling.Communication_Payload.ContentType.Reference: {
 			var _contentReference__union = &(*(FHIR_Marshalling.Communication_Payload.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -10139,7 +10244,7 @@ public static Hl7.Fhir.Model.CommunicationRequest? Marshal_CommunicationRequest(
 		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
 		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
 	}
-	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _doNotPerform_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
 	}
@@ -10191,14 +10296,18 @@ public static Hl7.Fhir.Model.CommunicationRequest? Marshal_CommunicationRequest(
 	switch((*(FHIR_Marshalling.CommunicationRequest.OccurrenceType*)((byte*)in_native + 320))) {
 		case FHIR_Marshalling.CommunicationRequest.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.CommunicationRequest.OccurrenceUnion*)((byte*)in_native + 304));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CommunicationRequest.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.CommunicationRequest.OccurrenceUnion*)((byte*)in_native + 304));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	var _authoredOn_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 328)).ToFhirDateTime();
@@ -10302,21 +10411,25 @@ public static Hl7.Fhir.Model.CommunicationRequest.PayloadComponent? Marshal_Comm
 	switch((*(FHIR_Marshalling.CommunicationRequest_Payload.ContentType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.CommunicationRequest_Payload.ContentType.String: {
 			var _contentString__union = &(*(FHIR_Marshalling.CommunicationRequest_Payload.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_contentString__union + 0)).ToString();
-			var _content_primative =  (_content_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_content_primative_temp);
-			fhirInstance.Content = _content_primative;
+			var _content_temp = (*(FHIR_Marshalling.String8*)((byte*)_contentString__union + 0)).ToString();
+			if(_content_temp != null) {
+				fhirInstance.Content = new Hl7.Fhir.Model.FhirString(_content_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.CommunicationRequest_Payload.ContentType.Attachment: {
 			var _contentAttachment__union = &(*(FHIR_Marshalling.CommunicationRequest_Payload.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 		case FHIR_Marshalling.CommunicationRequest_Payload.ContentType.Reference: {
 			var _contentReference__union = &(*(FHIR_Marshalling.CommunicationRequest_Payload.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -10406,7 +10519,7 @@ public static Hl7.Fhir.Model.CompartmentDefinition? Marshal_CompartmentDefinitio
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -10460,7 +10573,7 @@ public static Hl7.Fhir.Model.CompartmentDefinition? Marshal_CompartmentDefinitio
 		fhirInstance.CodeElement = new Code<Hl7.Fhir.Model.CompartmentType> ();
 		fhirInstance.CodeElement.ObjectValue = __temp_codeCodeElement;
 	}
-	var _search_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 304)).GetValue());
+	var _search_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 304)).ToFhirBoolean();
 	if(_search_temp != null) {
 		fhirInstance.SearchElement = _search_temp;
 	}
@@ -10812,15 +10925,17 @@ public static Hl7.Fhir.Model.Composition.RelatesToComponent? Marshal_Composition
 	switch((*(FHIR_Marshalling.Composition_RelatesTo.TargetType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.Composition_RelatesTo.TargetType.Identifier: {
 			var _targetIdentifier__union = &(*(FHIR_Marshalling.Composition_RelatesTo.TargetUnion*)((byte*)in_native + 72));
-			var _target_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_targetIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_targetIdentifier__union + 0)) != null) {
+				fhirInstance.Target = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_targetIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Target = _target_primative;
 		} break;
 		case FHIR_Marshalling.Composition_RelatesTo.TargetType.Reference: {
 			var _targetReference__union = &(*(FHIR_Marshalling.Composition_RelatesTo.TargetUnion*)((byte*)in_native + 72));
-			var _target_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_targetReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_targetReference__union + 0)) != null) {
+				fhirInstance.Target = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_targetReference__union + 0)));
+			}
 			
-			fhirInstance.Target = _target_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -11087,7 +11202,7 @@ public static Hl7.Fhir.Model.ConceptMap? Marshal_ConceptMap(FHIR_Marshalling.Con
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -11156,29 +11271,37 @@ public static Hl7.Fhir.Model.ConceptMap? Marshal_ConceptMap(FHIR_Marshalling.Con
 	switch((*(FHIR_Marshalling.ConceptMap.SourceType*)((byte*)in_native + 360))) {
 		case FHIR_Marshalling.ConceptMap.SourceType.Uri: {
 			var _sourceUri__union = &(*(FHIR_Marshalling.ConceptMap.SourceUnion*)((byte*)in_native + 344));
-			var _source_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_sourceUri__union + 0)).ToString();
-			var _source_primative =  (_source_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_source_primative_temp);
-			fhirInstance.Source = _source_primative;
+			var _source_temp = (*(FHIR_Marshalling.String8*)((byte*)_sourceUri__union + 0)).ToString();
+			if(_source_temp != null) {
+				fhirInstance.Source = new Hl7.Fhir.Model.FhirUri(_source_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ConceptMap.SourceType.Canonical: {
 			var _sourceCanonical__union = &(*(FHIR_Marshalling.ConceptMap.SourceUnion*)((byte*)in_native + 344));
-			var _source_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_sourceCanonical__union + 0)).ToString();
-			var _source_primative =  (_source_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_source_primative_temp);
-			fhirInstance.Source = _source_primative;
+			var _source_temp = (*(FHIR_Marshalling.String8*)((byte*)_sourceCanonical__union + 0)).ToString();
+			if(_source_temp != null) {
+				fhirInstance.Source = new Hl7.Fhir.Model.Canonical(_source_temp);
+			}
+			
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ConceptMap.TargetType*)((byte*)in_native + 384))) {
 		case FHIR_Marshalling.ConceptMap.TargetType.Uri: {
 			var _targetUri__union = &(*(FHIR_Marshalling.ConceptMap.TargetUnion*)((byte*)in_native + 368));
-			var _target_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_targetUri__union + 0)).ToString();
-			var _target_primative =  (_target_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_target_primative_temp);
-			fhirInstance.Target = _target_primative;
+			var _target_temp = (*(FHIR_Marshalling.String8*)((byte*)_targetUri__union + 0)).ToString();
+			if(_target_temp != null) {
+				fhirInstance.Target = new Hl7.Fhir.Model.FhirUri(_target_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ConceptMap.TargetType.Canonical: {
 			var _targetCanonical__union = &(*(FHIR_Marshalling.ConceptMap.TargetUnion*)((byte*)in_native + 368));
-			var _target_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_targetCanonical__union + 0)).ToString();
-			var _target_primative =  (_target_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_target_primative_temp);
-			fhirInstance.Target = _target_primative;
+			var _target_temp = (*(FHIR_Marshalling.String8*)((byte*)_targetCanonical__union + 0)).ToString();
+			if(_target_temp != null) {
+				fhirInstance.Target = new Hl7.Fhir.Model.Canonical(_target_temp);
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 392)) > 0) {
@@ -11650,63 +11773,79 @@ public static Hl7.Fhir.Model.Condition? Marshal_Condition(FHIR_Marshalling.Condi
 	switch((*(FHIR_Marshalling.Condition.OnsetType*)((byte*)in_native + 232))) {
 		case FHIR_Marshalling.Condition.OnsetType.DateTime: {
 			var _onsetDateTime__union = &(*(FHIR_Marshalling.Condition.OnsetUnion*)((byte*)in_native + 216));
-			var _onset_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_onsetDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Onset = _onset_primative;
+			var _onset_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_onsetDateTime__union + 0)).ToFhirDateTime();
+			if(_onset_temp != null) {
+				fhirInstance.Onset = _onset_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Condition.OnsetType.Age: {
 			var _onsetAge__union = &(*(FHIR_Marshalling.Condition.OnsetUnion*)((byte*)in_native + 216));
-			var _onset_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.Condition.OnsetType.Period: {
 			var _onsetPeriod__union = &(*(FHIR_Marshalling.Condition.OnsetUnion*)((byte*)in_native + 216));
-			var _onset_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.Condition.OnsetType.Range: {
 			var _onsetRange__union = &(*(FHIR_Marshalling.Condition.OnsetUnion*)((byte*)in_native + 216));
-			var _onset_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.Condition.OnsetType.String: {
 			var _onsetString__union = &(*(FHIR_Marshalling.Condition.OnsetUnion*)((byte*)in_native + 216));
-			var _onset_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_onsetString__union + 0)).ToString();
-			var _onset_primative =  (_onset_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_onset_primative_temp);
-			fhirInstance.Onset = _onset_primative;
+			var _onset_temp = (*(FHIR_Marshalling.String8*)((byte*)_onsetString__union + 0)).ToString();
+			if(_onset_temp != null) {
+				fhirInstance.Onset = new Hl7.Fhir.Model.FhirString(_onset_temp);
+			}
+			
 		} break;
 	}
 	switch((*(FHIR_Marshalling.Condition.AbatementType*)((byte*)in_native + 256))) {
 		case FHIR_Marshalling.Condition.AbatementType.DateTime: {
 			var _abatementDateTime__union = &(*(FHIR_Marshalling.Condition.AbatementUnion*)((byte*)in_native + 240));
-			var _abatement_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_abatementDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Abatement = _abatement_primative;
+			var _abatement_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_abatementDateTime__union + 0)).ToFhirDateTime();
+			if(_abatement_temp != null) {
+				fhirInstance.Abatement = _abatement_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Condition.AbatementType.Age: {
 			var _abatementAge__union = &(*(FHIR_Marshalling.Condition.AbatementUnion*)((byte*)in_native + 240));
-			var _abatement_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_abatementAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_abatementAge__union + 0)) != null) {
+				fhirInstance.Abatement = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_abatementAge__union + 0)));
+			}
 			
-			fhirInstance.Abatement = _abatement_primative;
 		} break;
 		case FHIR_Marshalling.Condition.AbatementType.Period: {
 			var _abatementPeriod__union = &(*(FHIR_Marshalling.Condition.AbatementUnion*)((byte*)in_native + 240));
-			var _abatement_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_abatementPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_abatementPeriod__union + 0)) != null) {
+				fhirInstance.Abatement = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_abatementPeriod__union + 0)));
+			}
 			
-			fhirInstance.Abatement = _abatement_primative;
 		} break;
 		case FHIR_Marshalling.Condition.AbatementType.Range: {
 			var _abatementRange__union = &(*(FHIR_Marshalling.Condition.AbatementUnion*)((byte*)in_native + 240));
-			var _abatement_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_abatementRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_abatementRange__union + 0)) != null) {
+				fhirInstance.Abatement = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_abatementRange__union + 0)));
+			}
 			
-			fhirInstance.Abatement = _abatement_primative;
 		} break;
 		case FHIR_Marshalling.Condition.AbatementType.String: {
 			var _abatementString__union = &(*(FHIR_Marshalling.Condition.AbatementUnion*)((byte*)in_native + 240));
-			var _abatement_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_abatementString__union + 0)).ToString();
-			var _abatement_primative =  (_abatement_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_abatement_primative_temp);
-			fhirInstance.Abatement = _abatement_primative;
+			var _abatement_temp = (*(FHIR_Marshalling.String8*)((byte*)_abatementString__union + 0)).ToString();
+			if(_abatement_temp != null) {
+				fhirInstance.Abatement = new Hl7.Fhir.Model.FhirString(_abatement_temp);
+			}
+			
 		} break;
 	}
 	var _recordedDate_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 264)).ToFhirDateTime();
@@ -12012,15 +12151,17 @@ public static Hl7.Fhir.Model.Consent? Marshal_Consent(FHIR_Marshalling.Consent* 
 	switch((*(FHIR_Marshalling.Consent.SourceType*)((byte*)in_native + 240))) {
 		case FHIR_Marshalling.Consent.SourceType.Attachment: {
 			var _sourceAttachment__union = &(*(FHIR_Marshalling.Consent.SourceUnion*)((byte*)in_native + 232));
-			var _source_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_sourceAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_sourceAttachment__union + 0)) != null) {
+				fhirInstance.Source = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_sourceAttachment__union + 0)));
+			}
 			
-			fhirInstance.Source = _source_primative;
 		} break;
 		case FHIR_Marshalling.Consent.SourceType.Reference: {
 			var _sourceReference__union = &(*(FHIR_Marshalling.Consent.SourceUnion*)((byte*)in_native + 232));
-			var _source_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_sourceReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_sourceReference__union + 0)) != null) {
+				fhirInstance.Source = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_sourceReference__union + 0)));
+			}
 			
-			fhirInstance.Source = _source_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 248)) > 0) {
@@ -12139,7 +12280,7 @@ public static Hl7.Fhir.Model.Consent.VerificationComponent? Marshal_Consent_Veri
 		
 	}
 	
-	var _verified_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _verified_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_verified_temp != null) {
 		fhirInstance.VerifiedElement = _verified_temp;
 	}
@@ -12601,15 +12742,17 @@ public static Hl7.Fhir.Model.Contract? Marshal_Contract(FHIR_Marshalling.Contrac
 	switch((*(FHIR_Marshalling.Contract.TopicType*)((byte*)in_native + 408))) {
 		case FHIR_Marshalling.Contract.TopicType.CodeableConcept: {
 			var _topicCodeableConcept__union = &(*(FHIR_Marshalling.Contract.TopicUnion*)((byte*)in_native + 400));
-			var _topic_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_topicCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_topicCodeableConcept__union + 0)) != null) {
+				fhirInstance.Topic = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_topicCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Topic = _topic_primative;
 		} break;
 		case FHIR_Marshalling.Contract.TopicType.Reference: {
 			var _topicReference__union = &(*(FHIR_Marshalling.Contract.TopicUnion*)((byte*)in_native + 400));
-			var _topic_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_topicReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_topicReference__union + 0)) != null) {
+				fhirInstance.Topic = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_topicReference__union + 0)));
+			}
 			
-			fhirInstance.Topic = _topic_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 416)) != null) {
@@ -12719,15 +12862,17 @@ public static Hl7.Fhir.Model.Contract? Marshal_Contract(FHIR_Marshalling.Contrac
 	switch((*(FHIR_Marshalling.Contract.LegallyBindingType*)((byte*)in_native + 568))) {
 		case FHIR_Marshalling.Contract.LegallyBindingType.Attachment: {
 			var _legallyBindingAttachment__union = &(*(FHIR_Marshalling.Contract.LegallyBindingUnion*)((byte*)in_native + 560));
-			var _legallyBinding_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_legallyBindingAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_legallyBindingAttachment__union + 0)) != null) {
+				fhirInstance.LegallyBinding = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_legallyBindingAttachment__union + 0)));
+			}
 			
-			fhirInstance.LegallyBinding = _legallyBinding_primative;
 		} break;
 		case FHIR_Marshalling.Contract.LegallyBindingType.Reference: {
 			var _legallyBindingReference__union = &(*(FHIR_Marshalling.Contract.LegallyBindingUnion*)((byte*)in_native + 560));
-			var _legallyBinding_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_legallyBindingReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_legallyBindingReference__union + 0)) != null) {
+				fhirInstance.LegallyBinding = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_legallyBindingReference__union + 0)));
+			}
 			
-			fhirInstance.LegallyBinding = _legallyBinding_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -12847,15 +12992,17 @@ public static Hl7.Fhir.Model.Contract.TermComponent? Marshal_Contract_Term(FHIR_
 	switch((*(FHIR_Marshalling.Contract_Term.TopicType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.Contract_Term.TopicType.CodeableConcept: {
 			var _topicCodeableConcept__union = &(*(FHIR_Marshalling.Contract_Term.TopicUnion*)((byte*)in_native + 88));
-			var _topic_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_topicCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_topicCodeableConcept__union + 0)) != null) {
+				fhirInstance.Topic = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_topicCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Topic = _topic_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Term.TopicType.Reference: {
 			var _topicReference__union = &(*(FHIR_Marshalling.Contract_Term.TopicUnion*)((byte*)in_native + 88));
-			var _topic_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_topicReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_topicReference__union + 0)) != null) {
+				fhirInstance.Topic = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_topicReference__union + 0)));
+			}
 			
-			fhirInstance.Topic = _topic_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 104)) != null) {
@@ -12964,7 +13111,7 @@ public static Hl7.Fhir.Model.Contract.SecurityLabelComponent? Marshal_Contract_T
 		var _number_list  = new List<UnsignedInt>((int)(*(System.UIntPtr*)((byte*)in_native + 56)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 56)); i++)
 		{
-			var _number_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].GetValue());
+			var _number_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].ToFhirUnsignedInt();
 			_number_list.Add(_number_primative);
 			}
 			
@@ -13119,7 +13266,7 @@ public static Hl7.Fhir.Model.Contract.ContractOfferComponent? Marshal_Contract_T
 		var _securityLabelNumber_list  = new List<UnsignedInt>((int)(*(System.UIntPtr*)((byte*)in_native + 176)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 176)); i++)
 		{
-			var _securityLabelNumber_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 184))[i].GetValue());
+			var _securityLabelNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 184))[i].ToFhirUnsignedInt();
 			_securityLabelNumber_list.Add(_securityLabelNumber_primative);
 			}
 			
@@ -13220,69 +13367,95 @@ public static Hl7.Fhir.Model.Contract.AnswerComponent? Marshal_Contract_Term_Off
 	switch((*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Term_Offer_Answer.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Contract_Term_Offer_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -13453,7 +13626,7 @@ public static Hl7.Fhir.Model.Contract.ContractAssetComponent? Marshal_Contract_T
 		var _securityLabelNumber_list  = new List<UnsignedInt>((int)(*(System.UIntPtr*)((byte*)in_native + 248)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 248)); i++)
 		{
-			var _securityLabelNumber_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 256))[i].GetValue());
+			var _securityLabelNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 256))[i].ToFhirUnsignedInt();
 			_securityLabelNumber_list.Add(_securityLabelNumber_primative);
 			}
 			
@@ -13571,15 +13744,17 @@ public static Hl7.Fhir.Model.Contract.ValuedItemComponent? Marshal_Contract_Term
 	switch((*(FHIR_Marshalling.Contract_Term_Asset_ValuedItem.EntityType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.Contract_Term_Asset_ValuedItem.EntityType.CodeableConcept: {
 			var _entityCodeableConcept__union = &(*(FHIR_Marshalling.Contract_Term_Asset_ValuedItem.EntityUnion*)((byte*)in_native + 56));
-			var _entity_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_entityCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_entityCodeableConcept__union + 0)) != null) {
+				fhirInstance.Entity = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_entityCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Entity = _entity_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Term_Asset_ValuedItem.EntityType.Reference: {
 			var _entityReference__union = &(*(FHIR_Marshalling.Contract_Term_Asset_ValuedItem.EntityUnion*)((byte*)in_native + 56));
-			var _entity_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_entityReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_entityReference__union + 0)) != null) {
+				fhirInstance.Entity = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_entityReference__union + 0)));
+			}
 			
-			fhirInstance.Entity = _entity_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Identifier**)((byte*)in_native + 72)) != null) {
@@ -13599,12 +13774,12 @@ public static Hl7.Fhir.Model.Contract.ValuedItemComponent? Marshal_Contract_Term
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 104)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
 	
-	var _points_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).DecimalValue());
+	var _points_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToFhirDecimal();
 	if(_points_temp != null) {
 		fhirInstance.PointsElement = _points_temp;
 	}
@@ -13648,7 +13823,7 @@ public static Hl7.Fhir.Model.Contract.ValuedItemComponent? Marshal_Contract_Term
 		var _securityLabelNumber_list  = new List<UnsignedInt>((int)(*(System.UIntPtr*)((byte*)in_native + 216)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 216)); i++)
 		{
-			var _securityLabelNumber_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 224))[i].GetValue());
+			var _securityLabelNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 224))[i].ToFhirUnsignedInt();
 			_securityLabelNumber_list.Add(_securityLabelNumber_primative);
 			}
 			
@@ -13693,7 +13868,7 @@ public static Hl7.Fhir.Model.Contract.ActionComponent? Marshal_Contract_Term_Act
 		
 	}
 	
-	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _doNotPerform_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
 	}
@@ -13755,20 +13930,25 @@ public static Hl7.Fhir.Model.Contract.ActionComponent? Marshal_Contract_Term_Act
 	switch((*(FHIR_Marshalling.Contract_Term_Action.OccurrenceType*)((byte*)in_native + 160))) {
 		case FHIR_Marshalling.Contract_Term_Action.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.Contract_Term_Action.OccurrenceUnion*)((byte*)in_native + 144));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Contract_Term_Action.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.Contract_Term_Action.OccurrenceUnion*)((byte*)in_native + 144));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Term_Action.OccurrenceType.Timing: {
 			var _occurrenceTiming__union = &(*(FHIR_Marshalling.Contract_Term_Action.OccurrenceUnion*)((byte*)in_native + 144));
-			var _occurrence_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 168)) > 0) {
@@ -13895,7 +14075,7 @@ public static Hl7.Fhir.Model.Contract.ActionComponent? Marshal_Contract_Term_Act
 		var _securityLabelNumber_list  = new List<UnsignedInt>((int)(*(System.UIntPtr*)((byte*)in_native + 328)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 328)); i++)
 		{
-			var _securityLabelNumber_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 336))[i].GetValue());
+			var _securityLabelNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 336))[i].ToFhirUnsignedInt();
 			_securityLabelNumber_list.Add(_securityLabelNumber_primative);
 			}
 			
@@ -14053,15 +14233,17 @@ public static Hl7.Fhir.Model.Contract.FriendlyLanguageComponent? Marshal_Contrac
 	switch((*(FHIR_Marshalling.Contract_Friendly.ContentType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.Contract_Friendly.ContentType.Attachment: {
 			var _contentAttachment__union = &(*(FHIR_Marshalling.Contract_Friendly.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Friendly.ContentType.Reference: {
 			var _contentReference__union = &(*(FHIR_Marshalling.Contract_Friendly.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -14104,15 +14286,17 @@ public static Hl7.Fhir.Model.Contract.LegalLanguageComponent? Marshal_Contract_L
 	switch((*(FHIR_Marshalling.Contract_Legal.ContentType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.Contract_Legal.ContentType.Attachment: {
 			var _contentAttachment__union = &(*(FHIR_Marshalling.Contract_Legal.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Legal.ContentType.Reference: {
 			var _contentReference__union = &(*(FHIR_Marshalling.Contract_Legal.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -14155,15 +14339,17 @@ public static Hl7.Fhir.Model.Contract.ComputableLanguageComponent? Marshal_Contr
 	switch((*(FHIR_Marshalling.Contract_Rule.ContentType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.Contract_Rule.ContentType.Attachment: {
 			var _contentAttachment__union = &(*(FHIR_Marshalling.Contract_Rule.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_contentAttachment__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 		case FHIR_Marshalling.Contract_Rule.ContentType.Reference: {
 			var _contentReference__union = &(*(FHIR_Marshalling.Contract_Rule.ContentUnion*)((byte*)in_native + 56));
-			var _content_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)) != null) {
+				fhirInstance.Content = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_contentReference__union + 0)));
+			}
 			
-			fhirInstance.Content = _content_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -14308,7 +14494,7 @@ public static Hl7.Fhir.Model.Coverage? Marshal_Coverage(FHIR_Marshalling.Coverag
 		
 	}
 	
-	var _order_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 264)).GetValue());
+	var _order_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 264)).ToFhirPositiveInt();
 	if(_order_temp != null) {
 		fhirInstance.OrderElement = _order_temp;
 	}
@@ -14330,7 +14516,7 @@ public static Hl7.Fhir.Model.Coverage? Marshal_Coverage(FHIR_Marshalling.Coverag
 		
 	}
 	
-	var _subrogation_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 304)).GetValue());
+	var _subrogation_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 304)).ToFhirBoolean();
 	if(_subrogation_temp != null) {
 		fhirInstance.SubrogationElement = _subrogation_temp;
 	}
@@ -14442,15 +14628,17 @@ public static Hl7.Fhir.Model.Coverage.CostToBeneficiaryComponent? Marshal_Covera
 	switch((*(FHIR_Marshalling.Coverage_CostToBeneficiary.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Coverage_CostToBeneficiary.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Coverage_CostToBeneficiary.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Coverage_CostToBeneficiary.ValueType.Money: {
 			var _valueMoney__union = &(*(FHIR_Marshalling.Coverage_CostToBeneficiary.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 80)) > 0) {
@@ -14618,14 +14806,18 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest? Marshal_CoverageEligibi
 	switch((*(FHIR_Marshalling.CoverageEligibilityRequest.ServicedType*)((byte*)in_native + 200))) {
 		case FHIR_Marshalling.CoverageEligibilityRequest.ServicedType.Date: {
 			var _servicedDate__union = &(*(FHIR_Marshalling.CoverageEligibilityRequest.ServicedUnion*)((byte*)in_native + 184));
-			var _serviced_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
-			fhirInstance.Serviced = _serviced_primative;
+			var _serviced_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
+			if(_serviced_temp != null) {
+				fhirInstance.Serviced = _serviced_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityRequest.ServicedType.Period: {
 			var _servicedPeriod__union = &(*(FHIR_Marshalling.CoverageEligibilityRequest.ServicedUnion*)((byte*)in_native + 184));
-			var _serviced_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)) != null) {
+				fhirInstance.Serviced = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Serviced = _serviced_primative;
 		} break;
 	}
 	var _created_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 208)).ToFhirDateTime();
@@ -14722,7 +14914,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest.SupportingInformationCom
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -14731,7 +14923,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest.SupportingInformationCom
 		fhirInstance.Information = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 64)));
 	}
 	
-	var _appliesToAll_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _appliesToAll_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_appliesToAll_temp != null) {
 		fhirInstance.AppliesToAllElement = _appliesToAll_temp;
 	}
@@ -14773,7 +14965,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest.InsuranceComponent? Mars
 		
 	}
 	
-	var _focal_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _focal_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_focal_temp != null) {
 		fhirInstance.FocalElement = _focal_temp;
 	}
@@ -14828,7 +15020,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest.DetailsComponent? Marsha
 		var _supportingInfoSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 56)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 56)); i++)
 		{
-			var _supportingInfoSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].GetValue());
+			var _supportingInfoSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].ToFhirPositiveInt();
 			_supportingInfoSequence_list.Add(_supportingInfoSequence_primative);
 			}
 			
@@ -14936,15 +15128,17 @@ public static Hl7.Fhir.Model.CoverageEligibilityRequest.DiagnosisComponent? Mars
 	switch((*(FHIR_Marshalling.CoverageEligibilityRequest_Item_Diagnosis.DiagnosisType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.CoverageEligibilityRequest_Item_Diagnosis.DiagnosisType.CodeableConcept: {
 			var _diagnosisCodeableConcept__union = &(*(FHIR_Marshalling.CoverageEligibilityRequest_Item_Diagnosis.DiagnosisUnion*)((byte*)in_native + 56));
-			var _diagnosis_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)) != null) {
+				fhirInstance.Diagnosis = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Diagnosis = _diagnosis_primative;
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityRequest_Item_Diagnosis.DiagnosisType.Reference: {
 			var _diagnosisReference__union = &(*(FHIR_Marshalling.CoverageEligibilityRequest_Item_Diagnosis.DiagnosisUnion*)((byte*)in_native + 56));
-			var _diagnosis_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)) != null) {
+				fhirInstance.Diagnosis = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)));
+			}
 			
-			fhirInstance.Diagnosis = _diagnosis_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -15051,14 +15245,18 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse? Marshal_CoverageEligib
 	switch((*(FHIR_Marshalling.CoverageEligibilityResponse.ServicedType*)((byte*)in_native + 192))) {
 		case FHIR_Marshalling.CoverageEligibilityResponse.ServicedType.Date: {
 			var _servicedDate__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse.ServicedUnion*)((byte*)in_native + 176));
-			var _serviced_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
-			fhirInstance.Serviced = _serviced_primative;
+			var _serviced_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
+			if(_serviced_temp != null) {
+				fhirInstance.Serviced = _serviced_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityResponse.ServicedType.Period: {
 			var _servicedPeriod__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse.ServicedUnion*)((byte*)in_native + 176));
-			var _serviced_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)) != null) {
+				fhirInstance.Serviced = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Serviced = _serviced_primative;
 		} break;
 	}
 	var _created_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 200)).ToFhirDateTime();
@@ -15162,7 +15360,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse.InsuranceComponent? Mar
 		fhirInstance.Coverage = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 56)));
 	}
 	
-	var _inforce_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _inforce_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_inforce_temp != null) {
 		fhirInstance.InforceElement = _inforce_temp;
 	}
@@ -15244,7 +15442,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse.ItemsComponent? Marshal
 		fhirInstance.Provider = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 88)));
 	}
 	
-	var _excluded_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 96)).GetValue());
+	var _excluded_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 96)).ToFhirBoolean();
 	if(_excluded_temp != null) {
 		fhirInstance.ExcludedElement = _excluded_temp;
 	}
@@ -15283,7 +15481,7 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse.ItemsComponent? Marshal
 		
 	}
 	
-	var _authorizationRequired_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 176)).GetValue());
+	var _authorizationRequired_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 176)).ToFhirBoolean();
 	if(_authorizationRequired_temp != null) {
 		fhirInstance.AuthorizationRequiredElement = _authorizationRequired_temp;
 	}
@@ -15349,39 +15547,51 @@ public static Hl7.Fhir.Model.CoverageEligibilityResponse.BenefitComponent? Marsh
 	switch((*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedType.UnsignedInt: {
 			var _allowedUnsignedInt__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedUnion*)((byte*)in_native + 64));
-			var _allowed_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_allowedUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Allowed = _allowed_primative;
+			var _allowed_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_allowedUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_allowed_temp != null) {
+				fhirInstance.Allowed = _allowed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedType.String: {
 			var _allowedString__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedUnion*)((byte*)in_native + 64));
-			var _allowed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_allowedString__union + 0)).ToString();
-			var _allowed_primative =  (_allowed_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_allowed_primative_temp);
-			fhirInstance.Allowed = _allowed_primative;
+			var _allowed_temp = (*(FHIR_Marshalling.String8*)((byte*)_allowedString__union + 0)).ToString();
+			if(_allowed_temp != null) {
+				fhirInstance.Allowed = new Hl7.Fhir.Model.FhirString(_allowed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedType.Money: {
 			var _allowedMoney__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.AllowedUnion*)((byte*)in_native + 64));
-			var _allowed_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_allowedMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_allowedMoney__union + 0)) != null) {
+				fhirInstance.Allowed = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_allowedMoney__union + 0)));
+			}
 			
-			fhirInstance.Allowed = _allowed_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedType.UnsignedInt: {
 			var _usedUnsignedInt__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedUnion*)((byte*)in_native + 88));
-			var _used_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_usedUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Used = _used_primative;
+			var _used_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_usedUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_used_temp != null) {
+				fhirInstance.Used = _used_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedType.String: {
 			var _usedString__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedUnion*)((byte*)in_native + 88));
-			var _used_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_usedString__union + 0)).ToString();
-			var _used_primative =  (_used_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_used_primative_temp);
-			fhirInstance.Used = _used_primative;
+			var _used_temp = (*(FHIR_Marshalling.String8*)((byte*)_usedString__union + 0)).ToString();
+			if(_used_temp != null) {
+				fhirInstance.Used = new Hl7.Fhir.Model.FhirString(_used_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedType.Money: {
 			var _usedMoney__union = &(*(FHIR_Marshalling.CoverageEligibilityResponse_Insurance_Item_Benefit.UsedUnion*)((byte*)in_native + 88));
-			var _used_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_usedMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_usedMoney__union + 0)) != null) {
+				fhirInstance.Used = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_usedMoney__union + 0)));
+			}
 			
-			fhirInstance.Used = _used_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -15525,14 +15735,18 @@ public static Hl7.Fhir.Model.DetectedIssue? Marshal_DetectedIssue(FHIR_Marshalli
 	switch((*(FHIR_Marshalling.DetectedIssue.IdentifiedType*)((byte*)in_native + 200))) {
 		case FHIR_Marshalling.DetectedIssue.IdentifiedType.DateTime: {
 			var _identifiedDateTime__union = &(*(FHIR_Marshalling.DetectedIssue.IdentifiedUnion*)((byte*)in_native + 184));
-			var _identified_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_identifiedDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Identified = _identified_primative;
+			var _identified_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_identifiedDateTime__union + 0)).ToFhirDateTime();
+			if(_identified_temp != null) {
+				fhirInstance.Identified = _identified_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.DetectedIssue.IdentifiedType.Period: {
 			var _identifiedPeriod__union = &(*(FHIR_Marshalling.DetectedIssue.IdentifiedUnion*)((byte*)in_native + 184));
-			var _identified_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_identifiedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_identifiedPeriod__union + 0)) != null) {
+				fhirInstance.Identified = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_identifiedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Identified = _identified_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 208)) != null) {
@@ -16329,15 +16543,18 @@ public static Hl7.Fhir.Model.DeviceDefinition? Marshal_DeviceDefinition(FHIR_Mar
 	switch((*(FHIR_Marshalling.DeviceDefinition.ManufacturerType*)((byte*)in_native + 168))) {
 		case FHIR_Marshalling.DeviceDefinition.ManufacturerType.String: {
 			var _manufacturerString__union = &(*(FHIR_Marshalling.DeviceDefinition.ManufacturerUnion*)((byte*)in_native + 152));
-			var _manufacturer_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_manufacturerString__union + 0)).ToString();
-			var _manufacturer_primative =  (_manufacturer_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_manufacturer_primative_temp);
-			fhirInstance.Manufacturer = _manufacturer_primative;
+			var _manufacturer_temp = (*(FHIR_Marshalling.String8*)((byte*)_manufacturerString__union + 0)).ToString();
+			if(_manufacturer_temp != null) {
+				fhirInstance.Manufacturer = new Hl7.Fhir.Model.FhirString(_manufacturer_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.DeviceDefinition.ManufacturerType.Reference: {
 			var _manufacturerReference__union = &(*(FHIR_Marshalling.DeviceDefinition.ManufacturerUnion*)((byte*)in_native + 152));
-			var _manufacturer_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_manufacturerReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_manufacturerReference__union + 0)) != null) {
+				fhirInstance.Manufacturer = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_manufacturerReference__union + 0)));
+			}
 			
-			fhirInstance.Manufacturer = _manufacturer_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 176)) > 0) {
@@ -16813,12 +17030,12 @@ public static Hl7.Fhir.Model.DeviceDefinition.MaterialComponent? Marshal_DeviceD
 		fhirInstance.Substance = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _alternate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _alternate_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_alternate_temp != null) {
 		fhirInstance.AlternateElement = _alternate_temp;
 	}
 	
-	var _allergenicIndicator_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _allergenicIndicator_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_allergenicIndicator_temp != null) {
 		fhirInstance.AllergenicIndicatorElement = _allergenicIndicator_temp;
 	}
@@ -17152,15 +17369,17 @@ public static Hl7.Fhir.Model.DeviceRequest? Marshal_DeviceRequest(FHIR_Marshalli
 	switch((*(FHIR_Marshalling.DeviceRequest.CodeType*)((byte*)in_native + 264))) {
 		case FHIR_Marshalling.DeviceRequest.CodeType.Reference: {
 			var _codeReference__union = &(*(FHIR_Marshalling.DeviceRequest.CodeUnion*)((byte*)in_native + 256));
-			var _code_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_codeReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_codeReference__union + 0)) != null) {
+				fhirInstance.Code = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_codeReference__union + 0)));
+			}
 			
-			fhirInstance.Code = _code_primative;
 		} break;
 		case FHIR_Marshalling.DeviceRequest.CodeType.CodeableConcept: {
 			var _codeCodeableConcept__union = &(*(FHIR_Marshalling.DeviceRequest.CodeUnion*)((byte*)in_native + 256));
-			var _code_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_codeCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_codeCodeableConcept__union + 0)) != null) {
+				fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_codeCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Code = _code_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 272)) > 0) {
@@ -17186,20 +17405,25 @@ public static Hl7.Fhir.Model.DeviceRequest? Marshal_DeviceRequest(FHIR_Marshalli
 	switch((*(FHIR_Marshalling.DeviceRequest.OccurrenceType*)((byte*)in_native + 320))) {
 		case FHIR_Marshalling.DeviceRequest.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.DeviceRequest.OccurrenceUnion*)((byte*)in_native + 304));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.DeviceRequest.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.DeviceRequest.OccurrenceUnion*)((byte*)in_native + 304));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 		case FHIR_Marshalling.DeviceRequest.OccurrenceType.Timing: {
 			var _occurrenceTiming__union = &(*(FHIR_Marshalling.DeviceRequest.OccurrenceUnion*)((byte*)in_native + 304));
-			var _occurrence_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	var _authoredOn_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 328)).ToFhirDateTime();
@@ -17335,26 +17559,32 @@ public static Hl7.Fhir.Model.DeviceRequest.ParameterComponent? Marshal_DeviceReq
 	switch((*(FHIR_Marshalling.DeviceRequest_Parameter.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.DeviceRequest_Parameter.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.DeviceRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.DeviceRequest_Parameter.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.DeviceRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.DeviceRequest_Parameter.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.DeviceRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.DeviceRequest_Parameter.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.DeviceRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -17472,20 +17702,25 @@ public static Hl7.Fhir.Model.DeviceUseStatement? Marshal_DeviceUseStatement(FHIR
 	switch((*(FHIR_Marshalling.DeviceUseStatement.TimingType*)((byte*)in_native + 208))) {
 		case FHIR_Marshalling.DeviceUseStatement.TimingType.Timing: {
 			var _timingTiming__union = &(*(FHIR_Marshalling.DeviceUseStatement.TimingUnion*)((byte*)in_native + 192));
-			var _timing_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.DeviceUseStatement.TimingType.Period: {
 			var _timingPeriod__union = &(*(FHIR_Marshalling.DeviceUseStatement.TimingUnion*)((byte*)in_native + 192));
-			var _timing_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.DeviceUseStatement.TimingType.DateTime: {
 			var _timingDateTime__union = &(*(FHIR_Marshalling.DeviceUseStatement.TimingUnion*)((byte*)in_native + 192));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 	}
 	var _recordedOn_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 216)).ToFhirDateTime();
@@ -17664,14 +17899,18 @@ public static Hl7.Fhir.Model.DiagnosticReport? Marshal_DiagnosticReport(FHIR_Mar
 	switch((*(FHIR_Marshalling.DiagnosticReport.EffectiveType*)((byte*)in_native + 224))) {
 		case FHIR_Marshalling.DiagnosticReport.EffectiveType.DateTime: {
 			var _effectiveDateTime__union = &(*(FHIR_Marshalling.DiagnosticReport.EffectiveUnion*)((byte*)in_native + 208));
-			var _effective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Effective = _effective_primative;
+			var _effective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_effective_temp != null) {
+				fhirInstance.Effective = _effective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.DiagnosticReport.EffectiveType.Period: {
 			var _effectivePeriod__union = &(*(FHIR_Marshalling.DiagnosticReport.EffectiveUnion*)((byte*)in_native + 208));
-			var _effective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)) != null) {
+				fhirInstance.Effective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.Effective = _effective_primative;
 		} break;
 	}
 	var _issued_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 232)).ToFhirInstant();
@@ -18757,12 +18996,12 @@ public static Hl7.Fhir.Model.EffectEvidenceSynthesis.SampleSizeComponent? Marsha
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	var _numberOfStudies_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _numberOfStudies_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirInteger();
 	if(_numberOfStudies_temp != null) {
 		fhirInstance.NumberOfStudiesElement = _numberOfStudies_temp;
 	}
 	
-	var _numberOfParticipants_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _numberOfParticipants_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirInteger();
 	if(_numberOfParticipants_temp != null) {
 		fhirInstance.NumberOfParticipantsElement = _numberOfParticipants_temp;
 	}
@@ -18872,7 +19111,7 @@ public static Hl7.Fhir.Model.EffectEvidenceSynthesis.EffectEstimateComponent? Ma
 		fhirInstance.VariantState = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 80)));
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -18934,17 +19173,17 @@ public static Hl7.Fhir.Model.EffectEvidenceSynthesis.PrecisionEstimateComponent?
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _level_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).DecimalValue());
+	var _level_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToFhirDecimal();
 	if(_level_temp != null) {
 		fhirInstance.LevelElement = _level_temp;
 	}
 	
-	var _from_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _from_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_from_temp != null) {
 		fhirInstance.FromElement = _from_temp;
 	}
 	
-	var _to_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _to_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_to_temp != null) {
 		fhirInstance.ToElement = _to_temp;
 	}
@@ -19544,7 +19783,7 @@ public static Hl7.Fhir.Model.Encounter.DiagnosisComponent? Marshal_Encounter_Dia
 		fhirInstance.Use = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 64)));
 	}
 	
-	var _rank_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _rank_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirPositiveInt();
 	if(_rank_temp != null) {
 		fhirInstance.RankElement = _rank_temp;
 	}
@@ -20335,7 +20574,7 @@ public static Hl7.Fhir.Model.EpisodeOfCare.DiagnosisComponent? Marshal_EpisodeOf
 		fhirInstance.Role = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 64)));
 	}
 	
-	var _rank_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _rank_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirPositiveInt();
 	if(_rank_temp != null) {
 		fhirInstance.RankElement = _rank_temp;
 	}
@@ -20449,7 +20688,7 @@ public static Hl7.Fhir.Model.EventDefinition? Marshal_EventDefinition(FHIR_Marsh
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -20457,15 +20696,17 @@ public static Hl7.Fhir.Model.EventDefinition? Marshal_EventDefinition(FHIR_Marsh
 	switch((*(FHIR_Marshalling.EventDefinition.SubjectType*)((byte*)in_native + 248))) {
 		case FHIR_Marshalling.EventDefinition.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.EventDefinition.SubjectUnion*)((byte*)in_native + 240));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.EventDefinition.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.EventDefinition.SubjectUnion*)((byte*)in_native + 240));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 256)).ToFhirDateTime();
@@ -21258,39 +21499,46 @@ public static Hl7.Fhir.Model.EvidenceVariable.CharacteristicComponent? Marshal_E
 	switch((*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType.Reference: {
 			var _definitionReference__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionUnion*)((byte*)in_native + 72));
-			var _definition_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_definitionReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_definitionReference__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_definitionReference__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType.Canonical: {
 			var _definitionCanonical__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionUnion*)((byte*)in_native + 72));
-			var _definition_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionCanonical__union + 0)).ToString();
-			var _definition_primative =  (_definition_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_definition_primative_temp);
-			fhirInstance.Definition = _definition_primative;
+			var _definition_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionCanonical__union + 0)).ToString();
+			if(_definition_temp != null) {
+				fhirInstance.Definition = new Hl7.Fhir.Model.Canonical(_definition_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType.CodeableConcept: {
 			var _definitionCodeableConcept__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionUnion*)((byte*)in_native + 72));
-			var _definition_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definitionCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definitionCodeableConcept__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definitionCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType.Expression: {
 			var _definitionExpression__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionUnion*)((byte*)in_native + 72));
-			var _definition_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_definitionExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_definitionExpression__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_definitionExpression__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType.DataRequirement: {
 			var _definitionDataRequirement__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionUnion*)((byte*)in_native + 72));
-			var _definition_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_definitionDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_definitionDataRequirement__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_definitionDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionType.TriggerDefinition: {
 			var _definitionTriggerDefinition__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.DefinitionUnion*)((byte*)in_native + 72));
-			var _definition_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_definitionTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_definitionTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_definitionTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 96)) > 0) {
@@ -21305,7 +21553,7 @@ public static Hl7.Fhir.Model.EvidenceVariable.CharacteristicComponent? Marshal_E
 		
 	}
 	
-	var _exclude_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 112)).GetValue());
+	var _exclude_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 112)).ToFhirBoolean();
 	if(_exclude_temp != null) {
 		fhirInstance.ExcludeElement = _exclude_temp;
 	}
@@ -21313,26 +21561,32 @@ public static Hl7.Fhir.Model.EvidenceVariable.CharacteristicComponent? Marshal_E
 	switch((*(FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveType*)((byte*)in_native + 136))) {
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveType.DateTime: {
 			var _participantEffectiveDateTime__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 120));
-			var _participantEffective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_participantEffectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
+			var _participantEffective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_participantEffectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_participantEffective_temp != null) {
+				fhirInstance.ParticipantEffective = _participantEffective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveType.Period: {
 			var _participantEffectivePeriod__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 120));
-			var _participantEffective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_participantEffectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_participantEffectivePeriod__union + 0)) != null) {
+				fhirInstance.ParticipantEffective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_participantEffectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveType.Duration: {
 			var _participantEffectiveDuration__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 120));
-			var _participantEffective_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_participantEffectiveDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_participantEffectiveDuration__union + 0)) != null) {
+				fhirInstance.ParticipantEffective = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_participantEffectiveDuration__union + 0)));
+			}
 			
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
 		} break;
 		case FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveType.Timing: {
 			var _participantEffectiveTiming__union = &(*(FHIR_Marshalling.EvidenceVariable_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 120));
-			var _participantEffective_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_participantEffectiveTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_participantEffectiveTiming__union + 0)) != null) {
+				fhirInstance.ParticipantEffective = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_participantEffectiveTiming__union + 0)));
+			}
 			
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Duration**)((byte*)in_native + 144)) != null) {
@@ -21443,7 +21697,7 @@ public static Hl7.Fhir.Model.ExampleScenario? Marshal_ExampleScenario(FHIR_Marsh
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -21898,7 +22152,7 @@ public static Hl7.Fhir.Model.ExampleScenario.StepComponent? Marshal_ExampleScena
 		
 	}
 	
-	var _pause_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _pause_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_pause_temp != null) {
 		fhirInstance.PauseElement = _pause_temp;
 	}
@@ -21986,12 +22240,12 @@ public static Hl7.Fhir.Model.ExampleScenario.OperationComponent? Marshal_Example
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.Markdown(_description_temp);
 	}
 	
-	var _initiatorActive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).GetValue());
+	var _initiatorActive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).ToFhirBoolean();
 	if(_initiatorActive_temp != null) {
 		fhirInstance.InitiatorActiveElement = _initiatorActive_temp;
 	}
 	
-	var _receiverActive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).GetValue());
+	var _receiverActive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).ToFhirBoolean();
 	if(_receiverActive_temp != null) {
 		fhirInstance.ReceiverActiveElement = _receiverActive_temp;
 	}
@@ -22320,7 +22574,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit? Marshal_ExplanationOfBenefit(
 		
 	}
 	
-	var _precedence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 464)).GetValue());
+	var _precedence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 464)).ToFhirPositiveInt();
 	if(_precedence_temp != null) {
 		fhirInstance.PrecedenceElement = _precedence_temp;
 	}
@@ -22560,7 +22814,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.CareTeamComponent? Marshal_Exp
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -22569,7 +22823,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.CareTeamComponent? Marshal_Exp
 		fhirInstance.Provider = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 64)));
 	}
 	
-	var _responsible_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _responsible_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_responsible_temp != null) {
 		fhirInstance.ResponsibleElement = _responsible_temp;
 	}
@@ -22619,7 +22873,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.SupportingInformationComponent
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -22635,45 +22889,57 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.SupportingInformationComponent
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.TimingType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.TimingType.Date: {
 			var _timingDate__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.TimingUnion*)((byte*)in_native + 80));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDate__union + 0)).ToFhirDate();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDate__union + 0)).ToFhirDate();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.TimingType.Period: {
 			var _timingPeriod__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.TimingUnion*)((byte*)in_native + 80));
-			var _timing_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueType*)((byte*)in_native + 120))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_SupportingInfo.ValueUnion*)((byte*)in_native + 104));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Coding**)((byte*)in_native + 128)) != null) {
@@ -22717,7 +22983,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.DiagnosisComponent? Marshal_Ex
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -22725,15 +22991,17 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.DiagnosisComponent? Marshal_Ex
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_Diagnosis.DiagnosisType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_Diagnosis.DiagnosisType.CodeableConcept: {
 			var _diagnosisCodeableConcept__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Diagnosis.DiagnosisUnion*)((byte*)in_native + 64));
-			var _diagnosis_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)) != null) {
+				fhirInstance.Diagnosis = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_diagnosisCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Diagnosis = _diagnosis_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_Diagnosis.DiagnosisType.Reference: {
 			var _diagnosisReference__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Diagnosis.DiagnosisUnion*)((byte*)in_native + 64));
-			var _diagnosis_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)) != null) {
+				fhirInstance.Diagnosis = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_diagnosisReference__union + 0)));
+			}
 			
-			fhirInstance.Diagnosis = _diagnosis_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 80)) > 0) {
@@ -22793,7 +23061,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ProcedureComponent? Marshal_Ex
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -22818,15 +23086,17 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ProcedureComponent? Marshal_Ex
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_Procedure.ProcedureType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_Procedure.ProcedureType.CodeableConcept: {
 			var _procedureCodeableConcept__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Procedure.ProcedureUnion*)((byte*)in_native + 96));
-			var _procedure_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_procedureCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_procedureCodeableConcept__union + 0)) != null) {
+				fhirInstance.Procedure = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_procedureCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Procedure = _procedure_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_Procedure.ProcedureType.Reference: {
 			var _procedureReference__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Procedure.ProcedureUnion*)((byte*)in_native + 96));
-			var _procedure_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_procedureReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_procedureReference__union + 0)) != null) {
+				fhirInstance.Procedure = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_procedureReference__union + 0)));
+			}
 			
-			fhirInstance.Procedure = _procedure_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 112)) > 0) {
@@ -22878,7 +23148,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.InsuranceComponent? Marshal_Ex
 		
 	}
 	
-	var _focal_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _focal_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_focal_temp != null) {
 		fhirInstance.FocalElement = _focal_temp;
 	}
@@ -22949,15 +23219,17 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AccidentComponent? Marshal_Exp
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_Accident.LocationType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_Accident.LocationType.Address: {
 			var _locationAddress__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Accident.LocationUnion*)((byte*)in_native + 80));
-			var _location_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_Accident.LocationType.Reference: {
 			var _locationReference__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Accident.LocationUnion*)((byte*)in_native + 80));
-			var _location_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -22997,7 +23269,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -23006,7 +23278,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		var _careTeamSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 64)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 64)); i++)
 		{
-			var _careTeamSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].GetValue());
+			var _careTeamSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 72))[i].ToFhirPositiveInt();
 			_careTeamSequence_list.Add(_careTeamSequence_primative);
 			}
 			
@@ -23018,7 +23290,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		var _diagnosisSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 80)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 80)); i++)
 		{
-			var _diagnosisSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 88))[i].GetValue());
+			var _diagnosisSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 88))[i].ToFhirPositiveInt();
 			_diagnosisSequence_list.Add(_diagnosisSequence_primative);
 			}
 			
@@ -23030,7 +23302,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		var _procedureSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 96)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 96)); i++)
 		{
-			var _procedureSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 104))[i].GetValue());
+			var _procedureSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 104))[i].ToFhirPositiveInt();
 			_procedureSequence_list.Add(_procedureSequence_primative);
 			}
 			
@@ -23042,7 +23314,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		var _informationSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 112)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 112)); i++)
 		{
-			var _informationSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 120))[i].GetValue());
+			var _informationSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 120))[i].ToFhirPositiveInt();
 			_informationSequence_list.Add(_informationSequence_primative);
 			}
 			
@@ -23089,34 +23361,41 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_Item.ServicedType*)((byte*)in_native + 200))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_Item.ServicedType.Date: {
 			var _servicedDate__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Item.ServicedUnion*)((byte*)in_native + 184));
-			var _serviced_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
-			fhirInstance.Serviced = _serviced_primative;
+			var _serviced_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
+			if(_serviced_temp != null) {
+				fhirInstance.Serviced = _serviced_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_Item.ServicedType.Period: {
 			var _servicedPeriod__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Item.ServicedUnion*)((byte*)in_native + 184));
-			var _serviced_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)) != null) {
+				fhirInstance.Serviced = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Serviced = _serviced_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_Item.LocationType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_Item.LocationType.CodeableConcept: {
 			var _locationCodeableConcept__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Item.LocationUnion*)((byte*)in_native + 208));
-			var _location_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Location = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_Item.LocationType.Address: {
 			var _locationAddress__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Item.LocationUnion*)((byte*)in_native + 208));
-			var _location_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_Item.LocationType.Reference: {
 			var _locationReference__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_Item.LocationUnion*)((byte*)in_native + 208));
-			var _location_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 224)) != null) {
@@ -23127,7 +23406,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 232)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 240)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -23180,7 +23459,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.ItemComponent? Marshal_Explana
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 320)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 320)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 328))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 328))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -23261,7 +23540,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AdjudicationComponent? Marshal
 		fhirInstance.Amount = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 72)));
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -23303,7 +23582,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.DetailComponent? Marshal_Expla
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -23352,7 +23631,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.DetailComponent? Marshal_Expla
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 128)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -23377,7 +23656,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.DetailComponent? Marshal_Expla
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 176)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 176)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 184))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 184))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -23446,7 +23725,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.SubDetailComponent? Marshal_Ex
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -23495,7 +23774,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.SubDetailComponent? Marshal_Ex
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 128)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -23520,7 +23799,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.SubDetailComponent? Marshal_Ex
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 176)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 176)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 184))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 184))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -23581,7 +23860,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemComponent? Marshal_Ex
 		var _itemSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 56)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 56)); i++)
 		{
-			var _itemSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].GetValue());
+			var _itemSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].ToFhirPositiveInt();
 			_itemSequence_list.Add(_itemSequence_primative);
 			}
 			
@@ -23593,7 +23872,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemComponent? Marshal_Ex
 		var _detailSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 72)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 72)); i++)
 		{
-			var _detailSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 80))[i].GetValue());
+			var _detailSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 80))[i].ToFhirPositiveInt();
 			_detailSequence_list.Add(_detailSequence_primative);
 			}
 			
@@ -23605,7 +23884,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemComponent? Marshal_Ex
 		var _subDetailSequence_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 88)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 88)); i++)
 		{
-			var _subDetailSequence_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].GetValue());
+			var _subDetailSequence_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].ToFhirPositiveInt();
 			_subDetailSequence_list.Add(_subDetailSequence_primative);
 			}
 			
@@ -23656,34 +23935,41 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemComponent? Marshal_Ex
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.ServicedType*)((byte*)in_native + 176))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_AddItem.ServicedType.Date: {
 			var _servicedDate__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.ServicedUnion*)((byte*)in_native + 160));
-			var _serviced_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
-			fhirInstance.Serviced = _serviced_primative;
+			var _serviced_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_servicedDate__union + 0)).ToFhirDate();
+			if(_serviced_temp != null) {
+				fhirInstance.Serviced = _serviced_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_AddItem.ServicedType.Period: {
 			var _servicedPeriod__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.ServicedUnion*)((byte*)in_native + 160));
-			var _serviced_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)) != null) {
+				fhirInstance.Serviced = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_servicedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Serviced = _serviced_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationType*)((byte*)in_native + 192))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationType.CodeableConcept: {
 			var _locationCodeableConcept__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationUnion*)((byte*)in_native + 184));
-			var _location_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Location = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_locationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationType.Address: {
 			var _locationAddress__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationUnion*)((byte*)in_native + 184));
-			var _location_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_locationAddress__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationType.Reference: {
 			var _locationReference__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_AddItem.LocationUnion*)((byte*)in_native + 184));
-			var _location_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)) != null) {
+				fhirInstance.Location = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_locationReference__union + 0)));
+			}
 			
-			fhirInstance.Location = _location_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 200)) != null) {
@@ -23694,7 +23980,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemComponent? Marshal_Ex
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 208)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 216)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -23723,7 +24009,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemComponent? Marshal_Ex
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 264)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 264)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 272))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 272))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -23816,7 +24102,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemDetailComponent? Mars
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 88)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -23829,7 +24115,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemDetailComponent? Mars
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 120)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -23922,7 +24208,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemDetailSubDetailCompon
 		fhirInstance.UnitPrice = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)in_native + 88)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -23935,7 +24221,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.AddedItemDetailSubDetailCompon
 		var _noteNumber_list  = new List<PositiveInt>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 120)); i++)
 		{
-			var _noteNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].GetValue());
+			var _noteNumber_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 128))[i].ToFhirPositiveInt();
 			_noteNumber_list.Add(_noteNumber_primative);
 			}
 			
@@ -24099,7 +24385,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.NoteComponent? Marshal_Explana
 		
 	}
 	
-	var _number_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _number_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_number_temp != null) {
 		fhirInstance.NumberElement = _number_temp;
 	}
@@ -24159,7 +24445,7 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.BenefitBalanceComponent? Marsh
 		fhirInstance.Category = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _excluded_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _excluded_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_excluded_temp != null) {
 		fhirInstance.ExcludedElement = _excluded_temp;
 	}
@@ -24242,33 +24528,43 @@ public static Hl7.Fhir.Model.ExplanationOfBenefit.BenefitComponent? Marshal_Expl
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedType.UnsignedInt: {
 			var _allowedUnsignedInt__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedUnion*)((byte*)in_native + 64));
-			var _allowed_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_allowedUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Allowed = _allowed_primative;
+			var _allowed_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_allowedUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_allowed_temp != null) {
+				fhirInstance.Allowed = _allowed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedType.String: {
 			var _allowedString__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedUnion*)((byte*)in_native + 64));
-			var _allowed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_allowedString__union + 0)).ToString();
-			var _allowed_primative =  (_allowed_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_allowed_primative_temp);
-			fhirInstance.Allowed = _allowed_primative;
+			var _allowed_temp = (*(FHIR_Marshalling.String8*)((byte*)_allowedString__union + 0)).ToString();
+			if(_allowed_temp != null) {
+				fhirInstance.Allowed = new Hl7.Fhir.Model.FhirString(_allowed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedType.Money: {
 			var _allowedMoney__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.AllowedUnion*)((byte*)in_native + 64));
-			var _allowed_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_allowedMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_allowedMoney__union + 0)) != null) {
+				fhirInstance.Allowed = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_allowedMoney__union + 0)));
+			}
 			
-			fhirInstance.Allowed = _allowed_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.UsedType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.UsedType.UnsignedInt: {
 			var _usedUnsignedInt__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.UsedUnion*)((byte*)in_native + 88));
-			var _used_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_usedUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Used = _used_primative;
+			var _used_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_usedUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_used_temp != null) {
+				fhirInstance.Used = _used_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.UsedType.Money: {
 			var _usedMoney__union = &(*(FHIR_Marshalling.ExplanationOfBenefit_BenefitBalance_Financial.UsedUnion*)((byte*)in_native + 88));
-			var _used_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_usedMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_usedMoney__union + 0)) != null) {
+				fhirInstance.Used = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_usedMoney__union + 0)));
+			}
 			
-			fhirInstance.Used = _used_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -24410,43 +24706,53 @@ public static Hl7.Fhir.Model.FamilyMemberHistory? Marshal_FamilyMemberHistory(FH
 	switch((*(FHIR_Marshalling.FamilyMemberHistory.BornType*)((byte*)in_native + 264))) {
 		case FHIR_Marshalling.FamilyMemberHistory.BornType.Period: {
 			var _bornPeriod__union = &(*(FHIR_Marshalling.FamilyMemberHistory.BornUnion*)((byte*)in_native + 248));
-			var _born_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_bornPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_bornPeriod__union + 0)) != null) {
+				fhirInstance.Born = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_bornPeriod__union + 0)));
+			}
 			
-			fhirInstance.Born = _born_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.BornType.Date: {
 			var _bornDate__union = &(*(FHIR_Marshalling.FamilyMemberHistory.BornUnion*)((byte*)in_native + 248));
-			var _born_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_bornDate__union + 0)).ToFhirDate();
-			fhirInstance.Born = _born_primative;
+			var _born_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_bornDate__union + 0)).ToFhirDate();
+			if(_born_temp != null) {
+				fhirInstance.Born = _born_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.BornType.String: {
 			var _bornString__union = &(*(FHIR_Marshalling.FamilyMemberHistory.BornUnion*)((byte*)in_native + 248));
-			var _born_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_bornString__union + 0)).ToString();
-			var _born_primative =  (_born_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_born_primative_temp);
-			fhirInstance.Born = _born_primative;
+			var _born_temp = (*(FHIR_Marshalling.String8*)((byte*)_bornString__union + 0)).ToString();
+			if(_born_temp != null) {
+				fhirInstance.Born = new Hl7.Fhir.Model.FhirString(_born_temp);
+			}
+			
 		} break;
 	}
 	switch((*(FHIR_Marshalling.FamilyMemberHistory.AgeType*)((byte*)in_native + 288))) {
 		case FHIR_Marshalling.FamilyMemberHistory.AgeType.Age: {
 			var _ageAge__union = &(*(FHIR_Marshalling.FamilyMemberHistory.AgeUnion*)((byte*)in_native + 272));
-			var _age_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_ageAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_ageAge__union + 0)) != null) {
+				fhirInstance.Age = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_ageAge__union + 0)));
+			}
 			
-			fhirInstance.Age = _age_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.AgeType.Range: {
 			var _ageRange__union = &(*(FHIR_Marshalling.FamilyMemberHistory.AgeUnion*)((byte*)in_native + 272));
-			var _age_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_ageRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_ageRange__union + 0)) != null) {
+				fhirInstance.Age = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_ageRange__union + 0)));
+			}
 			
-			fhirInstance.Age = _age_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.AgeType.String: {
 			var _ageString__union = &(*(FHIR_Marshalling.FamilyMemberHistory.AgeUnion*)((byte*)in_native + 272));
-			var _age_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_ageString__union + 0)).ToString();
-			var _age_primative =  (_age_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_age_primative_temp);
-			fhirInstance.Age = _age_primative;
+			var _age_temp = (*(FHIR_Marshalling.String8*)((byte*)_ageString__union + 0)).ToString();
+			if(_age_temp != null) {
+				fhirInstance.Age = new Hl7.Fhir.Model.FhirString(_age_temp);
+			}
+			
 		} break;
 	}
-	var _estimatedAge_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 296)).GetValue());
+	var _estimatedAge_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 296)).ToFhirBoolean();
 	if(_estimatedAge_temp != null) {
 		fhirInstance.EstimatedAgeElement = _estimatedAge_temp;
 	}
@@ -24454,31 +24760,41 @@ public static Hl7.Fhir.Model.FamilyMemberHistory? Marshal_FamilyMemberHistory(FH
 	switch((*(FHIR_Marshalling.FamilyMemberHistory.DeceasedType*)((byte*)in_native + 320))) {
 		case FHIR_Marshalling.FamilyMemberHistory.DeceasedType.Boolean: {
 			var _deceasedBoolean__union = &(*(FHIR_Marshalling.FamilyMemberHistory.DeceasedUnion*)((byte*)in_native + 304));
-			var _deceased_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_deceasedBoolean__union + 0)).GetValue());
-			fhirInstance.Deceased = _deceased_primative;
+			var _deceased_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_deceasedBoolean__union + 0)).ToFhirBoolean();
+			if(_deceased_temp != null) {
+				fhirInstance.Deceased = _deceased_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.DeceasedType.Age: {
 			var _deceasedAge__union = &(*(FHIR_Marshalling.FamilyMemberHistory.DeceasedUnion*)((byte*)in_native + 304));
-			var _deceased_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_deceasedAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_deceasedAge__union + 0)) != null) {
+				fhirInstance.Deceased = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_deceasedAge__union + 0)));
+			}
 			
-			fhirInstance.Deceased = _deceased_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.DeceasedType.Range: {
 			var _deceasedRange__union = &(*(FHIR_Marshalling.FamilyMemberHistory.DeceasedUnion*)((byte*)in_native + 304));
-			var _deceased_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_deceasedRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_deceasedRange__union + 0)) != null) {
+				fhirInstance.Deceased = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_deceasedRange__union + 0)));
+			}
 			
-			fhirInstance.Deceased = _deceased_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.DeceasedType.Date: {
 			var _deceasedDate__union = &(*(FHIR_Marshalling.FamilyMemberHistory.DeceasedUnion*)((byte*)in_native + 304));
-			var _deceased_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_deceasedDate__union + 0)).ToFhirDate();
-			fhirInstance.Deceased = _deceased_primative;
+			var _deceased_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_deceasedDate__union + 0)).ToFhirDate();
+			if(_deceased_temp != null) {
+				fhirInstance.Deceased = _deceased_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory.DeceasedType.String: {
 			var _deceasedString__union = &(*(FHIR_Marshalling.FamilyMemberHistory.DeceasedUnion*)((byte*)in_native + 304));
-			var _deceased_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_deceasedString__union + 0)).ToString();
-			var _deceased_primative =  (_deceased_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_deceased_primative_temp);
-			fhirInstance.Deceased = _deceased_primative;
+			var _deceased_temp = (*(FHIR_Marshalling.String8*)((byte*)_deceasedString__union + 0)).ToString();
+			if(_deceased_temp != null) {
+				fhirInstance.Deceased = new Hl7.Fhir.Model.FhirString(_deceased_temp);
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 328)) > 0) {
@@ -24574,7 +24890,7 @@ public static Hl7.Fhir.Model.FamilyMemberHistory.ConditionComponent? Marshal_Fam
 		fhirInstance.Outcome = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 64)));
 	}
 	
-	var _contributedToDeath_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _contributedToDeath_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_contributedToDeath_temp != null) {
 		fhirInstance.ContributedToDeathElement = _contributedToDeath_temp;
 	}
@@ -24582,27 +24898,32 @@ public static Hl7.Fhir.Model.FamilyMemberHistory.ConditionComponent? Marshal_Fam
 	switch((*(FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetType.Age: {
 			var _onsetAge__union = &(*(FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetUnion*)((byte*)in_native + 80));
-			var _onset_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_onsetAge__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetType.Range: {
 			var _onsetRange__union = &(*(FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetUnion*)((byte*)in_native + 80));
-			var _onset_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_onsetRange__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetType.Period: {
 			var _onsetPeriod__union = &(*(FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetUnion*)((byte*)in_native + 80));
-			var _onset_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)) != null) {
+				fhirInstance.Onset = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_onsetPeriod__union + 0)));
+			}
 			
-			fhirInstance.Onset = _onset_primative;
 		} break;
 		case FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetType.String: {
 			var _onsetString__union = &(*(FHIR_Marshalling.FamilyMemberHistory_Condition.OnsetUnion*)((byte*)in_native + 80));
-			var _onset_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_onsetString__union + 0)).ToString();
-			var _onset_primative =  (_onset_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_onset_primative_temp);
-			fhirInstance.Onset = _onset_primative;
+			var _onset_temp = (*(FHIR_Marshalling.String8*)((byte*)_onsetString__union + 0)).ToString();
+			if(_onset_temp != null) {
+				fhirInstance.Onset = new Hl7.Fhir.Model.FhirString(_onset_temp);
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 104)) > 0) {
@@ -24848,14 +25169,18 @@ public static Hl7.Fhir.Model.Goal? Marshal_Goal(FHIR_Marshalling.Goal* in_native
 	switch((*(FHIR_Marshalling.Goal.StartType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.Goal.StartType.Date: {
 			var _startDate__union = &(*(FHIR_Marshalling.Goal.StartUnion*)((byte*)in_native + 200));
-			var _start_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_startDate__union + 0)).ToFhirDate();
-			fhirInstance.Start = _start_primative;
+			var _start_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_startDate__union + 0)).ToFhirDate();
+			if(_start_temp != null) {
+				fhirInstance.Start = _start_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Goal.StartType.CodeableConcept: {
 			var _startCodeableConcept__union = &(*(FHIR_Marshalling.Goal.StartUnion*)((byte*)in_native + 200));
-			var _start_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_startCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_startCodeableConcept__union + 0)) != null) {
+				fhirInstance.Start = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_startCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Start = _start_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 224)) > 0) {
@@ -24976,56 +25301,72 @@ public static Hl7.Fhir.Model.Goal.TargetComponent? Marshal_Goal_Target(FHIR_Mars
 	switch((*(FHIR_Marshalling.Goal_Target.DetailType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.Goal_Target.DetailType.Quantity: {
 			var _detailQuantity__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_detailQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_detailQuantity__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_detailQuantity__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 		case FHIR_Marshalling.Goal_Target.DetailType.Range: {
 			var _detailRange__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_detailRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_detailRange__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_detailRange__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 		case FHIR_Marshalling.Goal_Target.DetailType.CodeableConcept: {
 			var _detailCodeableConcept__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_detailCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_detailCodeableConcept__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_detailCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 		case FHIR_Marshalling.Goal_Target.DetailType.String: {
 			var _detailString__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_detailString__union + 0)).ToString();
-			var _detail_primative =  (_detail_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_detail_primative_temp);
-			fhirInstance.Detail = _detail_primative;
+			var _detail_temp = (*(FHIR_Marshalling.String8*)((byte*)_detailString__union + 0)).ToString();
+			if(_detail_temp != null) {
+				fhirInstance.Detail = new Hl7.Fhir.Model.FhirString(_detail_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Goal_Target.DetailType.Boolean: {
 			var _detailBoolean__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_detailBoolean__union + 0)).GetValue());
-			fhirInstance.Detail = _detail_primative;
+			var _detail_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_detailBoolean__union + 0)).ToFhirBoolean();
+			if(_detail_temp != null) {
+				fhirInstance.Detail = _detail_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Goal_Target.DetailType.Integer: {
 			var _detailInteger__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_detailInteger__union + 0)).GetValue());
-			fhirInstance.Detail = _detail_primative;
+			var _detail_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_detailInteger__union + 0)).ToFhirInteger();
+			if(_detail_temp != null) {
+				fhirInstance.Detail = _detail_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Goal_Target.DetailType.Ratio: {
 			var _detailRatio__union = &(*(FHIR_Marshalling.Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_detailRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_detailRatio__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_detailRatio__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.Goal_Target.DueType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.Goal_Target.DueType.Date: {
 			var _dueDate__union = &(*(FHIR_Marshalling.Goal_Target.DueUnion*)((byte*)in_native + 88));
-			var _due_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_dueDate__union + 0)).ToFhirDate();
-			fhirInstance.Due = _due_primative;
+			var _due_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_dueDate__union + 0)).ToFhirDate();
+			if(_due_temp != null) {
+				fhirInstance.Due = _due_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Goal_Target.DueType.Duration: {
 			var _dueDuration__union = &(*(FHIR_Marshalling.Goal_Target.DueUnion*)((byte*)in_native + 88));
-			var _due_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_dueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_dueDuration__union + 0)) != null) {
+				fhirInstance.Due = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_dueDuration__union + 0)));
+			}
 			
-			fhirInstance.Due = _due_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -25115,7 +25456,7 @@ public static Hl7.Fhir.Model.GraphDefinition? Marshal_GraphDefinition(FHIR_Marsh
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -25245,7 +25586,7 @@ public static Hl7.Fhir.Model.GraphDefinition.LinkComponent? Marshal_GraphDefinit
 		fhirInstance.SliceNameElement = new Hl7.Fhir.Model.FhirString(_sliceName_temp);
 	}
 	
-	var _min_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirInteger();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -25489,7 +25830,7 @@ public static Hl7.Fhir.Model.Group? Marshal_Group(FHIR_Marshalling.Group* in_nat
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -25499,7 +25840,7 @@ public static Hl7.Fhir.Model.Group? Marshal_Group(FHIR_Marshalling.Group* in_nat
 		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.Group.GroupType> ();
 		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
 	}
-	var _actual_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).GetValue());
+	var _actual_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 160)).ToFhirBoolean();
 	if(_actual_temp != null) {
 		fhirInstance.ActualElement = _actual_temp;
 	}
@@ -25513,7 +25854,7 @@ public static Hl7.Fhir.Model.Group? Marshal_Group(FHIR_Marshalling.Group* in_nat
 		fhirInstance.NameElement = new Hl7.Fhir.Model.FhirString(_name_temp);
 	}
 	
-	var _quantity_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 192)).GetValue());
+	var _quantity_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 192)).ToFhirUnsignedInt();
 	if(_quantity_temp != null) {
 		fhirInstance.QuantityElement = _quantity_temp;
 	}
@@ -25590,35 +25931,42 @@ public static Hl7.Fhir.Model.Group.CharacteristicComponent? Marshal_Group_Charac
 	switch((*(FHIR_Marshalling.Group_Characteristic.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Group_Characteristic.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Group_Characteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Group_Characteristic.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Group_Characteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Group_Characteristic.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Group_Characteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Group_Characteristic.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Group_Characteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Group_Characteristic.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Group_Characteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
-	var _exclude_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).GetValue());
+	var _exclude_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).ToFhirBoolean();
 	if(_exclude_temp != null) {
 		fhirInstance.ExcludeElement = _exclude_temp;
 	}
@@ -25672,7 +26020,7 @@ public static Hl7.Fhir.Model.Group.MemberComponent? Marshal_Group_Member(FHIR_Ma
 		fhirInstance.Period = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 64)));
 	}
 	
-	var _inactive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _inactive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_inactive_temp != null) {
 		fhirInstance.InactiveElement = _inactive_temp;
 	}
@@ -25763,21 +26111,26 @@ public static Hl7.Fhir.Model.GuidanceResponse? Marshal_GuidanceResponse(FHIR_Mar
 	switch((*(FHIR_Marshalling.GuidanceResponse.ModuleType*)((byte*)in_native + 160))) {
 		case FHIR_Marshalling.GuidanceResponse.ModuleType.Uri: {
 			var _moduleUri__union = &(*(FHIR_Marshalling.GuidanceResponse.ModuleUnion*)((byte*)in_native + 144));
-			var _module_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_moduleUri__union + 0)).ToString();
-			var _module_primative =  (_module_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_module_primative_temp);
-			fhirInstance.Module = _module_primative;
+			var _module_temp = (*(FHIR_Marshalling.String8*)((byte*)_moduleUri__union + 0)).ToString();
+			if(_module_temp != null) {
+				fhirInstance.Module = new Hl7.Fhir.Model.FhirUri(_module_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.GuidanceResponse.ModuleType.Canonical: {
 			var _moduleCanonical__union = &(*(FHIR_Marshalling.GuidanceResponse.ModuleUnion*)((byte*)in_native + 144));
-			var _module_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_moduleCanonical__union + 0)).ToString();
-			var _module_primative =  (_module_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_module_primative_temp);
-			fhirInstance.Module = _module_primative;
+			var _module_temp = (*(FHIR_Marshalling.String8*)((byte*)_moduleCanonical__union + 0)).ToString();
+			if(_module_temp != null) {
+				fhirInstance.Module = new Hl7.Fhir.Model.Canonical(_module_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.GuidanceResponse.ModuleType.CodeableConcept: {
 			var _moduleCodeableConcept__union = &(*(FHIR_Marshalling.GuidanceResponse.ModuleUnion*)((byte*)in_native + 144));
-			var _module_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_moduleCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_moduleCodeableConcept__union + 0)) != null) {
+				fhirInstance.Module = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_moduleCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Module = _module_primative;
 		} break;
 	}
 	var __temp_codeStatusElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToString();
@@ -25949,7 +26302,7 @@ public static Hl7.Fhir.Model.HealthcareService? Marshal_HealthcareService(FHIR_M
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -26121,7 +26474,7 @@ public static Hl7.Fhir.Model.HealthcareService? Marshal_HealthcareService(FHIR_M
 		
 	}
 	
-	var _appointmentRequired_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 400)).GetValue());
+	var _appointmentRequired_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 400)).ToFhirBoolean();
 	if(_appointmentRequired_temp != null) {
 		fhirInstance.AppointmentRequiredElement = _appointmentRequired_temp;
 	}
@@ -26263,7 +26616,7 @@ public static Hl7.Fhir.Model.HealthcareService.AvailableTimeComponent? Marshal_H
 		
 		}
 		
-	var _allDay_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _allDay_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_allDay_temp != null) {
 		fhirInstance.AllDayElement = _allDay_temp;
 	}
@@ -26473,12 +26826,12 @@ public static Hl7.Fhir.Model.ImagingStudy? Marshal_ImagingStudy(FHIR_Marshalling
 		
 	}
 	
-	var _numberOfSeries_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 256)).GetValue());
+	var _numberOfSeries_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 256)).ToFhirUnsignedInt();
 	if(_numberOfSeries_temp != null) {
 		fhirInstance.NumberOfSeriesElement = _numberOfSeries_temp;
 	}
 	
-	var _numberOfInstances_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 264)).GetValue());
+	var _numberOfInstances_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 264)).ToFhirUnsignedInt();
 	if(_numberOfInstances_temp != null) {
 		fhirInstance.NumberOfInstancesElement = _numberOfInstances_temp;
 	}
@@ -26598,7 +26951,7 @@ public static Hl7.Fhir.Model.ImagingStudy.SeriesComponent? Marshal_ImagingStudy_
 		fhirInstance.UidElement = new Hl7.Fhir.Model.Id(_uid_temp);
 	}
 	
-	var _number_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _number_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirUnsignedInt();
 	if(_number_temp != null) {
 		fhirInstance.NumberElement = _number_temp;
 	}
@@ -26612,7 +26965,7 @@ public static Hl7.Fhir.Model.ImagingStudy.SeriesComponent? Marshal_ImagingStudy_
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	var _numberOfInstances_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).GetValue());
+	var _numberOfInstances_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).ToFhirUnsignedInt();
 	if(_numberOfInstances_temp != null) {
 		fhirInstance.NumberOfInstancesElement = _numberOfInstances_temp;
 	}
@@ -26769,7 +27122,7 @@ public static Hl7.Fhir.Model.ImagingStudy.InstanceComponent? Marshal_ImagingStud
 		fhirInstance.SopClass = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)in_native + 72)));
 	}
 	
-	var _number_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _number_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirUnsignedInt();
 	if(_number_temp != null) {
 		fhirInstance.NumberElement = _number_temp;
 	}
@@ -26882,14 +27235,19 @@ public static Hl7.Fhir.Model.Immunization? Marshal_Immunization(FHIR_Marshalling
 	switch((*(FHIR_Marshalling.Immunization.OccurrenceType*)((byte*)in_native + 200))) {
 		case FHIR_Marshalling.Immunization.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.Immunization.OccurrenceUnion*)((byte*)in_native + 184));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Immunization.OccurrenceType.String: {
 			var _occurrenceString__union = &(*(FHIR_Marshalling.Immunization.OccurrenceUnion*)((byte*)in_native + 184));
-			var _occurrence_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_occurrenceString__union + 0)).ToString();
-			var _occurrence_primative =  (_occurrence_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_occurrence_primative_temp);
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.String8*)((byte*)_occurrenceString__union + 0)).ToString();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = new Hl7.Fhir.Model.FhirString(_occurrence_temp);
+			}
+			
 		} break;
 	}
 	var _recorded_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 208)).ToFhirDateTime();
@@ -26897,7 +27255,7 @@ public static Hl7.Fhir.Model.Immunization? Marshal_Immunization(FHIR_Marshalling
 		fhirInstance.RecordedElement = _recorded_temp;
 	}
 	
-	var _primarySource_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 224)).GetValue());
+	var _primarySource_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 224)).ToFhirBoolean();
 	if(_primarySource_temp != null) {
 		fhirInstance.PrimarySourceElement = _primarySource_temp;
 	}
@@ -26984,7 +27342,7 @@ public static Hl7.Fhir.Model.Immunization? Marshal_Immunization(FHIR_Marshalling
 		
 	}
 	
-	var _isSubpotent_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 376)).GetValue());
+	var _isSubpotent_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 376)).ToFhirBoolean();
 	if(_isSubpotent_temp != null) {
 		fhirInstance.IsSubpotentElement = _isSubpotent_temp;
 	}
@@ -27201,7 +27559,7 @@ public static Hl7.Fhir.Model.Immunization.ReactionComponent? Marshal_Immunizatio
 		fhirInstance.Detail = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 72)));
 	}
 	
-	var _reported_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).GetValue());
+	var _reported_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).ToFhirBoolean();
 	if(_reported_temp != null) {
 		fhirInstance.ReportedElement = _reported_temp;
 	}
@@ -27267,27 +27625,37 @@ public static Hl7.Fhir.Model.Immunization.ProtocolAppliedComponent? Marshal_Immu
 	switch((*(FHIR_Marshalling.Immunization_ProtocolApplied.DoseNumberType*)((byte*)in_native + 112))) {
 		case FHIR_Marshalling.Immunization_ProtocolApplied.DoseNumberType.PositiveInt: {
 			var _doseNumberPositiveInt__union = &(*(FHIR_Marshalling.Immunization_ProtocolApplied.DoseNumberUnion*)((byte*)in_native + 96));
-			var _doseNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_doseNumberPositiveInt__union + 0)).GetValue());
-			fhirInstance.DoseNumber = _doseNumber_primative;
+			var _doseNumber_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_doseNumberPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_doseNumber_temp != null) {
+				fhirInstance.DoseNumber = _doseNumber_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Immunization_ProtocolApplied.DoseNumberType.String: {
 			var _doseNumberString__union = &(*(FHIR_Marshalling.Immunization_ProtocolApplied.DoseNumberUnion*)((byte*)in_native + 96));
-			var _doseNumber_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_doseNumberString__union + 0)).ToString();
-			var _doseNumber_primative =  (_doseNumber_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_doseNumber_primative_temp);
-			fhirInstance.DoseNumber = _doseNumber_primative;
+			var _doseNumber_temp = (*(FHIR_Marshalling.String8*)((byte*)_doseNumberString__union + 0)).ToString();
+			if(_doseNumber_temp != null) {
+				fhirInstance.DoseNumber = new Hl7.Fhir.Model.FhirString(_doseNumber_temp);
+			}
+			
 		} break;
 	}
 	switch((*(FHIR_Marshalling.Immunization_ProtocolApplied.SeriesDosesType*)((byte*)in_native + 136))) {
 		case FHIR_Marshalling.Immunization_ProtocolApplied.SeriesDosesType.PositiveInt: {
 			var _seriesDosesPositiveInt__union = &(*(FHIR_Marshalling.Immunization_ProtocolApplied.SeriesDosesUnion*)((byte*)in_native + 120));
-			var _seriesDoses_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_seriesDosesPositiveInt__union + 0)).GetValue());
-			fhirInstance.SeriesDoses = _seriesDoses_primative;
+			var _seriesDoses_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_seriesDosesPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_seriesDoses_temp != null) {
+				fhirInstance.SeriesDoses = _seriesDoses_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Immunization_ProtocolApplied.SeriesDosesType.String: {
 			var _seriesDosesString__union = &(*(FHIR_Marshalling.Immunization_ProtocolApplied.SeriesDosesUnion*)((byte*)in_native + 120));
-			var _seriesDoses_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_seriesDosesString__union + 0)).ToString();
-			var _seriesDoses_primative =  (_seriesDoses_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_seriesDoses_primative_temp);
-			fhirInstance.SeriesDoses = _seriesDoses_primative;
+			var _seriesDoses_temp = (*(FHIR_Marshalling.String8*)((byte*)_seriesDosesString__union + 0)).ToString();
+			if(_seriesDoses_temp != null) {
+				fhirInstance.SeriesDoses = new Hl7.Fhir.Model.FhirString(_seriesDoses_temp);
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -27424,27 +27792,37 @@ public static Hl7.Fhir.Model.ImmunizationEvaluation? Marshal_ImmunizationEvaluat
 	switch((*(FHIR_Marshalling.ImmunizationEvaluation.DoseNumberType*)((byte*)in_native + 272))) {
 		case FHIR_Marshalling.ImmunizationEvaluation.DoseNumberType.PositiveInt: {
 			var _doseNumberPositiveInt__union = &(*(FHIR_Marshalling.ImmunizationEvaluation.DoseNumberUnion*)((byte*)in_native + 256));
-			var _doseNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_doseNumberPositiveInt__union + 0)).GetValue());
-			fhirInstance.DoseNumber = _doseNumber_primative;
+			var _doseNumber_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_doseNumberPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_doseNumber_temp != null) {
+				fhirInstance.DoseNumber = _doseNumber_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImmunizationEvaluation.DoseNumberType.String: {
 			var _doseNumberString__union = &(*(FHIR_Marshalling.ImmunizationEvaluation.DoseNumberUnion*)((byte*)in_native + 256));
-			var _doseNumber_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_doseNumberString__union + 0)).ToString();
-			var _doseNumber_primative =  (_doseNumber_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_doseNumber_primative_temp);
-			fhirInstance.DoseNumber = _doseNumber_primative;
+			var _doseNumber_temp = (*(FHIR_Marshalling.String8*)((byte*)_doseNumberString__union + 0)).ToString();
+			if(_doseNumber_temp != null) {
+				fhirInstance.DoseNumber = new Hl7.Fhir.Model.FhirString(_doseNumber_temp);
+			}
+			
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ImmunizationEvaluation.SeriesDosesType*)((byte*)in_native + 296))) {
 		case FHIR_Marshalling.ImmunizationEvaluation.SeriesDosesType.PositiveInt: {
 			var _seriesDosesPositiveInt__union = &(*(FHIR_Marshalling.ImmunizationEvaluation.SeriesDosesUnion*)((byte*)in_native + 280));
-			var _seriesDoses_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_seriesDosesPositiveInt__union + 0)).GetValue());
-			fhirInstance.SeriesDoses = _seriesDoses_primative;
+			var _seriesDoses_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_seriesDosesPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_seriesDoses_temp != null) {
+				fhirInstance.SeriesDoses = _seriesDoses_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImmunizationEvaluation.SeriesDosesType.String: {
 			var _seriesDosesString__union = &(*(FHIR_Marshalling.ImmunizationEvaluation.SeriesDosesUnion*)((byte*)in_native + 280));
-			var _seriesDoses_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_seriesDosesString__union + 0)).ToString();
-			var _seriesDoses_primative =  (_seriesDoses_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_seriesDoses_primative_temp);
-			fhirInstance.SeriesDoses = _seriesDoses_primative;
+			var _seriesDoses_temp = (*(FHIR_Marshalling.String8*)((byte*)_seriesDosesString__union + 0)).ToString();
+			if(_seriesDoses_temp != null) {
+				fhirInstance.SeriesDoses = new Hl7.Fhir.Model.FhirString(_seriesDoses_temp);
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -27657,27 +28035,37 @@ public static Hl7.Fhir.Model.ImmunizationRecommendation.RecommendationComponent?
 	switch((*(FHIR_Marshalling.ImmunizationRecommendation_Recommendation.DoseNumberType*)((byte*)in_native + 184))) {
 		case FHIR_Marshalling.ImmunizationRecommendation_Recommendation.DoseNumberType.PositiveInt: {
 			var _doseNumberPositiveInt__union = &(*(FHIR_Marshalling.ImmunizationRecommendation_Recommendation.DoseNumberUnion*)((byte*)in_native + 168));
-			var _doseNumber_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_doseNumberPositiveInt__union + 0)).GetValue());
-			fhirInstance.DoseNumber = _doseNumber_primative;
+			var _doseNumber_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_doseNumberPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_doseNumber_temp != null) {
+				fhirInstance.DoseNumber = _doseNumber_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImmunizationRecommendation_Recommendation.DoseNumberType.String: {
 			var _doseNumberString__union = &(*(FHIR_Marshalling.ImmunizationRecommendation_Recommendation.DoseNumberUnion*)((byte*)in_native + 168));
-			var _doseNumber_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_doseNumberString__union + 0)).ToString();
-			var _doseNumber_primative =  (_doseNumber_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_doseNumber_primative_temp);
-			fhirInstance.DoseNumber = _doseNumber_primative;
+			var _doseNumber_temp = (*(FHIR_Marshalling.String8*)((byte*)_doseNumberString__union + 0)).ToString();
+			if(_doseNumber_temp != null) {
+				fhirInstance.DoseNumber = new Hl7.Fhir.Model.FhirString(_doseNumber_temp);
+			}
+			
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ImmunizationRecommendation_Recommendation.SeriesDosesType*)((byte*)in_native + 208))) {
 		case FHIR_Marshalling.ImmunizationRecommendation_Recommendation.SeriesDosesType.PositiveInt: {
 			var _seriesDosesPositiveInt__union = &(*(FHIR_Marshalling.ImmunizationRecommendation_Recommendation.SeriesDosesUnion*)((byte*)in_native + 192));
-			var _seriesDoses_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_seriesDosesPositiveInt__union + 0)).GetValue());
-			fhirInstance.SeriesDoses = _seriesDoses_primative;
+			var _seriesDoses_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_seriesDosesPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_seriesDoses_temp != null) {
+				fhirInstance.SeriesDoses = _seriesDoses_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImmunizationRecommendation_Recommendation.SeriesDosesType.String: {
 			var _seriesDosesString__union = &(*(FHIR_Marshalling.ImmunizationRecommendation_Recommendation.SeriesDosesUnion*)((byte*)in_native + 192));
-			var _seriesDoses_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_seriesDosesString__union + 0)).ToString();
-			var _seriesDoses_primative =  (_seriesDoses_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_seriesDoses_primative_temp);
-			fhirInstance.SeriesDoses = _seriesDoses_primative;
+			var _seriesDoses_temp = (*(FHIR_Marshalling.String8*)((byte*)_seriesDosesString__union + 0)).ToString();
+			if(_seriesDoses_temp != null) {
+				fhirInstance.SeriesDoses = new Hl7.Fhir.Model.FhirString(_seriesDoses_temp);
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 216)) > 0) {
@@ -27842,7 +28230,7 @@ public static Hl7.Fhir.Model.ImplementationGuide? Marshal_ImplementationGuide(FH
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -28260,14 +28648,19 @@ public static Hl7.Fhir.Model.ImplementationGuide.ResourceComponent? Marshal_Impl
 	switch((*(FHIR_Marshalling.ImplementationGuide_Definition_Resource.ExampleType*)((byte*)in_native + 128))) {
 		case FHIR_Marshalling.ImplementationGuide_Definition_Resource.ExampleType.Boolean: {
 			var _exampleBoolean__union = &(*(FHIR_Marshalling.ImplementationGuide_Definition_Resource.ExampleUnion*)((byte*)in_native + 112));
-			var _example_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_exampleBoolean__union + 0)).GetValue());
-			fhirInstance.Example = _example_primative;
+			var _example_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_exampleBoolean__union + 0)).ToFhirBoolean();
+			if(_example_temp != null) {
+				fhirInstance.Example = _example_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImplementationGuide_Definition_Resource.ExampleType.Canonical: {
 			var _exampleCanonical__union = &(*(FHIR_Marshalling.ImplementationGuide_Definition_Resource.ExampleUnion*)((byte*)in_native + 112));
-			var _example_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_exampleCanonical__union + 0)).ToString();
-			var _example_primative =  (_example_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_example_primative_temp);
-			fhirInstance.Example = _example_primative;
+			var _example_temp = (*(FHIR_Marshalling.String8*)((byte*)_exampleCanonical__union + 0)).ToString();
+			if(_example_temp != null) {
+				fhirInstance.Example = new Hl7.Fhir.Model.Canonical(_example_temp);
+			}
+			
 		} break;
 	}
 	var _groupingId_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
@@ -28315,15 +28708,18 @@ public static Hl7.Fhir.Model.ImplementationGuide.PageComponent? Marshal_Implemen
 	switch((*(FHIR_Marshalling.ImplementationGuide_Definition_Page.NameType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.ImplementationGuide_Definition_Page.NameType.Url: {
 			var _nameUrl__union = &(*(FHIR_Marshalling.ImplementationGuide_Definition_Page.NameUnion*)((byte*)in_native + 56));
-			var _name_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_nameUrl__union + 0)).ToString();
-			var _name_primative =  (_name_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_name_primative_temp);
-			fhirInstance.Name = _name_primative;
+			var _name_temp = (*(FHIR_Marshalling.String8*)((byte*)_nameUrl__union + 0)).ToString();
+			if(_name_temp != null) {
+				fhirInstance.Name = new Hl7.Fhir.Model.FhirUrl(_name_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImplementationGuide_Definition_Page.NameType.Reference: {
 			var _nameReference__union = &(*(FHIR_Marshalling.ImplementationGuide_Definition_Page.NameUnion*)((byte*)in_native + 56));
-			var _name_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_nameReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_nameReference__union + 0)) != null) {
+				fhirInstance.Name = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_nameReference__union + 0)));
+			}
 			
-			fhirInstance.Name = _name_primative;
 		} break;
 	}
 	var _title_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToString();
@@ -28583,14 +28979,19 @@ public static Hl7.Fhir.Model.ImplementationGuide.ManifestResourceComponent? Mars
 	switch((*(FHIR_Marshalling.ImplementationGuide_Manifest_Resource.ExampleType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.ImplementationGuide_Manifest_Resource.ExampleType.Boolean: {
 			var _exampleBoolean__union = &(*(FHIR_Marshalling.ImplementationGuide_Manifest_Resource.ExampleUnion*)((byte*)in_native + 64));
-			var _example_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_exampleBoolean__union + 0)).GetValue());
-			fhirInstance.Example = _example_primative;
+			var _example_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_exampleBoolean__union + 0)).ToFhirBoolean();
+			if(_example_temp != null) {
+				fhirInstance.Example = _example_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ImplementationGuide_Manifest_Resource.ExampleType.Canonical: {
 			var _exampleCanonical__union = &(*(FHIR_Marshalling.ImplementationGuide_Manifest_Resource.ExampleUnion*)((byte*)in_native + 64));
-			var _example_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_exampleCanonical__union + 0)).ToString();
-			var _example_primative =  (_example_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_example_primative_temp);
-			fhirInstance.Example = _example_primative;
+			var _example_temp = (*(FHIR_Marshalling.String8*)((byte*)_exampleCanonical__union + 0)).ToString();
+			if(_example_temp != null) {
+				fhirInstance.Example = new Hl7.Fhir.Model.Canonical(_example_temp);
+			}
+			
 		} break;
 	}
 	var _relativePath_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToString();
@@ -29227,7 +29628,7 @@ public static Hl7.Fhir.Model.InsurancePlan.GeneralCostComponent? Marshal_Insuran
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _groupSize_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _groupSize_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirPositiveInt();
 	if(_groupSize_temp != null) {
 		fhirInstance.GroupSizeElement = _groupSize_temp;
 	}
@@ -29665,7 +30066,7 @@ public static Hl7.Fhir.Model.Invoice.LineItemComponent? Marshal_Invoice_LineItem
 		
 	}
 	
-	var _sequence_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -29673,15 +30074,17 @@ public static Hl7.Fhir.Model.Invoice.LineItemComponent? Marshal_Invoice_LineItem
 	switch((*(FHIR_Marshalling.Invoice_LineItem.ChargeItemType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Invoice_LineItem.ChargeItemType.Reference: {
 			var _chargeItemReference__union = &(*(FHIR_Marshalling.Invoice_LineItem.ChargeItemUnion*)((byte*)in_native + 64));
-			var _chargeItem_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_chargeItemReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_chargeItemReference__union + 0)) != null) {
+				fhirInstance.ChargeItem = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_chargeItemReference__union + 0)));
+			}
 			
-			fhirInstance.ChargeItem = _chargeItem_primative;
 		} break;
 		case FHIR_Marshalling.Invoice_LineItem.ChargeItemType.CodeableConcept: {
 			var _chargeItemCodeableConcept__union = &(*(FHIR_Marshalling.Invoice_LineItem.ChargeItemUnion*)((byte*)in_native + 64));
-			var _chargeItem_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_chargeItemCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_chargeItemCodeableConcept__union + 0)) != null) {
+				fhirInstance.ChargeItem = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_chargeItemCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.ChargeItem = _chargeItem_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 80)) > 0) {
@@ -29742,7 +30145,7 @@ public static Hl7.Fhir.Model.Invoice.PriceComponentComponent? Marshal_Invoice_Li
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
@@ -29860,7 +30263,7 @@ public static Hl7.Fhir.Model.Library? Marshal_Library(FHIR_Marshalling.Library* 
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -29872,15 +30275,17 @@ public static Hl7.Fhir.Model.Library? Marshal_Library(FHIR_Marshalling.Library* 
 	switch((*(FHIR_Marshalling.Library.SubjectType*)((byte*)in_native + 256))) {
 		case FHIR_Marshalling.Library.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.Library.SubjectUnion*)((byte*)in_native + 248));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.Library.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.Library.SubjectUnion*)((byte*)in_native + 248));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 264)).ToFhirDateTime();
@@ -30138,7 +30543,7 @@ public static Hl7.Fhir.Model.Linkage? Marshal_Linkage(FHIR_Marshalling.Linkage* 
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 120)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 120)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -30393,7 +30798,7 @@ public static Hl7.Fhir.Model.List.EntryComponent? Marshal_List_Entry(FHIR_Marsha
 		fhirInstance.Flag = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _deleted_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _deleted_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_deleted_temp != null) {
 		fhirInstance.DeletedElement = _deleted_temp;
 	}
@@ -30633,17 +31038,17 @@ public static Hl7.Fhir.Model.Location.PositionComponent? Marshal_Location_Positi
 		
 	}
 	
-	var _longitude_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).DecimalValue());
+	var _longitude_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToFhirDecimal();
 	if(_longitude_temp != null) {
 		fhirInstance.LongitudeElement = _longitude_temp;
 	}
 	
-	var _latitude_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).DecimalValue());
+	var _latitude_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToFhirDecimal();
 	if(_latitude_temp != null) {
 		fhirInstance.LatitudeElement = _latitude_temp;
 	}
 	
-	var _altitude_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).DecimalValue());
+	var _altitude_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToFhirDecimal();
 	if(_altitude_temp != null) {
 		fhirInstance.AltitudeElement = _altitude_temp;
 	}
@@ -30698,7 +31103,7 @@ public static Hl7.Fhir.Model.Location.HoursOfOperationComponent? Marshal_Locatio
 		
 		}
 		
-	var _allDay_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _allDay_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_allDay_temp != null) {
 		fhirInstance.AllDayElement = _allDay_temp;
 	}
@@ -30822,7 +31227,7 @@ public static Hl7.Fhir.Model.Measure? Marshal_Measure(FHIR_Marshalling.Measure* 
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -30830,15 +31235,17 @@ public static Hl7.Fhir.Model.Measure? Marshal_Measure(FHIR_Marshalling.Measure* 
 	switch((*(FHIR_Marshalling.Measure.SubjectType*)((byte*)in_native + 248))) {
 		case FHIR_Marshalling.Measure.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.Measure.SubjectUnion*)((byte*)in_native + 240));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.Measure.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.Measure.SubjectUnion*)((byte*)in_native + 240));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 256)).ToFhirDateTime();
@@ -31640,7 +32047,7 @@ public static Hl7.Fhir.Model.MeasureReport.PopulationComponent? Marshal_MeasureR
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _count_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _count_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirInteger();
 	if(_count_temp != null) {
 		fhirInstance.CountElement = _count_temp;
 	}
@@ -31865,7 +32272,7 @@ public static Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent? M
 		fhirInstance.Code = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _count_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _count_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirInteger();
 	if(_count_temp != null) {
 		fhirInstance.CountElement = _count_temp;
 	}
@@ -32005,14 +32412,18 @@ public static Hl7.Fhir.Model.Media? Marshal_Media(FHIR_Marshalling.Media* in_nat
 	switch((*(FHIR_Marshalling.Media.CreatedType*)((byte*)in_native + 240))) {
 		case FHIR_Marshalling.Media.CreatedType.DateTime: {
 			var _createdDateTime__union = &(*(FHIR_Marshalling.Media.CreatedUnion*)((byte*)in_native + 224));
-			var _created_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_createdDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Created = _created_primative;
+			var _created_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_createdDateTime__union + 0)).ToFhirDateTime();
+			if(_created_temp != null) {
+				fhirInstance.Created = _created_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Media.CreatedType.Period: {
 			var _createdPeriod__union = &(*(FHIR_Marshalling.Media.CreatedUnion*)((byte*)in_native + 224));
-			var _created_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_createdPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_createdPeriod__union + 0)) != null) {
+				fhirInstance.Created = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_createdPeriod__union + 0)));
+			}
 			
-			fhirInstance.Created = _created_primative;
 		} break;
 	}
 	var _issued_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 248)).ToFhirInstant();
@@ -32049,22 +32460,22 @@ public static Hl7.Fhir.Model.Media? Marshal_Media(FHIR_Marshalling.Media* in_nat
 		fhirInstance.Device = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 312)));
 	}
 	
-	var _height_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 320)).GetValue());
+	var _height_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 320)).ToFhirPositiveInt();
 	if(_height_temp != null) {
 		fhirInstance.HeightElement = _height_temp;
 	}
 	
-	var _width_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 328)).GetValue());
+	var _width_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 328)).ToFhirPositiveInt();
 	if(_width_temp != null) {
 		fhirInstance.WidthElement = _width_temp;
 	}
 	
-	var _frames_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 336)).GetValue());
+	var _frames_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 336)).ToFhirPositiveInt();
 	if(_frames_temp != null) {
 		fhirInstance.FramesElement = _frames_temp;
 	}
 	
-	var _duration_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 344)).DecimalValue());
+	var _duration_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 344)).ToFhirDecimal();
 	if(_duration_temp != null) {
 		fhirInstance.DurationElement = _duration_temp;
 	}
@@ -32241,18 +32652,20 @@ public static Hl7.Fhir.Model.Medication.IngredientComponent? Marshal_Medication_
 	switch((*(FHIR_Marshalling.Medication_Ingredient.ItemType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.Medication_Ingredient.ItemType.CodeableConcept: {
 			var _itemCodeableConcept__union = &(*(FHIR_Marshalling.Medication_Ingredient.ItemUnion*)((byte*)in_native + 56));
-			var _item_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)) != null) {
+				fhirInstance.Item = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 		case FHIR_Marshalling.Medication_Ingredient.ItemType.Reference: {
 			var _itemReference__union = &(*(FHIR_Marshalling.Medication_Ingredient.ItemUnion*)((byte*)in_native + 56));
-			var _item_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)) != null) {
+				fhirInstance.Item = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 	}
-	var _isActive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _isActive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_isActive_temp != null) {
 		fhirInstance.IsActiveElement = _isActive_temp;
 	}
@@ -32436,15 +32849,17 @@ public static Hl7.Fhir.Model.MedicationAdministration? Marshal_MedicationAdminis
 	switch((*(FHIR_Marshalling.MedicationAdministration.MedicationType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.MedicationAdministration.MedicationType.CodeableConcept: {
 			var _medicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicationAdministration.MedicationUnion*)((byte*)in_native + 208));
-			var _medication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 		case FHIR_Marshalling.MedicationAdministration.MedicationType.Reference: {
 			var _medicationReference__union = &(*(FHIR_Marshalling.MedicationAdministration.MedicationUnion*)((byte*)in_native + 208));
-			var _medication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 224)) != null) {
@@ -32470,14 +32885,18 @@ public static Hl7.Fhir.Model.MedicationAdministration? Marshal_MedicationAdminis
 	switch((*(FHIR_Marshalling.MedicationAdministration.EffectiveType*)((byte*)in_native + 272))) {
 		case FHIR_Marshalling.MedicationAdministration.EffectiveType.DateTime: {
 			var _effectiveDateTime__union = &(*(FHIR_Marshalling.MedicationAdministration.EffectiveUnion*)((byte*)in_native + 256));
-			var _effective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Effective = _effective_primative;
+			var _effective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_effective_temp != null) {
+				fhirInstance.Effective = _effective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.MedicationAdministration.EffectiveType.Period: {
 			var _effectivePeriod__union = &(*(FHIR_Marshalling.MedicationAdministration.EffectiveUnion*)((byte*)in_native + 256));
-			var _effective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)) != null) {
+				fhirInstance.Effective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.Effective = _effective_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 280)) > 0) {
@@ -32666,15 +33085,17 @@ public static Hl7.Fhir.Model.MedicationAdministration.DosageComponent? Marshal_M
 	switch((*(FHIR_Marshalling.MedicationAdministration_Dosage.RateType*)((byte*)in_native + 112))) {
 		case FHIR_Marshalling.MedicationAdministration_Dosage.RateType.Ratio: {
 			var _rateRatio__union = &(*(FHIR_Marshalling.MedicationAdministration_Dosage.RateUnion*)((byte*)in_native + 104));
-			var _rate_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 		case FHIR_Marshalling.MedicationAdministration_Dosage.RateType.Quantity: {
 			var _rateQuantity__union = &(*(FHIR_Marshalling.MedicationAdministration_Dosage.RateUnion*)((byte*)in_native + 104));
-			var _rate_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -32776,15 +33197,17 @@ public static Hl7.Fhir.Model.MedicationDispense? Marshal_MedicationDispense(FHIR
 	switch((*(FHIR_Marshalling.MedicationDispense.StatusReasonType*)((byte*)in_native + 176))) {
 		case FHIR_Marshalling.MedicationDispense.StatusReasonType.CodeableConcept: {
 			var _statusReasonCodeableConcept__union = &(*(FHIR_Marshalling.MedicationDispense.StatusReasonUnion*)((byte*)in_native + 168));
-			var _statusReason_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_statusReasonCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_statusReasonCodeableConcept__union + 0)) != null) {
+				fhirInstance.StatusReason = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_statusReasonCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.StatusReason = _statusReason_primative;
 		} break;
 		case FHIR_Marshalling.MedicationDispense.StatusReasonType.Reference: {
 			var _statusReasonReference__union = &(*(FHIR_Marshalling.MedicationDispense.StatusReasonUnion*)((byte*)in_native + 168));
-			var _statusReason_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_statusReasonReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_statusReasonReference__union + 0)) != null) {
+				fhirInstance.StatusReason = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_statusReasonReference__union + 0)));
+			}
 			
-			fhirInstance.StatusReason = _statusReason_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 184)) != null) {
@@ -32794,15 +33217,17 @@ public static Hl7.Fhir.Model.MedicationDispense? Marshal_MedicationDispense(FHIR
 	switch((*(FHIR_Marshalling.MedicationDispense.MedicationType*)((byte*)in_native + 200))) {
 		case FHIR_Marshalling.MedicationDispense.MedicationType.CodeableConcept: {
 			var _medicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicationDispense.MedicationUnion*)((byte*)in_native + 192));
-			var _medication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 		case FHIR_Marshalling.MedicationDispense.MedicationType.Reference: {
 			var _medicationReference__union = &(*(FHIR_Marshalling.MedicationDispense.MedicationUnion*)((byte*)in_native + 192));
-			var _medication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 208)) != null) {
@@ -33025,7 +33450,7 @@ public static Hl7.Fhir.Model.MedicationDispense.SubstitutionComponent? Marshal_M
 		
 	}
 	
-	var _wasSubstituted_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _wasSubstituted_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_wasSubstituted_temp != null) {
 		fhirInstance.WasSubstitutedElement = _wasSubstituted_temp;
 	}
@@ -33474,18 +33899,20 @@ public static Hl7.Fhir.Model.MedicationKnowledge.IngredientComponent? Marshal_Me
 	switch((*(FHIR_Marshalling.MedicationKnowledge_Ingredient.ItemType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.MedicationKnowledge_Ingredient.ItemType.CodeableConcept: {
 			var _itemCodeableConcept__union = &(*(FHIR_Marshalling.MedicationKnowledge_Ingredient.ItemUnion*)((byte*)in_native + 56));
-			var _item_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)) != null) {
+				fhirInstance.Item = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_Ingredient.ItemType.Reference: {
 			var _itemReference__union = &(*(FHIR_Marshalling.MedicationKnowledge_Ingredient.ItemUnion*)((byte*)in_native + 56));
-			var _item_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)) != null) {
+				fhirInstance.Item = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 	}
-	var _isActive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _isActive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_isActive_temp != null) {
 		fhirInstance.IsActiveElement = _isActive_temp;
 	}
@@ -33642,15 +34069,17 @@ public static Hl7.Fhir.Model.MedicationKnowledge.AdministrationGuidelinesCompone
 	switch((*(FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines.IndicationType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines.IndicationType.CodeableConcept: {
 			var _indicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines.IndicationUnion*)((byte*)in_native + 72));
-			var _indication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_indicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_indicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Indication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_indicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Indication = _indication_primative;
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines.IndicationType.Reference: {
 			var _indicationReference__union = &(*(FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines.IndicationUnion*)((byte*)in_native + 72));
-			var _indication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_indicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_indicationReference__union + 0)) != null) {
+				fhirInstance.Indication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_indicationReference__union + 0)));
+			}
 			
-			fhirInstance.Indication = _indication_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 88)) > 0) {
@@ -33758,15 +34187,17 @@ public static Hl7.Fhir.Model.MedicationKnowledge.PatientCharacteristicsComponent
 	switch((*(FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines_PatientCharacteristics.CharacteristicType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines_PatientCharacteristics.CharacteristicType.CodeableConcept: {
 			var _characteristicCodeableConcept__union = &(*(FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines_PatientCharacteristics.CharacteristicUnion*)((byte*)in_native + 56));
-			var _characteristic_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_characteristicCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_characteristicCodeableConcept__union + 0)) != null) {
+				fhirInstance.Characteristic = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_characteristicCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Characteristic = _characteristic_primative;
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines_PatientCharacteristics.CharacteristicType.Quantity: {
 			var _characteristicQuantity__union = &(*(FHIR_Marshalling.MedicationKnowledge_AdministrationGuidelines_PatientCharacteristics.CharacteristicUnion*)((byte*)in_native + 56));
-			var _characteristic_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_characteristicQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_characteristicQuantity__union + 0)) != null) {
+				fhirInstance.Characteristic = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_characteristicQuantity__union + 0)));
+			}
 			
-			fhirInstance.Characteristic = _characteristic_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 72)) > 0) {
@@ -33924,21 +34355,25 @@ public static Hl7.Fhir.Model.MedicationKnowledge.DrugCharacteristicComponent? Ma
 	switch((*(FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueUnion*)((byte*)in_native + 64));
@@ -33949,6 +34384,7 @@ public static Hl7.Fhir.Model.MedicationKnowledge.DrugCharacteristicComponent? Ma
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 	}
 	return fhirInstance;
@@ -34061,7 +34497,7 @@ public static Hl7.Fhir.Model.MedicationKnowledge.SubstitutionComponent? Marshal_
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _allowed_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _allowed_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_allowed_temp != null) {
 		fhirInstance.AllowedElement = _allowed_temp;
 	}
@@ -34327,7 +34763,7 @@ public static Hl7.Fhir.Model.MedicationRequest? Marshal_MedicationRequest(FHIR_M
 		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
 		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
 	}
-	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).GetValue());
+	var _doNotPerform_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).ToFhirBoolean();
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
 	}
@@ -34335,28 +34771,34 @@ public static Hl7.Fhir.Model.MedicationRequest? Marshal_MedicationRequest(FHIR_M
 	switch((*(FHIR_Marshalling.MedicationRequest.ReportedType*)((byte*)in_native + 224))) {
 		case FHIR_Marshalling.MedicationRequest.ReportedType.Boolean: {
 			var _reportedBoolean__union = &(*(FHIR_Marshalling.MedicationRequest.ReportedUnion*)((byte*)in_native + 216));
-			var _reported_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_reportedBoolean__union + 0)).GetValue());
-			fhirInstance.Reported = _reported_primative;
+			var _reported_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_reportedBoolean__union + 0)).ToFhirBoolean();
+			if(_reported_temp != null) {
+				fhirInstance.Reported = _reported_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.MedicationRequest.ReportedType.Reference: {
 			var _reportedReference__union = &(*(FHIR_Marshalling.MedicationRequest.ReportedUnion*)((byte*)in_native + 216));
-			var _reported_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_reportedReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_reportedReference__union + 0)) != null) {
+				fhirInstance.Reported = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_reportedReference__union + 0)));
+			}
 			
-			fhirInstance.Reported = _reported_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.MedicationRequest.MedicationType*)((byte*)in_native + 240))) {
 		case FHIR_Marshalling.MedicationRequest.MedicationType.CodeableConcept: {
 			var _medicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicationRequest.MedicationUnion*)((byte*)in_native + 232));
-			var _medication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 		case FHIR_Marshalling.MedicationRequest.MedicationType.Reference: {
 			var _medicationReference__union = &(*(FHIR_Marshalling.MedicationRequest.MedicationUnion*)((byte*)in_native + 232));
-			var _medication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 248)) != null) {
@@ -34591,7 +35033,7 @@ public static Hl7.Fhir.Model.MedicationRequest.DispenseRequestComponent? Marshal
 		fhirInstance.ValidityPeriod = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)in_native + 72)));
 	}
 	
-	var _numberOfRepeatsAllowed_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _numberOfRepeatsAllowed_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirUnsignedInt();
 	if(_numberOfRepeatsAllowed_temp != null) {
 		fhirInstance.NumberOfRepeatsAllowedElement = _numberOfRepeatsAllowed_temp;
 	}
@@ -34693,14 +35135,18 @@ public static Hl7.Fhir.Model.MedicationRequest.SubstitutionComponent? Marshal_Me
 	switch((*(FHIR_Marshalling.MedicationRequest_Substitution.AllowedType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.MedicationRequest_Substitution.AllowedType.Boolean: {
 			var _allowedBoolean__union = &(*(FHIR_Marshalling.MedicationRequest_Substitution.AllowedUnion*)((byte*)in_native + 56));
-			var _allowed_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_allowedBoolean__union + 0)).GetValue());
-			fhirInstance.Allowed = _allowed_primative;
+			var _allowed_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_allowedBoolean__union + 0)).ToFhirBoolean();
+			if(_allowed_temp != null) {
+				fhirInstance.Allowed = _allowed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.MedicationRequest_Substitution.AllowedType.CodeableConcept: {
 			var _allowedCodeableConcept__union = &(*(FHIR_Marshalling.MedicationRequest_Substitution.AllowedUnion*)((byte*)in_native + 56));
-			var _allowed_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_allowedCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_allowedCodeableConcept__union + 0)) != null) {
+				fhirInstance.Allowed = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_allowedCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Allowed = _allowed_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
@@ -34834,15 +35280,17 @@ public static Hl7.Fhir.Model.MedicationStatement? Marshal_MedicationStatement(FH
 	switch((*(FHIR_Marshalling.MedicationStatement.MedicationType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.MedicationStatement.MedicationType.CodeableConcept: {
 			var _medicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicationStatement.MedicationUnion*)((byte*)in_native + 208));
-			var _medication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 		case FHIR_Marshalling.MedicationStatement.MedicationType.Reference: {
 			var _medicationReference__union = &(*(FHIR_Marshalling.MedicationStatement.MedicationUnion*)((byte*)in_native + 208));
-			var _medication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 224)) != null) {
@@ -34856,14 +35304,18 @@ public static Hl7.Fhir.Model.MedicationStatement? Marshal_MedicationStatement(FH
 	switch((*(FHIR_Marshalling.MedicationStatement.EffectiveType*)((byte*)in_native + 256))) {
 		case FHIR_Marshalling.MedicationStatement.EffectiveType.DateTime: {
 			var _effectiveDateTime__union = &(*(FHIR_Marshalling.MedicationStatement.EffectiveUnion*)((byte*)in_native + 240));
-			var _effective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Effective = _effective_primative;
+			var _effective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_effective_temp != null) {
+				fhirInstance.Effective = _effective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.MedicationStatement.EffectiveType.Period: {
 			var _effectivePeriod__union = &(*(FHIR_Marshalling.MedicationStatement.EffectiveUnion*)((byte*)in_native + 240));
-			var _effective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)) != null) {
+				fhirInstance.Effective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.Effective = _effective_primative;
 		} break;
 	}
 	var _dateAsserted_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 264)).ToFhirDateTime();
@@ -35486,15 +35938,17 @@ public static Hl7.Fhir.Model.MedicinalProduct.SpecialDesignationComponent? Marsh
 	switch((*(FHIR_Marshalling.MedicinalProduct_SpecialDesignation.IndicationType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.MedicinalProduct_SpecialDesignation.IndicationType.CodeableConcept: {
 			var _indicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicinalProduct_SpecialDesignation.IndicationUnion*)((byte*)in_native + 88));
-			var _indication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_indicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_indicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Indication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_indicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Indication = _indication_primative;
 		} break;
 		case FHIR_Marshalling.MedicinalProduct_SpecialDesignation.IndicationType.Reference: {
 			var _indicationReference__union = &(*(FHIR_Marshalling.MedicinalProduct_SpecialDesignation.IndicationUnion*)((byte*)in_native + 88));
-			var _indication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_indicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_indicationReference__union + 0)) != null) {
+				fhirInstance.Indication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_indicationReference__union + 0)));
+			}
 			
-			fhirInstance.Indication = _indication_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 104)) != null) {
@@ -35798,14 +36252,18 @@ public static Hl7.Fhir.Model.MedicinalProductAuthorization.ProcedureComponent? M
 	switch((*(FHIR_Marshalling.MedicinalProductAuthorization_Procedure.DateType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.MedicinalProductAuthorization_Procedure.DateType.Period: {
 			var _datePeriod__union = &(*(FHIR_Marshalling.MedicinalProductAuthorization_Procedure.DateUnion*)((byte*)in_native + 72));
-			var _date_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_datePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_datePeriod__union + 0)) != null) {
+				fhirInstance.Date = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_datePeriod__union + 0)));
+			}
 			
-			fhirInstance.Date = _date_primative;
 		} break;
 		case FHIR_Marshalling.MedicinalProductAuthorization_Procedure.DateType.DateTime: {
 			var _dateDateTime__union = &(*(FHIR_Marshalling.MedicinalProductAuthorization_Procedure.DateUnion*)((byte*)in_native + 72));
-			var _date_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_dateDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Date = _date_primative;
+			var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_dateDateTime__union + 0)).ToFhirDateTime();
+			if(_date_temp != null) {
+				fhirInstance.Date = _date_temp;
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 96)) > 0) {
@@ -35999,15 +36457,17 @@ public static Hl7.Fhir.Model.MedicinalProductContraindication.OtherTherapyCompon
 	switch((*(FHIR_Marshalling.MedicinalProductContraindication_OtherTherapy.MedicationType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.MedicinalProductContraindication_OtherTherapy.MedicationType.CodeableConcept: {
 			var _medicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicinalProductContraindication_OtherTherapy.MedicationUnion*)((byte*)in_native + 64));
-			var _medication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 		case FHIR_Marshalling.MedicinalProductContraindication_OtherTherapy.MedicationType.Reference: {
 			var _medicationReference__union = &(*(FHIR_Marshalling.MedicinalProductContraindication_OtherTherapy.MedicationUnion*)((byte*)in_native + 64));
-			var _medication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -36197,15 +36657,17 @@ public static Hl7.Fhir.Model.MedicinalProductIndication.OtherTherapyComponent? M
 	switch((*(FHIR_Marshalling.MedicinalProductIndication_OtherTherapy.MedicationType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.MedicinalProductIndication_OtherTherapy.MedicationType.CodeableConcept: {
 			var _medicationCodeableConcept__union = &(*(FHIR_Marshalling.MedicinalProductIndication_OtherTherapy.MedicationUnion*)((byte*)in_native + 64));
-			var _medication_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_medicationCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 		case FHIR_Marshalling.MedicinalProductIndication_OtherTherapy.MedicationType.Reference: {
 			var _medicationReference__union = &(*(FHIR_Marshalling.MedicinalProductIndication_OtherTherapy.MedicationUnion*)((byte*)in_native + 64));
-			var _medication_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)) != null) {
+				fhirInstance.Medication = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_medicationReference__union + 0)));
+			}
 			
-			fhirInstance.Medication = _medication_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -36283,7 +36745,7 @@ public static Hl7.Fhir.Model.MedicinalProductIngredient? Marshal_MedicinalProduc
 		fhirInstance.Role = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 128)));
 	}
 	
-	var _allergenicIndicator_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _allergenicIndicator_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_allergenicIndicator_temp != null) {
 		fhirInstance.AllergenicIndicatorElement = _allergenicIndicator_temp;
 	}
@@ -36730,15 +37192,17 @@ public static Hl7.Fhir.Model.MedicinalProductInteraction.InteractantComponent? M
 	switch((*(FHIR_Marshalling.MedicinalProductInteraction_Interactant.ItemType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.MedicinalProductInteraction_Interactant.ItemType.Reference: {
 			var _itemReference__union = &(*(FHIR_Marshalling.MedicinalProductInteraction_Interactant.ItemUnion*)((byte*)in_native + 56));
-			var _item_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)) != null) {
+				fhirInstance.Item = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 		case FHIR_Marshalling.MedicinalProductInteraction_Interactant.ItemType.CodeableConcept: {
 			var _itemCodeableConcept__union = &(*(FHIR_Marshalling.MedicinalProductInteraction_Interactant.ItemUnion*)((byte*)in_native + 56));
-			var _item_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)) != null) {
+				fhirInstance.Item = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -37790,7 +38254,7 @@ public static Hl7.Fhir.Model.MessageDefinition? Marshal_MessageDefinition(FHIR_M
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -37877,15 +38341,18 @@ public static Hl7.Fhir.Model.MessageDefinition? Marshal_MessageDefinition(FHIR_M
 	switch((*(FHIR_Marshalling.MessageDefinition.EventType*)((byte*)in_native + 416))) {
 		case FHIR_Marshalling.MessageDefinition.EventType.Coding: {
 			var _eventCoding__union = &(*(FHIR_Marshalling.MessageDefinition.EventUnion*)((byte*)in_native + 400));
-			var _event_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_eventCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_eventCoding__union + 0)) != null) {
+				fhirInstance.Event = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_eventCoding__union + 0)));
+			}
 			
-			fhirInstance.Event = _event_primative;
 		} break;
 		case FHIR_Marshalling.MessageDefinition.EventType.Uri: {
 			var _eventUri__union = &(*(FHIR_Marshalling.MessageDefinition.EventUnion*)((byte*)in_native + 400));
-			var _event_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_eventUri__union + 0)).ToString();
-			var _event_primative =  (_event_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_event_primative_temp);
-			fhirInstance.Event = _event_primative;
+			var _event_temp = (*(FHIR_Marshalling.String8*)((byte*)_eventUri__union + 0)).ToString();
+			if(_event_temp != null) {
+				fhirInstance.Event = new Hl7.Fhir.Model.FhirUri(_event_temp);
+			}
+			
 		} break;
 	}
 	var __temp_codeCategoryElement = (*(FHIR_Marshalling.String8*)((byte*)in_native + 424)).ToString();
@@ -37982,7 +38449,7 @@ public static Hl7.Fhir.Model.MessageDefinition.FocusComponent? Marshal_MessageDe
 		fhirInstance.ProfileElement = new Hl7.Fhir.Model.Canonical(_profile_temp);
 	}
 	
-	var _min_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirUnsignedInt();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -38109,15 +38576,18 @@ public static Hl7.Fhir.Model.MessageHeader? Marshal_MessageHeader(FHIR_Marshalli
 	switch((*(FHIR_Marshalling.MessageHeader.EventType*)((byte*)in_native + 136))) {
 		case FHIR_Marshalling.MessageHeader.EventType.Coding: {
 			var _eventCoding__union = &(*(FHIR_Marshalling.MessageHeader.EventUnion*)((byte*)in_native + 120));
-			var _event_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_eventCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_eventCoding__union + 0)) != null) {
+				fhirInstance.Event = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_eventCoding__union + 0)));
+			}
 			
-			fhirInstance.Event = _event_primative;
 		} break;
 		case FHIR_Marshalling.MessageHeader.EventType.Uri: {
 			var _eventUri__union = &(*(FHIR_Marshalling.MessageHeader.EventUnion*)((byte*)in_native + 120));
-			var _event_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_eventUri__union + 0)).ToString();
-			var _event_primative =  (_event_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_event_primative_temp);
-			fhirInstance.Event = _event_primative;
+			var _event_temp = (*(FHIR_Marshalling.String8*)((byte*)_eventUri__union + 0)).ToString();
+			if(_event_temp != null) {
+				fhirInstance.Event = new Hl7.Fhir.Model.FhirUri(_event_temp);
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 144)) > 0) {
@@ -38428,7 +38898,7 @@ public static Hl7.Fhir.Model.MolecularSequence? Marshal_MolecularSequence(FHIR_M
 		fhirInstance.TypeElement = new Code<Hl7.Fhir.Model.MolecularSequence.SequenceType> ();
 		fhirInstance.TypeElement.ObjectValue = __temp_codeTypeElement;
 	}
-	var _coordinateSystem_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 152)).GetValue());
+	var _coordinateSystem_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 152)).ToFhirInteger();
 	if(_coordinateSystem_temp != null) {
 		fhirInstance.CoordinateSystemElement = _coordinateSystem_temp;
 	}
@@ -38486,7 +38956,7 @@ public static Hl7.Fhir.Model.MolecularSequence? Marshal_MolecularSequence(FHIR_M
 		
 	}
 	
-	var _readCoverage_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 256)).GetValue());
+	var _readCoverage_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 256)).ToFhirInteger();
 	if(_readCoverage_temp != null) {
 		fhirInstance.ReadCoverageElement = _readCoverage_temp;
 	}
@@ -38596,12 +39066,12 @@ public static Hl7.Fhir.Model.MolecularSequence.ReferenceSeqComponent? Marshal_Mo
 		fhirInstance.StrandElement = new Code<Hl7.Fhir.Model.MolecularSequence.StrandType> ();
 		fhirInstance.StrandElement.ObjectValue = __temp_codeStrandElement;
 	}
-	var _windowStart_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 144)).GetValue());
+	var _windowStart_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 144)).ToFhirInteger();
 	if(_windowStart_temp != null) {
 		fhirInstance.WindowStartElement = _windowStart_temp;
 	}
 	
-	var _windowEnd_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 152)).GetValue());
+	var _windowEnd_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 152)).ToFhirInteger();
 	if(_windowEnd_temp != null) {
 		fhirInstance.WindowEndElement = _windowEnd_temp;
 	}
@@ -38643,12 +39113,12 @@ public static Hl7.Fhir.Model.MolecularSequence.VariantComponent? Marshal_Molecul
 		
 	}
 	
-	var _start_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _start_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_start_temp != null) {
 		fhirInstance.StartElement = _start_temp;
 	}
 	
-	var _end_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _end_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirInteger();
 	if(_end_temp != null) {
 		fhirInstance.EndElement = _end_temp;
 	}
@@ -38718,12 +39188,12 @@ public static Hl7.Fhir.Model.MolecularSequence.QualityComponent? Marshal_Molecul
 		fhirInstance.StandardSequence = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
 	
-	var _start_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _start_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirInteger();
 	if(_start_temp != null) {
 		fhirInstance.StartElement = _start_temp;
 	}
 	
-	var _end_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _end_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirInteger();
 	if(_end_temp != null) {
 		fhirInstance.EndElement = _end_temp;
 	}
@@ -38736,42 +39206,42 @@ public static Hl7.Fhir.Model.MolecularSequence.QualityComponent? Marshal_Molecul
 		fhirInstance.Method = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 104)));
 	}
 	
-	var _truthTP_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).DecimalValue());
+	var _truthTP_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 112)).ToFhirDecimal();
 	if(_truthTP_temp != null) {
 		fhirInstance.TruthTPElement = _truthTP_temp;
 	}
 	
-	var _queryTP_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).DecimalValue());
+	var _queryTP_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToFhirDecimal();
 	if(_queryTP_temp != null) {
 		fhirInstance.QueryTPElement = _queryTP_temp;
 	}
 	
-	var _truthFN_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).DecimalValue());
+	var _truthFN_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 144)).ToFhirDecimal();
 	if(_truthFN_temp != null) {
 		fhirInstance.TruthFNElement = _truthFN_temp;
 	}
 	
-	var _queryFP_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).DecimalValue());
+	var _queryFP_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 160)).ToFhirDecimal();
 	if(_queryFP_temp != null) {
 		fhirInstance.QueryFPElement = _queryFP_temp;
 	}
 	
-	var _gtFP_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).DecimalValue());
+	var _gtFP_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 176)).ToFhirDecimal();
 	if(_gtFP_temp != null) {
 		fhirInstance.GtFPElement = _gtFP_temp;
 	}
 	
-	var _precision_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).DecimalValue());
+	var _precision_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 192)).ToFhirDecimal();
 	if(_precision_temp != null) {
 		fhirInstance.PrecisionElement = _precision_temp;
 	}
 	
-	var _recall_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).DecimalValue());
+	var _recall_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 208)).ToFhirDecimal();
 	if(_recall_temp != null) {
 		fhirInstance.RecallElement = _recall_temp;
 	}
 	
-	var _fScore_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).DecimalValue());
+	var _fScore_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 224)).ToFhirDecimal();
 	if(_fScore_temp != null) {
 		fhirInstance.FScoreElement = _fScore_temp;
 	}
@@ -38821,7 +39291,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _score_list  = new List<Integer>((int)(*(System.UIntPtr*)((byte*)in_native + 56)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 56)); i++)
 		{
-			var _score_primative = new Integer((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].GetValue());
+			var _score_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 64))[i].ToFhirInteger();
 			_score_list.Add(_score_primative);
 			}
 			
@@ -38833,7 +39303,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _numTP_list  = new List<Integer>((int)(*(System.UIntPtr*)((byte*)in_native + 72)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 72)); i++)
 		{
-			var _numTP_primative = new Integer((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 80))[i].GetValue());
+			var _numTP_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 80))[i].ToFhirInteger();
 			_numTP_list.Add(_numTP_primative);
 			}
 			
@@ -38845,7 +39315,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _numFP_list  = new List<Integer>((int)(*(System.UIntPtr*)((byte*)in_native + 88)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 88)); i++)
 		{
-			var _numFP_primative = new Integer((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].GetValue());
+			var _numFP_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].ToFhirInteger();
 			_numFP_list.Add(_numFP_primative);
 			}
 			
@@ -38857,7 +39327,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _numFN_list  = new List<Integer>((int)(*(System.UIntPtr*)((byte*)in_native + 104)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 104)); i++)
 		{
-			var _numFN_primative = new Integer((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 112))[i].GetValue());
+			var _numFN_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 112))[i].ToFhirInteger();
 			_numFN_list.Add(_numFN_primative);
 			}
 			
@@ -38869,7 +39339,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _precision_list  = new List<FhirDecimal>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 120)); i++)
 		{
-			var _precision_primative = new FhirDecimal((*(FHIR_Marshalling.String8**)((byte*)in_native + 128))[i].DecimalValue());
+			var _precision_primative = (*(FHIR_Marshalling.String8**)((byte*)in_native + 128))[i].ToFhirDecimal();
 			_precision_list.Add(_precision_primative);
 			}
 			
@@ -38881,7 +39351,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _sensitivity_list  = new List<FhirDecimal>((int)(*(System.UIntPtr*)((byte*)in_native + 136)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 136)); i++)
 		{
-			var _sensitivity_primative = new FhirDecimal((*(FHIR_Marshalling.String8**)((byte*)in_native + 144))[i].DecimalValue());
+			var _sensitivity_primative = (*(FHIR_Marshalling.String8**)((byte*)in_native + 144))[i].ToFhirDecimal();
 			_sensitivity_list.Add(_sensitivity_primative);
 			}
 			
@@ -38893,7 +39363,7 @@ public static Hl7.Fhir.Model.MolecularSequence.RocComponent? Marshal_MolecularSe
 		var _fMeasure_list  = new List<FhirDecimal>((int)(*(System.UIntPtr*)((byte*)in_native + 152)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 152)); i++)
 		{
-			var _fMeasure_primative = new FhirDecimal((*(FHIR_Marshalling.String8**)((byte*)in_native + 160))[i].DecimalValue());
+			var _fMeasure_primative = (*(FHIR_Marshalling.String8**)((byte*)in_native + 160))[i].ToFhirDecimal();
 			_fMeasure_list.Add(_fMeasure_primative);
 			}
 			
@@ -39009,12 +39479,12 @@ public static Hl7.Fhir.Model.MolecularSequence.StructureVariantComponent? Marsha
 		fhirInstance.VariantType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _exact_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _exact_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_exact_temp != null) {
 		fhirInstance.ExactElement = _exact_temp;
 	}
 	
-	var _length_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _length_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirInteger();
 	if(_length_temp != null) {
 		fhirInstance.LengthElement = _length_temp;
 	}
@@ -39064,12 +39534,12 @@ public static Hl7.Fhir.Model.MolecularSequence.OuterComponent? Marshal_Molecular
 		
 	}
 	
-	var _start_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _start_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_start_temp != null) {
 		fhirInstance.StartElement = _start_temp;
 	}
 	
-	var _end_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _end_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirInteger();
 	if(_end_temp != null) {
 		fhirInstance.EndElement = _end_temp;
 	}
@@ -39111,12 +39581,12 @@ public static Hl7.Fhir.Model.MolecularSequence.InnerComponent? Marshal_Molecular
 		
 	}
 	
-	var _start_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _start_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_start_temp != null) {
 		fhirInstance.StartElement = _start_temp;
 	}
 	
-	var _end_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _end_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirInteger();
 	if(_end_temp != null) {
 		fhirInstance.EndElement = _end_temp;
 	}
@@ -39327,7 +39797,7 @@ public static Hl7.Fhir.Model.NamingSystem.UniqueIdComponent? Marshal_NamingSyste
 		fhirInstance.ValueElement = new Hl7.Fhir.Model.FhirString(_value_temp);
 	}
 	
-	var _preferred_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 88)).GetValue());
+	var _preferred_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 88)).ToFhirBoolean();
 	if(_preferred_temp != null) {
 		fhirInstance.PreferredElement = _preferred_temp;
 	}
@@ -39945,15 +40415,17 @@ public static Hl7.Fhir.Model.NutritionOrder.AdministrationComponent? Marshal_Nut
 	switch((*(FHIR_Marshalling.NutritionOrder_EnteralFormula_Administration.RateType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.NutritionOrder_EnteralFormula_Administration.RateType.Quantity: {
 			var _rateQuantity__union = &(*(FHIR_Marshalling.NutritionOrder_EnteralFormula_Administration.RateUnion*)((byte*)in_native + 72));
-			var _rate_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 		case FHIR_Marshalling.NutritionOrder_EnteralFormula_Administration.RateType.Ratio: {
 			var _rateRatio__union = &(*(FHIR_Marshalling.NutritionOrder_EnteralFormula_Administration.RateUnion*)((byte*)in_native + 72));
-			var _rate_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -40103,25 +40575,33 @@ public static Hl7.Fhir.Model.Observation? Marshal_Observation(FHIR_Marshalling.O
 	switch((*(FHIR_Marshalling.Observation.EffectiveType*)((byte*)in_native + 256))) {
 		case FHIR_Marshalling.Observation.EffectiveType.DateTime: {
 			var _effectiveDateTime__union = &(*(FHIR_Marshalling.Observation.EffectiveUnion*)((byte*)in_native + 240));
-			var _effective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Effective = _effective_primative;
+			var _effective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_effective_temp != null) {
+				fhirInstance.Effective = _effective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation.EffectiveType.Period: {
 			var _effectivePeriod__union = &(*(FHIR_Marshalling.Observation.EffectiveUnion*)((byte*)in_native + 240));
-			var _effective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)) != null) {
+				fhirInstance.Effective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_effectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.Effective = _effective_primative;
 		} break;
 		case FHIR_Marshalling.Observation.EffectiveType.Timing: {
 			var _effectiveTiming__union = &(*(FHIR_Marshalling.Observation.EffectiveUnion*)((byte*)in_native + 240));
-			var _effective_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_effectiveTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_effectiveTiming__union + 0)) != null) {
+				fhirInstance.Effective = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_effectiveTiming__union + 0)));
+			}
 			
-			fhirInstance.Effective = _effective_primative;
 		} break;
 		case FHIR_Marshalling.Observation.EffectiveType.Instant: {
 			var _effectiveInstant__union = &(*(FHIR_Marshalling.Observation.EffectiveUnion*)((byte*)in_native + 240));
-			var _effective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Effective = _effective_primative;
+			var _effective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_effectiveInstant__union + 0)).ToFhirInstant();
+			if(_effective_temp != null) {
+				fhirInstance.Effective = _effective_temp;
+			}
+			
 		} break;
 	}
 	var _issued_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 264)).ToFhirInstant();
@@ -40144,65 +40624,85 @@ public static Hl7.Fhir.Model.Observation? Marshal_Observation(FHIR_Marshalling.O
 	switch((*(FHIR_Marshalling.Observation.ValueType*)((byte*)in_native + 312))) {
 		case FHIR_Marshalling.Observation.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.Observation.ValueUnion*)((byte*)in_native + 296));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 320)) != null) {
@@ -40411,65 +40911,85 @@ public static Hl7.Fhir.Model.Observation.ComponentComponent? Marshal_Observation
 	switch((*(FHIR_Marshalling.Observation_Component.ValueType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.Observation_Component.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Observation_Component.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.Observation_Component.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)) != null) {
@@ -40608,7 +41128,7 @@ public static Hl7.Fhir.Model.ObservationDefinition? Marshal_ObservationDefinitio
 		
 		}
 		
-	var _multipleResultsAllowed_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 176)).GetValue());
+	var _multipleResultsAllowed_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 176)).ToFhirBoolean();
 	if(_multipleResultsAllowed_temp != null) {
 		fhirInstance.MultipleResultsAllowedElement = _multipleResultsAllowed_temp;
 	}
@@ -40699,12 +41219,12 @@ public static Hl7.Fhir.Model.ObservationDefinition.QuantitativeDetailsComponent?
 		fhirInstance.Unit = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 64)));
 	}
 	
-	var _conversionFactor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).DecimalValue());
+	var _conversionFactor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToFhirDecimal();
 	if(_conversionFactor_temp != null) {
 		fhirInstance.ConversionFactorElement = _conversionFactor_temp;
 	}
 	
-	var _decimalPrecision_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _decimalPrecision_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirInteger();
 	if(_decimalPrecision_temp != null) {
 		fhirInstance.DecimalPrecisionElement = _decimalPrecision_temp;
 	}
@@ -40886,7 +41406,7 @@ public static Hl7.Fhir.Model.OperationDefinition? Marshal_OperationDefinition(FH
 		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.OperationDefinition.OperationKind> ();
 		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -40947,7 +41467,7 @@ public static Hl7.Fhir.Model.OperationDefinition? Marshal_OperationDefinition(FH
 		fhirInstance.PurposeElement = new Hl7.Fhir.Model.Markdown(_purpose_temp);
 	}
 	
-	var _affectsState_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 336)).GetValue());
+	var _affectsState_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 336)).ToFhirBoolean();
 	if(_affectsState_temp != null) {
 		fhirInstance.AffectsStateElement = _affectsState_temp;
 	}
@@ -40980,17 +41500,17 @@ public static Hl7.Fhir.Model.OperationDefinition? Marshal_OperationDefinition(FH
 		
 		}
 		
-	var _system_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 408)).GetValue());
+	var _system_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 408)).ToFhirBoolean();
 	if(_system_temp != null) {
 		fhirInstance.SystemElement = _system_temp;
 	}
 	
-	var _type_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 416)).GetValue());
+	var _type_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 416)).ToFhirBoolean();
 	if(_type_temp != null) {
 		fhirInstance.TypeElement = _type_temp;
 	}
 	
-	var _instance_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 424)).GetValue());
+	var _instance_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 424)).ToFhirBoolean();
 	if(_instance_temp != null) {
 		fhirInstance.InstanceElement = _instance_temp;
 	}
@@ -41076,7 +41596,7 @@ public static Hl7.Fhir.Model.OperationDefinition.ParameterComponent? Marshal_Ope
 		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.OperationParameterUse> ();
 		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
 	}
-	var _min_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirInteger();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -41531,7 +42051,7 @@ public static Hl7.Fhir.Model.Organization? Marshal_Organization(FHIR_Marshalling
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -41758,7 +42278,7 @@ public static Hl7.Fhir.Model.OrganizationAffiliation? Marshal_OrganizationAffili
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -41950,291 +42470,368 @@ public static Hl7.Fhir.Model.Parameters.ParameterComponent? Marshal_Parameters_P
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Canonical: {
 			var _valueCanonical__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Canonical(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Id: {
 			var _valueId__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Id(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Instant: {
 			var _valueInstant__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Markdown: {
 			var _valueMarkdown__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Markdown(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Oid: {
 			var _valueOid__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Oid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.PositiveInt: {
 			var _valuePositiveInt__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.UnsignedInt: {
 			var _valueUnsignedInt__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Url: {
 			var _valueUrl__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUrl(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Uuid: {
 			var _valueUuid__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Uuid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Address: {
 			var _valueAddress__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Age: {
 			var _valueAge__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Annotation: {
 			var _valueAnnotation__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.ContactPoint: {
 			var _valueContactPoint__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Count: {
 			var _valueCount__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Distance: {
 			var _valueDistance__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Duration: {
 			var _valueDuration__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.HumanName: {
 			var _valueHumanName__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)) != null) {
+				fhirInstance.Value = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Identifier: {
 			var _valueIdentifier__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Money: {
 			var _valueMoney__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Signature: {
 			var _valueSignature__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Timing: {
 			var _valueTiming__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.ContactDetail: {
 			var _valueContactDetail__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Contributor: {
 			var _valueContributor__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.DataRequirement: {
 			var _valueDataRequirement__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)) != null) {
+				fhirInstance.Value = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Expression: {
 			var _valueExpression__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.ParameterDefinition: {
 			var _valueParameterDefinition__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.RelatedArtifact: {
 			var _valueRelatedArtifact__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Value = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.TriggerDefinition: {
 			var _valueTriggerDefinition__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.UsageContext: {
 			var _valueUsageContext__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)) != null) {
+				fhirInstance.Value = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Dosage: {
 			var _valueDosage__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Meta: {
 			var _valueMeta__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Resource**)((byte*)in_native + 96)) != null) {
@@ -42332,7 +42929,7 @@ public static Hl7.Fhir.Model.Patient? Marshal_Patient(FHIR_Marshalling.Patient* 
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -42374,13 +42971,19 @@ public static Hl7.Fhir.Model.Patient? Marshal_Patient(FHIR_Marshalling.Patient* 
 	switch((*(FHIR_Marshalling.Patient.DeceasedType*)((byte*)in_native + 224))) {
 		case FHIR_Marshalling.Patient.DeceasedType.Boolean: {
 			var _deceasedBoolean__union = &(*(FHIR_Marshalling.Patient.DeceasedUnion*)((byte*)in_native + 208));
-			var _deceased_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_deceasedBoolean__union + 0)).GetValue());
-			fhirInstance.Deceased = _deceased_primative;
+			var _deceased_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_deceasedBoolean__union + 0)).ToFhirBoolean();
+			if(_deceased_temp != null) {
+				fhirInstance.Deceased = _deceased_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Patient.DeceasedType.DateTime: {
 			var _deceasedDateTime__union = &(*(FHIR_Marshalling.Patient.DeceasedUnion*)((byte*)in_native + 208));
-			var _deceased_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_deceasedDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Deceased = _deceased_primative;
+			var _deceased_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_deceasedDateTime__union + 0)).ToFhirDateTime();
+			if(_deceased_temp != null) {
+				fhirInstance.Deceased = _deceased_temp;
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 232)) > 0) {
@@ -42402,13 +43005,19 @@ public static Hl7.Fhir.Model.Patient? Marshal_Patient(FHIR_Marshalling.Patient* 
 	switch((*(FHIR_Marshalling.Patient.MultipleBirthType*)((byte*)in_native + 264))) {
 		case FHIR_Marshalling.Patient.MultipleBirthType.Boolean: {
 			var _multipleBirthBoolean__union = &(*(FHIR_Marshalling.Patient.MultipleBirthUnion*)((byte*)in_native + 256));
-			var _multipleBirth_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_multipleBirthBoolean__union + 0)).GetValue());
-			fhirInstance.MultipleBirth = _multipleBirth_primative;
+			var _multipleBirth_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_multipleBirthBoolean__union + 0)).ToFhirBoolean();
+			if(_multipleBirth_temp != null) {
+				fhirInstance.MultipleBirth = _multipleBirth_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Patient.MultipleBirthType.Integer: {
 			var _multipleBirthInteger__union = &(*(FHIR_Marshalling.Patient.MultipleBirthUnion*)((byte*)in_native + 256));
-			var _multipleBirth_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_multipleBirthInteger__union + 0)).GetValue());
-			fhirInstance.MultipleBirth = _multipleBirth_primative;
+			var _multipleBirth_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_multipleBirthInteger__union + 0)).ToFhirInteger();
+			if(_multipleBirth_temp != null) {
+				fhirInstance.MultipleBirth = _multipleBirth_temp;
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 272)) > 0) {
@@ -42598,7 +43207,7 @@ public static Hl7.Fhir.Model.Patient.CommunicationComponent? Marshal_Patient_Com
 		fhirInstance.Language = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _preferred_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _preferred_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_preferred_temp != null) {
 		fhirInstance.PreferredElement = _preferred_temp;
 	}
@@ -43189,7 +43798,7 @@ public static Hl7.Fhir.Model.Person? Marshal_Person(FHIR_Marshalling.Person* in_
 		fhirInstance.ManagingOrganization = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 224)));
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -43365,7 +43974,7 @@ public static Hl7.Fhir.Model.PlanDefinition? Marshal_PlanDefinition(FHIR_Marshal
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 240)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 240)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -43373,15 +43982,17 @@ public static Hl7.Fhir.Model.PlanDefinition? Marshal_PlanDefinition(FHIR_Marshal
 	switch((*(FHIR_Marshalling.PlanDefinition.SubjectType*)((byte*)in_native + 256))) {
 		case FHIR_Marshalling.PlanDefinition.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.PlanDefinition.SubjectUnion*)((byte*)in_native + 248));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.PlanDefinition.SubjectUnion*)((byte*)in_native + 248));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 264)).ToFhirDateTime();
@@ -43706,21 +44317,24 @@ public static Hl7.Fhir.Model.PlanDefinition.TargetComponent? Marshal_PlanDefinit
 	switch((*(FHIR_Marshalling.PlanDefinition_Goal_Target.DetailType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.PlanDefinition_Goal_Target.DetailType.Quantity: {
 			var _detailQuantity__union = &(*(FHIR_Marshalling.PlanDefinition_Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_detailQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_detailQuantity__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_detailQuantity__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Goal_Target.DetailType.Range: {
 			var _detailRange__union = &(*(FHIR_Marshalling.PlanDefinition_Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_detailRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_detailRange__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_detailRange__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Goal_Target.DetailType.CodeableConcept: {
 			var _detailCodeableConcept__union = &(*(FHIR_Marshalling.PlanDefinition_Goal_Target.DetailUnion*)((byte*)in_native + 64));
-			var _detail_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_detailCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_detailCodeableConcept__union + 0)) != null) {
+				fhirInstance.Detail = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_detailCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Detail = _detail_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Duration**)((byte*)in_native + 80)) != null) {
@@ -43841,15 +44455,17 @@ public static Hl7.Fhir.Model.PlanDefinition.ActionComponent? Marshal_PlanDefinit
 	switch((*(FHIR_Marshalling.PlanDefinition_Action.SubjectType*)((byte*)in_native + 208))) {
 		case FHIR_Marshalling.PlanDefinition_Action.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.PlanDefinition_Action.SubjectUnion*)((byte*)in_native + 200));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.PlanDefinition_Action.SubjectUnion*)((byte*)in_native + 200));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 216)) > 0) {
@@ -43915,38 +44531,46 @@ public static Hl7.Fhir.Model.PlanDefinition.ActionComponent? Marshal_PlanDefinit
 	switch((*(FHIR_Marshalling.PlanDefinition_Action.TimingType*)((byte*)in_native + 312))) {
 		case FHIR_Marshalling.PlanDefinition_Action.TimingType.DateTime: {
 			var _timingDateTime__union = &(*(FHIR_Marshalling.PlanDefinition_Action.TimingUnion*)((byte*)in_native + 296));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.TimingType.Age: {
 			var _timingAge__union = &(*(FHIR_Marshalling.PlanDefinition_Action.TimingUnion*)((byte*)in_native + 296));
-			var _timing_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.TimingType.Period: {
 			var _timingPeriod__union = &(*(FHIR_Marshalling.PlanDefinition_Action.TimingUnion*)((byte*)in_native + 296));
-			var _timing_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.TimingType.Duration: {
 			var _timingDuration__union = &(*(FHIR_Marshalling.PlanDefinition_Action.TimingUnion*)((byte*)in_native + 296));
-			var _timing_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.TimingType.Range: {
 			var _timingRange__union = &(*(FHIR_Marshalling.PlanDefinition_Action.TimingUnion*)((byte*)in_native + 296));
-			var _timing_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.TimingType.Timing: {
 			var _timingTiming__union = &(*(FHIR_Marshalling.PlanDefinition_Action.TimingUnion*)((byte*)in_native + 296));
-			var _timing_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 320)) > 0) {
@@ -43993,15 +44617,19 @@ public static Hl7.Fhir.Model.PlanDefinition.ActionComponent? Marshal_PlanDefinit
 	switch((*(FHIR_Marshalling.PlanDefinition_Action.DefinitionType*)((byte*)in_native + 440))) {
 		case FHIR_Marshalling.PlanDefinition_Action.DefinitionType.Canonical: {
 			var _definitionCanonical__union = &(*(FHIR_Marshalling.PlanDefinition_Action.DefinitionUnion*)((byte*)in_native + 424));
-			var _definition_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionCanonical__union + 0)).ToString();
-			var _definition_primative =  (_definition_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_definition_primative_temp);
-			fhirInstance.Definition = _definition_primative;
+			var _definition_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionCanonical__union + 0)).ToString();
+			if(_definition_temp != null) {
+				fhirInstance.Definition = new Hl7.Fhir.Model.Canonical(_definition_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action.DefinitionType.Uri: {
 			var _definitionUri__union = &(*(FHIR_Marshalling.PlanDefinition_Action.DefinitionUnion*)((byte*)in_native + 424));
-			var _definition_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionUri__union + 0)).ToString();
-			var _definition_primative =  (_definition_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_definition_primative_temp);
-			fhirInstance.Definition = _definition_primative;
+			var _definition_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionUri__union + 0)).ToString();
+			if(_definition_temp != null) {
+				fhirInstance.Definition = new Hl7.Fhir.Model.FhirUri(_definition_temp);
+			}
+			
 		} break;
 	}
 	var _transform_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 448)).ToString();
@@ -44129,15 +44757,17 @@ public static Hl7.Fhir.Model.PlanDefinition.RelatedActionComponent? Marshal_Plan
 	switch((*(FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetType.Duration: {
 			var _offsetDuration__union = &(*(FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetUnion*)((byte*)in_native + 88));
-			var _offset_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_offsetDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_offsetDuration__union + 0)) != null) {
+				fhirInstance.Offset = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_offsetDuration__union + 0)));
+			}
 			
-			fhirInstance.Offset = _offset_primative;
 		} break;
 		case FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetType.Range: {
 			var _offsetRange__union = &(*(FHIR_Marshalling.PlanDefinition_Action_RelatedAction.OffsetUnion*)((byte*)in_native + 88));
-			var _offset_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_offsetRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_offsetRange__union + 0)) != null) {
+				fhirInstance.Offset = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_offsetRange__union + 0)));
+			}
 			
-			fhirInstance.Offset = _offset_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -44311,7 +44941,7 @@ public static Hl7.Fhir.Model.Practitioner? Marshal_Practitioner(FHIR_Marshalling
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -44538,7 +45168,7 @@ public static Hl7.Fhir.Model.PractitionerRole? Marshal_PractitionerRole(FHIR_Mar
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -44706,7 +45336,7 @@ public static Hl7.Fhir.Model.PractitionerRole.AvailableTimeComponent? Marshal_Pr
 		
 		}
 		
-	var _allDay_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _allDay_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_allDay_temp != null) {
 		fhirInstance.AllDayElement = _allDay_temp;
 	}
@@ -44924,32 +45554,40 @@ public static Hl7.Fhir.Model.Procedure? Marshal_Procedure(FHIR_Marshalling.Proce
 	switch((*(FHIR_Marshalling.Procedure.PerformedType*)((byte*)in_native + 272))) {
 		case FHIR_Marshalling.Procedure.PerformedType.DateTime: {
 			var _performedDateTime__union = &(*(FHIR_Marshalling.Procedure.PerformedUnion*)((byte*)in_native + 256));
-			var _performed_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_performedDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Performed = _performed_primative;
+			var _performed_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_performedDateTime__union + 0)).ToFhirDateTime();
+			if(_performed_temp != null) {
+				fhirInstance.Performed = _performed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Procedure.PerformedType.Period: {
 			var _performedPeriod__union = &(*(FHIR_Marshalling.Procedure.PerformedUnion*)((byte*)in_native + 256));
-			var _performed_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_performedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_performedPeriod__union + 0)) != null) {
+				fhirInstance.Performed = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_performedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Performed = _performed_primative;
 		} break;
 		case FHIR_Marshalling.Procedure.PerformedType.String: {
 			var _performedString__union = &(*(FHIR_Marshalling.Procedure.PerformedUnion*)((byte*)in_native + 256));
-			var _performed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_performedString__union + 0)).ToString();
-			var _performed_primative =  (_performed_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_performed_primative_temp);
-			fhirInstance.Performed = _performed_primative;
+			var _performed_temp = (*(FHIR_Marshalling.String8*)((byte*)_performedString__union + 0)).ToString();
+			if(_performed_temp != null) {
+				fhirInstance.Performed = new Hl7.Fhir.Model.FhirString(_performed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Procedure.PerformedType.Age: {
 			var _performedAge__union = &(*(FHIR_Marshalling.Procedure.PerformedUnion*)((byte*)in_native + 256));
-			var _performed_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_performedAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_performedAge__union + 0)) != null) {
+				fhirInstance.Performed = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_performedAge__union + 0)));
+			}
 			
-			fhirInstance.Performed = _performed_primative;
 		} break;
 		case FHIR_Marshalling.Procedure.PerformedType.Range: {
 			var _performedRange__union = &(*(FHIR_Marshalling.Procedure.PerformedUnion*)((byte*)in_native + 256));
-			var _performed_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_performedRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_performedRange__union + 0)) != null) {
+				fhirInstance.Performed = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_performedRange__union + 0)));
+			}
 			
-			fhirInstance.Performed = _performed_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 280)) != null) {
@@ -45288,14 +45926,18 @@ public static Hl7.Fhir.Model.Provenance? Marshal_Provenance(FHIR_Marshalling.Pro
 	switch((*(FHIR_Marshalling.Provenance.OccurredType*)((byte*)in_native + 152))) {
 		case FHIR_Marshalling.Provenance.OccurredType.Period: {
 			var _occurredPeriod__union = &(*(FHIR_Marshalling.Provenance.OccurredUnion*)((byte*)in_native + 136));
-			var _occurred_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurredPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurredPeriod__union + 0)) != null) {
+				fhirInstance.Occurred = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurredPeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurred = _occurred_primative;
 		} break;
 		case FHIR_Marshalling.Provenance.OccurredType.DateTime: {
 			var _occurredDateTime__union = &(*(FHIR_Marshalling.Provenance.OccurredUnion*)((byte*)in_native + 136));
-			var _occurred_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurredDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurred = _occurred_primative;
+			var _occurred_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurredDateTime__union + 0)).ToFhirDateTime();
+			if(_occurred_temp != null) {
+				fhirInstance.Occurred = _occurred_temp;
+			}
+			
 		} break;
 	}
 	var _recorded_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 160)).ToFhirInstant();
@@ -45608,7 +46250,7 @@ public static Hl7.Fhir.Model.Questionnaire? Marshal_Questionnaire(FHIR_Marshalli
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 232)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -45816,22 +46458,22 @@ public static Hl7.Fhir.Model.Questionnaire.ItemComponent? Marshal_Questionnaire_
 		fhirInstance.EnableBehaviorElement = new Code<Hl7.Fhir.Model.Questionnaire.EnableWhenBehavior> ();
 		fhirInstance.EnableBehaviorElement.ObjectValue = __temp_codeEnableBehaviorElement;
 	}
-	var _required_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).GetValue());
+	var _required_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 184)).ToFhirBoolean();
 	if(_required_temp != null) {
 		fhirInstance.RequiredElement = _required_temp;
 	}
 	
-	var _repeats_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 192)).GetValue());
+	var _repeats_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 192)).ToFhirBoolean();
 	if(_repeats_temp != null) {
 		fhirInstance.RepeatsElement = _repeats_temp;
 	}
 	
-	var _readOnly_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
+	var _readOnly_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).ToFhirBoolean();
 	if(_readOnly_temp != null) {
 		fhirInstance.ReadOnlyElement = _readOnly_temp;
 	}
 	
-	var _maxLength_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 208)).GetValue());
+	var _maxLength_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 208)).ToFhirInteger();
 	if(_maxLength_temp != null) {
 		fhirInstance.MaxLengthElement = _maxLength_temp;
 	}
@@ -45927,57 +46569,80 @@ public static Hl7.Fhir.Model.Questionnaire.EnableWhenComponent? Marshal_Question
 	switch((*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Boolean: {
 			var _answerBoolean__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_answerBoolean__union + 0)).GetValue());
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_answerBoolean__union + 0)).ToFhirBoolean();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = _answer_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Decimal: {
 			var _answerDecimal__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_answerDecimal__union + 0)).DecimalValue());
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.String8*)((byte*)_answerDecimal__union + 0)).ToFhirDecimal();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = _answer_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Integer: {
 			var _answerInteger__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_answerInteger__union + 0)).GetValue());
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_answerInteger__union + 0)).ToFhirInteger();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = _answer_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Date: {
 			var _answerDate__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_answerDate__union + 0)).ToFhirDate();
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_answerDate__union + 0)).ToFhirDate();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = _answer_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.DateTime: {
 			var _answerDateTime__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_answerDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_answerDateTime__union + 0)).ToFhirDateTime();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = _answer_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Time: {
 			var _answerTime__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_answerTime__union + 0)).ToFhirTime();
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_answerTime__union + 0)).ToFhirTime();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = _answer_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.String: {
 			var _answerString__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_answerString__union + 0)).ToString();
-			var _answer_primative =  (_answer_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_answer_primative_temp);
-			fhirInstance.Answer = _answer_primative;
+			var _answer_temp = (*(FHIR_Marshalling.String8*)((byte*)_answerString__union + 0)).ToString();
+			if(_answer_temp != null) {
+				fhirInstance.Answer = new Hl7.Fhir.Model.FhirString(_answer_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Coding: {
 			var _answerCoding__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_answerCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_answerCoding__union + 0)) != null) {
+				fhirInstance.Answer = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_answerCoding__union + 0)));
+			}
 			
-			fhirInstance.Answer = _answer_primative;
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Quantity: {
 			var _answerQuantity__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_answerQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_answerQuantity__union + 0)) != null) {
+				fhirInstance.Answer = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_answerQuantity__union + 0)));
+			}
 			
-			fhirInstance.Answer = _answer_primative;
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerType.Reference: {
 			var _answerReference__union = &(*(FHIR_Marshalling.Questionnaire_Item_EnableWhen.AnswerUnion*)((byte*)in_native + 88));
-			var _answer_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_answerReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_answerReference__union + 0)) != null) {
+				fhirInstance.Answer = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_answerReference__union + 0)));
+			}
 			
-			fhirInstance.Answer = _answer_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -46020,39 +46685,52 @@ public static Hl7.Fhir.Model.Questionnaire.AnswerOptionComponent? Marshal_Questi
 	switch((*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Questionnaire_Item_AnswerOption.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
-	var _initialSelected_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).GetValue());
+	var _initialSelected_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).ToFhirBoolean();
 	if(_initialSelected_temp != null) {
 		fhirInstance.InitialSelectedElement = _initialSelected_temp;
 	}
@@ -46097,69 +46775,95 @@ public static Hl7.Fhir.Model.Questionnaire.InitialComponent? Marshal_Questionnai
 	switch((*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Questionnaire_Item_Initial.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Questionnaire_Item_Initial.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -46416,69 +47120,95 @@ public static Hl7.Fhir.Model.QuestionnaireResponse.AnswerComponent? Marshal_Ques
 	switch((*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.QuestionnaireResponse_Item_Answer.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 80)) > 0) {
@@ -46572,7 +47302,7 @@ public static Hl7.Fhir.Model.RelatedPerson? Marshal_RelatedPerson(FHIR_Marshalli
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -46708,7 +47438,7 @@ public static Hl7.Fhir.Model.RelatedPerson.CommunicationComponent? Marshal_Relat
 		fhirInstance.Language = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _preferred_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _preferred_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_preferred_temp != null) {
 		fhirInstance.PreferredElement = _preferred_temp;
 	}
@@ -47043,38 +47773,46 @@ public static Hl7.Fhir.Model.RequestGroup.ActionComponent? Marshal_RequestGroup_
 	switch((*(FHIR_Marshalling.RequestGroup_Action.TimingType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.RequestGroup_Action.TimingType.DateTime: {
 			var _timingDateTime__union = &(*(FHIR_Marshalling.RequestGroup_Action.TimingUnion*)((byte*)in_native + 200));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.RequestGroup_Action.TimingType.Age: {
 			var _timingAge__union = &(*(FHIR_Marshalling.RequestGroup_Action.TimingUnion*)((byte*)in_native + 200));
-			var _timing_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_timingAge__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.RequestGroup_Action.TimingType.Period: {
 			var _timingPeriod__union = &(*(FHIR_Marshalling.RequestGroup_Action.TimingUnion*)((byte*)in_native + 200));
-			var _timing_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timingPeriod__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.RequestGroup_Action.TimingType.Duration: {
 			var _timingDuration__union = &(*(FHIR_Marshalling.RequestGroup_Action.TimingUnion*)((byte*)in_native + 200));
-			var _timing_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_timingDuration__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.RequestGroup_Action.TimingType.Range: {
 			var _timingRange__union = &(*(FHIR_Marshalling.RequestGroup_Action.TimingUnion*)((byte*)in_native + 200));
-			var _timing_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_timingRange__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.RequestGroup_Action.TimingType.Timing: {
 			var _timingTiming__union = &(*(FHIR_Marshalling.RequestGroup_Action.TimingUnion*)((byte*)in_native + 200));
-			var _timing_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 224)) > 0) {
@@ -47230,15 +47968,17 @@ public static Hl7.Fhir.Model.RequestGroup.RelatedActionComponent? Marshal_Reques
 	switch((*(FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetType.Duration: {
 			var _offsetDuration__union = &(*(FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetUnion*)((byte*)in_native + 88));
-			var _offset_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_offsetDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_offsetDuration__union + 0)) != null) {
+				fhirInstance.Offset = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_offsetDuration__union + 0)));
+			}
 			
-			fhirInstance.Offset = _offset_primative;
 		} break;
 		case FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetType.Range: {
 			var _offsetRange__union = &(*(FHIR_Marshalling.RequestGroup_Action_RelatedAction.OffsetUnion*)((byte*)in_native + 88));
-			var _offset_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_offsetRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_offsetRange__union + 0)) != null) {
+				fhirInstance.Offset = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_offsetRange__union + 0)));
+			}
 			
-			fhirInstance.Offset = _offset_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -47355,7 +48095,7 @@ public static Hl7.Fhir.Model.ResearchDefinition? Marshal_ResearchDefinition(FHIR
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -47363,15 +48103,17 @@ public static Hl7.Fhir.Model.ResearchDefinition? Marshal_ResearchDefinition(FHIR
 	switch((*(FHIR_Marshalling.ResearchDefinition.SubjectType*)((byte*)in_native + 264))) {
 		case FHIR_Marshalling.ResearchDefinition.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.ResearchDefinition.SubjectUnion*)((byte*)in_native + 256));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.ResearchDefinition.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.ResearchDefinition.SubjectUnion*)((byte*)in_native + 256));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 272)).ToFhirDateTime();
@@ -47682,7 +48424,7 @@ public static Hl7.Fhir.Model.ResearchElementDefinition? Marshal_ResearchElementD
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -47690,15 +48432,17 @@ public static Hl7.Fhir.Model.ResearchElementDefinition? Marshal_ResearchElementD
 	switch((*(FHIR_Marshalling.ResearchElementDefinition.SubjectType*)((byte*)in_native + 264))) {
 		case FHIR_Marshalling.ResearchElementDefinition.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.ResearchElementDefinition.SubjectUnion*)((byte*)in_native + 256));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.ResearchElementDefinition.SubjectUnion*)((byte*)in_native + 256));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	var _date_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 272)).ToFhirDateTime();
@@ -47941,27 +48685,32 @@ public static Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent? 
 	switch((*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionType.CodeableConcept: {
 			var _definitionCodeableConcept__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionUnion*)((byte*)in_native + 56));
-			var _definition_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definitionCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definitionCodeableConcept__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definitionCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionType.Canonical: {
 			var _definitionCanonical__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionUnion*)((byte*)in_native + 56));
-			var _definition_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionCanonical__union + 0)).ToString();
-			var _definition_primative =  (_definition_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_definition_primative_temp);
-			fhirInstance.Definition = _definition_primative;
+			var _definition_temp = (*(FHIR_Marshalling.String8*)((byte*)_definitionCanonical__union + 0)).ToString();
+			if(_definition_temp != null) {
+				fhirInstance.Definition = new Hl7.Fhir.Model.Canonical(_definition_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionType.Expression: {
 			var _definitionExpression__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionUnion*)((byte*)in_native + 56));
-			var _definition_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_definitionExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_definitionExpression__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_definitionExpression__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionType.DataRequirement: {
 			var _definitionDataRequirement__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.DefinitionUnion*)((byte*)in_native + 56));
-			var _definition_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_definitionDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_definitionDataRequirement__union + 0)) != null) {
+				fhirInstance.Definition = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_definitionDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Definition = _definition_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 80)) > 0) {
@@ -47976,7 +48725,7 @@ public static Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent? 
 		
 	}
 	
-	var _exclude_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 96)).GetValue());
+	var _exclude_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 96)).ToFhirBoolean();
 	if(_exclude_temp != null) {
 		fhirInstance.ExcludeElement = _exclude_temp;
 	}
@@ -47993,26 +48742,32 @@ public static Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent? 
 	switch((*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveType*)((byte*)in_native + 144))) {
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveType.DateTime: {
 			var _studyEffectiveDateTime__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveUnion*)((byte*)in_native + 128));
-			var _studyEffective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_studyEffectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.StudyEffective = _studyEffective_primative;
+			var _studyEffective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_studyEffectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_studyEffective_temp != null) {
+				fhirInstance.StudyEffective = _studyEffective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveType.Period: {
 			var _studyEffectivePeriod__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveUnion*)((byte*)in_native + 128));
-			var _studyEffective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_studyEffectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_studyEffectivePeriod__union + 0)) != null) {
+				fhirInstance.StudyEffective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_studyEffectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.StudyEffective = _studyEffective_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveType.Duration: {
 			var _studyEffectiveDuration__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveUnion*)((byte*)in_native + 128));
-			var _studyEffective_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_studyEffectiveDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_studyEffectiveDuration__union + 0)) != null) {
+				fhirInstance.StudyEffective = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_studyEffectiveDuration__union + 0)));
+			}
 			
-			fhirInstance.StudyEffective = _studyEffective_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveType.Timing: {
 			var _studyEffectiveTiming__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.StudyEffectiveUnion*)((byte*)in_native + 128));
-			var _studyEffective_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_studyEffectiveTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_studyEffectiveTiming__union + 0)) != null) {
+				fhirInstance.StudyEffective = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_studyEffectiveTiming__union + 0)));
+			}
 			
-			fhirInstance.StudyEffective = _studyEffective_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Duration**)((byte*)in_native + 152)) != null) {
@@ -48032,26 +48787,32 @@ public static Hl7.Fhir.Model.ResearchElementDefinition.CharacteristicComponent? 
 	switch((*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveType*)((byte*)in_native + 208))) {
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveType.DateTime: {
 			var _participantEffectiveDateTime__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 192));
-			var _participantEffective_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_participantEffectiveDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
+			var _participantEffective_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_participantEffectiveDateTime__union + 0)).ToFhirDateTime();
+			if(_participantEffective_temp != null) {
+				fhirInstance.ParticipantEffective = _participantEffective_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveType.Period: {
 			var _participantEffectivePeriod__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 192));
-			var _participantEffective_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_participantEffectivePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_participantEffectivePeriod__union + 0)) != null) {
+				fhirInstance.ParticipantEffective = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_participantEffectivePeriod__union + 0)));
+			}
 			
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveType.Duration: {
 			var _participantEffectiveDuration__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 192));
-			var _participantEffective_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_participantEffectiveDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_participantEffectiveDuration__union + 0)) != null) {
+				fhirInstance.ParticipantEffective = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_participantEffectiveDuration__union + 0)));
+			}
 			
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
 		} break;
 		case FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveType.Timing: {
 			var _participantEffectiveTiming__union = &(*(FHIR_Marshalling.ResearchElementDefinition_Characteristic.ParticipantEffectiveUnion*)((byte*)in_native + 192));
-			var _participantEffective_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_participantEffectiveTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_participantEffectiveTiming__union + 0)) != null) {
+				fhirInstance.ParticipantEffective = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_participantEffectiveTiming__union + 0)));
+			}
 			
-			fhirInstance.ParticipantEffective = _participantEffective_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Duration**)((byte*)in_native + 216)) != null) {
@@ -48667,14 +49428,18 @@ public static Hl7.Fhir.Model.RiskAssessment? Marshal_RiskAssessment(FHIR_Marshal
 	switch((*(FHIR_Marshalling.RiskAssessment.OccurrenceType*)((byte*)in_native + 216))) {
 		case FHIR_Marshalling.RiskAssessment.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.RiskAssessment.OccurrenceUnion*)((byte*)in_native + 200));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.RiskAssessment.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.RiskAssessment.OccurrenceUnion*)((byte*)in_native + 200));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 224)) != null) {
@@ -48794,21 +49559,25 @@ public static Hl7.Fhir.Model.RiskAssessment.PredictionComponent? Marshal_RiskAss
 	switch((*(FHIR_Marshalling.RiskAssessment_Prediction.ProbabilityType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.RiskAssessment_Prediction.ProbabilityType.Decimal: {
 			var _probabilityDecimal__union = &(*(FHIR_Marshalling.RiskAssessment_Prediction.ProbabilityUnion*)((byte*)in_native + 64));
-			var _probability_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_probabilityDecimal__union + 0)).DecimalValue());
-			fhirInstance.Probability = _probability_primative;
+			var _probability_temp = (*(FHIR_Marshalling.String8*)((byte*)_probabilityDecimal__union + 0)).ToFhirDecimal();
+			if(_probability_temp != null) {
+				fhirInstance.Probability = _probability_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.RiskAssessment_Prediction.ProbabilityType.Range: {
 			var _probabilityRange__union = &(*(FHIR_Marshalling.RiskAssessment_Prediction.ProbabilityUnion*)((byte*)in_native + 64));
-			var _probability_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_probabilityRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_probabilityRange__union + 0)) != null) {
+				fhirInstance.Probability = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_probabilityRange__union + 0)));
+			}
 			
-			fhirInstance.Probability = _probability_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)) != null) {
 		fhirInstance.QualitativeRisk = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 88)));
 	}
 	
-	var _relativeRisk_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _relativeRisk_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_relativeRisk_temp != null) {
 		fhirInstance.RelativeRiskElement = _relativeRisk_temp;
 	}
@@ -48816,15 +49585,17 @@ public static Hl7.Fhir.Model.RiskAssessment.PredictionComponent? Marshal_RiskAss
 	switch((*(FHIR_Marshalling.RiskAssessment_Prediction.WhenType*)((byte*)in_native + 120))) {
 		case FHIR_Marshalling.RiskAssessment_Prediction.WhenType.Period: {
 			var _whenPeriod__union = &(*(FHIR_Marshalling.RiskAssessment_Prediction.WhenUnion*)((byte*)in_native + 112));
-			var _when_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_whenPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_whenPeriod__union + 0)) != null) {
+				fhirInstance.When = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_whenPeriod__union + 0)));
+			}
 			
-			fhirInstance.When = _when_primative;
 		} break;
 		case FHIR_Marshalling.RiskAssessment_Prediction.WhenType.Range: {
 			var _whenRange__union = &(*(FHIR_Marshalling.RiskAssessment_Prediction.WhenUnion*)((byte*)in_native + 112));
-			var _when_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_whenRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_whenRange__union + 0)) != null) {
+				fhirInstance.When = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_whenRange__union + 0)));
+			}
 			
-			fhirInstance.When = _when_primative;
 		} break;
 	}
 	var _rationale_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 128)).ToString();
@@ -49172,12 +49943,12 @@ public static Hl7.Fhir.Model.RiskEvidenceSynthesis.SampleSizeComponent? Marshal_
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	var _numberOfStudies_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _numberOfStudies_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirInteger();
 	if(_numberOfStudies_temp != null) {
 		fhirInstance.NumberOfStudiesElement = _numberOfStudies_temp;
 	}
 	
-	var _numberOfParticipants_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _numberOfParticipants_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirInteger();
 	if(_numberOfParticipants_temp != null) {
 		fhirInstance.NumberOfParticipantsElement = _numberOfParticipants_temp;
 	}
@@ -49228,7 +49999,7 @@ public static Hl7.Fhir.Model.RiskEvidenceSynthesis.RiskEstimateComponent? Marsha
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -49237,12 +50008,12 @@ public static Hl7.Fhir.Model.RiskEvidenceSynthesis.RiskEstimateComponent? Marsha
 		fhirInstance.UnitOfMeasure = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 96)));
 	}
 	
-	var _denominatorCount_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).GetValue());
+	var _denominatorCount_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).ToFhirInteger();
 	if(_denominatorCount_temp != null) {
 		fhirInstance.DenominatorCountElement = _denominatorCount_temp;
 	}
 	
-	var _numeratorCount_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 112)).GetValue());
+	var _numeratorCount_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 112)).ToFhirInteger();
 	if(_numeratorCount_temp != null) {
 		fhirInstance.NumeratorCountElement = _numeratorCount_temp;
 	}
@@ -49300,17 +50071,17 @@ public static Hl7.Fhir.Model.RiskEvidenceSynthesis.PrecisionEstimateComponent? M
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 56)));
 	}
 	
-	var _level_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).DecimalValue());
+	var _level_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToFhirDecimal();
 	if(_level_temp != null) {
 		fhirInstance.LevelElement = _level_temp;
 	}
 	
-	var _from_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _from_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_from_temp != null) {
 		fhirInstance.FromElement = _from_temp;
 	}
 	
-	var _to_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _to_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_to_temp != null) {
 		fhirInstance.ToElement = _to_temp;
 	}
@@ -49532,7 +50303,7 @@ public static Hl7.Fhir.Model.Schedule? Marshal_Schedule(FHIR_Marshalling.Schedul
 		
 	}
 	
-	var _active_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).GetValue());
+	var _active_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 136)).ToFhirBoolean();
 	if(_active_temp != null) {
 		fhirInstance.ActiveElement = _active_temp;
 	}
@@ -49686,7 +50457,7 @@ public static Hl7.Fhir.Model.SearchParameter? Marshal_SearchParameter(FHIR_Marsh
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -49798,12 +50569,12 @@ public static Hl7.Fhir.Model.SearchParameter? Marshal_SearchParameter(FHIR_Marsh
 		
 		}
 		
-	var _multipleOr_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 432)).GetValue());
+	var _multipleOr_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 432)).ToFhirBoolean();
 	if(_multipleOr_temp != null) {
 		fhirInstance.MultipleOrElement = _multipleOr_temp;
 	}
 	
-	var _multipleAnd_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 440)).GetValue());
+	var _multipleAnd_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 440)).ToFhirBoolean();
 	if(_multipleAnd_temp != null) {
 		fhirInstance.MultipleAndElement = _multipleAnd_temp;
 	}
@@ -50066,7 +50837,7 @@ public static Hl7.Fhir.Model.ServiceRequest? Marshal_ServiceRequest(FHIR_Marshal
 		fhirInstance.PriorityElement = new Code<Hl7.Fhir.Model.RequestPriority> ();
 		fhirInstance.PriorityElement.ObjectValue = __temp_codePriorityElement;
 	}
-	var _doNotPerform_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 272)).GetValue());
+	var _doNotPerform_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 272)).ToFhirBoolean();
 	if(_doNotPerform_temp != null) {
 		fhirInstance.DoNotPerformElement = _doNotPerform_temp;
 	}
@@ -50090,21 +50861,24 @@ public static Hl7.Fhir.Model.ServiceRequest? Marshal_ServiceRequest(FHIR_Marshal
 	switch((*(FHIR_Marshalling.ServiceRequest.QuantityType*)((byte*)in_native + 312))) {
 		case FHIR_Marshalling.ServiceRequest.QuantityType.Quantity: {
 			var _quantityQuantity__union = &(*(FHIR_Marshalling.ServiceRequest.QuantityUnion*)((byte*)in_native + 304));
-			var _quantity_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_quantityQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_quantityQuantity__union + 0)) != null) {
+				fhirInstance.Quantity = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_quantityQuantity__union + 0)));
+			}
 			
-			fhirInstance.Quantity = _quantity_primative;
 		} break;
 		case FHIR_Marshalling.ServiceRequest.QuantityType.Ratio: {
 			var _quantityRatio__union = &(*(FHIR_Marshalling.ServiceRequest.QuantityUnion*)((byte*)in_native + 304));
-			var _quantity_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_quantityRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_quantityRatio__union + 0)) != null) {
+				fhirInstance.Quantity = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_quantityRatio__union + 0)));
+			}
 			
-			fhirInstance.Quantity = _quantity_primative;
 		} break;
 		case FHIR_Marshalling.ServiceRequest.QuantityType.Range: {
 			var _quantityRange__union = &(*(FHIR_Marshalling.ServiceRequest.QuantityUnion*)((byte*)in_native + 304));
-			var _quantity_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_quantityRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_quantityRange__union + 0)) != null) {
+				fhirInstance.Quantity = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_quantityRange__union + 0)));
+			}
 			
-			fhirInstance.Quantity = _quantity_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 320)) != null) {
@@ -50118,33 +50892,42 @@ public static Hl7.Fhir.Model.ServiceRequest? Marshal_ServiceRequest(FHIR_Marshal
 	switch((*(FHIR_Marshalling.ServiceRequest.OccurrenceType*)((byte*)in_native + 352))) {
 		case FHIR_Marshalling.ServiceRequest.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.ServiceRequest.OccurrenceUnion*)((byte*)in_native + 336));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ServiceRequest.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.ServiceRequest.OccurrenceUnion*)((byte*)in_native + 336));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 		case FHIR_Marshalling.ServiceRequest.OccurrenceType.Timing: {
 			var _occurrenceTiming__union = &(*(FHIR_Marshalling.ServiceRequest.OccurrenceUnion*)((byte*)in_native + 336));
-			var _occurrence_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ServiceRequest.AsNeededType*)((byte*)in_native + 368))) {
 		case FHIR_Marshalling.ServiceRequest.AsNeededType.Boolean: {
 			var _asNeededBoolean__union = &(*(FHIR_Marshalling.ServiceRequest.AsNeededUnion*)((byte*)in_native + 360));
-			var _asNeeded_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_asNeededBoolean__union + 0)).GetValue());
-			fhirInstance.AsNeeded = _asNeeded_primative;
+			var _asNeeded_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_asNeededBoolean__union + 0)).ToFhirBoolean();
+			if(_asNeeded_temp != null) {
+				fhirInstance.AsNeeded = _asNeeded_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ServiceRequest.AsNeededType.CodeableConcept: {
 			var _asNeededCodeableConcept__union = &(*(FHIR_Marshalling.ServiceRequest.AsNeededUnion*)((byte*)in_native + 360));
-			var _asNeeded_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_asNeededCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_asNeededCodeableConcept__union + 0)) != null) {
+				fhirInstance.AsNeeded = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_asNeededCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.AsNeeded = _asNeeded_primative;
 		} break;
 	}
 	var _authoredOn_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 376)).ToFhirDateTime();
@@ -50435,7 +51218,7 @@ public static Hl7.Fhir.Model.Slot? Marshal_Slot(FHIR_Marshalling.Slot* in_native
 		fhirInstance.EndElement = _end_temp;
 	}
 	
-	var _overbooked_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).GetValue());
+	var _overbooked_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 248)).ToFhirBoolean();
 	if(_overbooked_temp != null) {
 		fhirInstance.OverbookedElement = _overbooked_temp;
 	}
@@ -50666,14 +51449,18 @@ public static Hl7.Fhir.Model.Specimen.CollectionComponent? Marshal_Specimen_Coll
 	switch((*(FHIR_Marshalling.Specimen_Collection.CollectedType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.Specimen_Collection.CollectedType.DateTime: {
 			var _collectedDateTime__union = &(*(FHIR_Marshalling.Specimen_Collection.CollectedUnion*)((byte*)in_native + 64));
-			var _collected_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_collectedDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Collected = _collected_primative;
+			var _collected_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_collectedDateTime__union + 0)).ToFhirDateTime();
+			if(_collected_temp != null) {
+				fhirInstance.Collected = _collected_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Specimen_Collection.CollectedType.Period: {
 			var _collectedPeriod__union = &(*(FHIR_Marshalling.Specimen_Collection.CollectedUnion*)((byte*)in_native + 64));
-			var _collected_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_collectedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_collectedPeriod__union + 0)) != null) {
+				fhirInstance.Collected = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_collectedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Collected = _collected_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Duration**)((byte*)in_native + 88)) != null) {
@@ -50695,15 +51482,17 @@ public static Hl7.Fhir.Model.Specimen.CollectionComponent? Marshal_Specimen_Coll
 	switch((*(FHIR_Marshalling.Specimen_Collection.FastingStatusType*)((byte*)in_native + 128))) {
 		case FHIR_Marshalling.Specimen_Collection.FastingStatusType.CodeableConcept: {
 			var _fastingStatusCodeableConcept__union = &(*(FHIR_Marshalling.Specimen_Collection.FastingStatusUnion*)((byte*)in_native + 120));
-			var _fastingStatus_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_fastingStatusCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_fastingStatusCodeableConcept__union + 0)) != null) {
+				fhirInstance.FastingStatus = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_fastingStatusCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.FastingStatus = _fastingStatus_primative;
 		} break;
 		case FHIR_Marshalling.Specimen_Collection.FastingStatusType.Duration: {
 			var _fastingStatusDuration__union = &(*(FHIR_Marshalling.Specimen_Collection.FastingStatusUnion*)((byte*)in_native + 120));
-			var _fastingStatus_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_fastingStatusDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_fastingStatusDuration__union + 0)) != null) {
+				fhirInstance.FastingStatus = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_fastingStatusDuration__union + 0)));
+			}
 			
-			fhirInstance.FastingStatus = _fastingStatus_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -50767,14 +51556,18 @@ public static Hl7.Fhir.Model.Specimen.ProcessingComponent? Marshal_Specimen_Proc
 	switch((*(FHIR_Marshalling.Specimen_Processing.TimeType*)((byte*)in_native + 112))) {
 		case FHIR_Marshalling.Specimen_Processing.TimeType.DateTime: {
 			var _timeDateTime__union = &(*(FHIR_Marshalling.Specimen_Processing.TimeUnion*)((byte*)in_native + 96));
-			var _time_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timeDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Time = _time_primative;
+			var _time_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timeDateTime__union + 0)).ToFhirDateTime();
+			if(_time_temp != null) {
+				fhirInstance.Time = _time_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Specimen_Processing.TimeType.Period: {
 			var _timePeriod__union = &(*(FHIR_Marshalling.Specimen_Processing.TimeUnion*)((byte*)in_native + 96));
-			var _time_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)) != null) {
+				fhirInstance.Time = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_timePeriod__union + 0)));
+			}
 			
-			fhirInstance.Time = _time_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -50846,15 +51639,17 @@ public static Hl7.Fhir.Model.Specimen.ContainerComponent? Marshal_Specimen_Conta
 	switch((*(FHIR_Marshalling.Specimen_Container.AdditiveType*)((byte*)in_native + 120))) {
 		case FHIR_Marshalling.Specimen_Container.AdditiveType.CodeableConcept: {
 			var _additiveCodeableConcept__union = &(*(FHIR_Marshalling.Specimen_Container.AdditiveUnion*)((byte*)in_native + 112));
-			var _additive_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_additiveCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_additiveCodeableConcept__union + 0)) != null) {
+				fhirInstance.Additive = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_additiveCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Additive = _additive_primative;
 		} break;
 		case FHIR_Marshalling.Specimen_Container.AdditiveType.Reference: {
 			var _additiveReference__union = &(*(FHIR_Marshalling.Specimen_Container.AdditiveUnion*)((byte*)in_native + 112));
-			var _additive_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_additiveReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_additiveReference__union + 0)) != null) {
+				fhirInstance.Additive = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_additiveReference__union + 0)));
+			}
 			
-			fhirInstance.Additive = _additive_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -51010,7 +51805,7 @@ public static Hl7.Fhir.Model.SpecimenDefinition.TypeTestedComponent? Marshal_Spe
 		
 	}
 	
-	var _isDerived_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _isDerived_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_isDerived_temp != null) {
 		fhirInstance.IsDerivedElement = _isDerived_temp;
 	}
@@ -51122,15 +51917,18 @@ public static Hl7.Fhir.Model.SpecimenDefinition.ContainerComponent? Marshal_Spec
 	switch((*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container.MinimumVolumeType*)((byte*)in_native + 120))) {
 		case FHIR_Marshalling.SpecimenDefinition_TypeTested_Container.MinimumVolumeType.Quantity: {
 			var _minimumVolumeQuantity__union = &(*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container.MinimumVolumeUnion*)((byte*)in_native + 104));
-			var _minimumVolume_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_minimumVolumeQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_minimumVolumeQuantity__union + 0)) != null) {
+				fhirInstance.MinimumVolume = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_minimumVolumeQuantity__union + 0)));
+			}
 			
-			fhirInstance.MinimumVolume = _minimumVolume_primative;
 		} break;
 		case FHIR_Marshalling.SpecimenDefinition_TypeTested_Container.MinimumVolumeType.String: {
 			var _minimumVolumeString__union = &(*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container.MinimumVolumeUnion*)((byte*)in_native + 104));
-			var _minimumVolume_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_minimumVolumeString__union + 0)).ToString();
-			var _minimumVolume_primative =  (_minimumVolume_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_minimumVolume_primative_temp);
-			fhirInstance.MinimumVolume = _minimumVolume_primative;
+			var _minimumVolume_temp = (*(FHIR_Marshalling.String8*)((byte*)_minimumVolumeString__union + 0)).ToString();
+			if(_minimumVolume_temp != null) {
+				fhirInstance.MinimumVolume = new Hl7.Fhir.Model.FhirString(_minimumVolume_temp);
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 128)) > 0) {
@@ -51190,15 +51988,17 @@ public static Hl7.Fhir.Model.SpecimenDefinition.AdditiveComponent? Marshal_Speci
 	switch((*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container_Additive.AdditiveType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.SpecimenDefinition_TypeTested_Container_Additive.AdditiveType.CodeableConcept: {
 			var _additiveCodeableConcept__union = &(*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container_Additive.AdditiveUnion*)((byte*)in_native + 56));
-			var _additive_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_additiveCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_additiveCodeableConcept__union + 0)) != null) {
+				fhirInstance.Additive = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_additiveCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Additive = _additive_primative;
 		} break;
 		case FHIR_Marshalling.SpecimenDefinition_TypeTested_Container_Additive.AdditiveType.Reference: {
 			var _additiveReference__union = &(*(FHIR_Marshalling.SpecimenDefinition_TypeTested_Container_Additive.AdditiveUnion*)((byte*)in_native + 56));
-			var _additive_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_additiveReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_additiveReference__union + 0)) != null) {
+				fhirInstance.Additive = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_additiveReference__union + 0)));
+			}
 			
-			fhirInstance.Additive = _additive_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -51359,7 +52159,7 @@ public static Hl7.Fhir.Model.StructureDefinition? Marshal_StructureDefinition(FH
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -51459,7 +52259,7 @@ public static Hl7.Fhir.Model.StructureDefinition? Marshal_StructureDefinition(FH
 		fhirInstance.KindElement = new Code<Hl7.Fhir.Model.StructureDefinition.StructureDefinitionKind> ();
 		fhirInstance.KindElement.ObjectValue = __temp_codeKindElement;
 	}
-	var _abstract_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 416)).GetValue());
+	var _abstract_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 416)).ToFhirBoolean();
 	if(_abstract_temp != null) {
 		fhirInstance.AbstractElement = _abstract_temp;
 	}
@@ -51818,7 +52618,7 @@ public static Hl7.Fhir.Model.StructureMap? Marshal_StructureMap(FHIR_Marshalling
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -52253,7 +53053,7 @@ public static Hl7.Fhir.Model.StructureMap.SourceComponent? Marshal_StructureMap_
 		fhirInstance.ContextElement = new Hl7.Fhir.Model.Id(_context_temp);
 	}
 	
-	var _min_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirInteger();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -52278,291 +53078,368 @@ public static Hl7.Fhir.Model.StructureMap.SourceComponent? Marshal_StructureMap_
 				_defaultValue_primative = new Base64Binary(_defaultValue_arr);
 			}
 			fhirInstance.DefaultValue = _defaultValue_primative;
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Boolean: {
 			var _defaultValueBoolean__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_defaultValueBoolean__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_defaultValueBoolean__union + 0)).ToFhirBoolean();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Canonical: {
 			var _defaultValueCanonical__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCanonical__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCanonical__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Canonical(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Code: {
 			var _defaultValueCode__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCode__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCode__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Code(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Date: {
 			var _defaultValueDate__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDate__union + 0)).ToFhirDate();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDate__union + 0)).ToFhirDate();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.DateTime: {
 			var _defaultValueDateTime__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDateTime__union + 0)).ToFhirDateTime();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Decimal: {
 			var _defaultValueDecimal__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_defaultValueDecimal__union + 0)).DecimalValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueDecimal__union + 0)).ToFhirDecimal();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Id: {
 			var _defaultValueId__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueId__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueId__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Id(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Instant: {
 			var _defaultValueInstant__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueInstant__union + 0)).ToFhirInstant();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Integer: {
 			var _defaultValueInteger__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueInteger__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueInteger__union + 0)).ToFhirInteger();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Markdown: {
 			var _defaultValueMarkdown__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueMarkdown__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueMarkdown__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Markdown(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Oid: {
 			var _defaultValueOid__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueOid__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueOid__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Oid(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.PositiveInt: {
 			var _defaultValuePositiveInt__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValuePositiveInt__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.String: {
 			var _defaultValueString__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueString__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueString__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.FhirString(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Time: {
 			var _defaultValueTime__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueTime__union + 0)).ToFhirTime();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueTime__union + 0)).ToFhirTime();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.UnsignedInt: {
 			var _defaultValueUnsignedInt__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Uri: {
 			var _defaultValueUri__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUri__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUri__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.FhirUri(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Url: {
 			var _defaultValueUrl__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUrl__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUrl__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.FhirUrl(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Uuid: {
 			var _defaultValueUuid__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUuid__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUuid__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Uuid(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Address: {
 			var _defaultValueAddress__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_defaultValueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_defaultValueAddress__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_defaultValueAddress__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Age: {
 			var _defaultValueAge__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_defaultValueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_defaultValueAge__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_defaultValueAge__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Annotation: {
 			var _defaultValueAnnotation__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_defaultValueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_defaultValueAnnotation__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_defaultValueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Attachment: {
 			var _defaultValueAttachment__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_defaultValueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_defaultValueAttachment__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_defaultValueAttachment__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.CodeableConcept: {
 			var _defaultValueCodeableConcept__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_defaultValueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_defaultValueCodeableConcept__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_defaultValueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Coding: {
 			var _defaultValueCoding__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_defaultValueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_defaultValueCoding__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_defaultValueCoding__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.ContactPoint: {
 			var _defaultValueContactPoint__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_defaultValueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_defaultValueContactPoint__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_defaultValueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Count: {
 			var _defaultValueCount__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_defaultValueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_defaultValueCount__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_defaultValueCount__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Distance: {
 			var _defaultValueDistance__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_defaultValueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_defaultValueDistance__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_defaultValueDistance__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Duration: {
 			var _defaultValueDuration__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_defaultValueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_defaultValueDuration__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_defaultValueDuration__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.HumanName: {
 			var _defaultValueHumanName__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_defaultValueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_defaultValueHumanName__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_defaultValueHumanName__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Identifier: {
 			var _defaultValueIdentifier__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_defaultValueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_defaultValueIdentifier__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_defaultValueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Money: {
 			var _defaultValueMoney__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_defaultValueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_defaultValueMoney__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_defaultValueMoney__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Period: {
 			var _defaultValuePeriod__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_defaultValuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_defaultValuePeriod__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_defaultValuePeriod__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Quantity: {
 			var _defaultValueQuantity__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_defaultValueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_defaultValueQuantity__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_defaultValueQuantity__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Range: {
 			var _defaultValueRange__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_defaultValueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_defaultValueRange__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_defaultValueRange__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Ratio: {
 			var _defaultValueRatio__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_defaultValueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_defaultValueRatio__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_defaultValueRatio__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Reference: {
 			var _defaultValueReference__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_defaultValueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_defaultValueReference__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_defaultValueReference__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.SampledData: {
 			var _defaultValueSampledData__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_defaultValueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_defaultValueSampledData__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_defaultValueSampledData__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Signature: {
 			var _defaultValueSignature__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_defaultValueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_defaultValueSignature__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_defaultValueSignature__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Timing: {
 			var _defaultValueTiming__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_defaultValueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_defaultValueTiming__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_defaultValueTiming__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.ContactDetail: {
 			var _defaultValueContactDetail__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_defaultValueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_defaultValueContactDetail__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_defaultValueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Contributor: {
 			var _defaultValueContributor__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_defaultValueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_defaultValueContributor__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_defaultValueContributor__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.DataRequirement: {
 			var _defaultValueDataRequirement__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_defaultValueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_defaultValueDataRequirement__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_defaultValueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Expression: {
 			var _defaultValueExpression__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_defaultValueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_defaultValueExpression__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_defaultValueExpression__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.ParameterDefinition: {
 			var _defaultValueParameterDefinition__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_defaultValueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_defaultValueParameterDefinition__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_defaultValueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.RelatedArtifact: {
 			var _defaultValueRelatedArtifact__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_defaultValueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_defaultValueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_defaultValueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.TriggerDefinition: {
 			var _defaultValueTriggerDefinition__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_defaultValueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_defaultValueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_defaultValueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.UsageContext: {
 			var _defaultValueUsageContext__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_defaultValueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_defaultValueUsageContext__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_defaultValueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Dosage: {
 			var _defaultValueDosage__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_defaultValueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_defaultValueDosage__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_defaultValueDosage__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Meta: {
 			var _defaultValueMeta__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 112));
-			var _defaultValue_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_defaultValueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_defaultValueMeta__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_defaultValueMeta__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 	}
 	var _element_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToString();
@@ -52727,30 +53604,43 @@ public static Hl7.Fhir.Model.StructureMap.ParameterComponent? Marshal_StructureM
 	switch((*(FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueType.Id: {
 			var _valueId__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Id(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Target_Parameter.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -53204,15 +54094,17 @@ public static Hl7.Fhir.Model.Substance.IngredientComponent? Marshal_Substance_In
 	switch((*(FHIR_Marshalling.Substance_Ingredient.SubstanceType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Substance_Ingredient.SubstanceType.CodeableConcept: {
 			var _substanceCodeableConcept__union = &(*(FHIR_Marshalling.Substance_Ingredient.SubstanceUnion*)((byte*)in_native + 64));
-			var _substance_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_substanceCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_substanceCodeableConcept__union + 0)) != null) {
+				fhirInstance.Substance = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_substanceCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Substance = _substance_primative;
 		} break;
 		case FHIR_Marshalling.Substance_Ingredient.SubstanceType.Reference: {
 			var _substanceReference__union = &(*(FHIR_Marshalling.Substance_Ingredient.SubstanceUnion*)((byte*)in_native + 64));
-			var _substance_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_substanceReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_substanceReference__union + 0)) != null) {
+				fhirInstance.Substance = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_substanceReference__union + 0)));
+			}
 			
-			fhirInstance.Substance = _substance_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -53286,7 +54178,7 @@ public static Hl7.Fhir.Model.SubstanceNucleicAcid? Marshal_SubstanceNucleicAcid(
 		fhirInstance.SequenceType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 120)));
 	}
 	
-	var _numberOfSubunits_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 128)).GetValue());
+	var _numberOfSubunits_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 128)).ToFhirInteger();
 	if(_numberOfSubunits_temp != null) {
 		fhirInstance.NumberOfSubunitsElement = _numberOfSubunits_temp;
 	}
@@ -53349,7 +54241,7 @@ public static Hl7.Fhir.Model.SubstanceNucleicAcid.SubunitComponent? Marshal_Subs
 		
 	}
 	
-	var _subunit_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _subunit_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_subunit_temp != null) {
 		fhirInstance.SubunitElement = _subunit_temp;
 	}
@@ -53359,7 +54251,7 @@ public static Hl7.Fhir.Model.SubstanceNucleicAcid.SubunitComponent? Marshal_Subs
 		fhirInstance.SequenceElement = new Hl7.Fhir.Model.FhirString(_sequence_temp);
 	}
 	
-	var _length_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _length_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirInteger();
 	if(_length_temp != null) {
 		fhirInstance.LengthElement = _length_temp;
 	}
@@ -53729,7 +54621,7 @@ public static Hl7.Fhir.Model.SubstancePolymer.StartingMaterialComponent? Marshal
 		fhirInstance.Type = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 64)));
 	}
 	
-	var _isDefining_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _isDefining_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_isDefining_temp != null) {
 		fhirInstance.IsDefiningElement = _isDefining_temp;
 	}
@@ -53775,7 +54667,7 @@ public static Hl7.Fhir.Model.SubstancePolymer.RepeatComponent? Marshal_Substance
 		
 	}
 	
-	var _numberOfUnits_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _numberOfUnits_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_numberOfUnits_temp != null) {
 		fhirInstance.NumberOfUnitsElement = _numberOfUnits_temp;
 	}
@@ -54041,7 +54933,7 @@ public static Hl7.Fhir.Model.SubstanceProtein? Marshal_SubstanceProtein(FHIR_Mar
 		fhirInstance.SequenceType = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 120)));
 	}
 	
-	var _numberOfSubunits_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 128)).GetValue());
+	var _numberOfSubunits_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 128)).ToFhirInteger();
 	if(_numberOfSubunits_temp != null) {
 		fhirInstance.NumberOfSubunitsElement = _numberOfSubunits_temp;
 	}
@@ -54108,7 +55000,7 @@ public static Hl7.Fhir.Model.SubstanceProtein.SubunitComponent? Marshal_Substanc
 		
 	}
 	
-	var _subunit_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _subunit_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_subunit_temp != null) {
 		fhirInstance.SubunitElement = _subunit_temp;
 	}
@@ -54118,7 +55010,7 @@ public static Hl7.Fhir.Model.SubstanceProtein.SubunitComponent? Marshal_Substanc
 		fhirInstance.SequenceElement = new Hl7.Fhir.Model.FhirString(_sequence_temp);
 	}
 	
-	var _length_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).GetValue());
+	var _length_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 80)).ToFhirInteger();
 	if(_length_temp != null) {
 		fhirInstance.LengthElement = _length_temp;
 	}
@@ -54508,21 +55400,25 @@ public static Hl7.Fhir.Model.SubstanceReferenceInformation.TargetComponent? Mars
 	switch((*(FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountType*)((byte*)in_native + 112))) {
 		case FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountType.Quantity: {
 			var _amountQuantity__union = &(*(FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountUnion*)((byte*)in_native + 96));
-			var _amount_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountType.Range: {
 			var _amountRange__union = &(*(FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountUnion*)((byte*)in_native + 96));
-			var _amount_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountType.String: {
 			var _amountString__union = &(*(FHIR_Marshalling.SubstanceReferenceInformation_Target.AmountUnion*)((byte*)in_native + 96));
-			var _amount_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
-			var _amount_primative =  (_amount_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_amount_primative_temp);
-			fhirInstance.Amount = _amount_primative;
+			var _amount_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
+			if(_amount_temp != null) {
+				fhirInstance.Amount = new Hl7.Fhir.Model.FhirString(_amount_temp);
+			}
+			
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 120)) != null) {
@@ -55307,15 +56203,18 @@ public static Hl7.Fhir.Model.SubstanceSpecification.MoietyComponent? Marshal_Sub
 	switch((*(FHIR_Marshalling.SubstanceSpecification_Moiety.AmountType*)((byte*)in_native + 136))) {
 		case FHIR_Marshalling.SubstanceSpecification_Moiety.AmountType.Quantity: {
 			var _amountQuantity__union = &(*(FHIR_Marshalling.SubstanceSpecification_Moiety.AmountUnion*)((byte*)in_native + 120));
-			var _amount_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Moiety.AmountType.String: {
 			var _amountString__union = &(*(FHIR_Marshalling.SubstanceSpecification_Moiety.AmountUnion*)((byte*)in_native + 120));
-			var _amount_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
-			var _amount_primative =  (_amount_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_amount_primative_temp);
-			fhirInstance.Amount = _amount_primative;
+			var _amount_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
+			if(_amount_temp != null) {
+				fhirInstance.Amount = new Hl7.Fhir.Model.FhirString(_amount_temp);
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -55371,29 +56270,34 @@ public static Hl7.Fhir.Model.SubstanceSpecification.PropertyComponent? Marshal_S
 	switch((*(FHIR_Marshalling.SubstanceSpecification_Property.DefiningSubstanceType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.SubstanceSpecification_Property.DefiningSubstanceType.Reference: {
 			var _definingSubstanceReference__union = &(*(FHIR_Marshalling.SubstanceSpecification_Property.DefiningSubstanceUnion*)((byte*)in_native + 88));
-			var _definingSubstance_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_definingSubstanceReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_definingSubstanceReference__union + 0)) != null) {
+				fhirInstance.DefiningSubstance = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_definingSubstanceReference__union + 0)));
+			}
 			
-			fhirInstance.DefiningSubstance = _definingSubstance_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Property.DefiningSubstanceType.CodeableConcept: {
 			var _definingSubstanceCodeableConcept__union = &(*(FHIR_Marshalling.SubstanceSpecification_Property.DefiningSubstanceUnion*)((byte*)in_native + 88));
-			var _definingSubstance_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definingSubstanceCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definingSubstanceCodeableConcept__union + 0)) != null) {
+				fhirInstance.DefiningSubstance = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_definingSubstanceCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.DefiningSubstance = _definingSubstance_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.SubstanceSpecification_Property.AmountType*)((byte*)in_native + 120))) {
 		case FHIR_Marshalling.SubstanceSpecification_Property.AmountType.Quantity: {
 			var _amountQuantity__union = &(*(FHIR_Marshalling.SubstanceSpecification_Property.AmountUnion*)((byte*)in_native + 104));
-			var _amount_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Property.AmountType.String: {
 			var _amountString__union = &(*(FHIR_Marshalling.SubstanceSpecification_Property.AmountUnion*)((byte*)in_native + 104));
-			var _amount_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
-			var _amount_primative =  (_amount_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_amount_primative_temp);
-			fhirInstance.Amount = _amount_primative;
+			var _amount_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
+			if(_amount_temp != null) {
+				fhirInstance.Amount = new Hl7.Fhir.Model.FhirString(_amount_temp);
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -55764,7 +56668,7 @@ public static Hl7.Fhir.Model.SubstanceSpecification.NameComponent? Marshal_Subst
 		fhirInstance.Status = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 80)));
 	}
 	
-	var _preferred_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 88)).GetValue());
+	var _preferred_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 88)).ToFhirBoolean();
 	if(_preferred_temp != null) {
 		fhirInstance.PreferredElement = _preferred_temp;
 	}
@@ -55943,22 +56847,24 @@ public static Hl7.Fhir.Model.SubstanceSpecification.RelationshipComponent? Marsh
 	switch((*(FHIR_Marshalling.SubstanceSpecification_Relationship.SubstanceType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.SubstanceSpecification_Relationship.SubstanceType.Reference: {
 			var _substanceReference__union = &(*(FHIR_Marshalling.SubstanceSpecification_Relationship.SubstanceUnion*)((byte*)in_native + 56));
-			var _substance_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_substanceReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_substanceReference__union + 0)) != null) {
+				fhirInstance.Substance = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_substanceReference__union + 0)));
+			}
 			
-			fhirInstance.Substance = _substance_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Relationship.SubstanceType.CodeableConcept: {
 			var _substanceCodeableConcept__union = &(*(FHIR_Marshalling.SubstanceSpecification_Relationship.SubstanceUnion*)((byte*)in_native + 56));
-			var _substance_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_substanceCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_substanceCodeableConcept__union + 0)) != null) {
+				fhirInstance.Substance = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_substanceCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Substance = _substance_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
 		fhirInstance.Relationship = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)));
 	}
 	
-	var _isDefining_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).GetValue());
+	var _isDefining_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).ToFhirBoolean();
 	if(_isDefining_temp != null) {
 		fhirInstance.IsDefiningElement = _isDefining_temp;
 	}
@@ -55966,27 +56872,32 @@ public static Hl7.Fhir.Model.SubstanceSpecification.RelationshipComponent? Marsh
 	switch((*(FHIR_Marshalling.SubstanceSpecification_Relationship.AmountType*)((byte*)in_native + 104))) {
 		case FHIR_Marshalling.SubstanceSpecification_Relationship.AmountType.Quantity: {
 			var _amountQuantity__union = &(*(FHIR_Marshalling.SubstanceSpecification_Relationship.AmountUnion*)((byte*)in_native + 88));
-			var _amount_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Relationship.AmountType.Range: {
 			var _amountRange__union = &(*(FHIR_Marshalling.SubstanceSpecification_Relationship.AmountUnion*)((byte*)in_native + 88));
-			var _amount_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Relationship.AmountType.Ratio: {
 			var _amountRatio__union = &(*(FHIR_Marshalling.SubstanceSpecification_Relationship.AmountUnion*)((byte*)in_native + 88));
-			var _amount_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_amountRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_amountRatio__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_amountRatio__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceSpecification_Relationship.AmountType.String: {
 			var _amountString__union = &(*(FHIR_Marshalling.SubstanceSpecification_Relationship.AmountUnion*)((byte*)in_native + 88));
-			var _amount_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
-			var _amount_primative =  (_amount_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_amount_primative_temp);
-			fhirInstance.Amount = _amount_primative;
+			var _amount_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
+			if(_amount_temp != null) {
+				fhirInstance.Amount = new Hl7.Fhir.Model.FhirString(_amount_temp);
+			}
+			
 		} break;
 	}
 	if((*(FHIR_Marshalling.Ratio**)((byte*)in_native + 112)) != null) {
@@ -56132,20 +57043,25 @@ public static Hl7.Fhir.Model.SupplyDelivery? Marshal_SupplyDelivery(FHIR_Marshal
 	switch((*(FHIR_Marshalling.SupplyDelivery.OccurrenceType*)((byte*)in_native + 224))) {
 		case FHIR_Marshalling.SupplyDelivery.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.SupplyDelivery.OccurrenceUnion*)((byte*)in_native + 208));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.SupplyDelivery.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.SupplyDelivery.OccurrenceUnion*)((byte*)in_native + 208));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 		case FHIR_Marshalling.SupplyDelivery.OccurrenceType.Timing: {
 			var _occurrenceTiming__union = &(*(FHIR_Marshalling.SupplyDelivery.OccurrenceUnion*)((byte*)in_native + 208));
-			var _occurrence_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Reference**)((byte*)in_native + 232)) != null) {
@@ -56212,15 +57128,17 @@ public static Hl7.Fhir.Model.SupplyDelivery.SuppliedItemComponent? Marshal_Suppl
 	switch((*(FHIR_Marshalling.SupplyDelivery_SuppliedItem.ItemType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.SupplyDelivery_SuppliedItem.ItemType.CodeableConcept: {
 			var _itemCodeableConcept__union = &(*(FHIR_Marshalling.SupplyDelivery_SuppliedItem.ItemUnion*)((byte*)in_native + 64));
-			var _item_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)) != null) {
+				fhirInstance.Item = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 		case FHIR_Marshalling.SupplyDelivery_SuppliedItem.ItemType.Reference: {
 			var _itemReference__union = &(*(FHIR_Marshalling.SupplyDelivery_SuppliedItem.ItemUnion*)((byte*)in_native + 64));
-			var _item_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)) != null) {
+				fhirInstance.Item = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -56319,15 +57237,17 @@ public static Hl7.Fhir.Model.SupplyRequest? Marshal_SupplyRequest(FHIR_Marshalli
 	switch((*(FHIR_Marshalling.SupplyRequest.ItemType*)((byte*)in_native + 184))) {
 		case FHIR_Marshalling.SupplyRequest.ItemType.CodeableConcept: {
 			var _itemCodeableConcept__union = &(*(FHIR_Marshalling.SupplyRequest.ItemUnion*)((byte*)in_native + 176));
-			var _item_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)) != null) {
+				fhirInstance.Item = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_itemCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 		case FHIR_Marshalling.SupplyRequest.ItemType.Reference: {
 			var _itemReference__union = &(*(FHIR_Marshalling.SupplyRequest.ItemUnion*)((byte*)in_native + 176));
-			var _item_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)) != null) {
+				fhirInstance.Item = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_itemReference__union + 0)));
+			}
 			
-			fhirInstance.Item = _item_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 192)) != null) {
@@ -56349,20 +57269,25 @@ public static Hl7.Fhir.Model.SupplyRequest? Marshal_SupplyRequest(FHIR_Marshalli
 	switch((*(FHIR_Marshalling.SupplyRequest.OccurrenceType*)((byte*)in_native + 232))) {
 		case FHIR_Marshalling.SupplyRequest.OccurrenceType.DateTime: {
 			var _occurrenceDateTime__union = &(*(FHIR_Marshalling.SupplyRequest.OccurrenceUnion*)((byte*)in_native + 216));
-			var _occurrence_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Occurrence = _occurrence_primative;
+			var _occurrence_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_occurrenceDateTime__union + 0)).ToFhirDateTime();
+			if(_occurrence_temp != null) {
+				fhirInstance.Occurrence = _occurrence_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.SupplyRequest.OccurrenceType.Period: {
 			var _occurrencePeriod__union = &(*(FHIR_Marshalling.SupplyRequest.OccurrenceUnion*)((byte*)in_native + 216));
-			var _occurrence_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_occurrencePeriod__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 		case FHIR_Marshalling.SupplyRequest.OccurrenceType.Timing: {
 			var _occurrenceTiming__union = &(*(FHIR_Marshalling.SupplyRequest.OccurrenceUnion*)((byte*)in_native + 216));
-			var _occurrence_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)) != null) {
+				fhirInstance.Occurrence = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_occurrenceTiming__union + 0)));
+			}
 			
-			fhirInstance.Occurrence = _occurrence_primative;
 		} break;
 	}
 	var _authoredOn_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 240)).ToFhirDateTime();
@@ -56462,26 +57387,32 @@ public static Hl7.Fhir.Model.SupplyRequest.ParameterComponent? Marshal_SupplyReq
 	switch((*(FHIR_Marshalling.SupplyRequest_Parameter.ValueType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.SupplyRequest_Parameter.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.SupplyRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.SupplyRequest_Parameter.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.SupplyRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.SupplyRequest_Parameter.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.SupplyRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.SupplyRequest_Parameter.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.SupplyRequest_Parameter.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -56792,7 +57723,7 @@ public static Hl7.Fhir.Model.Task.RestrictionComponent? Marshal_Task_Restriction
 		
 	}
 	
-	var _repetitions_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _repetitions_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_repetitions_temp != null) {
 		fhirInstance.RepetitionsElement = _repetitions_temp;
 	}
@@ -56864,291 +57795,368 @@ public static Hl7.Fhir.Model.Task.ParameterComponent? Marshal_Task_Input(FHIR_Ma
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Canonical: {
 			var _valueCanonical__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Canonical(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Id: {
 			var _valueId__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Id(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Instant: {
 			var _valueInstant__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Markdown: {
 			var _valueMarkdown__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Markdown(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Oid: {
 			var _valueOid__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Oid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.PositiveInt: {
 			var _valuePositiveInt__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.UnsignedInt: {
 			var _valueUnsignedInt__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Url: {
 			var _valueUrl__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUrl(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Uuid: {
 			var _valueUuid__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Uuid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Address: {
 			var _valueAddress__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Age: {
 			var _valueAge__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Annotation: {
 			var _valueAnnotation__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.ContactPoint: {
 			var _valueContactPoint__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Count: {
 			var _valueCount__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Distance: {
 			var _valueDistance__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Duration: {
 			var _valueDuration__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.HumanName: {
 			var _valueHumanName__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)) != null) {
+				fhirInstance.Value = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Identifier: {
 			var _valueIdentifier__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Money: {
 			var _valueMoney__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Signature: {
 			var _valueSignature__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Timing: {
 			var _valueTiming__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.ContactDetail: {
 			var _valueContactDetail__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Contributor: {
 			var _valueContributor__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.DataRequirement: {
 			var _valueDataRequirement__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)) != null) {
+				fhirInstance.Value = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Expression: {
 			var _valueExpression__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.ParameterDefinition: {
 			var _valueParameterDefinition__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.RelatedArtifact: {
 			var _valueRelatedArtifact__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Value = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.TriggerDefinition: {
 			var _valueTriggerDefinition__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.UsageContext: {
 			var _valueUsageContext__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)) != null) {
+				fhirInstance.Value = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Dosage: {
 			var _valueDosage__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Input.ValueType.Meta: {
 			var _valueMeta__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -57202,291 +58210,368 @@ public static Hl7.Fhir.Model.Task.OutputComponent? Marshal_Task_Output(FHIR_Mars
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Canonical: {
 			var _valueCanonical__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Canonical(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Id: {
 			var _valueId__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Id(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Instant: {
 			var _valueInstant__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Markdown: {
 			var _valueMarkdown__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Markdown(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Oid: {
 			var _valueOid__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Oid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.PositiveInt: {
 			var _valuePositiveInt__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.UnsignedInt: {
 			var _valueUnsignedInt__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Url: {
 			var _valueUrl__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUrl(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Uuid: {
 			var _valueUuid__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Uuid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Address: {
 			var _valueAddress__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Age: {
 			var _valueAge__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Annotation: {
 			var _valueAnnotation__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.ContactPoint: {
 			var _valueContactPoint__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Count: {
 			var _valueCount__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Distance: {
 			var _valueDistance__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Duration: {
 			var _valueDuration__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.HumanName: {
 			var _valueHumanName__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)) != null) {
+				fhirInstance.Value = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Identifier: {
 			var _valueIdentifier__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Money: {
 			var _valueMoney__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Signature: {
 			var _valueSignature__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Timing: {
 			var _valueTiming__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.ContactDetail: {
 			var _valueContactDetail__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Contributor: {
 			var _valueContributor__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.DataRequirement: {
 			var _valueDataRequirement__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)) != null) {
+				fhirInstance.Value = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Expression: {
 			var _valueExpression__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.ParameterDefinition: {
 			var _valueParameterDefinition__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.RelatedArtifact: {
 			var _valueRelatedArtifact__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Value = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.TriggerDefinition: {
 			var _valueTriggerDefinition__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.UsageContext: {
 			var _valueUsageContext__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)) != null) {
+				fhirInstance.Value = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Dosage: {
 			var _valueDosage__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Task_Output.ValueType.Meta: {
 			var _valueMeta__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 64));
-			var _value_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -57581,7 +58666,7 @@ public static Hl7.Fhir.Model.TerminologyCapabilities? Marshal_TerminologyCapabil
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 200)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -57660,7 +58745,7 @@ public static Hl7.Fhir.Model.TerminologyCapabilities? Marshal_TerminologyCapabil
 		fhirInstance.Implementation = Marshal_TerminologyCapabilities_Implementation((*(FHIR_Marshalling.TerminologyCapabilities_Implementation**)((byte*)in_native + 360)));
 	}
 	
-	var _lockedDate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 368)).GetValue());
+	var _lockedDate_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 368)).ToFhirBoolean();
 	if(_lockedDate_temp != null) {
 		fhirInstance.LockedDateElement = _lockedDate_temp;
 	}
@@ -57846,7 +58931,7 @@ public static Hl7.Fhir.Model.TerminologyCapabilities.CodeSystemComponent? Marsha
 		
 	}
 	
-	var _subsumption_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 88)).GetValue());
+	var _subsumption_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 88)).ToFhirBoolean();
 	if(_subsumption_temp != null) {
 		fhirInstance.SubsumptionElement = _subsumption_temp;
 	}
@@ -57893,12 +58978,12 @@ public static Hl7.Fhir.Model.TerminologyCapabilities.VersionComponent? Marshal_T
 		fhirInstance.CodeElement = new Hl7.Fhir.Model.FhirString(_code_temp);
 	}
 	
-	var _isDefault_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _isDefault_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_isDefault_temp != null) {
 		fhirInstance.IsDefaultElement = _isDefault_temp;
 	}
 	
-	var _compositional_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).GetValue());
+	var _compositional_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).ToFhirBoolean();
 	if(_compositional_temp != null) {
 		fhirInstance.CompositionalElement = _compositional_temp;
 	}
@@ -58033,17 +59118,17 @@ public static Hl7.Fhir.Model.TerminologyCapabilities.ExpansionComponent? Marshal
 		
 	}
 	
-	var _hierarchical_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _hierarchical_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_hierarchical_temp != null) {
 		fhirInstance.HierarchicalElement = _hierarchical_temp;
 	}
 	
-	var _paging_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _paging_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_paging_temp != null) {
 		fhirInstance.PagingElement = _paging_temp;
 	}
 	
-	var _incomplete_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _incomplete_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_incomplete_temp != null) {
 		fhirInstance.IncompleteElement = _incomplete_temp;
 	}
@@ -58149,7 +59234,7 @@ public static Hl7.Fhir.Model.TerminologyCapabilities.ValidateCodeComponent? Mars
 		
 	}
 	
-	var _translations_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _translations_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_translations_temp != null) {
 		fhirInstance.TranslationsElement = _translations_temp;
 	}
@@ -58191,7 +59276,7 @@ public static Hl7.Fhir.Model.TerminologyCapabilities.TranslationComponent? Marsh
 		
 	}
 	
-	var _needsMap_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _needsMap_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_needsMap_temp != null) {
 		fhirInstance.NeedsMapElement = _needsMap_temp;
 	}
@@ -58233,7 +59318,7 @@ public static Hl7.Fhir.Model.TerminologyCapabilities.ClosureComponent? Marshal_T
 		
 	}
 	
-	var _translation_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _translation_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_translation_temp != null) {
 		fhirInstance.TranslationElement = _translation_temp;
 	}
@@ -58328,7 +59413,7 @@ public static Hl7.Fhir.Model.TestReport? Marshal_TestReport(FHIR_Marshalling.Tes
 		fhirInstance.ResultElement = new Code<Hl7.Fhir.Model.TestReport.TestReportResult> ();
 		fhirInstance.ResultElement.ObjectValue = __temp_codeResultElement;
 	}
-	var _score_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).DecimalValue());
+	var _score_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToFhirDecimal();
 	if(_score_temp != null) {
 		fhirInstance.ScoreElement = _score_temp;
 	}
@@ -58915,7 +60000,7 @@ public static Hl7.Fhir.Model.TestScript? Marshal_TestScript(FHIR_Marshalling.Tes
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 208)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -59102,7 +60187,7 @@ public static Hl7.Fhir.Model.TestScript.OriginComponent? Marshal_TestScript_Orig
 		
 	}
 	
-	var _index_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _index_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_index_temp != null) {
 		fhirInstance.IndexElement = _index_temp;
 	}
@@ -59148,7 +60233,7 @@ public static Hl7.Fhir.Model.TestScript.DestinationComponent? Marshal_TestScript
 		
 	}
 	
-	var _index_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _index_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_index_temp != null) {
 		fhirInstance.IndexElement = _index_temp;
 	}
@@ -59302,12 +60387,12 @@ public static Hl7.Fhir.Model.TestScript.CapabilityComponent? Marshal_TestScript_
 		
 	}
 	
-	var _required_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _required_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_required_temp != null) {
 		fhirInstance.RequiredElement = _required_temp;
 	}
 	
-	var _validated_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _validated_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_validated_temp != null) {
 		fhirInstance.ValidatedElement = _validated_temp;
 	}
@@ -59321,7 +60406,7 @@ public static Hl7.Fhir.Model.TestScript.CapabilityComponent? Marshal_TestScript_
 		var _origin_list  = new List<Integer>((int)(*(System.UIntPtr*)((byte*)in_native + 88)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 88)); i++)
 		{
-			var _origin_primative = new Integer((*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].GetValue());
+			var _origin_primative = (*(FHIR_Marshalling.NullableInt32**)((byte*)in_native + 96))[i].ToFhirInteger();
 			_origin_list.Add(_origin_primative);
 			}
 			
@@ -59329,7 +60414,7 @@ public static Hl7.Fhir.Model.TestScript.CapabilityComponent? Marshal_TestScript_
 		
 		}
 		
-	var _destination_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).GetValue());
+	var _destination_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 104)).ToFhirInteger();
 	if(_destination_temp != null) {
 		fhirInstance.DestinationElement = _destination_temp;
 	}
@@ -59389,12 +60474,12 @@ public static Hl7.Fhir.Model.TestScript.FixtureComponent? Marshal_TestScript_Fix
 		
 	}
 	
-	var _autocreate_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).GetValue());
+	var _autocreate_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 56)).ToFhirBoolean();
 	if(_autocreate_temp != null) {
 		fhirInstance.AutocreateElement = _autocreate_temp;
 	}
 	
-	var _autodelete_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).GetValue());
+	var _autodelete_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 64)).ToFhirBoolean();
 	if(_autodelete_temp != null) {
 		fhirInstance.AutodeleteElement = _autodelete_temp;
 	}
@@ -59640,12 +60725,12 @@ public static Hl7.Fhir.Model.TestScript.OperationComponent? Marshal_TestScript_S
 		fhirInstance.ContentTypeElement = new Hl7.Fhir.Model.Code(_contentType_temp);
 	}
 	
-	var _destination_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 144)).GetValue());
+	var _destination_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 144)).ToFhirInteger();
 	if(_destination_temp != null) {
 		fhirInstance.DestinationElement = _destination_temp;
 	}
 	
-	var _encodeRequestUrl_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).GetValue());
+	var _encodeRequestUrl_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 152)).ToFhirBoolean();
 	if(_encodeRequestUrl_temp != null) {
 		fhirInstance.EncodeRequestUrlElement = _encodeRequestUrl_temp;
 	}
@@ -59655,7 +60740,7 @@ public static Hl7.Fhir.Model.TestScript.OperationComponent? Marshal_TestScript_S
 		fhirInstance.MethodElement = new Code<Hl7.Fhir.Model.TestScript.TestScriptRequestMethodCode> ();
 		fhirInstance.MethodElement.ObjectValue = __temp_codeMethodElement;
 	}
-	var _origin_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 176)).GetValue());
+	var _origin_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 176)).ToFhirInteger();
 	if(_origin_temp != null) {
 		fhirInstance.OriginElement = _origin_temp;
 	}
@@ -59836,7 +60921,7 @@ public static Hl7.Fhir.Model.TestScript.AssertComponent? Marshal_TestScript_Setu
 		fhirInstance.MinimumIdElement = new Hl7.Fhir.Model.FhirString(_minimumId_temp);
 	}
 	
-	var _navigationLinks_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
+	var _navigationLinks_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).ToFhirBoolean();
 	if(_navigationLinks_temp != null) {
 		fhirInstance.NavigationLinksElement = _navigationLinks_temp;
 	}
@@ -59891,7 +60976,7 @@ public static Hl7.Fhir.Model.TestScript.AssertComponent? Marshal_TestScript_Setu
 		fhirInstance.ValueElement = new Hl7.Fhir.Model.FhirString(_value_temp);
 	}
 	
-	var _warningOnly_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 384)).GetValue());
+	var _warningOnly_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 384)).ToFhirBoolean();
 	if(_warningOnly_temp != null) {
 		fhirInstance.WarningOnlyElement = _warningOnly_temp;
 	}
@@ -60194,7 +61279,7 @@ public static Hl7.Fhir.Model.ValueSet? Marshal_ValueSet(FHIR_Marshalling.ValueSe
 		fhirInstance.StatusElement = new Code<Hl7.Fhir.Model.PublicationStatus> ();
 		fhirInstance.StatusElement.ObjectValue = __temp_codeStatusElement;
 	}
-	var _experimental_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).GetValue());
+	var _experimental_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 216)).ToFhirBoolean();
 	if(_experimental_temp != null) {
 		fhirInstance.ExperimentalElement = _experimental_temp;
 	}
@@ -60250,7 +61335,7 @@ public static Hl7.Fhir.Model.ValueSet? Marshal_ValueSet(FHIR_Marshalling.ValueSe
 		
 	}
 	
-	var _immutable_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 320)).GetValue());
+	var _immutable_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 320)).ToFhirBoolean();
 	if(_immutable_temp != null) {
 		fhirInstance.ImmutableElement = _immutable_temp;
 	}
@@ -60315,7 +61400,7 @@ public static Hl7.Fhir.Model.ValueSet.ComposeComponent? Marshal_ValueSet_Compose
 		fhirInstance.LockedDateElement = _lockedDate_temp;
 	}
 	
-	var _inactive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _inactive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_inactive_temp != null) {
 		fhirInstance.InactiveElement = _inactive_temp;
 	}
@@ -60637,12 +61722,12 @@ public static Hl7.Fhir.Model.ValueSet.ExpansionComponent? Marshal_ValueSet_Expan
 		fhirInstance.TimestampElement = _timestamp_temp;
 	}
 	
-	var _total_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _total_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirInteger();
 	if(_total_temp != null) {
 		fhirInstance.TotalElement = _total_temp;
 	}
 	
-	var _offset_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 96)).GetValue());
+	var _offset_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 96)).ToFhirInteger();
 	if(_offset_temp != null) {
 		fhirInstance.OffsetElement = _offset_temp;
 	}
@@ -60716,41 +61801,59 @@ public static Hl7.Fhir.Model.ValueSet.ParameterComponent? Marshal_ValueSet_Expan
 	switch((*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.ValueSet_Expansion_Parameter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 	}
 	return fhirInstance;
@@ -60795,12 +61898,12 @@ public static Hl7.Fhir.Model.ValueSet.ContainsComponent? Marshal_ValueSet_Expans
 		fhirInstance.SystemElement = new Hl7.Fhir.Model.FhirUri(_system_temp);
 	}
 	
-	var _abstract_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _abstract_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_abstract_temp != null) {
 		fhirInstance.AbstractElement = _abstract_temp;
 	}
 	
-	var _inactive_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).GetValue());
+	var _inactive_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 80)).ToFhirBoolean();
 	if(_inactive_temp != null) {
 		fhirInstance.InactiveElement = _inactive_temp;
 	}
@@ -61388,17 +62491,17 @@ public static Hl7.Fhir.Model.VisionPrescription.LensSpecificationComponent? Mars
 		fhirInstance.EyeElement = new Code<Hl7.Fhir.Model.VisionPrescription.VisionEyes> ();
 		fhirInstance.EyeElement.ObjectValue = __temp_codeEyeElement;
 	}
-	var _sphere_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _sphere_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_sphere_temp != null) {
 		fhirInstance.SphereElement = _sphere_temp;
 	}
 	
-	var _cylinder_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _cylinder_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_cylinder_temp != null) {
 		fhirInstance.CylinderElement = _cylinder_temp;
 	}
 	
-	var _axis_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 112)).GetValue());
+	var _axis_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 112)).ToFhirInteger();
 	if(_axis_temp != null) {
 		fhirInstance.AxisElement = _axis_temp;
 	}
@@ -61415,22 +62518,22 @@ public static Hl7.Fhir.Model.VisionPrescription.LensSpecificationComponent? Mars
 		
 	}
 	
-	var _add_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).DecimalValue());
+	var _add_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToFhirDecimal();
 	if(_add_temp != null) {
 		fhirInstance.AddElement = _add_temp;
 	}
 	
-	var _power_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).DecimalValue());
+	var _power_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToFhirDecimal();
 	if(_power_temp != null) {
 		fhirInstance.PowerElement = _power_temp;
 	}
 	
-	var _backCurve_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).DecimalValue());
+	var _backCurve_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 168)).ToFhirDecimal();
 	if(_backCurve_temp != null) {
 		fhirInstance.BackCurveElement = _backCurve_temp;
 	}
 	
-	var _diameter_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).DecimalValue());
+	var _diameter_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 184)).ToFhirDecimal();
 	if(_diameter_temp != null) {
 		fhirInstance.DiameterElement = _diameter_temp;
 	}
@@ -61498,7 +62601,7 @@ public static Hl7.Fhir.Model.VisionPrescription.PrismComponent? Marshal_VisionPr
 		
 	}
 	
-	var _amount_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).DecimalValue());
+	var _amount_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 56)).ToFhirDecimal();
 	if(_amount_temp != null) {
 		fhirInstance.AmountElement = _amount_temp;
 	}
@@ -61615,7 +62718,7 @@ public static Hl7.Fhir.Model.Age? Marshal_Age(FHIR_Marshalling.Age* in_native) {
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -61668,15 +62771,18 @@ public static Hl7.Fhir.Model.Annotation? Marshal_Annotation(FHIR_Marshalling.Ann
 	switch((*(FHIR_Marshalling.Annotation.AuthorType*)((byte*)in_native + 56))) {
 		case FHIR_Marshalling.Annotation.AuthorType.Reference: {
 			var _authorReference__union = &(*(FHIR_Marshalling.Annotation.AuthorUnion*)((byte*)in_native + 40));
-			var _author_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_authorReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_authorReference__union + 0)) != null) {
+				fhirInstance.Author = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_authorReference__union + 0)));
+			}
 			
-			fhirInstance.Author = _author_primative;
 		} break;
 		case FHIR_Marshalling.Annotation.AuthorType.String: {
 			var _authorString__union = &(*(FHIR_Marshalling.Annotation.AuthorUnion*)((byte*)in_native + 40));
-			var _author_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_authorString__union + 0)).ToString();
-			var _author_primative =  (_author_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_author_primative_temp);
-			fhirInstance.Author = _author_primative;
+			var _author_temp = (*(FHIR_Marshalling.String8*)((byte*)_authorString__union + 0)).ToString();
+			if(_author_temp != null) {
+				fhirInstance.Author = new Hl7.Fhir.Model.FhirString(_author_temp);
+			}
+			
 		} break;
 	}
 	var _time_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)in_native + 64)).ToFhirDateTime();
@@ -61847,7 +62953,7 @@ public static Hl7.Fhir.Model.Coding? Marshal_Coding(FHIR_Marshalling.Coding* in_
 		fhirInstance.DisplayElement = new Hl7.Fhir.Model.FhirString(_display_temp);
 	}
 	
-	var _userSelected_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 104)).GetValue());
+	var _userSelected_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 104)).ToFhirBoolean();
 	if(_userSelected_temp != null) {
 		fhirInstance.UserSelectedElement = _userSelected_temp;
 	}
@@ -61934,7 +63040,7 @@ public static Hl7.Fhir.Model.ContactPoint? Marshal_ContactPoint(FHIR_Marshalling
 		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.ContactPoint.ContactPointUse> ();
 		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
 	}
-	var _rank_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).GetValue());
+	var _rank_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 88)).ToFhirPositiveInt();
 	if(_rank_temp != null) {
 		fhirInstance.RankElement = _rank_temp;
 	}
@@ -62015,7 +63121,7 @@ public static Hl7.Fhir.Model.Count? Marshal_Count(FHIR_Marshalling.Count* in_nat
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -62086,15 +63192,17 @@ public static Hl7.Fhir.Model.DataRequirement? Marshal_DataRequirement(FHIR_Marsh
 	switch((*(FHIR_Marshalling.DataRequirement.SubjectType*)((byte*)in_native + 80))) {
 		case FHIR_Marshalling.DataRequirement.SubjectType.CodeableConcept: {
 			var _subjectCodeableConcept__union = &(*(FHIR_Marshalling.DataRequirement.SubjectUnion*)((byte*)in_native + 72));
-			var _subject_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_subjectCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 		case FHIR_Marshalling.DataRequirement.SubjectType.Reference: {
 			var _subjectReference__union = &(*(FHIR_Marshalling.DataRequirement.SubjectUnion*)((byte*)in_native + 72));
-			var _subject_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)) != null) {
+				fhirInstance.Subject = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_subjectReference__union + 0)));
+			}
 			
-			fhirInstance.Subject = _subject_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 88)) > 0) {
@@ -62134,7 +63242,7 @@ public static Hl7.Fhir.Model.DataRequirement? Marshal_DataRequirement(FHIR_Marsh
 		
 	}
 	
-	var _limit_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 136)).GetValue());
+	var _limit_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 136)).ToFhirPositiveInt();
 	if(_limit_temp != null) {
 		fhirInstance.LimitElement = _limit_temp;
 	}
@@ -62241,20 +63349,25 @@ public static Hl7.Fhir.Model.DataRequirement.DateFilterComponent? Marshal_DataRe
 	switch((*(FHIR_Marshalling.DataRequirement_DateFilter.ValueType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.DataRequirement_DateFilter.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.DataRequirement_DateFilter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.DataRequirement_DateFilter.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.DataRequirement_DateFilter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.DataRequirement_DateFilter.ValueType.Duration: {
 			var _valueDuration__union = &(*(FHIR_Marshalling.DataRequirement_DateFilter.ValueUnion*)((byte*)in_native + 72));
-			var _value_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -62317,7 +63430,7 @@ public static Hl7.Fhir.Model.Distance? Marshal_Distance(FHIR_Marshalling.Distanc
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -62379,7 +63492,7 @@ public static Hl7.Fhir.Model.Dosage? Marshal_Dosage(FHIR_Marshalling.Dosage* in_
 		
 	}
 	
-	var _sequence_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _sequence_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirInteger();
 	if(_sequence_temp != null) {
 		fhirInstance.SequenceElement = _sequence_temp;
 	}
@@ -62413,14 +63526,18 @@ public static Hl7.Fhir.Model.Dosage? Marshal_Dosage(FHIR_Marshalling.Dosage* in_
 	switch((*(FHIR_Marshalling.Dosage.AsNeededType*)((byte*)in_native + 128))) {
 		case FHIR_Marshalling.Dosage.AsNeededType.Boolean: {
 			var _asNeededBoolean__union = &(*(FHIR_Marshalling.Dosage.AsNeededUnion*)((byte*)in_native + 120));
-			var _asNeeded_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_asNeededBoolean__union + 0)).GetValue());
-			fhirInstance.AsNeeded = _asNeeded_primative;
+			var _asNeeded_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_asNeededBoolean__union + 0)).ToFhirBoolean();
+			if(_asNeeded_temp != null) {
+				fhirInstance.AsNeeded = _asNeeded_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Dosage.AsNeededType.CodeableConcept: {
 			var _asNeededCodeableConcept__union = &(*(FHIR_Marshalling.Dosage.AsNeededUnion*)((byte*)in_native + 120));
-			var _asNeeded_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_asNeededCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_asNeededCodeableConcept__union + 0)) != null) {
+				fhirInstance.AsNeeded = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_asNeededCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.AsNeeded = _asNeeded_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 136)) != null) {
@@ -62491,35 +63608,40 @@ public static Hl7.Fhir.Model.Dosage.DoseAndRateComponent? Marshal_Dosage_DoseAnd
 	switch((*(FHIR_Marshalling.Dosage_DoseAndRate.DoseType*)((byte*)in_native + 56))) {
 		case FHIR_Marshalling.Dosage_DoseAndRate.DoseType.Range: {
 			var _doseRange__union = &(*(FHIR_Marshalling.Dosage_DoseAndRate.DoseUnion*)((byte*)in_native + 48));
-			var _dose_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_doseRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_doseRange__union + 0)) != null) {
+				fhirInstance.Dose = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_doseRange__union + 0)));
+			}
 			
-			fhirInstance.Dose = _dose_primative;
 		} break;
 		case FHIR_Marshalling.Dosage_DoseAndRate.DoseType.Quantity: {
 			var _doseQuantity__union = &(*(FHIR_Marshalling.Dosage_DoseAndRate.DoseUnion*)((byte*)in_native + 48));
-			var _dose_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_doseQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_doseQuantity__union + 0)) != null) {
+				fhirInstance.Dose = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_doseQuantity__union + 0)));
+			}
 			
-			fhirInstance.Dose = _dose_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.Dosage_DoseAndRate.RateType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.Dosage_DoseAndRate.RateType.Ratio: {
 			var _rateRatio__union = &(*(FHIR_Marshalling.Dosage_DoseAndRate.RateUnion*)((byte*)in_native + 64));
-			var _rate_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_rateRatio__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 		case FHIR_Marshalling.Dosage_DoseAndRate.RateType.Range: {
 			var _rateRange__union = &(*(FHIR_Marshalling.Dosage_DoseAndRate.RateUnion*)((byte*)in_native + 64));
-			var _rate_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_rateRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_rateRange__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_rateRange__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 		case FHIR_Marshalling.Dosage_DoseAndRate.RateType.Quantity: {
 			var _rateQuantity__union = &(*(FHIR_Marshalling.Dosage_DoseAndRate.RateUnion*)((byte*)in_native + 64));
-			var _rate_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)) != null) {
+				fhirInstance.Rate = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_rateQuantity__union + 0)));
+			}
 			
-			fhirInstance.Rate = _rate_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -62547,7 +63669,7 @@ public static Hl7.Fhir.Model.Duration? Marshal_Duration(FHIR_Marshalling.Duratio
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -62632,7 +63754,7 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 		fhirInstance.SliceNameElement = new Hl7.Fhir.Model.FhirString(_sliceName_temp);
 	}
 	
-	var _sliceIsConstraining_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 104)).GetValue());
+	var _sliceIsConstraining_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 104)).ToFhirBoolean();
 	if(_sliceIsConstraining_temp != null) {
 		fhirInstance.SliceIsConstrainingElement = _sliceIsConstraining_temp;
 	}
@@ -62691,7 +63813,7 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 		
 		}
 		
-	var _min_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 232)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 232)).ToFhirUnsignedInt();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -62732,291 +63854,368 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 				_defaultValue_primative = new Base64Binary(_defaultValue_arr);
 			}
 			fhirInstance.DefaultValue = _defaultValue_primative;
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Boolean: {
 			var _defaultValueBoolean__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_defaultValueBoolean__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_defaultValueBoolean__union + 0)).ToFhirBoolean();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Canonical: {
 			var _defaultValueCanonical__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCanonical__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCanonical__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Canonical(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Code: {
 			var _defaultValueCode__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCode__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueCode__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Code(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Date: {
 			var _defaultValueDate__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDate__union + 0)).ToFhirDate();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDate__union + 0)).ToFhirDate();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.DateTime: {
 			var _defaultValueDateTime__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueDateTime__union + 0)).ToFhirDateTime();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Decimal: {
 			var _defaultValueDecimal__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_defaultValueDecimal__union + 0)).DecimalValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueDecimal__union + 0)).ToFhirDecimal();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Id: {
 			var _defaultValueId__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueId__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueId__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Id(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Instant: {
 			var _defaultValueInstant__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueInstant__union + 0)).ToFhirInstant();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Integer: {
 			var _defaultValueInteger__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueInteger__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueInteger__union + 0)).ToFhirInteger();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Markdown: {
 			var _defaultValueMarkdown__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueMarkdown__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueMarkdown__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Markdown(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Oid: {
 			var _defaultValueOid__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueOid__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueOid__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Oid(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.PositiveInt: {
 			var _defaultValuePositiveInt__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValuePositiveInt__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.String: {
 			var _defaultValueString__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueString__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueString__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.FhirString(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Time: {
 			var _defaultValueTime__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueTime__union + 0)).ToFhirTime();
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_defaultValueTime__union + 0)).ToFhirTime();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.UnsignedInt: {
 			var _defaultValueUnsignedInt__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_defaultValueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = _defaultValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Uri: {
 			var _defaultValueUri__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUri__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUri__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.FhirUri(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Url: {
 			var _defaultValueUrl__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUrl__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUrl__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.FhirUrl(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Uuid: {
 			var _defaultValueUuid__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUuid__union + 0)).ToString();
-			var _defaultValue_primative =  (_defaultValue_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_defaultValue_primative_temp);
-			fhirInstance.DefaultValue = _defaultValue_primative;
+			var _defaultValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_defaultValueUuid__union + 0)).ToString();
+			if(_defaultValue_temp != null) {
+				fhirInstance.DefaultValue = new Hl7.Fhir.Model.Uuid(_defaultValue_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Address: {
 			var _defaultValueAddress__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_defaultValueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_defaultValueAddress__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_defaultValueAddress__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Age: {
 			var _defaultValueAge__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_defaultValueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_defaultValueAge__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_defaultValueAge__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Annotation: {
 			var _defaultValueAnnotation__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_defaultValueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_defaultValueAnnotation__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_defaultValueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Attachment: {
 			var _defaultValueAttachment__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_defaultValueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_defaultValueAttachment__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_defaultValueAttachment__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.CodeableConcept: {
 			var _defaultValueCodeableConcept__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_defaultValueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_defaultValueCodeableConcept__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_defaultValueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Coding: {
 			var _defaultValueCoding__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_defaultValueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_defaultValueCoding__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_defaultValueCoding__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.ContactPoint: {
 			var _defaultValueContactPoint__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_defaultValueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_defaultValueContactPoint__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_defaultValueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Count: {
 			var _defaultValueCount__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_defaultValueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_defaultValueCount__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_defaultValueCount__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Distance: {
 			var _defaultValueDistance__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_defaultValueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_defaultValueDistance__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_defaultValueDistance__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Duration: {
 			var _defaultValueDuration__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_defaultValueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_defaultValueDuration__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_defaultValueDuration__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.HumanName: {
 			var _defaultValueHumanName__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_defaultValueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_defaultValueHumanName__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_defaultValueHumanName__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Identifier: {
 			var _defaultValueIdentifier__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_defaultValueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_defaultValueIdentifier__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_defaultValueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Money: {
 			var _defaultValueMoney__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_defaultValueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_defaultValueMoney__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_defaultValueMoney__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Period: {
 			var _defaultValuePeriod__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_defaultValuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_defaultValuePeriod__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_defaultValuePeriod__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Quantity: {
 			var _defaultValueQuantity__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_defaultValueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_defaultValueQuantity__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_defaultValueQuantity__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Range: {
 			var _defaultValueRange__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_defaultValueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_defaultValueRange__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_defaultValueRange__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Ratio: {
 			var _defaultValueRatio__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_defaultValueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_defaultValueRatio__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_defaultValueRatio__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Reference: {
 			var _defaultValueReference__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_defaultValueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_defaultValueReference__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_defaultValueReference__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.SampledData: {
 			var _defaultValueSampledData__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_defaultValueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_defaultValueSampledData__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_defaultValueSampledData__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Signature: {
 			var _defaultValueSignature__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_defaultValueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_defaultValueSignature__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_defaultValueSignature__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Timing: {
 			var _defaultValueTiming__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_defaultValueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_defaultValueTiming__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_defaultValueTiming__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.ContactDetail: {
 			var _defaultValueContactDetail__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_defaultValueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_defaultValueContactDetail__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_defaultValueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Contributor: {
 			var _defaultValueContributor__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_defaultValueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_defaultValueContributor__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_defaultValueContributor__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.DataRequirement: {
 			var _defaultValueDataRequirement__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_defaultValueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_defaultValueDataRequirement__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_defaultValueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Expression: {
 			var _defaultValueExpression__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_defaultValueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_defaultValueExpression__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_defaultValueExpression__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.ParameterDefinition: {
 			var _defaultValueParameterDefinition__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_defaultValueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_defaultValueParameterDefinition__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_defaultValueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.RelatedArtifact: {
 			var _defaultValueRelatedArtifact__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_defaultValueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_defaultValueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_defaultValueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.TriggerDefinition: {
 			var _defaultValueTriggerDefinition__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_defaultValueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_defaultValueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_defaultValueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.UsageContext: {
 			var _defaultValueUsageContext__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_defaultValueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_defaultValueUsageContext__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_defaultValueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Dosage: {
 			var _defaultValueDosage__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_defaultValueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_defaultValueDosage__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_defaultValueDosage__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Meta: {
 			var _defaultValueMeta__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 296));
-			var _defaultValue_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_defaultValueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_defaultValueMeta__union + 0)) != null) {
+				fhirInstance.DefaultValue = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_defaultValueMeta__union + 0)));
+			}
 			
-			fhirInstance.DefaultValue = _defaultValue_primative;
 		} break;
 	}
 	var _meaningWhenMissing_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 320)).ToString();
@@ -63039,291 +64238,368 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 				_fixed_primative = new Base64Binary(_fixed_arr);
 			}
 			fhirInstance.Fixed = _fixed_primative;
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Boolean: {
 			var _fixedBoolean__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_fixedBoolean__union + 0)).GetValue());
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_fixedBoolean__union + 0)).ToFhirBoolean();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Canonical: {
 			var _fixedCanonical__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedCanonical__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedCanonical__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.Canonical(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Code: {
 			var _fixedCode__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedCode__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedCode__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.Code(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Date: {
 			var _fixedDate__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedDate__union + 0)).ToFhirDate();
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedDate__union + 0)).ToFhirDate();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.DateTime: {
 			var _fixedDateTime__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedDateTime__union + 0)).ToFhirDateTime();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Decimal: {
 			var _fixedDecimal__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_fixedDecimal__union + 0)).DecimalValue());
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedDecimal__union + 0)).ToFhirDecimal();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Id: {
 			var _fixedId__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedId__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedId__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.Id(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Instant: {
 			var _fixedInstant__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedInstant__union + 0)).ToFhirInstant();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Integer: {
 			var _fixedInteger__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_fixedInteger__union + 0)).GetValue());
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_fixedInteger__union + 0)).ToFhirInteger();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Markdown: {
 			var _fixedMarkdown__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedMarkdown__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedMarkdown__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.Markdown(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Oid: {
 			var _fixedOid__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedOid__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedOid__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.Oid(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.PositiveInt: {
 			var _fixedPositiveInt__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_fixedPositiveInt__union + 0)).GetValue());
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_fixedPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.String: {
 			var _fixedString__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedString__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedString__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.FhirString(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Time: {
 			var _fixedTime__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedTime__union + 0)).ToFhirTime();
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_fixedTime__union + 0)).ToFhirTime();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.UnsignedInt: {
 			var _fixedUnsignedInt__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_fixedUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_fixedUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = _fixed_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Uri: {
 			var _fixedUri__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedUri__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedUri__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.FhirUri(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Url: {
 			var _fixedUrl__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedUrl__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedUrl__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.FhirUrl(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Uuid: {
 			var _fixedUuid__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedUuid__union + 0)).ToString();
-			var _fixed_primative =  (_fixed_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_fixed_primative_temp);
-			fhirInstance.Fixed = _fixed_primative;
+			var _fixed_temp = (*(FHIR_Marshalling.String8*)((byte*)_fixedUuid__union + 0)).ToString();
+			if(_fixed_temp != null) {
+				fhirInstance.Fixed = new Hl7.Fhir.Model.Uuid(_fixed_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Address: {
 			var _fixedAddress__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_fixedAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_fixedAddress__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_fixedAddress__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Age: {
 			var _fixedAge__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_fixedAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_fixedAge__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_fixedAge__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Annotation: {
 			var _fixedAnnotation__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_fixedAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_fixedAnnotation__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_fixedAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Attachment: {
 			var _fixedAttachment__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_fixedAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_fixedAttachment__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_fixedAttachment__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.CodeableConcept: {
 			var _fixedCodeableConcept__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_fixedCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_fixedCodeableConcept__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_fixedCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Coding: {
 			var _fixedCoding__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_fixedCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_fixedCoding__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_fixedCoding__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.ContactPoint: {
 			var _fixedContactPoint__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_fixedContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_fixedContactPoint__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_fixedContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Count: {
 			var _fixedCount__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_fixedCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_fixedCount__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_fixedCount__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Distance: {
 			var _fixedDistance__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_fixedDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_fixedDistance__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_fixedDistance__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Duration: {
 			var _fixedDuration__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_fixedDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_fixedDuration__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_fixedDuration__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.HumanName: {
 			var _fixedHumanName__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_fixedHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_fixedHumanName__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_fixedHumanName__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Identifier: {
 			var _fixedIdentifier__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_fixedIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_fixedIdentifier__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_fixedIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Money: {
 			var _fixedMoney__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_fixedMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_fixedMoney__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_fixedMoney__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Period: {
 			var _fixedPeriod__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_fixedPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_fixedPeriod__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_fixedPeriod__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Quantity: {
 			var _fixedQuantity__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_fixedQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_fixedQuantity__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_fixedQuantity__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Range: {
 			var _fixedRange__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_fixedRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_fixedRange__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_fixedRange__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Ratio: {
 			var _fixedRatio__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_fixedRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_fixedRatio__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_fixedRatio__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Reference: {
 			var _fixedReference__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_fixedReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_fixedReference__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_fixedReference__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.SampledData: {
 			var _fixedSampledData__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_fixedSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_fixedSampledData__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_fixedSampledData__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Signature: {
 			var _fixedSignature__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_fixedSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_fixedSignature__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_fixedSignature__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Timing: {
 			var _fixedTiming__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_fixedTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_fixedTiming__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_fixedTiming__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.ContactDetail: {
 			var _fixedContactDetail__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_fixedContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_fixedContactDetail__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_fixedContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Contributor: {
 			var _fixedContributor__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_fixedContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_fixedContributor__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_fixedContributor__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.DataRequirement: {
 			var _fixedDataRequirement__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_fixedDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_fixedDataRequirement__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_fixedDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Expression: {
 			var _fixedExpression__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_fixedExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_fixedExpression__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_fixedExpression__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.ParameterDefinition: {
 			var _fixedParameterDefinition__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_fixedParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_fixedParameterDefinition__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_fixedParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.RelatedArtifact: {
 			var _fixedRelatedArtifact__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_fixedRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_fixedRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_fixedRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.TriggerDefinition: {
 			var _fixedTriggerDefinition__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_fixedTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_fixedTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_fixedTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.UsageContext: {
 			var _fixedUsageContext__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_fixedUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_fixedUsageContext__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_fixedUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Dosage: {
 			var _fixedDosage__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_fixedDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_fixedDosage__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_fixedDosage__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.FixedType.Meta: {
 			var _fixedMeta__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 352));
-			var _fixed_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_fixedMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_fixedMeta__union + 0)) != null) {
+				fhirInstance.Fixed = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_fixedMeta__union + 0)));
+			}
 			
-			fhirInstance.Fixed = _fixed_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ElementDefinition.PatternType*)((byte*)in_native + 392))) {
@@ -63336,291 +64612,368 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 				_pattern_primative = new Base64Binary(_pattern_arr);
 			}
 			fhirInstance.Pattern = _pattern_primative;
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Boolean: {
 			var _patternBoolean__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_patternBoolean__union + 0)).GetValue());
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_patternBoolean__union + 0)).ToFhirBoolean();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Canonical: {
 			var _patternCanonical__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternCanonical__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternCanonical__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.Canonical(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Code: {
 			var _patternCode__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternCode__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternCode__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.Code(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Date: {
 			var _patternDate__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternDate__union + 0)).ToFhirDate();
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternDate__union + 0)).ToFhirDate();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.DateTime: {
 			var _patternDateTime__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternDateTime__union + 0)).ToFhirDateTime();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Decimal: {
 			var _patternDecimal__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_patternDecimal__union + 0)).DecimalValue());
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternDecimal__union + 0)).ToFhirDecimal();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Id: {
 			var _patternId__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternId__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternId__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.Id(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Instant: {
 			var _patternInstant__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternInstant__union + 0)).ToFhirInstant();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Integer: {
 			var _patternInteger__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_patternInteger__union + 0)).GetValue());
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_patternInteger__union + 0)).ToFhirInteger();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Markdown: {
 			var _patternMarkdown__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternMarkdown__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternMarkdown__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.Markdown(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Oid: {
 			var _patternOid__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternOid__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternOid__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.Oid(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.PositiveInt: {
 			var _patternPositiveInt__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_patternPositiveInt__union + 0)).GetValue());
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_patternPositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.String: {
 			var _patternString__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternString__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternString__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.FhirString(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Time: {
 			var _patternTime__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternTime__union + 0)).ToFhirTime();
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_patternTime__union + 0)).ToFhirTime();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.UnsignedInt: {
 			var _patternUnsignedInt__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_patternUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_patternUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = _pattern_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Uri: {
 			var _patternUri__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternUri__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternUri__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.FhirUri(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Url: {
 			var _patternUrl__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternUrl__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternUrl__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.FhirUrl(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Uuid: {
 			var _patternUuid__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternUuid__union + 0)).ToString();
-			var _pattern_primative =  (_pattern_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_pattern_primative_temp);
-			fhirInstance.Pattern = _pattern_primative;
+			var _pattern_temp = (*(FHIR_Marshalling.String8*)((byte*)_patternUuid__union + 0)).ToString();
+			if(_pattern_temp != null) {
+				fhirInstance.Pattern = new Hl7.Fhir.Model.Uuid(_pattern_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Address: {
 			var _patternAddress__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_patternAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_patternAddress__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_patternAddress__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Age: {
 			var _patternAge__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_patternAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_patternAge__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_patternAge__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Annotation: {
 			var _patternAnnotation__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_patternAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_patternAnnotation__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_patternAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Attachment: {
 			var _patternAttachment__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_patternAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_patternAttachment__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_patternAttachment__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.CodeableConcept: {
 			var _patternCodeableConcept__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_patternCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_patternCodeableConcept__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_patternCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Coding: {
 			var _patternCoding__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_patternCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_patternCoding__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_patternCoding__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.ContactPoint: {
 			var _patternContactPoint__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_patternContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_patternContactPoint__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_patternContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Count: {
 			var _patternCount__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_patternCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_patternCount__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_patternCount__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Distance: {
 			var _patternDistance__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_patternDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_patternDistance__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_patternDistance__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Duration: {
 			var _patternDuration__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_patternDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_patternDuration__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_patternDuration__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.HumanName: {
 			var _patternHumanName__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_patternHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_patternHumanName__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_patternHumanName__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Identifier: {
 			var _patternIdentifier__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_patternIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_patternIdentifier__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_patternIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Money: {
 			var _patternMoney__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_patternMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_patternMoney__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_patternMoney__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Period: {
 			var _patternPeriod__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_patternPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_patternPeriod__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_patternPeriod__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Quantity: {
 			var _patternQuantity__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_patternQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_patternQuantity__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_patternQuantity__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Range: {
 			var _patternRange__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_patternRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_patternRange__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_patternRange__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Ratio: {
 			var _patternRatio__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_patternRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_patternRatio__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_patternRatio__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Reference: {
 			var _patternReference__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_patternReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_patternReference__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_patternReference__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.SampledData: {
 			var _patternSampledData__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_patternSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_patternSampledData__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_patternSampledData__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Signature: {
 			var _patternSignature__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_patternSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_patternSignature__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_patternSignature__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Timing: {
 			var _patternTiming__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_patternTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_patternTiming__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_patternTiming__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.ContactDetail: {
 			var _patternContactDetail__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_patternContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_patternContactDetail__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_patternContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Contributor: {
 			var _patternContributor__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_patternContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_patternContributor__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_patternContributor__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.DataRequirement: {
 			var _patternDataRequirement__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_patternDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_patternDataRequirement__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_patternDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Expression: {
 			var _patternExpression__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_patternExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_patternExpression__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_patternExpression__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.ParameterDefinition: {
 			var _patternParameterDefinition__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_patternParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_patternParameterDefinition__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_patternParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.RelatedArtifact: {
 			var _patternRelatedArtifact__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_patternRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_patternRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_patternRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.TriggerDefinition: {
 			var _patternTriggerDefinition__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_patternTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_patternTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_patternTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.UsageContext: {
 			var _patternUsageContext__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_patternUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_patternUsageContext__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_patternUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Dosage: {
 			var _patternDosage__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_patternDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_patternDosage__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_patternDosage__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition.PatternType.Meta: {
 			var _patternMeta__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 376));
-			var _pattern_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_patternMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_patternMeta__union + 0)) != null) {
+				fhirInstance.Pattern = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_patternMeta__union + 0)));
+			}
 			
-			fhirInstance.Pattern = _pattern_primative;
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 400)) > 0) {
@@ -63638,100 +64991,150 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 	switch((*(FHIR_Marshalling.ElementDefinition.MinValueType*)((byte*)in_native + 432))) {
 		case FHIR_Marshalling.ElementDefinition.MinValueType.Date: {
 			var _minValueDate__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueDate__union + 0)).ToFhirDate();
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueDate__union + 0)).ToFhirDate();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.DateTime: {
 			var _minValueDateTime__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueDateTime__union + 0)).ToFhirDateTime();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.Instant: {
 			var _minValueInstant__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueInstant__union + 0)).ToFhirInstant();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.Time: {
 			var _minValueTime__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueTime__union + 0)).ToFhirTime();
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_minValueTime__union + 0)).ToFhirTime();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.Decimal: {
 			var _minValueDecimal__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_minValueDecimal__union + 0)).DecimalValue());
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_minValueDecimal__union + 0)).ToFhirDecimal();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.Integer: {
 			var _minValueInteger__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_minValueInteger__union + 0)).GetValue());
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_minValueInteger__union + 0)).ToFhirInteger();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.PositiveInt: {
 			var _minValuePositiveInt__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_minValuePositiveInt__union + 0)).GetValue());
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_minValuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.UnsignedInt: {
 			var _minValueUnsignedInt__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_minValueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.MinValue = _minValue_primative;
+			var _minValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_minValueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_minValue_temp != null) {
+				fhirInstance.MinValue = _minValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MinValueType.Quantity: {
 			var _minValueQuantity__union = &(*(FHIR_Marshalling.ElementDefinition.MinValueUnion*)((byte*)in_native + 416));
-			var _minValue_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_minValueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_minValueQuantity__union + 0)) != null) {
+				fhirInstance.MinValue = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_minValueQuantity__union + 0)));
+			}
 			
-			fhirInstance.MinValue = _minValue_primative;
 		} break;
 	}
 	switch((*(FHIR_Marshalling.ElementDefinition.MaxValueType*)((byte*)in_native + 456))) {
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.Date: {
 			var _maxValueDate__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueDate__union + 0)).ToFhirDate();
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueDate__union + 0)).ToFhirDate();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.DateTime: {
 			var _maxValueDateTime__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueDateTime__union + 0)).ToFhirDateTime();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.Instant: {
 			var _maxValueInstant__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueInstant__union + 0)).ToFhirInstant();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.Time: {
 			var _maxValueTime__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueTime__union + 0)).ToFhirTime();
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_maxValueTime__union + 0)).ToFhirTime();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.Decimal: {
 			var _maxValueDecimal__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_maxValueDecimal__union + 0)).DecimalValue());
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.String8*)((byte*)_maxValueDecimal__union + 0)).ToFhirDecimal();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.Integer: {
 			var _maxValueInteger__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_maxValueInteger__union + 0)).GetValue());
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_maxValueInteger__union + 0)).ToFhirInteger();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.PositiveInt: {
 			var _maxValuePositiveInt__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_maxValuePositiveInt__union + 0)).GetValue());
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_maxValuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.UnsignedInt: {
 			var _maxValueUnsignedInt__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_maxValueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.MaxValue = _maxValue_primative;
+			var _maxValue_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_maxValueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_maxValue_temp != null) {
+				fhirInstance.MaxValue = _maxValue_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition.MaxValueType.Quantity: {
 			var _maxValueQuantity__union = &(*(FHIR_Marshalling.ElementDefinition.MaxValueUnion*)((byte*)in_native + 440));
-			var _maxValue_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_maxValueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_maxValueQuantity__union + 0)) != null) {
+				fhirInstance.MaxValue = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_maxValueQuantity__union + 0)));
+			}
 			
-			fhirInstance.MaxValue = _maxValue_primative;
 		} break;
 	}
-	var _maxLength_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 464)).GetValue());
+	var _maxLength_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 464)).ToFhirInteger();
 	if(_maxLength_temp != null) {
 		fhirInstance.MaxLengthElement = _maxLength_temp;
 	}
@@ -63761,12 +65164,12 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 		
 	}
 	
-	var _mustSupport_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 504)).GetValue());
+	var _mustSupport_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 504)).ToFhirBoolean();
 	if(_mustSupport_temp != null) {
 		fhirInstance.MustSupportElement = _mustSupport_temp;
 	}
 	
-	var _isModifier_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 512)).GetValue());
+	var _isModifier_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 512)).ToFhirBoolean();
 	if(_isModifier_temp != null) {
 		fhirInstance.IsModifierElement = _isModifier_temp;
 	}
@@ -63776,7 +65179,7 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 		fhirInstance.IsModifierReasonElement = new Hl7.Fhir.Model.FhirString(_isModifierReason_temp);
 	}
 	
-	var _isSummary_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 536)).GetValue());
+	var _isSummary_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 536)).ToFhirBoolean();
 	if(_isSummary_temp != null) {
 		fhirInstance.IsSummaryElement = _isSummary_temp;
 	}
@@ -63839,7 +65242,7 @@ public static Hl7.Fhir.Model.ElementDefinition.SlicingComponent? Marshal_Element
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	var _ordered_temp = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).GetValue());
+	var _ordered_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)in_native + 72)).ToFhirBoolean();
 	if(_ordered_temp != null) {
 		fhirInstance.OrderedElement = _ordered_temp;
 	}
@@ -63914,7 +65317,7 @@ public static Hl7.Fhir.Model.ElementDefinition.BaseComponent? Marshal_ElementDef
 		fhirInstance.PathElement = new Hl7.Fhir.Model.FhirString(_path_temp);
 	}
 	
-	var _min_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirUnsignedInt();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -64038,291 +65441,368 @@ public static Hl7.Fhir.Model.ElementDefinition.ExampleComponent? Marshal_Element
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Canonical: {
 			var _valueCanonical__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Canonical(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Id: {
 			var _valueId__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Id(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Instant: {
 			var _valueInstant__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Markdown: {
 			var _valueMarkdown__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Markdown(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Oid: {
 			var _valueOid__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Oid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.PositiveInt: {
 			var _valuePositiveInt__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.UnsignedInt: {
 			var _valueUnsignedInt__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Url: {
 			var _valueUrl__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUrl(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Uuid: {
 			var _valueUuid__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Uuid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Address: {
 			var _valueAddress__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Age: {
 			var _valueAge__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Annotation: {
 			var _valueAnnotation__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.ContactPoint: {
 			var _valueContactPoint__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Count: {
 			var _valueCount__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Distance: {
 			var _valueDistance__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Duration: {
 			var _valueDuration__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.HumanName: {
 			var _valueHumanName__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)) != null) {
+				fhirInstance.Value = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Identifier: {
 			var _valueIdentifier__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Money: {
 			var _valueMoney__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Signature: {
 			var _valueSignature__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Timing: {
 			var _valueTiming__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.ContactDetail: {
 			var _valueContactDetail__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Contributor: {
 			var _valueContributor__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.DataRequirement: {
 			var _valueDataRequirement__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)) != null) {
+				fhirInstance.Value = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Expression: {
 			var _valueExpression__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.ParameterDefinition: {
 			var _valueParameterDefinition__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.RelatedArtifact: {
 			var _valueRelatedArtifact__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Value = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.TriggerDefinition: {
 			var _valueTriggerDefinition__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.UsageContext: {
 			var _valueUsageContext__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)) != null) {
+				fhirInstance.Value = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Dosage: {
 			var _valueDosage__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Meta: {
 			var _valueMeta__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -64560,291 +66040,368 @@ public static Hl7.Fhir.Model.Extension? Marshal_Extension(FHIR_Marshalling.Exten
 				_value_primative = new Base64Binary(_value_arr);
 			}
 			fhirInstance.Value = _value_primative;
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Boolean: {
 			var _valueBoolean__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirBoolean((*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableBoolean*)((byte*)_valueBoolean__union + 0)).ToFhirBoolean();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Canonical: {
 			var _valueCanonical__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Canonical(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCanonical__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Canonical(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Code: {
 			var _valueCode__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Code(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueCode__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Code(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Date: {
 			var _valueDate__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDate__union + 0)).ToFhirDate();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.DateTime: {
 			var _valueDateTime__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueDateTime__union + 0)).ToFhirDateTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Decimal: {
 			var _valueDecimal__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).DecimalValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueDecimal__union + 0)).ToFhirDecimal();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Id: {
 			var _valueId__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Id(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueId__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Id(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Instant: {
 			var _valueInstant__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueInstant__union + 0)).ToFhirInstant();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Integer: {
 			var _valueInteger__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueInteger__union + 0)).ToFhirInteger();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Markdown: {
 			var _valueMarkdown__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Markdown(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueMarkdown__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Markdown(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Oid: {
 			var _valueOid__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Oid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueOid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Oid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.PositiveInt: {
 			var _valuePositiveInt__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valuePositiveInt__union + 0)).ToFhirPositiveInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.String: {
 			var _valueString__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueString__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirString(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Time: {
 			var _valueTime__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_valueTime__union + 0)).ToFhirTime();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.UnsignedInt: {
 			var _valueUnsignedInt__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).GetValue());
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)_valueUnsignedInt__union + 0)).ToFhirUnsignedInt();
+			if(_value_temp != null) {
+				fhirInstance.Value = _value_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Uri: {
 			var _valueUri__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUri(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUri__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUri(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Url: {
 			var _valueUrl__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirUrl(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUrl__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.FhirUrl(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Uuid: {
 			var _valueUuid__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
-			var _value_primative =  (_value_primative_temp == null) ? null : new Hl7.Fhir.Model.Uuid(_value_primative_temp);
-			fhirInstance.Value = _value_primative;
+			var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)_valueUuid__union + 0)).ToString();
+			if(_value_temp != null) {
+				fhirInstance.Value = new Hl7.Fhir.Model.Uuid(_value_temp);
+			}
+			
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Address: {
 			var _valueAddress__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			if((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Address((*(FHIR_Marshalling.Address**)((byte*)_valueAddress__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Age: {
 			var _valueAge__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			if((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Age((*(FHIR_Marshalling.Age**)((byte*)_valueAge__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Annotation: {
 			var _valueAnnotation__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			if((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Annotation((*(FHIR_Marshalling.Annotation**)((byte*)_valueAnnotation__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Attachment: {
 			var _valueAttachment__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			if((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Attachment((*(FHIR_Marshalling.Attachment**)((byte*)_valueAttachment__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Coding: {
 			var _valueCoding__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			if((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Coding((*(FHIR_Marshalling.Coding**)((byte*)_valueCoding__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.ContactPoint: {
 			var _valueContactPoint__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			if((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactPoint((*(FHIR_Marshalling.ContactPoint**)((byte*)_valueContactPoint__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Count: {
 			var _valueCount__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			if((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Count((*(FHIR_Marshalling.Count**)((byte*)_valueCount__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Distance: {
 			var _valueDistance__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			if((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Distance((*(FHIR_Marshalling.Distance**)((byte*)_valueDistance__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Duration: {
 			var _valueDuration__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_valueDuration__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.HumanName: {
 			var _valueHumanName__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			if((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)) != null) {
+				fhirInstance.Value = Marshal_HumanName((*(FHIR_Marshalling.HumanName**)((byte*)_valueHumanName__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Identifier: {
 			var _valueIdentifier__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			if((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Identifier((*(FHIR_Marshalling.Identifier**)((byte*)_valueIdentifier__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Money: {
 			var _valueMoney__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			if((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Money((*(FHIR_Marshalling.Money**)((byte*)_valueMoney__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Period: {
 			var _valuePeriod__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_valuePeriod__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Ratio: {
 			var _valueRatio__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			if((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Ratio((*(FHIR_Marshalling.Ratio**)((byte*)_valueRatio__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.SampledData: {
 			var _valueSampledData__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			if((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)) != null) {
+				fhirInstance.Value = Marshal_SampledData((*(FHIR_Marshalling.SampledData**)((byte*)_valueSampledData__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Signature: {
 			var _valueSignature__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			if((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Signature((*(FHIR_Marshalling.Signature**)((byte*)_valueSignature__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Timing: {
 			var _valueTiming__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_valueTiming__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.ContactDetail: {
 			var _valueContactDetail__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			if((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ContactDetail((*(FHIR_Marshalling.ContactDetail**)((byte*)_valueContactDetail__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Contributor: {
 			var _valueContributor__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			if((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Contributor((*(FHIR_Marshalling.Contributor**)((byte*)_valueContributor__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.DataRequirement: {
 			var _valueDataRequirement__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			if((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)) != null) {
+				fhirInstance.Value = Marshal_DataRequirement((*(FHIR_Marshalling.DataRequirement**)((byte*)_valueDataRequirement__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Expression: {
 			var _valueExpression__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			if((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Expression((*(FHIR_Marshalling.Expression**)((byte*)_valueExpression__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.ParameterDefinition: {
 			var _valueParameterDefinition__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			if((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_ParameterDefinition((*(FHIR_Marshalling.ParameterDefinition**)((byte*)_valueParameterDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.RelatedArtifact: {
 			var _valueRelatedArtifact__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			if((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)) != null) {
+				fhirInstance.Value = Marshal_RelatedArtifact((*(FHIR_Marshalling.RelatedArtifact**)((byte*)_valueRelatedArtifact__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.TriggerDefinition: {
 			var _valueTriggerDefinition__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			if((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)) != null) {
+				fhirInstance.Value = Marshal_TriggerDefinition((*(FHIR_Marshalling.TriggerDefinition**)((byte*)_valueTriggerDefinition__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.UsageContext: {
 			var _valueUsageContext__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			if((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)) != null) {
+				fhirInstance.Value = Marshal_UsageContext((*(FHIR_Marshalling.UsageContext**)((byte*)_valueUsageContext__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Dosage: {
 			var _valueDosage__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			if((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Dosage((*(FHIR_Marshalling.Dosage**)((byte*)_valueDosage__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.Extension.ValueType.Meta: {
 			var _valueMeta__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 56));
-			var _value_primative = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			if((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Meta((*(FHIR_Marshalling.Meta**)((byte*)_valueMeta__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -65142,7 +66699,7 @@ public static Hl7.Fhir.Model.Money? Marshal_Money(FHIR_Marshalling.Money* in_nat
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -65222,7 +66779,7 @@ public static Hl7.Fhir.Model.ParameterDefinition? Marshal_ParameterDefinition(FH
 		fhirInstance.UseElement = new Code<Hl7.Fhir.Model.OperationParameterUse> ();
 		fhirInstance.UseElement.ObjectValue = __temp_codeUseElement;
 	}
-	var _min_temp = new Integer((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).GetValue());
+	var _min_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 72)).ToFhirInteger();
 	if(_min_temp != null) {
 		fhirInstance.MinElement = _min_temp;
 	}
@@ -65322,15 +66879,17 @@ public static Hl7.Fhir.Model.Population? Marshal_Population(FHIR_Marshalling.Pop
 	switch((*(FHIR_Marshalling.Population.AgeType*)((byte*)in_native + 64))) {
 		case FHIR_Marshalling.Population.AgeType.Range: {
 			var _ageRange__union = &(*(FHIR_Marshalling.Population.AgeUnion*)((byte*)in_native + 56));
-			var _age_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_ageRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_ageRange__union + 0)) != null) {
+				fhirInstance.Age = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_ageRange__union + 0)));
+			}
 			
-			fhirInstance.Age = _age_primative;
 		} break;
 		case FHIR_Marshalling.Population.AgeType.CodeableConcept: {
 			var _ageCodeableConcept__union = &(*(FHIR_Marshalling.Population.AgeUnion*)((byte*)in_native + 56));
-			var _age_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_ageCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_ageCodeableConcept__union + 0)) != null) {
+				fhirInstance.Age = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_ageCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Age = _age_primative;
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 72)) != null) {
@@ -65539,7 +67098,7 @@ public static Hl7.Fhir.Model.Quantity? Marshal_Quantity(FHIR_Marshalling.Quantit
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}
@@ -65762,27 +67321,27 @@ public static Hl7.Fhir.Model.SampledData? Marshal_SampledData(FHIR_Marshalling.S
 		fhirInstance.Origin = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)in_native + 40)));
 	}
 	
-	var _period_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 48)).DecimalValue());
+	var _period_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 48)).ToFhirDecimal();
 	if(_period_temp != null) {
 		fhirInstance.PeriodElement = _period_temp;
 	}
 	
-	var _factor_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).DecimalValue());
+	var _factor_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 64)).ToFhirDecimal();
 	if(_factor_temp != null) {
 		fhirInstance.FactorElement = _factor_temp;
 	}
 	
-	var _lowerLimit_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).DecimalValue());
+	var _lowerLimit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 80)).ToFhirDecimal();
 	if(_lowerLimit_temp != null) {
 		fhirInstance.LowerLimitElement = _lowerLimit_temp;
 	}
 	
-	var _upperLimit_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).DecimalValue());
+	var _upperLimit_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 96)).ToFhirDecimal();
 	if(_upperLimit_temp != null) {
 		fhirInstance.UpperLimitElement = _upperLimit_temp;
 	}
 	
-	var _dimensions_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 112)).GetValue());
+	var _dimensions_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 112)).ToFhirPositiveInt();
 	if(_dimensions_temp != null) {
 		fhirInstance.DimensionsElement = _dimensions_temp;
 	}
@@ -65900,21 +67459,25 @@ public static Hl7.Fhir.Model.SubstanceAmount? Marshal_SubstanceAmount(FHIR_Marsh
 	switch((*(FHIR_Marshalling.SubstanceAmount.AmountType*)((byte*)in_native + 72))) {
 		case FHIR_Marshalling.SubstanceAmount.AmountType.Quantity: {
 			var _amountQuantity__union = &(*(FHIR_Marshalling.SubstanceAmount.AmountUnion*)((byte*)in_native + 56));
-			var _amount_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_amountQuantity__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceAmount.AmountType.Range: {
 			var _amountRange__union = &(*(FHIR_Marshalling.SubstanceAmount.AmountUnion*)((byte*)in_native + 56));
-			var _amount_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)) != null) {
+				fhirInstance.Amount = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_amountRange__union + 0)));
+			}
 			
-			fhirInstance.Amount = _amount_primative;
 		} break;
 		case FHIR_Marshalling.SubstanceAmount.AmountType.String: {
 			var _amountString__union = &(*(FHIR_Marshalling.SubstanceAmount.AmountUnion*)((byte*)in_native + 56));
-			var _amount_primative_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
-			var _amount_primative =  (_amount_primative_temp == null) ? null : new Hl7.Fhir.Model.FhirString(_amount_primative_temp);
-			fhirInstance.Amount = _amount_primative;
+			var _amount_temp = (*(FHIR_Marshalling.String8*)((byte*)_amountString__union + 0)).ToString();
+			if(_amount_temp != null) {
+				fhirInstance.Amount = new Hl7.Fhir.Model.FhirString(_amount_temp);
+			}
+			
 		} break;
 	}
 	if((*(FHIR_Marshalling.CodeableConcept**)((byte*)in_native + 80)) != null) {
@@ -66048,39 +67611,42 @@ public static Hl7.Fhir.Model.Timing.RepeatComponent? Marshal_Timing_Repeat(FHIR_
 	switch((*(FHIR_Marshalling.Timing_Repeat.BoundsType*)((byte*)in_native + 48))) {
 		case FHIR_Marshalling.Timing_Repeat.BoundsType.Duration: {
 			var _boundsDuration__union = &(*(FHIR_Marshalling.Timing_Repeat.BoundsUnion*)((byte*)in_native + 40));
-			var _bounds_primative = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_boundsDuration__union + 0)));
+			if((*(FHIR_Marshalling.Duration**)((byte*)_boundsDuration__union + 0)) != null) {
+				fhirInstance.Bounds = Marshal_Duration((*(FHIR_Marshalling.Duration**)((byte*)_boundsDuration__union + 0)));
+			}
 			
-			fhirInstance.Bounds = _bounds_primative;
 		} break;
 		case FHIR_Marshalling.Timing_Repeat.BoundsType.Range: {
 			var _boundsRange__union = &(*(FHIR_Marshalling.Timing_Repeat.BoundsUnion*)((byte*)in_native + 40));
-			var _bounds_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_boundsRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_boundsRange__union + 0)) != null) {
+				fhirInstance.Bounds = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_boundsRange__union + 0)));
+			}
 			
-			fhirInstance.Bounds = _bounds_primative;
 		} break;
 		case FHIR_Marshalling.Timing_Repeat.BoundsType.Period: {
 			var _boundsPeriod__union = &(*(FHIR_Marshalling.Timing_Repeat.BoundsUnion*)((byte*)in_native + 40));
-			var _bounds_primative = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_boundsPeriod__union + 0)));
+			if((*(FHIR_Marshalling.Period**)((byte*)_boundsPeriod__union + 0)) != null) {
+				fhirInstance.Bounds = Marshal_Period((*(FHIR_Marshalling.Period**)((byte*)_boundsPeriod__union + 0)));
+			}
 			
-			fhirInstance.Bounds = _bounds_primative;
 		} break;
 	}
-	var _count_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).GetValue());
+	var _count_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 56)).ToFhirPositiveInt();
 	if(_count_temp != null) {
 		fhirInstance.CountElement = _count_temp;
 	}
 	
-	var _countMax_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).GetValue());
+	var _countMax_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 64)).ToFhirPositiveInt();
 	if(_countMax_temp != null) {
 		fhirInstance.CountMaxElement = _countMax_temp;
 	}
 	
-	var _duration_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).DecimalValue());
+	var _duration_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 72)).ToFhirDecimal();
 	if(_duration_temp != null) {
 		fhirInstance.DurationElement = _duration_temp;
 	}
 	
-	var _durationMax_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).DecimalValue());
+	var _durationMax_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 88)).ToFhirDecimal();
 	if(_durationMax_temp != null) {
 		fhirInstance.DurationMaxElement = _durationMax_temp;
 	}
@@ -66090,22 +67656,22 @@ public static Hl7.Fhir.Model.Timing.RepeatComponent? Marshal_Timing_Repeat(FHIR_
 		fhirInstance.DurationUnitElement = new Code<Hl7.Fhir.Model.Timing.UnitsOfTime> ();
 		fhirInstance.DurationUnitElement.ObjectValue = __temp_codeDurationUnitElement;
 	}
-	var _frequency_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 120)).GetValue());
+	var _frequency_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 120)).ToFhirPositiveInt();
 	if(_frequency_temp != null) {
 		fhirInstance.FrequencyElement = _frequency_temp;
 	}
 	
-	var _frequencyMax_temp = new PositiveInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 128)).GetValue());
+	var _frequencyMax_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 128)).ToFhirPositiveInt();
 	if(_frequencyMax_temp != null) {
 		fhirInstance.FrequencyMaxElement = _frequencyMax_temp;
 	}
 	
-	var _period_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).DecimalValue());
+	var _period_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 136)).ToFhirDecimal();
 	if(_period_temp != null) {
 		fhirInstance.PeriodElement = _period_temp;
 	}
 	
-	var _periodMax_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).DecimalValue());
+	var _periodMax_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 152)).ToFhirDecimal();
 	if(_periodMax_temp != null) {
 		fhirInstance.PeriodMaxElement = _periodMax_temp;
 	}
@@ -66153,7 +67719,7 @@ public static Hl7.Fhir.Model.Timing.RepeatComponent? Marshal_Timing_Repeat(FHIR_
 		
 		}
 		
-	var _offset_temp = new UnsignedInt((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 232)).GetValue());
+	var _offset_temp = (*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 232)).ToFhirUnsignedInt();
 	if(_offset_temp != null) {
 		fhirInstance.OffsetElement = _offset_temp;
 	}
@@ -66196,25 +67762,33 @@ public static Hl7.Fhir.Model.TriggerDefinition? Marshal_TriggerDefinition(FHIR_M
 	switch((*(FHIR_Marshalling.TriggerDefinition.TimingType*)((byte*)in_native + 88))) {
 		case FHIR_Marshalling.TriggerDefinition.TimingType.Timing: {
 			var _timingTiming__union = &(*(FHIR_Marshalling.TriggerDefinition.TimingUnion*)((byte*)in_native + 72));
-			var _timing_primative = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			if((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Timing((*(FHIR_Marshalling.Timing**)((byte*)_timingTiming__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.TriggerDefinition.TimingType.Reference: {
 			var _timingReference__union = &(*(FHIR_Marshalling.TriggerDefinition.TimingUnion*)((byte*)in_native + 72));
-			var _timing_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_timingReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_timingReference__union + 0)) != null) {
+				fhirInstance.Timing = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_timingReference__union + 0)));
+			}
 			
-			fhirInstance.Timing = _timing_primative;
 		} break;
 		case FHIR_Marshalling.TriggerDefinition.TimingType.Date: {
 			var _timingDate__union = &(*(FHIR_Marshalling.TriggerDefinition.TimingUnion*)((byte*)in_native + 72));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDate__union + 0)).ToFhirDate();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDate__union + 0)).ToFhirDate();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 		case FHIR_Marshalling.TriggerDefinition.TimingType.DateTime: {
 			var _timingDateTime__union = &(*(FHIR_Marshalling.TriggerDefinition.TimingUnion*)((byte*)in_native + 72));
-			var _timing_primative = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
-			fhirInstance.Timing = _timing_primative;
+			var _timing_temp = (*(FHIR_Marshalling.ISO8601_Time*)((byte*)_timingDateTime__union + 0)).ToFhirDateTime();
+			if(_timing_temp != null) {
+				fhirInstance.Timing = _timing_temp;
+			}
+			
 		} break;
 	}
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 96)) > 0) {
@@ -66265,27 +67839,31 @@ public static Hl7.Fhir.Model.UsageContext? Marshal_UsageContext(FHIR_Marshalling
 	switch((*(FHIR_Marshalling.UsageContext.ValueType*)((byte*)in_native + 56))) {
 		case FHIR_Marshalling.UsageContext.ValueType.CodeableConcept: {
 			var _valueCodeableConcept__union = &(*(FHIR_Marshalling.UsageContext.ValueUnion*)((byte*)in_native + 48));
-			var _value_primative = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			if((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)) != null) {
+				fhirInstance.Value = Marshal_CodeableConcept((*(FHIR_Marshalling.CodeableConcept**)((byte*)_valueCodeableConcept__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.UsageContext.ValueType.Quantity: {
 			var _valueQuantity__union = &(*(FHIR_Marshalling.UsageContext.ValueUnion*)((byte*)in_native + 48));
-			var _value_primative = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			if((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Quantity((*(FHIR_Marshalling.Quantity**)((byte*)_valueQuantity__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.UsageContext.ValueType.Range: {
 			var _valueRange__union = &(*(FHIR_Marshalling.UsageContext.ValueUnion*)((byte*)in_native + 48));
-			var _value_primative = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			if((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Range((*(FHIR_Marshalling.Range**)((byte*)_valueRange__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 		case FHIR_Marshalling.UsageContext.ValueType.Reference: {
 			var _valueReference__union = &(*(FHIR_Marshalling.UsageContext.ValueUnion*)((byte*)in_native + 48));
-			var _value_primative = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			if((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)) != null) {
+				fhirInstance.Value = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)_valueReference__union + 0)));
+			}
 			
-			fhirInstance.Value = _value_primative;
 		} break;
 	}
 	return fhirInstance;
@@ -66313,7 +67891,7 @@ public static Hl7.Fhir.Model.Quantity? Marshal_SimpleQuantity(FHIR_Marshalling.S
 		
 	}
 	
-	var _value_temp = new FhirDecimal((*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).DecimalValue());
+	var _value_temp = (*(FHIR_Marshalling.String8*)((byte*)in_native + 40)).ToFhirDecimal();
 	if(_value_temp != null) {
 		fhirInstance.ValueElement = _value_temp;
 	}

@@ -45,7 +45,7 @@ namespace FHIR_Marshalling
             IFhirSerializationEngine Serializer = FhirSerializationEngineFactory.Ostrich(ModelInfo.ModelInspector);
             var options = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
 
-            var nativeDeserializer = new NativeFHIRDeserializer(10);
+            //var nativeDeserializer = new NativeFHIRDeserializer(10);
 
             double firelyTime = 0;
             double marshallingTime = 0;
@@ -62,7 +62,7 @@ namespace FHIR_Marshalling
             {
                 Hl7.Fhir.Model.Bundle bundle = new Hl7.Fhir.Model.Bundle();
                 var stream = File.Open(d, FileMode.Open);
-                bundle = (Hl7.Fhir.Model.Bundle)nativeDeserializer.DeserializeStream(stream);
+                //bundle = (Hl7.Fhir.Model.Bundle)nativeDeserializer.DeserializeStream(stream);
                 if (doSingle)
                 {
                     using (StreamWriter writer = new StreamWriter("D:/Programming Stuff/FHIR-C-Marshalling/FHIR-Marshalling/Output/profiles-others-native.json"))
