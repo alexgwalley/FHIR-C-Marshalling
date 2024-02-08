@@ -64,18 +64,18 @@ namespace FHIR_Marshalling
         public Integer? ToFhirInteger()
         {
             if (HasValue == 0) return null;
-            return new Integer(HasValue);
+            return new Integer(Value);
         }
         public UnsignedInt? ToFhirUnsignedInt()
         {
             if (HasValue == 0) return null;
-            return new UnsignedInt(HasValue);
+            return new UnsignedInt(Value);
         }
 
         public PositiveInt? ToFhirPositiveInt()
         {
             if (HasValue == 0) return null;
-            return new PositiveInt(HasValue);
+            return new PositiveInt(Value);
         }
 
     };
