@@ -3,32 +3,15 @@
     <Nullable>enable</Nullable>
     <TargetFramework>net6</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="bin\x64\Debug\Output\profiles-others-firely.json" />
-    <Content Include="bin\x64\Debug\Output\profiles-others-native.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Hl7.Fhir.R4" Version="5.5.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\Output\" />
-    <Folder Include="Input\" />
-    <Folder Include="Output\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Marshalling-DLL\Marshalling-DLL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="deserialization_dll.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="deserialization_dll.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
