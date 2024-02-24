@@ -1,7 +1,4 @@
 # FHIR-C-Marshalling
 
-### Marshalling-Tests
-Facilitates the CodeGen and various performance tests.
-
-### FHIR-Marshalling
-Example use of dll from [https://github.com/alexgwalley/FHIR-in-C]
+This project is a C# wrapper to use the native FHIR deserializer from the FHIR-in-C project. 
+It calls the DLL to deserialize FHIR JSON then marshalls the deserialized Native FHIR C structs into Firely SDK C# classes for regular use.
