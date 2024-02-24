@@ -1,4 +1,28 @@
-﻿using Hl7.Fhir.Introspection;
+﻿/*
+MIT License
+
+Copyright (c) 2024 Alex Walley
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using System;
@@ -7,7 +31,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
-using static FHIR_Marshalling.MainClass;
 
 namespace FHIR_Marshalling
 {
@@ -158,7 +181,7 @@ namespace FHIR_Marshalling
             {
                 if (csType == firelyType)
                 {
-                    return $"{nativeAccessor}";
+                    return nativeAccessor;
                 }
 
                 var constructor = firelyType.GetConstructor(new Type[] { csType });
@@ -374,44 +397,22 @@ namespace FHIR_Marshalling
                                 firelyInstance);
                         }
                         break;
-                        
+
                     case MemberTypeEnum.Enum:
-                    {
+                        {
                             var underlying = member.FirelyType.GetGenericArguments()[0];
                             string underlyingFullName = underlying.FullName.Replace("+", ".");
 
                             string nativeFieldAccessor = AccessorForNative("in_native", nativeType, member.NativeField);
-                            /*
-                            builder.AppendLine($"switch({nativeFieldAccessor}.ToString()) {{");
+                            string tempCodeName = $"__temp_code{member.FirelyFieldName}";
+                            builder.AppendLine($"var {tempCodeName} = {nativeFieldAccessor}.ToString();");
+                            builder.AppendLine($"if({tempCodeName} != null) {{");
                             builder.IndentedAmount += 1;
-                            foreach (var entry in member.EnumEntries)
-                            {
-                                builder.AppendLine($"case \"{entry.EnumLiteral.Literal}\": {{");
-                                builder.IndentedAmount += 1;
-                            */
-
-                                string tempCodeName = $"__temp_code{member.FirelyFieldName}";
-                                builder.AppendLine($"var {tempCodeName} = {nativeFieldAccessor}.ToString();");
-                                builder.AppendLine($"if({tempCodeName} != null) {{");
-                                builder.IndentedAmount += 1;
-                                    var newCode = $"new Code<{underlyingFullName}> ()";
-                                    builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {newCode};");
-                                    builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.ObjectValue = {tempCodeName};");
-                                builder.IndentedAmount -= 1;
-                                builder.AppendLine($"}}");
-                                /*
-                                builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.ObjectValue = {underlyingFullName}.{entry.Value};");
-                                */
-                                //builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = new Code<{underlyingFullName}>({underlyingFullName}.{entry.Value});");
-
-/*
-                                builder.IndentedAmount -= 1;
-                                builder.AppendLine($"}} break;");
-                            }
-
+                            var newCode = $"new Code<{underlyingFullName}> ()";
+                            builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {newCode};");
+                            builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.ObjectValue = {tempCodeName};");
                             builder.IndentedAmount -= 1;
-                            builder.AppendLine("}");
-                            */
+                            builder.AppendLine($"}}");
                         }
                         break;
 
@@ -437,11 +438,6 @@ namespace FHIR_Marshalling
                                     entry.NativeType, member.NativeFieldName,
                                     entry.FirelyType, member.FirelyFieldName,
                                     firelyInstance);
-
-                                /*
-                                var primativeName = AppendValueCreation(builder, entry.NativeType, member.NativeFieldName, unionFieldAccessor, entry.FirelyType);
-                                builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {primativeName};");
-                                */
 
                                 builder.IndentedAmount -= 1;
                                 builder.AppendLine($"}} break;");
@@ -473,35 +469,10 @@ namespace FHIR_Marshalling
                         builder.AppendLine("{");
 
                         builder.IndentedAmount += 1;
-
-                            /*
-                        builder.AppendLine($"switch({nativeFieldAccessor}.ToString()) {{");
-                        builder.IndentedAmount += 1;
-                        foreach (var entry in member.EnumEntries)
-                        {
-                            builder.AppendLine($"case \"{entry.EnumLiteral.Literal}\": {{");
-                            builder.IndentedAmount += 1;
-                            */
-
                             var newCode = $"new Code<{underlyingFullName}> ()";
                             builder.AppendLine($"var __code = {newCode};");
-                            //builder.AppendLine($"__code.ObjectValue = {underlyingFullName}.{entry.Value};");
                             builder.AppendLine($"__code.ObjectValue = {nativeFieldAccessor}.ToString();");
-
-                                /*
-                            builder.AppendLine($"var __code = new Code<{underlyingFullName}>({underlyingFullName}.{entry.Value});");
-                                */
-
                             builder.AppendLine($"{listName}.Add(__code);");
-/*
-                            builder.IndentedAmount -= 1;
-                            builder.AppendLine($"}} break;");
-                        }
-
-                        builder.IndentedAmount -= 1;
-                        builder.AppendLine("}");
-*/
-
                         builder.AppendLine("}");
                         builder.AppendLine("");
                         builder.IndentedAmount -= 1;
@@ -553,16 +524,14 @@ namespace FHIR_Marshalling
                             var primativeName = AppendValueCreation(builder, member.NativeType, member.NativeFieldName, nativeFieldAccessor, member.FirelyType);
                             builder.AppendLine($"{listName}.Add({primativeName});");
 
-                            builder.AppendLine("}");
-                            builder.AppendLine("");
+                            builder.AppendLine("}"); builder.AppendLine("");
                             builder.IndentedAmount -= 1;
 
                             string assignmentString = $"{firelyInstance}.{member.FirelyFieldName} = {listName};";
                             builder.AppendLine(assignmentString);
                             builder.AppendLine("");
 
-                            builder.AppendLine("}");
-                            builder.AppendLine("");
+                            builder.AppendLine("}"); builder.AppendLine("");
                             builder.IndentedAmount -= 1;
 
                     }break;
@@ -581,7 +550,6 @@ namespace FHIR_Marshalling
                             string listInit = $"var {listName}  = new List<{listInnerType}>((int){countAccessor});";
                             builder.AppendLine(listInit);
 
-
                             string forStart = $"for(ulong i = 0; i < (ulong){countAccessor}; i++)";
                             builder.AppendLine(forStart);
                             builder.AppendLine("{");
@@ -599,16 +567,14 @@ namespace FHIR_Marshalling
                             builder.AppendLine(listAdditionString);
 
                             builder.IndentedAmount -= 1;
-                            builder.AppendLine("}");
-                            builder.AppendLine("");
+                            builder.AppendLine("}"); builder.AppendLine("");
 
                             string assignmentString = $"{firelyInstance}.{member.FirelyFieldName} = {listName};";
                             builder.AppendLine(assignmentString);
                             builder.AppendLine("");
 
                             builder.IndentedAmount -= 1;
-                            builder.AppendLine("}");
-                            builder.AppendLine("");
+                            builder.AppendLine("}"); builder.AppendLine("");
                         }
                         break;
                 }
