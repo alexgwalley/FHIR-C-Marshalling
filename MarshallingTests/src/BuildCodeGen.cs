@@ -76,7 +76,9 @@ SOFTWARE.
 
             using(var file = new StreamWriter("Output/GeneratedMarshalling.cs"))
             {
+                file.WriteLine("/*");
                 file.WriteLine(MIT_LICENSE);
+                file.WriteLine("*/");
                 file.WriteLine("using Hl7.Fhir.Model;");
                 file.WriteLine("using FHIR_Marshalling;");
                 file.WriteLine("using System;");

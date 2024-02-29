@@ -90,8 +90,8 @@ namespace FHIR_Marshalling
 
         public static bool IsNativePrimative(Type type)
         {
-            return type == typeof(String8) || 
-                type == typeof(String8) || 
+            return type == typeof(NullableString8) || 
+                type == typeof(NullableString8) || 
                 type == typeof(ISO8601_Time) || 
                 type == typeof(NullableInt32) ||
                 type == typeof(NullableDouble) ||
@@ -114,9 +114,9 @@ namespace FHIR_Marshalling
             new ConversionEntry{ FirelyType = typeof(FhirDateTime), ExpectedNativeType = typeof(ISO8601_Time), SingleFormatString = "{0}.ToFhirDateTime()" },
             new ConversionEntry{ FirelyType = typeof(Time), ExpectedNativeType = typeof(ISO8601_Time), SingleFormatString = "{0}.ToFhirTime()" },
             new ConversionEntry{ FirelyType = typeof(FhirBoolean), ExpectedNativeType = typeof(NullableBoolean), SingleFormatString = "{0}.ToFhirBoolean()" },
-            new ConversionEntry{ FirelyType = typeof(decimal), ExpectedNativeType = typeof(String8), SingleFormatString = "{0}.DecimalValue()" },
-            new ConversionEntry{ FirelyType = typeof(string), ExpectedNativeType = typeof(String8), SingleFormatString = "{0}.ToString()" },
-            new ConversionEntry{ FirelyType = typeof(FhirDecimal), ExpectedNativeType = typeof(String8), SingleFormatString = "{0}.ToFhirDecimal()" },
+            new ConversionEntry{ FirelyType = typeof(decimal), ExpectedNativeType = typeof(NullableString8), SingleFormatString = "{0}.DecimalValue()" },
+            new ConversionEntry{ FirelyType = typeof(string), ExpectedNativeType = typeof(NullableString8), SingleFormatString = "{0}.ToString()" },
+            new ConversionEntry{ FirelyType = typeof(FhirDecimal), ExpectedNativeType = typeof(NullableString8), SingleFormatString = "{0}.ToFhirDecimal()" },
             new ConversionEntry{ FirelyType = typeof(Integer), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = "{0}.ToFhirInteger()" },
             new ConversionEntry{ FirelyType = typeof(PositiveInt), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = "{0}.ToFhirPositiveInt()" },
             new ConversionEntry{ FirelyType = typeof(UnsignedInt), ExpectedNativeType = typeof(NullableInt32), SingleFormatString = "{0}.ToFhirUnsignedInt()" },
@@ -127,14 +127,14 @@ namespace FHIR_Marshalling
         // TODO(agw): combine this into one
         public static Dictionary<Type, Type> CSTypeFromNativeType = new Dictionary<Type, Type>()
         {
-            {typeof(String8), typeof(string) },
+            {typeof(NullableString8), typeof(string) },
             {typeof(int), typeof(int) },
             {typeof(NullableInt32), typeof(int?) },
         };
 
         public static string CSPrimativeFromNativePrimative(Type nativeType, string accessor)
         {
-            if(nativeType == typeof(String8))
+            if(nativeType == typeof(NullableString8))
             {
                 return $"{accessor}.ToString()";
             }
@@ -720,7 +720,7 @@ namespace FHIR_Marshalling
                 else if (IsNativePrimative(field.FieldType))
                 {
 
-                    if (firelyPropertyType.IsGenericType && field.FieldType == typeof(String8))
+                    if (firelyPropertyType.IsGenericType && field.FieldType == typeof(NullableString8))
                     {
                         memberMapping.MemberType = MemberTypeEnum.Enum;
 
@@ -745,7 +745,7 @@ namespace FHIR_Marshalling
                     // Is primative array
                     if (IsNativePrimative(pointedToStructureType))
                     {
-                        if (firelyPropertyType.GetGenericArguments()[0].IsGenericType && field.FieldType == typeof(String8*))
+                        if (firelyPropertyType.GetGenericArguments()[0].IsGenericType && field.FieldType == typeof(NullableString8*))
                         {
                             memberMapping.MemberType = MemberTypeEnum.Array_Of_Enum;
 

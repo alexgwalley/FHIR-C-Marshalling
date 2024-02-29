@@ -34,14 +34,15 @@ using System.Threading.Tasks;
 namespace FHIR_Marshalling
 {
     [StructLayout(LayoutKind.Explicit)]
-    public unsafe struct String8
+    public unsafe struct NullableString8
     {
         [FieldOffset(0)] public readonly byte* str;
         [FieldOffset(8)] public readonly UIntPtr size;
+        [FieldOffset(16)] public readonly Int32 hasValue;
 
         public string? ToString()
         {
-            if ((int)size == 0) return null;
+            if (hasValue == 0) return null;
             return Encoding.UTF8.GetString(str, (int)size);
         }
         public decimal? DecimalValue()
