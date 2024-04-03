@@ -88,8 +88,10 @@ namespace FHIR_Marshalling
             public IList<MemberMappingInfo> Members;
         };
 
-        public static bool IsNativePrimative(Type type)
+        public static bool IsNativePrimative(Type? type)
         {
+            if (type == null) return false;
+
             return type == typeof(NullableString8) || 
                 type == typeof(NullableString8) || 
                 type == typeof(ISO8601_Time) || 
@@ -213,7 +215,7 @@ namespace FHIR_Marshalling
 
             if (firelyType == typeof(Base64Binary))
             {
-                builder.AppendLine($"Base64Binary {primativeName} = null;");
+                builder.AppendLine($"Base64Binary? {primativeName} = null;");
                 builder.AppendLine($"if({nativeAccessor}.str != null) {{");
                 builder.IndentedAmount += 1;
                 string byteArrayName = $"{nativeFieldName}_arr";
@@ -616,7 +618,7 @@ namespace FHIR_Marshalling
                 if (baseType != typeof(Hl7.Fhir.Model.Resource)) { continue; }
 
                 string deserializeName = $"Marshal_{kvp.Key.Name}";
-                builder.AppendLine($"case FHIR_Marshalling.ResourceType.{kvp.Key.Name}: return ({firelyResourceName}){deserializeName}(({kvp.Key.FullName}*)resource);");
+                builder.AppendLine($"case FHIR_Marshalling.ResourceType.{kvp.Key.Name}: return ({firelyResourceName}?){deserializeName}(({kvp.Key.FullName}*)resource);");
             }
 
             builder.IndentedAmount -= 1;
@@ -698,10 +700,10 @@ namespace FHIR_Marshalling
 
                         //Get matching Firely Type
                         Type unionFirelyType;
-                        Type unionFieldType = unionField.FieldType;
+                        Type unionFieldType = unionField.FieldType ?? throw new Exception();
                         if(unionFieldType.IsPointer) { unionFieldType = unionFieldType.GetElementType();}
 
-                        if(!NativeToFirely.TryGetValue(unionFieldType, out unionFirelyType))
+                        if(!NativeToFirely.TryGetValue(unionFieldType ?? throw new Exception(), out unionFirelyType))
                         {
                             var fhirType = unionField.GetCustomAttribute<NativeFhirTypeAttribute>();
                             if(fhirType == null) { throw new NotImplementedException(); }
@@ -758,7 +760,7 @@ namespace FHIR_Marshalling
                             memberMapping.MemberType = MemberTypeEnum.Array_Of_Primative;
                         }
 
-                        memberMapping.NativeType = pointedToStructureType;
+                        memberMapping.NativeType = pointedToStructureType ?? throw new Exception();
                         memberMapping.NativeFieldName = field.Name;
                         memberMapping.NativeCountField = nativeFields[index - 1];
 
@@ -774,7 +776,7 @@ namespace FHIR_Marshalling
                     {
                         memberMapping.MemberType = MemberTypeEnum.Array_Of_Classes;
 
-                        memberMapping.NativeType = pointedToStructureType.UnderlyingSystemType.GetElementType();
+                        memberMapping.NativeType = pointedToStructureType.UnderlyingSystemType.GetElementType() ?? throw new Exception();
                         memberMapping.NativeFieldName = field.Name;
                         memberMapping.NativeCountField = nativeFields[index - 1];
 
@@ -827,8 +829,8 @@ namespace FHIR_Marshalling
                 EnumEntry entry = new EnumEntry
                 {
                     Field = field,
-                    Value = enumValues.GetValue(i),
-                    EnumLiteral = field.GetCustomAttribute<EnumLiteralAttribute>()
+                    Value = enumValues.GetValue(i) ?? throw new Exception(),
+                    EnumLiteral = field.GetCustomAttribute<EnumLiteralAttribute>() ?? throw new Exception()
                 };
                 entries[i] = entry;
             }
@@ -842,7 +844,7 @@ namespace FHIR_Marshalling
             public string FhirName;
         }
         private static Dictionary<Type, PropertyEntry[]> propertyInfoCache = new Dictionary<Type, PropertyEntry[]>();
-        public static PropertyInfo Firely_GetPropertyWithFhirElementName(Type type, string name)
+        public static PropertyInfo? Firely_GetPropertyWithFhirElementName(Type type, string name)
         {
             PropertyEntry[] propertyInfos;
             if(!propertyInfoCache.TryGetValue(type, out propertyInfos))
@@ -1607,7 +1609,7 @@ namespace FHIR_Marshalling
             builder = new StringBuilder();
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return builder.ToString();
         }
