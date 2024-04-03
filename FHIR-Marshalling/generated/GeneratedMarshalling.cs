@@ -2319,7 +2319,7 @@ public static Hl7.Fhir.Model.AuditEvent.EntityComponent? Marshal_AuditEvent_Enti
 		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
-	Base64Binary _query_primative = null;
+	Base64Binary? _query_primative = null;
 	if((*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 160)).str != null) {
 		byte[] _query_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 160)).size];
 		Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 160)).str, _query_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 160)).size);
@@ -2392,7 +2392,7 @@ public static Hl7.Fhir.Model.AuditEvent.DetailComponent? Marshal_AuditEvent_Enti
 		} break;
 		case FHIR_Marshalling.AuditEvent_Entity_Detail.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.AuditEvent_Entity_Detail.ValueUnion*)((byte*)in_native + 88));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -2534,7 +2534,7 @@ public static Hl7.Fhir.Model.Binary? Marshal_Binary(FHIR_Marshalling.Binary* in_
 		fhirInstance.SecurityContext = Marshal_Reference((*(FHIR_Marshalling.Reference**)((byte*)in_native + 112)));
 	}
 	
-	Base64Binary _data_primative = null;
+	Base64Binary? _data_primative = null;
 	if((*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 120)).str != null) {
 		byte[] _data_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 120)).size];
 		Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 120)).str, _data_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 120)).size);
@@ -16248,7 +16248,7 @@ public static Hl7.Fhir.Model.Device.UdiCarrierComponent? Marshal_Device_UdiCarri
 		fhirInstance.JurisdictionElement = new Hl7.Fhir.Model.FhirUri(_jurisdiction_temp);
 	}
 	
-	Base64Binary _carrierAIDC_primative = null;
+	Base64Binary? _carrierAIDC_primative = null;
 	if((*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 136)).str != null) {
 		byte[] _carrierAIDC_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 136)).size];
 		Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 136)).str, _carrierAIDC_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 136)).size);
@@ -34402,7 +34402,7 @@ public static Hl7.Fhir.Model.MedicationKnowledge.DrugCharacteristicComponent? Ma
 		} break;
 		case FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.MedicationKnowledge_DrugCharacteristic.ValueUnion*)((byte*)in_native + 72));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -42488,7 +42488,7 @@ public static Hl7.Fhir.Model.Parameters.ParameterComponent? Marshal_Parameters_P
 	switch((*(FHIR_Marshalling.Parameters_Parameter.ValueType*)((byte*)in_native + 112))) {
 		case FHIR_Marshalling.Parameters_Parameter.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.Parameters_Parameter.ValueUnion*)((byte*)in_native + 88));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -53096,7 +53096,7 @@ public static Hl7.Fhir.Model.StructureMap.SourceComponent? Marshal_StructureMap_
 	switch((*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType*)((byte*)in_native + 168))) {
 		case FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueType.Base64Binary: {
 			var _defaultValueBase64Binary__union = &(*(FHIR_Marshalling.StructureMap_Group_Rule_Source.DefaultValueUnion*)((byte*)in_native + 144));
-			Base64Binary _defaultValue_primative = null;
+			Base64Binary? _defaultValue_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).str != null) {
 				byte[] _defaultValue_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).str, _defaultValue_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).size);
@@ -57813,7 +57813,7 @@ public static Hl7.Fhir.Model.Task.ParameterComponent? Marshal_Task_Input(FHIR_Ma
 	switch((*(FHIR_Marshalling.Task_Input.ValueType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.Task_Input.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.Task_Input.ValueUnion*)((byte*)in_native + 72));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -58228,7 +58228,7 @@ public static Hl7.Fhir.Model.Task.OutputComponent? Marshal_Task_Output(FHIR_Mars
 	switch((*(FHIR_Marshalling.Task_Output.ValueType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.Task_Output.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.Task_Output.ValueUnion*)((byte*)in_native + 72));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -62855,7 +62855,7 @@ public static Hl7.Fhir.Model.Attachment? Marshal_Attachment(FHIR_Marshalling.Att
 		fhirInstance.LanguageElement = new Hl7.Fhir.Model.Code(_language_temp);
 	}
 	
-	Base64Binary _data_primative = null;
+	Base64Binary? _data_primative = null;
 	if((*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 96)).str != null) {
 		byte[] _data_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 96)).size];
 		Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 96)).str, _data_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 96)).size);
@@ -62873,7 +62873,7 @@ public static Hl7.Fhir.Model.Attachment? Marshal_Attachment(FHIR_Marshalling.Att
 		fhirInstance.SizeElement = _size_temp;
 	}
 	
-	Base64Binary _hash_primative = null;
+	Base64Binary? _hash_primative = null;
 	if((*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 152)).str != null) {
 		byte[] _hash_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 152)).size];
 		Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 152)).str, _hash_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 152)).size);
@@ -63872,7 +63872,7 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 	switch((*(FHIR_Marshalling.ElementDefinition.DefaultValueType*)((byte*)in_native + 400))) {
 		case FHIR_Marshalling.ElementDefinition.DefaultValueType.Base64Binary: {
 			var _defaultValueBase64Binary__union = &(*(FHIR_Marshalling.ElementDefinition.DefaultValueUnion*)((byte*)in_native + 376));
-			Base64Binary _defaultValue_primative = null;
+			Base64Binary? _defaultValue_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).str != null) {
 				byte[] _defaultValue_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).str, _defaultValue_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_defaultValueBase64Binary__union + 0)).size);
@@ -64256,7 +64256,7 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 	switch((*(FHIR_Marshalling.ElementDefinition.FixedType*)((byte*)in_native + 480))) {
 		case FHIR_Marshalling.ElementDefinition.FixedType.Base64Binary: {
 			var _fixedBase64Binary__union = &(*(FHIR_Marshalling.ElementDefinition.FixedUnion*)((byte*)in_native + 456));
-			Base64Binary _fixed_primative = null;
+			Base64Binary? _fixed_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_fixedBase64Binary__union + 0)).str != null) {
 				byte[] _fixed_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_fixedBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_fixedBase64Binary__union + 0)).str, _fixed_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_fixedBase64Binary__union + 0)).size);
@@ -64630,7 +64630,7 @@ public static Hl7.Fhir.Model.ElementDefinition? Marshal_ElementDefinition(FHIR_M
 	switch((*(FHIR_Marshalling.ElementDefinition.PatternType*)((byte*)in_native + 512))) {
 		case FHIR_Marshalling.ElementDefinition.PatternType.Base64Binary: {
 			var _patternBase64Binary__union = &(*(FHIR_Marshalling.ElementDefinition.PatternUnion*)((byte*)in_native + 488));
-			Base64Binary _pattern_primative = null;
+			Base64Binary? _pattern_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_patternBase64Binary__union + 0)).str != null) {
 				byte[] _pattern_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_patternBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_patternBase64Binary__union + 0)).str, _pattern_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_patternBase64Binary__union + 0)).size);
@@ -65459,7 +65459,7 @@ public static Hl7.Fhir.Model.ElementDefinition.ExampleComponent? Marshal_Element
 	switch((*(FHIR_Marshalling.ElementDefinition_Example.ValueType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.ElementDefinition_Example.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.ElementDefinition_Example.ValueUnion*)((byte*)in_native + 72));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -66058,7 +66058,7 @@ public static Hl7.Fhir.Model.Extension? Marshal_Extension(FHIR_Marshalling.Exten
 	switch((*(FHIR_Marshalling.Extension.ValueType*)((byte*)in_native + 96))) {
 		case FHIR_Marshalling.Extension.ValueType.Base64Binary: {
 			var _valueBase64Binary__union = &(*(FHIR_Marshalling.Extension.ValueUnion*)((byte*)in_native + 72));
-			Base64Binary _value_primative = null;
+			Base64Binary? _value_primative = null;
 			if((*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str != null) {
 				byte[] _value_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size];
 				Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).str, _value_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)_valueBase64Binary__union + 0)).size);
@@ -67436,7 +67436,7 @@ public static Hl7.Fhir.Model.Signature? Marshal_Signature(FHIR_Marshalling.Signa
 		fhirInstance.SigFormatElement = new Hl7.Fhir.Model.Code(_sigFormat_temp);
 	}
 	
-	Base64Binary _data_primative = null;
+	Base64Binary? _data_primative = null;
 	if((*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 144)).str != null) {
 		byte[] _data_arr = new byte[(int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 144)).size];
 		Marshal.Copy((IntPtr)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 144)).str, _data_arr, 0, (int)(*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 144)).size);
@@ -67952,152 +67952,152 @@ public static Hl7.Fhir.Model.Resource? Marshal_Resource(FHIR_Marshalling.Resourc
 	var type = *((ResourceType*)resource);
 	switch(type)
 	{
-		case FHIR_Marshalling.ResourceType.Account: return (Hl7.Fhir.Model.Resource)Marshal_Account((FHIR_Marshalling.Account*)resource);
-		case FHIR_Marshalling.ResourceType.ActivityDefinition: return (Hl7.Fhir.Model.Resource)Marshal_ActivityDefinition((FHIR_Marshalling.ActivityDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.AdverseEvent: return (Hl7.Fhir.Model.Resource)Marshal_AdverseEvent((FHIR_Marshalling.AdverseEvent*)resource);
-		case FHIR_Marshalling.ResourceType.AllergyIntolerance: return (Hl7.Fhir.Model.Resource)Marshal_AllergyIntolerance((FHIR_Marshalling.AllergyIntolerance*)resource);
-		case FHIR_Marshalling.ResourceType.Appointment: return (Hl7.Fhir.Model.Resource)Marshal_Appointment((FHIR_Marshalling.Appointment*)resource);
-		case FHIR_Marshalling.ResourceType.AppointmentResponse: return (Hl7.Fhir.Model.Resource)Marshal_AppointmentResponse((FHIR_Marshalling.AppointmentResponse*)resource);
-		case FHIR_Marshalling.ResourceType.AuditEvent: return (Hl7.Fhir.Model.Resource)Marshal_AuditEvent((FHIR_Marshalling.AuditEvent*)resource);
-		case FHIR_Marshalling.ResourceType.Basic: return (Hl7.Fhir.Model.Resource)Marshal_Basic((FHIR_Marshalling.Basic*)resource);
-		case FHIR_Marshalling.ResourceType.Binary: return (Hl7.Fhir.Model.Resource)Marshal_Binary((FHIR_Marshalling.Binary*)resource);
-		case FHIR_Marshalling.ResourceType.BiologicallyDerivedProduct: return (Hl7.Fhir.Model.Resource)Marshal_BiologicallyDerivedProduct((FHIR_Marshalling.BiologicallyDerivedProduct*)resource);
-		case FHIR_Marshalling.ResourceType.BodyStructure: return (Hl7.Fhir.Model.Resource)Marshal_BodyStructure((FHIR_Marshalling.BodyStructure*)resource);
-		case FHIR_Marshalling.ResourceType.Bundle: return (Hl7.Fhir.Model.Resource)Marshal_Bundle((FHIR_Marshalling.Bundle*)resource);
-		case FHIR_Marshalling.ResourceType.CapabilityStatement: return (Hl7.Fhir.Model.Resource)Marshal_CapabilityStatement((FHIR_Marshalling.CapabilityStatement*)resource);
-		case FHIR_Marshalling.ResourceType.CarePlan: return (Hl7.Fhir.Model.Resource)Marshal_CarePlan((FHIR_Marshalling.CarePlan*)resource);
-		case FHIR_Marshalling.ResourceType.CareTeam: return (Hl7.Fhir.Model.Resource)Marshal_CareTeam((FHIR_Marshalling.CareTeam*)resource);
-		case FHIR_Marshalling.ResourceType.CatalogEntry: return (Hl7.Fhir.Model.Resource)Marshal_CatalogEntry((FHIR_Marshalling.CatalogEntry*)resource);
-		case FHIR_Marshalling.ResourceType.ChargeItem: return (Hl7.Fhir.Model.Resource)Marshal_ChargeItem((FHIR_Marshalling.ChargeItem*)resource);
-		case FHIR_Marshalling.ResourceType.ChargeItemDefinition: return (Hl7.Fhir.Model.Resource)Marshal_ChargeItemDefinition((FHIR_Marshalling.ChargeItemDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.Claim: return (Hl7.Fhir.Model.Resource)Marshal_Claim((FHIR_Marshalling.Claim*)resource);
-		case FHIR_Marshalling.ResourceType.ClaimResponse: return (Hl7.Fhir.Model.Resource)Marshal_ClaimResponse((FHIR_Marshalling.ClaimResponse*)resource);
-		case FHIR_Marshalling.ResourceType.ClinicalImpression: return (Hl7.Fhir.Model.Resource)Marshal_ClinicalImpression((FHIR_Marshalling.ClinicalImpression*)resource);
-		case FHIR_Marshalling.ResourceType.CodeSystem: return (Hl7.Fhir.Model.Resource)Marshal_CodeSystem((FHIR_Marshalling.CodeSystem*)resource);
-		case FHIR_Marshalling.ResourceType.Communication: return (Hl7.Fhir.Model.Resource)Marshal_Communication((FHIR_Marshalling.Communication*)resource);
-		case FHIR_Marshalling.ResourceType.CommunicationRequest: return (Hl7.Fhir.Model.Resource)Marshal_CommunicationRequest((FHIR_Marshalling.CommunicationRequest*)resource);
-		case FHIR_Marshalling.ResourceType.CompartmentDefinition: return (Hl7.Fhir.Model.Resource)Marshal_CompartmentDefinition((FHIR_Marshalling.CompartmentDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.Composition: return (Hl7.Fhir.Model.Resource)Marshal_Composition((FHIR_Marshalling.Composition*)resource);
-		case FHIR_Marshalling.ResourceType.ConceptMap: return (Hl7.Fhir.Model.Resource)Marshal_ConceptMap((FHIR_Marshalling.ConceptMap*)resource);
-		case FHIR_Marshalling.ResourceType.Condition: return (Hl7.Fhir.Model.Resource)Marshal_Condition((FHIR_Marshalling.Condition*)resource);
-		case FHIR_Marshalling.ResourceType.Consent: return (Hl7.Fhir.Model.Resource)Marshal_Consent((FHIR_Marshalling.Consent*)resource);
-		case FHIR_Marshalling.ResourceType.Contract: return (Hl7.Fhir.Model.Resource)Marshal_Contract((FHIR_Marshalling.Contract*)resource);
-		case FHIR_Marshalling.ResourceType.Coverage: return (Hl7.Fhir.Model.Resource)Marshal_Coverage((FHIR_Marshalling.Coverage*)resource);
-		case FHIR_Marshalling.ResourceType.CoverageEligibilityRequest: return (Hl7.Fhir.Model.Resource)Marshal_CoverageEligibilityRequest((FHIR_Marshalling.CoverageEligibilityRequest*)resource);
-		case FHIR_Marshalling.ResourceType.CoverageEligibilityResponse: return (Hl7.Fhir.Model.Resource)Marshal_CoverageEligibilityResponse((FHIR_Marshalling.CoverageEligibilityResponse*)resource);
-		case FHIR_Marshalling.ResourceType.DetectedIssue: return (Hl7.Fhir.Model.Resource)Marshal_DetectedIssue((FHIR_Marshalling.DetectedIssue*)resource);
-		case FHIR_Marshalling.ResourceType.Device: return (Hl7.Fhir.Model.Resource)Marshal_Device((FHIR_Marshalling.Device*)resource);
-		case FHIR_Marshalling.ResourceType.DeviceDefinition: return (Hl7.Fhir.Model.Resource)Marshal_DeviceDefinition((FHIR_Marshalling.DeviceDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.DeviceMetric: return (Hl7.Fhir.Model.Resource)Marshal_DeviceMetric((FHIR_Marshalling.DeviceMetric*)resource);
-		case FHIR_Marshalling.ResourceType.DeviceRequest: return (Hl7.Fhir.Model.Resource)Marshal_DeviceRequest((FHIR_Marshalling.DeviceRequest*)resource);
-		case FHIR_Marshalling.ResourceType.DeviceUseStatement: return (Hl7.Fhir.Model.Resource)Marshal_DeviceUseStatement((FHIR_Marshalling.DeviceUseStatement*)resource);
-		case FHIR_Marshalling.ResourceType.DiagnosticReport: return (Hl7.Fhir.Model.Resource)Marshal_DiagnosticReport((FHIR_Marshalling.DiagnosticReport*)resource);
-		case FHIR_Marshalling.ResourceType.DocumentManifest: return (Hl7.Fhir.Model.Resource)Marshal_DocumentManifest((FHIR_Marshalling.DocumentManifest*)resource);
-		case FHIR_Marshalling.ResourceType.DocumentReference: return (Hl7.Fhir.Model.Resource)Marshal_DocumentReference((FHIR_Marshalling.DocumentReference*)resource);
-		case FHIR_Marshalling.ResourceType.EffectEvidenceSynthesis: return (Hl7.Fhir.Model.Resource)Marshal_EffectEvidenceSynthesis((FHIR_Marshalling.EffectEvidenceSynthesis*)resource);
-		case FHIR_Marshalling.ResourceType.Encounter: return (Hl7.Fhir.Model.Resource)Marshal_Encounter((FHIR_Marshalling.Encounter*)resource);
-		case FHIR_Marshalling.ResourceType.Endpoint: return (Hl7.Fhir.Model.Resource)Marshal_Endpoint((FHIR_Marshalling.Endpoint*)resource);
-		case FHIR_Marshalling.ResourceType.EnrollmentRequest: return (Hl7.Fhir.Model.Resource)Marshal_EnrollmentRequest((FHIR_Marshalling.EnrollmentRequest*)resource);
-		case FHIR_Marshalling.ResourceType.EnrollmentResponse: return (Hl7.Fhir.Model.Resource)Marshal_EnrollmentResponse((FHIR_Marshalling.EnrollmentResponse*)resource);
-		case FHIR_Marshalling.ResourceType.EpisodeOfCare: return (Hl7.Fhir.Model.Resource)Marshal_EpisodeOfCare((FHIR_Marshalling.EpisodeOfCare*)resource);
-		case FHIR_Marshalling.ResourceType.EventDefinition: return (Hl7.Fhir.Model.Resource)Marshal_EventDefinition((FHIR_Marshalling.EventDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.Evidence: return (Hl7.Fhir.Model.Resource)Marshal_Evidence((FHIR_Marshalling.Evidence*)resource);
-		case FHIR_Marshalling.ResourceType.EvidenceVariable: return (Hl7.Fhir.Model.Resource)Marshal_EvidenceVariable((FHIR_Marshalling.EvidenceVariable*)resource);
-		case FHIR_Marshalling.ResourceType.ExampleScenario: return (Hl7.Fhir.Model.Resource)Marshal_ExampleScenario((FHIR_Marshalling.ExampleScenario*)resource);
-		case FHIR_Marshalling.ResourceType.ExplanationOfBenefit: return (Hl7.Fhir.Model.Resource)Marshal_ExplanationOfBenefit((FHIR_Marshalling.ExplanationOfBenefit*)resource);
-		case FHIR_Marshalling.ResourceType.FamilyMemberHistory: return (Hl7.Fhir.Model.Resource)Marshal_FamilyMemberHistory((FHIR_Marshalling.FamilyMemberHistory*)resource);
-		case FHIR_Marshalling.ResourceType.Flag: return (Hl7.Fhir.Model.Resource)Marshal_Flag((FHIR_Marshalling.Flag*)resource);
-		case FHIR_Marshalling.ResourceType.Goal: return (Hl7.Fhir.Model.Resource)Marshal_Goal((FHIR_Marshalling.Goal*)resource);
-		case FHIR_Marshalling.ResourceType.GraphDefinition: return (Hl7.Fhir.Model.Resource)Marshal_GraphDefinition((FHIR_Marshalling.GraphDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.Group: return (Hl7.Fhir.Model.Resource)Marshal_Group((FHIR_Marshalling.Group*)resource);
-		case FHIR_Marshalling.ResourceType.GuidanceResponse: return (Hl7.Fhir.Model.Resource)Marshal_GuidanceResponse((FHIR_Marshalling.GuidanceResponse*)resource);
-		case FHIR_Marshalling.ResourceType.HealthcareService: return (Hl7.Fhir.Model.Resource)Marshal_HealthcareService((FHIR_Marshalling.HealthcareService*)resource);
-		case FHIR_Marshalling.ResourceType.ImagingStudy: return (Hl7.Fhir.Model.Resource)Marshal_ImagingStudy((FHIR_Marshalling.ImagingStudy*)resource);
-		case FHIR_Marshalling.ResourceType.Immunization: return (Hl7.Fhir.Model.Resource)Marshal_Immunization((FHIR_Marshalling.Immunization*)resource);
-		case FHIR_Marshalling.ResourceType.ImmunizationEvaluation: return (Hl7.Fhir.Model.Resource)Marshal_ImmunizationEvaluation((FHIR_Marshalling.ImmunizationEvaluation*)resource);
-		case FHIR_Marshalling.ResourceType.ImmunizationRecommendation: return (Hl7.Fhir.Model.Resource)Marshal_ImmunizationRecommendation((FHIR_Marshalling.ImmunizationRecommendation*)resource);
-		case FHIR_Marshalling.ResourceType.ImplementationGuide: return (Hl7.Fhir.Model.Resource)Marshal_ImplementationGuide((FHIR_Marshalling.ImplementationGuide*)resource);
-		case FHIR_Marshalling.ResourceType.InsurancePlan: return (Hl7.Fhir.Model.Resource)Marshal_InsurancePlan((FHIR_Marshalling.InsurancePlan*)resource);
-		case FHIR_Marshalling.ResourceType.Invoice: return (Hl7.Fhir.Model.Resource)Marshal_Invoice((FHIR_Marshalling.Invoice*)resource);
-		case FHIR_Marshalling.ResourceType.Library: return (Hl7.Fhir.Model.Resource)Marshal_Library((FHIR_Marshalling.Library*)resource);
-		case FHIR_Marshalling.ResourceType.Linkage: return (Hl7.Fhir.Model.Resource)Marshal_Linkage((FHIR_Marshalling.Linkage*)resource);
-		case FHIR_Marshalling.ResourceType.List: return (Hl7.Fhir.Model.Resource)Marshal_List((FHIR_Marshalling.List*)resource);
-		case FHIR_Marshalling.ResourceType.Location: return (Hl7.Fhir.Model.Resource)Marshal_Location((FHIR_Marshalling.Location*)resource);
-		case FHIR_Marshalling.ResourceType.Measure: return (Hl7.Fhir.Model.Resource)Marshal_Measure((FHIR_Marshalling.Measure*)resource);
-		case FHIR_Marshalling.ResourceType.MeasureReport: return (Hl7.Fhir.Model.Resource)Marshal_MeasureReport((FHIR_Marshalling.MeasureReport*)resource);
-		case FHIR_Marshalling.ResourceType.Media: return (Hl7.Fhir.Model.Resource)Marshal_Media((FHIR_Marshalling.Media*)resource);
-		case FHIR_Marshalling.ResourceType.Medication: return (Hl7.Fhir.Model.Resource)Marshal_Medication((FHIR_Marshalling.Medication*)resource);
-		case FHIR_Marshalling.ResourceType.MedicationAdministration: return (Hl7.Fhir.Model.Resource)Marshal_MedicationAdministration((FHIR_Marshalling.MedicationAdministration*)resource);
-		case FHIR_Marshalling.ResourceType.MedicationDispense: return (Hl7.Fhir.Model.Resource)Marshal_MedicationDispense((FHIR_Marshalling.MedicationDispense*)resource);
-		case FHIR_Marshalling.ResourceType.MedicationKnowledge: return (Hl7.Fhir.Model.Resource)Marshal_MedicationKnowledge((FHIR_Marshalling.MedicationKnowledge*)resource);
-		case FHIR_Marshalling.ResourceType.MedicationRequest: return (Hl7.Fhir.Model.Resource)Marshal_MedicationRequest((FHIR_Marshalling.MedicationRequest*)resource);
-		case FHIR_Marshalling.ResourceType.MedicationStatement: return (Hl7.Fhir.Model.Resource)Marshal_MedicationStatement((FHIR_Marshalling.MedicationStatement*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProduct: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProduct((FHIR_Marshalling.MedicinalProduct*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductAuthorization: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductAuthorization((FHIR_Marshalling.MedicinalProductAuthorization*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductContraindication: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductContraindication((FHIR_Marshalling.MedicinalProductContraindication*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductIndication: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductIndication((FHIR_Marshalling.MedicinalProductIndication*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductIngredient: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductIngredient((FHIR_Marshalling.MedicinalProductIngredient*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductInteraction: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductInteraction((FHIR_Marshalling.MedicinalProductInteraction*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductManufactured: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductManufactured((FHIR_Marshalling.MedicinalProductManufactured*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductPackaged: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductPackaged((FHIR_Marshalling.MedicinalProductPackaged*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductPharmaceutical: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductPharmaceutical((FHIR_Marshalling.MedicinalProductPharmaceutical*)resource);
-		case FHIR_Marshalling.ResourceType.MedicinalProductUndesirableEffect: return (Hl7.Fhir.Model.Resource)Marshal_MedicinalProductUndesirableEffect((FHIR_Marshalling.MedicinalProductUndesirableEffect*)resource);
-		case FHIR_Marshalling.ResourceType.MessageDefinition: return (Hl7.Fhir.Model.Resource)Marshal_MessageDefinition((FHIR_Marshalling.MessageDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.MessageHeader: return (Hl7.Fhir.Model.Resource)Marshal_MessageHeader((FHIR_Marshalling.MessageHeader*)resource);
-		case FHIR_Marshalling.ResourceType.MolecularSequence: return (Hl7.Fhir.Model.Resource)Marshal_MolecularSequence((FHIR_Marshalling.MolecularSequence*)resource);
-		case FHIR_Marshalling.ResourceType.NamingSystem: return (Hl7.Fhir.Model.Resource)Marshal_NamingSystem((FHIR_Marshalling.NamingSystem*)resource);
-		case FHIR_Marshalling.ResourceType.NutritionOrder: return (Hl7.Fhir.Model.Resource)Marshal_NutritionOrder((FHIR_Marshalling.NutritionOrder*)resource);
-		case FHIR_Marshalling.ResourceType.Observation: return (Hl7.Fhir.Model.Resource)Marshal_Observation((FHIR_Marshalling.Observation*)resource);
-		case FHIR_Marshalling.ResourceType.ObservationDefinition: return (Hl7.Fhir.Model.Resource)Marshal_ObservationDefinition((FHIR_Marshalling.ObservationDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.OperationDefinition: return (Hl7.Fhir.Model.Resource)Marshal_OperationDefinition((FHIR_Marshalling.OperationDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.OperationOutcome: return (Hl7.Fhir.Model.Resource)Marshal_OperationOutcome((FHIR_Marshalling.OperationOutcome*)resource);
-		case FHIR_Marshalling.ResourceType.Organization: return (Hl7.Fhir.Model.Resource)Marshal_Organization((FHIR_Marshalling.Organization*)resource);
-		case FHIR_Marshalling.ResourceType.OrganizationAffiliation: return (Hl7.Fhir.Model.Resource)Marshal_OrganizationAffiliation((FHIR_Marshalling.OrganizationAffiliation*)resource);
-		case FHIR_Marshalling.ResourceType.Parameters: return (Hl7.Fhir.Model.Resource)Marshal_Parameters((FHIR_Marshalling.Parameters*)resource);
-		case FHIR_Marshalling.ResourceType.Patient: return (Hl7.Fhir.Model.Resource)Marshal_Patient((FHIR_Marshalling.Patient*)resource);
-		case FHIR_Marshalling.ResourceType.PaymentNotice: return (Hl7.Fhir.Model.Resource)Marshal_PaymentNotice((FHIR_Marshalling.PaymentNotice*)resource);
-		case FHIR_Marshalling.ResourceType.PaymentReconciliation: return (Hl7.Fhir.Model.Resource)Marshal_PaymentReconciliation((FHIR_Marshalling.PaymentReconciliation*)resource);
-		case FHIR_Marshalling.ResourceType.Person: return (Hl7.Fhir.Model.Resource)Marshal_Person((FHIR_Marshalling.Person*)resource);
-		case FHIR_Marshalling.ResourceType.PlanDefinition: return (Hl7.Fhir.Model.Resource)Marshal_PlanDefinition((FHIR_Marshalling.PlanDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.Practitioner: return (Hl7.Fhir.Model.Resource)Marshal_Practitioner((FHIR_Marshalling.Practitioner*)resource);
-		case FHIR_Marshalling.ResourceType.PractitionerRole: return (Hl7.Fhir.Model.Resource)Marshal_PractitionerRole((FHIR_Marshalling.PractitionerRole*)resource);
-		case FHIR_Marshalling.ResourceType.Procedure: return (Hl7.Fhir.Model.Resource)Marshal_Procedure((FHIR_Marshalling.Procedure*)resource);
-		case FHIR_Marshalling.ResourceType.Provenance: return (Hl7.Fhir.Model.Resource)Marshal_Provenance((FHIR_Marshalling.Provenance*)resource);
-		case FHIR_Marshalling.ResourceType.Questionnaire: return (Hl7.Fhir.Model.Resource)Marshal_Questionnaire((FHIR_Marshalling.Questionnaire*)resource);
-		case FHIR_Marshalling.ResourceType.QuestionnaireResponse: return (Hl7.Fhir.Model.Resource)Marshal_QuestionnaireResponse((FHIR_Marshalling.QuestionnaireResponse*)resource);
-		case FHIR_Marshalling.ResourceType.RelatedPerson: return (Hl7.Fhir.Model.Resource)Marshal_RelatedPerson((FHIR_Marshalling.RelatedPerson*)resource);
-		case FHIR_Marshalling.ResourceType.RequestGroup: return (Hl7.Fhir.Model.Resource)Marshal_RequestGroup((FHIR_Marshalling.RequestGroup*)resource);
-		case FHIR_Marshalling.ResourceType.ResearchDefinition: return (Hl7.Fhir.Model.Resource)Marshal_ResearchDefinition((FHIR_Marshalling.ResearchDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.ResearchElementDefinition: return (Hl7.Fhir.Model.Resource)Marshal_ResearchElementDefinition((FHIR_Marshalling.ResearchElementDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.ResearchStudy: return (Hl7.Fhir.Model.Resource)Marshal_ResearchStudy((FHIR_Marshalling.ResearchStudy*)resource);
-		case FHIR_Marshalling.ResourceType.ResearchSubject: return (Hl7.Fhir.Model.Resource)Marshal_ResearchSubject((FHIR_Marshalling.ResearchSubject*)resource);
-		case FHIR_Marshalling.ResourceType.RiskAssessment: return (Hl7.Fhir.Model.Resource)Marshal_RiskAssessment((FHIR_Marshalling.RiskAssessment*)resource);
-		case FHIR_Marshalling.ResourceType.RiskEvidenceSynthesis: return (Hl7.Fhir.Model.Resource)Marshal_RiskEvidenceSynthesis((FHIR_Marshalling.RiskEvidenceSynthesis*)resource);
-		case FHIR_Marshalling.ResourceType.Schedule: return (Hl7.Fhir.Model.Resource)Marshal_Schedule((FHIR_Marshalling.Schedule*)resource);
-		case FHIR_Marshalling.ResourceType.SearchParameter: return (Hl7.Fhir.Model.Resource)Marshal_SearchParameter((FHIR_Marshalling.SearchParameter*)resource);
-		case FHIR_Marshalling.ResourceType.ServiceRequest: return (Hl7.Fhir.Model.Resource)Marshal_ServiceRequest((FHIR_Marshalling.ServiceRequest*)resource);
-		case FHIR_Marshalling.ResourceType.Slot: return (Hl7.Fhir.Model.Resource)Marshal_Slot((FHIR_Marshalling.Slot*)resource);
-		case FHIR_Marshalling.ResourceType.Specimen: return (Hl7.Fhir.Model.Resource)Marshal_Specimen((FHIR_Marshalling.Specimen*)resource);
-		case FHIR_Marshalling.ResourceType.SpecimenDefinition: return (Hl7.Fhir.Model.Resource)Marshal_SpecimenDefinition((FHIR_Marshalling.SpecimenDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.StructureDefinition: return (Hl7.Fhir.Model.Resource)Marshal_StructureDefinition((FHIR_Marshalling.StructureDefinition*)resource);
-		case FHIR_Marshalling.ResourceType.StructureMap: return (Hl7.Fhir.Model.Resource)Marshal_StructureMap((FHIR_Marshalling.StructureMap*)resource);
-		case FHIR_Marshalling.ResourceType.Subscription: return (Hl7.Fhir.Model.Resource)Marshal_Subscription((FHIR_Marshalling.Subscription*)resource);
-		case FHIR_Marshalling.ResourceType.Substance: return (Hl7.Fhir.Model.Resource)Marshal_Substance((FHIR_Marshalling.Substance*)resource);
-		case FHIR_Marshalling.ResourceType.SubstanceNucleicAcid: return (Hl7.Fhir.Model.Resource)Marshal_SubstanceNucleicAcid((FHIR_Marshalling.SubstanceNucleicAcid*)resource);
-		case FHIR_Marshalling.ResourceType.SubstancePolymer: return (Hl7.Fhir.Model.Resource)Marshal_SubstancePolymer((FHIR_Marshalling.SubstancePolymer*)resource);
-		case FHIR_Marshalling.ResourceType.SubstanceProtein: return (Hl7.Fhir.Model.Resource)Marshal_SubstanceProtein((FHIR_Marshalling.SubstanceProtein*)resource);
-		case FHIR_Marshalling.ResourceType.SubstanceReferenceInformation: return (Hl7.Fhir.Model.Resource)Marshal_SubstanceReferenceInformation((FHIR_Marshalling.SubstanceReferenceInformation*)resource);
-		case FHIR_Marshalling.ResourceType.SubstanceSourceMaterial: return (Hl7.Fhir.Model.Resource)Marshal_SubstanceSourceMaterial((FHIR_Marshalling.SubstanceSourceMaterial*)resource);
-		case FHIR_Marshalling.ResourceType.SubstanceSpecification: return (Hl7.Fhir.Model.Resource)Marshal_SubstanceSpecification((FHIR_Marshalling.SubstanceSpecification*)resource);
-		case FHIR_Marshalling.ResourceType.SupplyDelivery: return (Hl7.Fhir.Model.Resource)Marshal_SupplyDelivery((FHIR_Marshalling.SupplyDelivery*)resource);
-		case FHIR_Marshalling.ResourceType.SupplyRequest: return (Hl7.Fhir.Model.Resource)Marshal_SupplyRequest((FHIR_Marshalling.SupplyRequest*)resource);
-		case FHIR_Marshalling.ResourceType.Task: return (Hl7.Fhir.Model.Resource)Marshal_Task((FHIR_Marshalling.Task*)resource);
-		case FHIR_Marshalling.ResourceType.TerminologyCapabilities: return (Hl7.Fhir.Model.Resource)Marshal_TerminologyCapabilities((FHIR_Marshalling.TerminologyCapabilities*)resource);
-		case FHIR_Marshalling.ResourceType.TestReport: return (Hl7.Fhir.Model.Resource)Marshal_TestReport((FHIR_Marshalling.TestReport*)resource);
-		case FHIR_Marshalling.ResourceType.TestScript: return (Hl7.Fhir.Model.Resource)Marshal_TestScript((FHIR_Marshalling.TestScript*)resource);
-		case FHIR_Marshalling.ResourceType.ValueSet: return (Hl7.Fhir.Model.Resource)Marshal_ValueSet((FHIR_Marshalling.ValueSet*)resource);
-		case FHIR_Marshalling.ResourceType.VerificationResult: return (Hl7.Fhir.Model.Resource)Marshal_VerificationResult((FHIR_Marshalling.VerificationResult*)resource);
-		case FHIR_Marshalling.ResourceType.VisionPrescription: return (Hl7.Fhir.Model.Resource)Marshal_VisionPrescription((FHIR_Marshalling.VisionPrescription*)resource);
+		case FHIR_Marshalling.ResourceType.Account: return (Hl7.Fhir.Model.Resource?)Marshal_Account((FHIR_Marshalling.Account*)resource);
+		case FHIR_Marshalling.ResourceType.ActivityDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_ActivityDefinition((FHIR_Marshalling.ActivityDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.AdverseEvent: return (Hl7.Fhir.Model.Resource?)Marshal_AdverseEvent((FHIR_Marshalling.AdverseEvent*)resource);
+		case FHIR_Marshalling.ResourceType.AllergyIntolerance: return (Hl7.Fhir.Model.Resource?)Marshal_AllergyIntolerance((FHIR_Marshalling.AllergyIntolerance*)resource);
+		case FHIR_Marshalling.ResourceType.Appointment: return (Hl7.Fhir.Model.Resource?)Marshal_Appointment((FHIR_Marshalling.Appointment*)resource);
+		case FHIR_Marshalling.ResourceType.AppointmentResponse: return (Hl7.Fhir.Model.Resource?)Marshal_AppointmentResponse((FHIR_Marshalling.AppointmentResponse*)resource);
+		case FHIR_Marshalling.ResourceType.AuditEvent: return (Hl7.Fhir.Model.Resource?)Marshal_AuditEvent((FHIR_Marshalling.AuditEvent*)resource);
+		case FHIR_Marshalling.ResourceType.Basic: return (Hl7.Fhir.Model.Resource?)Marshal_Basic((FHIR_Marshalling.Basic*)resource);
+		case FHIR_Marshalling.ResourceType.Binary: return (Hl7.Fhir.Model.Resource?)Marshal_Binary((FHIR_Marshalling.Binary*)resource);
+		case FHIR_Marshalling.ResourceType.BiologicallyDerivedProduct: return (Hl7.Fhir.Model.Resource?)Marshal_BiologicallyDerivedProduct((FHIR_Marshalling.BiologicallyDerivedProduct*)resource);
+		case FHIR_Marshalling.ResourceType.BodyStructure: return (Hl7.Fhir.Model.Resource?)Marshal_BodyStructure((FHIR_Marshalling.BodyStructure*)resource);
+		case FHIR_Marshalling.ResourceType.Bundle: return (Hl7.Fhir.Model.Resource?)Marshal_Bundle((FHIR_Marshalling.Bundle*)resource);
+		case FHIR_Marshalling.ResourceType.CapabilityStatement: return (Hl7.Fhir.Model.Resource?)Marshal_CapabilityStatement((FHIR_Marshalling.CapabilityStatement*)resource);
+		case FHIR_Marshalling.ResourceType.CarePlan: return (Hl7.Fhir.Model.Resource?)Marshal_CarePlan((FHIR_Marshalling.CarePlan*)resource);
+		case FHIR_Marshalling.ResourceType.CareTeam: return (Hl7.Fhir.Model.Resource?)Marshal_CareTeam((FHIR_Marshalling.CareTeam*)resource);
+		case FHIR_Marshalling.ResourceType.CatalogEntry: return (Hl7.Fhir.Model.Resource?)Marshal_CatalogEntry((FHIR_Marshalling.CatalogEntry*)resource);
+		case FHIR_Marshalling.ResourceType.ChargeItem: return (Hl7.Fhir.Model.Resource?)Marshal_ChargeItem((FHIR_Marshalling.ChargeItem*)resource);
+		case FHIR_Marshalling.ResourceType.ChargeItemDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_ChargeItemDefinition((FHIR_Marshalling.ChargeItemDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.Claim: return (Hl7.Fhir.Model.Resource?)Marshal_Claim((FHIR_Marshalling.Claim*)resource);
+		case FHIR_Marshalling.ResourceType.ClaimResponse: return (Hl7.Fhir.Model.Resource?)Marshal_ClaimResponse((FHIR_Marshalling.ClaimResponse*)resource);
+		case FHIR_Marshalling.ResourceType.ClinicalImpression: return (Hl7.Fhir.Model.Resource?)Marshal_ClinicalImpression((FHIR_Marshalling.ClinicalImpression*)resource);
+		case FHIR_Marshalling.ResourceType.CodeSystem: return (Hl7.Fhir.Model.Resource?)Marshal_CodeSystem((FHIR_Marshalling.CodeSystem*)resource);
+		case FHIR_Marshalling.ResourceType.Communication: return (Hl7.Fhir.Model.Resource?)Marshal_Communication((FHIR_Marshalling.Communication*)resource);
+		case FHIR_Marshalling.ResourceType.CommunicationRequest: return (Hl7.Fhir.Model.Resource?)Marshal_CommunicationRequest((FHIR_Marshalling.CommunicationRequest*)resource);
+		case FHIR_Marshalling.ResourceType.CompartmentDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_CompartmentDefinition((FHIR_Marshalling.CompartmentDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.Composition: return (Hl7.Fhir.Model.Resource?)Marshal_Composition((FHIR_Marshalling.Composition*)resource);
+		case FHIR_Marshalling.ResourceType.ConceptMap: return (Hl7.Fhir.Model.Resource?)Marshal_ConceptMap((FHIR_Marshalling.ConceptMap*)resource);
+		case FHIR_Marshalling.ResourceType.Condition: return (Hl7.Fhir.Model.Resource?)Marshal_Condition((FHIR_Marshalling.Condition*)resource);
+		case FHIR_Marshalling.ResourceType.Consent: return (Hl7.Fhir.Model.Resource?)Marshal_Consent((FHIR_Marshalling.Consent*)resource);
+		case FHIR_Marshalling.ResourceType.Contract: return (Hl7.Fhir.Model.Resource?)Marshal_Contract((FHIR_Marshalling.Contract*)resource);
+		case FHIR_Marshalling.ResourceType.Coverage: return (Hl7.Fhir.Model.Resource?)Marshal_Coverage((FHIR_Marshalling.Coverage*)resource);
+		case FHIR_Marshalling.ResourceType.CoverageEligibilityRequest: return (Hl7.Fhir.Model.Resource?)Marshal_CoverageEligibilityRequest((FHIR_Marshalling.CoverageEligibilityRequest*)resource);
+		case FHIR_Marshalling.ResourceType.CoverageEligibilityResponse: return (Hl7.Fhir.Model.Resource?)Marshal_CoverageEligibilityResponse((FHIR_Marshalling.CoverageEligibilityResponse*)resource);
+		case FHIR_Marshalling.ResourceType.DetectedIssue: return (Hl7.Fhir.Model.Resource?)Marshal_DetectedIssue((FHIR_Marshalling.DetectedIssue*)resource);
+		case FHIR_Marshalling.ResourceType.Device: return (Hl7.Fhir.Model.Resource?)Marshal_Device((FHIR_Marshalling.Device*)resource);
+		case FHIR_Marshalling.ResourceType.DeviceDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_DeviceDefinition((FHIR_Marshalling.DeviceDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.DeviceMetric: return (Hl7.Fhir.Model.Resource?)Marshal_DeviceMetric((FHIR_Marshalling.DeviceMetric*)resource);
+		case FHIR_Marshalling.ResourceType.DeviceRequest: return (Hl7.Fhir.Model.Resource?)Marshal_DeviceRequest((FHIR_Marshalling.DeviceRequest*)resource);
+		case FHIR_Marshalling.ResourceType.DeviceUseStatement: return (Hl7.Fhir.Model.Resource?)Marshal_DeviceUseStatement((FHIR_Marshalling.DeviceUseStatement*)resource);
+		case FHIR_Marshalling.ResourceType.DiagnosticReport: return (Hl7.Fhir.Model.Resource?)Marshal_DiagnosticReport((FHIR_Marshalling.DiagnosticReport*)resource);
+		case FHIR_Marshalling.ResourceType.DocumentManifest: return (Hl7.Fhir.Model.Resource?)Marshal_DocumentManifest((FHIR_Marshalling.DocumentManifest*)resource);
+		case FHIR_Marshalling.ResourceType.DocumentReference: return (Hl7.Fhir.Model.Resource?)Marshal_DocumentReference((FHIR_Marshalling.DocumentReference*)resource);
+		case FHIR_Marshalling.ResourceType.EffectEvidenceSynthesis: return (Hl7.Fhir.Model.Resource?)Marshal_EffectEvidenceSynthesis((FHIR_Marshalling.EffectEvidenceSynthesis*)resource);
+		case FHIR_Marshalling.ResourceType.Encounter: return (Hl7.Fhir.Model.Resource?)Marshal_Encounter((FHIR_Marshalling.Encounter*)resource);
+		case FHIR_Marshalling.ResourceType.Endpoint: return (Hl7.Fhir.Model.Resource?)Marshal_Endpoint((FHIR_Marshalling.Endpoint*)resource);
+		case FHIR_Marshalling.ResourceType.EnrollmentRequest: return (Hl7.Fhir.Model.Resource?)Marshal_EnrollmentRequest((FHIR_Marshalling.EnrollmentRequest*)resource);
+		case FHIR_Marshalling.ResourceType.EnrollmentResponse: return (Hl7.Fhir.Model.Resource?)Marshal_EnrollmentResponse((FHIR_Marshalling.EnrollmentResponse*)resource);
+		case FHIR_Marshalling.ResourceType.EpisodeOfCare: return (Hl7.Fhir.Model.Resource?)Marshal_EpisodeOfCare((FHIR_Marshalling.EpisodeOfCare*)resource);
+		case FHIR_Marshalling.ResourceType.EventDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_EventDefinition((FHIR_Marshalling.EventDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.Evidence: return (Hl7.Fhir.Model.Resource?)Marshal_Evidence((FHIR_Marshalling.Evidence*)resource);
+		case FHIR_Marshalling.ResourceType.EvidenceVariable: return (Hl7.Fhir.Model.Resource?)Marshal_EvidenceVariable((FHIR_Marshalling.EvidenceVariable*)resource);
+		case FHIR_Marshalling.ResourceType.ExampleScenario: return (Hl7.Fhir.Model.Resource?)Marshal_ExampleScenario((FHIR_Marshalling.ExampleScenario*)resource);
+		case FHIR_Marshalling.ResourceType.ExplanationOfBenefit: return (Hl7.Fhir.Model.Resource?)Marshal_ExplanationOfBenefit((FHIR_Marshalling.ExplanationOfBenefit*)resource);
+		case FHIR_Marshalling.ResourceType.FamilyMemberHistory: return (Hl7.Fhir.Model.Resource?)Marshal_FamilyMemberHistory((FHIR_Marshalling.FamilyMemberHistory*)resource);
+		case FHIR_Marshalling.ResourceType.Flag: return (Hl7.Fhir.Model.Resource?)Marshal_Flag((FHIR_Marshalling.Flag*)resource);
+		case FHIR_Marshalling.ResourceType.Goal: return (Hl7.Fhir.Model.Resource?)Marshal_Goal((FHIR_Marshalling.Goal*)resource);
+		case FHIR_Marshalling.ResourceType.GraphDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_GraphDefinition((FHIR_Marshalling.GraphDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.Group: return (Hl7.Fhir.Model.Resource?)Marshal_Group((FHIR_Marshalling.Group*)resource);
+		case FHIR_Marshalling.ResourceType.GuidanceResponse: return (Hl7.Fhir.Model.Resource?)Marshal_GuidanceResponse((FHIR_Marshalling.GuidanceResponse*)resource);
+		case FHIR_Marshalling.ResourceType.HealthcareService: return (Hl7.Fhir.Model.Resource?)Marshal_HealthcareService((FHIR_Marshalling.HealthcareService*)resource);
+		case FHIR_Marshalling.ResourceType.ImagingStudy: return (Hl7.Fhir.Model.Resource?)Marshal_ImagingStudy((FHIR_Marshalling.ImagingStudy*)resource);
+		case FHIR_Marshalling.ResourceType.Immunization: return (Hl7.Fhir.Model.Resource?)Marshal_Immunization((FHIR_Marshalling.Immunization*)resource);
+		case FHIR_Marshalling.ResourceType.ImmunizationEvaluation: return (Hl7.Fhir.Model.Resource?)Marshal_ImmunizationEvaluation((FHIR_Marshalling.ImmunizationEvaluation*)resource);
+		case FHIR_Marshalling.ResourceType.ImmunizationRecommendation: return (Hl7.Fhir.Model.Resource?)Marshal_ImmunizationRecommendation((FHIR_Marshalling.ImmunizationRecommendation*)resource);
+		case FHIR_Marshalling.ResourceType.ImplementationGuide: return (Hl7.Fhir.Model.Resource?)Marshal_ImplementationGuide((FHIR_Marshalling.ImplementationGuide*)resource);
+		case FHIR_Marshalling.ResourceType.InsurancePlan: return (Hl7.Fhir.Model.Resource?)Marshal_InsurancePlan((FHIR_Marshalling.InsurancePlan*)resource);
+		case FHIR_Marshalling.ResourceType.Invoice: return (Hl7.Fhir.Model.Resource?)Marshal_Invoice((FHIR_Marshalling.Invoice*)resource);
+		case FHIR_Marshalling.ResourceType.Library: return (Hl7.Fhir.Model.Resource?)Marshal_Library((FHIR_Marshalling.Library*)resource);
+		case FHIR_Marshalling.ResourceType.Linkage: return (Hl7.Fhir.Model.Resource?)Marshal_Linkage((FHIR_Marshalling.Linkage*)resource);
+		case FHIR_Marshalling.ResourceType.List: return (Hl7.Fhir.Model.Resource?)Marshal_List((FHIR_Marshalling.List*)resource);
+		case FHIR_Marshalling.ResourceType.Location: return (Hl7.Fhir.Model.Resource?)Marshal_Location((FHIR_Marshalling.Location*)resource);
+		case FHIR_Marshalling.ResourceType.Measure: return (Hl7.Fhir.Model.Resource?)Marshal_Measure((FHIR_Marshalling.Measure*)resource);
+		case FHIR_Marshalling.ResourceType.MeasureReport: return (Hl7.Fhir.Model.Resource?)Marshal_MeasureReport((FHIR_Marshalling.MeasureReport*)resource);
+		case FHIR_Marshalling.ResourceType.Media: return (Hl7.Fhir.Model.Resource?)Marshal_Media((FHIR_Marshalling.Media*)resource);
+		case FHIR_Marshalling.ResourceType.Medication: return (Hl7.Fhir.Model.Resource?)Marshal_Medication((FHIR_Marshalling.Medication*)resource);
+		case FHIR_Marshalling.ResourceType.MedicationAdministration: return (Hl7.Fhir.Model.Resource?)Marshal_MedicationAdministration((FHIR_Marshalling.MedicationAdministration*)resource);
+		case FHIR_Marshalling.ResourceType.MedicationDispense: return (Hl7.Fhir.Model.Resource?)Marshal_MedicationDispense((FHIR_Marshalling.MedicationDispense*)resource);
+		case FHIR_Marshalling.ResourceType.MedicationKnowledge: return (Hl7.Fhir.Model.Resource?)Marshal_MedicationKnowledge((FHIR_Marshalling.MedicationKnowledge*)resource);
+		case FHIR_Marshalling.ResourceType.MedicationRequest: return (Hl7.Fhir.Model.Resource?)Marshal_MedicationRequest((FHIR_Marshalling.MedicationRequest*)resource);
+		case FHIR_Marshalling.ResourceType.MedicationStatement: return (Hl7.Fhir.Model.Resource?)Marshal_MedicationStatement((FHIR_Marshalling.MedicationStatement*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProduct: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProduct((FHIR_Marshalling.MedicinalProduct*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductAuthorization: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductAuthorization((FHIR_Marshalling.MedicinalProductAuthorization*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductContraindication: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductContraindication((FHIR_Marshalling.MedicinalProductContraindication*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductIndication: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductIndication((FHIR_Marshalling.MedicinalProductIndication*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductIngredient: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductIngredient((FHIR_Marshalling.MedicinalProductIngredient*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductInteraction: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductInteraction((FHIR_Marshalling.MedicinalProductInteraction*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductManufactured: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductManufactured((FHIR_Marshalling.MedicinalProductManufactured*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductPackaged: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductPackaged((FHIR_Marshalling.MedicinalProductPackaged*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductPharmaceutical: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductPharmaceutical((FHIR_Marshalling.MedicinalProductPharmaceutical*)resource);
+		case FHIR_Marshalling.ResourceType.MedicinalProductUndesirableEffect: return (Hl7.Fhir.Model.Resource?)Marshal_MedicinalProductUndesirableEffect((FHIR_Marshalling.MedicinalProductUndesirableEffect*)resource);
+		case FHIR_Marshalling.ResourceType.MessageDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_MessageDefinition((FHIR_Marshalling.MessageDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.MessageHeader: return (Hl7.Fhir.Model.Resource?)Marshal_MessageHeader((FHIR_Marshalling.MessageHeader*)resource);
+		case FHIR_Marshalling.ResourceType.MolecularSequence: return (Hl7.Fhir.Model.Resource?)Marshal_MolecularSequence((FHIR_Marshalling.MolecularSequence*)resource);
+		case FHIR_Marshalling.ResourceType.NamingSystem: return (Hl7.Fhir.Model.Resource?)Marshal_NamingSystem((FHIR_Marshalling.NamingSystem*)resource);
+		case FHIR_Marshalling.ResourceType.NutritionOrder: return (Hl7.Fhir.Model.Resource?)Marshal_NutritionOrder((FHIR_Marshalling.NutritionOrder*)resource);
+		case FHIR_Marshalling.ResourceType.Observation: return (Hl7.Fhir.Model.Resource?)Marshal_Observation((FHIR_Marshalling.Observation*)resource);
+		case FHIR_Marshalling.ResourceType.ObservationDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_ObservationDefinition((FHIR_Marshalling.ObservationDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.OperationDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_OperationDefinition((FHIR_Marshalling.OperationDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.OperationOutcome: return (Hl7.Fhir.Model.Resource?)Marshal_OperationOutcome((FHIR_Marshalling.OperationOutcome*)resource);
+		case FHIR_Marshalling.ResourceType.Organization: return (Hl7.Fhir.Model.Resource?)Marshal_Organization((FHIR_Marshalling.Organization*)resource);
+		case FHIR_Marshalling.ResourceType.OrganizationAffiliation: return (Hl7.Fhir.Model.Resource?)Marshal_OrganizationAffiliation((FHIR_Marshalling.OrganizationAffiliation*)resource);
+		case FHIR_Marshalling.ResourceType.Parameters: return (Hl7.Fhir.Model.Resource?)Marshal_Parameters((FHIR_Marshalling.Parameters*)resource);
+		case FHIR_Marshalling.ResourceType.Patient: return (Hl7.Fhir.Model.Resource?)Marshal_Patient((FHIR_Marshalling.Patient*)resource);
+		case FHIR_Marshalling.ResourceType.PaymentNotice: return (Hl7.Fhir.Model.Resource?)Marshal_PaymentNotice((FHIR_Marshalling.PaymentNotice*)resource);
+		case FHIR_Marshalling.ResourceType.PaymentReconciliation: return (Hl7.Fhir.Model.Resource?)Marshal_PaymentReconciliation((FHIR_Marshalling.PaymentReconciliation*)resource);
+		case FHIR_Marshalling.ResourceType.Person: return (Hl7.Fhir.Model.Resource?)Marshal_Person((FHIR_Marshalling.Person*)resource);
+		case FHIR_Marshalling.ResourceType.PlanDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_PlanDefinition((FHIR_Marshalling.PlanDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.Practitioner: return (Hl7.Fhir.Model.Resource?)Marshal_Practitioner((FHIR_Marshalling.Practitioner*)resource);
+		case FHIR_Marshalling.ResourceType.PractitionerRole: return (Hl7.Fhir.Model.Resource?)Marshal_PractitionerRole((FHIR_Marshalling.PractitionerRole*)resource);
+		case FHIR_Marshalling.ResourceType.Procedure: return (Hl7.Fhir.Model.Resource?)Marshal_Procedure((FHIR_Marshalling.Procedure*)resource);
+		case FHIR_Marshalling.ResourceType.Provenance: return (Hl7.Fhir.Model.Resource?)Marshal_Provenance((FHIR_Marshalling.Provenance*)resource);
+		case FHIR_Marshalling.ResourceType.Questionnaire: return (Hl7.Fhir.Model.Resource?)Marshal_Questionnaire((FHIR_Marshalling.Questionnaire*)resource);
+		case FHIR_Marshalling.ResourceType.QuestionnaireResponse: return (Hl7.Fhir.Model.Resource?)Marshal_QuestionnaireResponse((FHIR_Marshalling.QuestionnaireResponse*)resource);
+		case FHIR_Marshalling.ResourceType.RelatedPerson: return (Hl7.Fhir.Model.Resource?)Marshal_RelatedPerson((FHIR_Marshalling.RelatedPerson*)resource);
+		case FHIR_Marshalling.ResourceType.RequestGroup: return (Hl7.Fhir.Model.Resource?)Marshal_RequestGroup((FHIR_Marshalling.RequestGroup*)resource);
+		case FHIR_Marshalling.ResourceType.ResearchDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_ResearchDefinition((FHIR_Marshalling.ResearchDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.ResearchElementDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_ResearchElementDefinition((FHIR_Marshalling.ResearchElementDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.ResearchStudy: return (Hl7.Fhir.Model.Resource?)Marshal_ResearchStudy((FHIR_Marshalling.ResearchStudy*)resource);
+		case FHIR_Marshalling.ResourceType.ResearchSubject: return (Hl7.Fhir.Model.Resource?)Marshal_ResearchSubject((FHIR_Marshalling.ResearchSubject*)resource);
+		case FHIR_Marshalling.ResourceType.RiskAssessment: return (Hl7.Fhir.Model.Resource?)Marshal_RiskAssessment((FHIR_Marshalling.RiskAssessment*)resource);
+		case FHIR_Marshalling.ResourceType.RiskEvidenceSynthesis: return (Hl7.Fhir.Model.Resource?)Marshal_RiskEvidenceSynthesis((FHIR_Marshalling.RiskEvidenceSynthesis*)resource);
+		case FHIR_Marshalling.ResourceType.Schedule: return (Hl7.Fhir.Model.Resource?)Marshal_Schedule((FHIR_Marshalling.Schedule*)resource);
+		case FHIR_Marshalling.ResourceType.SearchParameter: return (Hl7.Fhir.Model.Resource?)Marshal_SearchParameter((FHIR_Marshalling.SearchParameter*)resource);
+		case FHIR_Marshalling.ResourceType.ServiceRequest: return (Hl7.Fhir.Model.Resource?)Marshal_ServiceRequest((FHIR_Marshalling.ServiceRequest*)resource);
+		case FHIR_Marshalling.ResourceType.Slot: return (Hl7.Fhir.Model.Resource?)Marshal_Slot((FHIR_Marshalling.Slot*)resource);
+		case FHIR_Marshalling.ResourceType.Specimen: return (Hl7.Fhir.Model.Resource?)Marshal_Specimen((FHIR_Marshalling.Specimen*)resource);
+		case FHIR_Marshalling.ResourceType.SpecimenDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_SpecimenDefinition((FHIR_Marshalling.SpecimenDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.StructureDefinition: return (Hl7.Fhir.Model.Resource?)Marshal_StructureDefinition((FHIR_Marshalling.StructureDefinition*)resource);
+		case FHIR_Marshalling.ResourceType.StructureMap: return (Hl7.Fhir.Model.Resource?)Marshal_StructureMap((FHIR_Marshalling.StructureMap*)resource);
+		case FHIR_Marshalling.ResourceType.Subscription: return (Hl7.Fhir.Model.Resource?)Marshal_Subscription((FHIR_Marshalling.Subscription*)resource);
+		case FHIR_Marshalling.ResourceType.Substance: return (Hl7.Fhir.Model.Resource?)Marshal_Substance((FHIR_Marshalling.Substance*)resource);
+		case FHIR_Marshalling.ResourceType.SubstanceNucleicAcid: return (Hl7.Fhir.Model.Resource?)Marshal_SubstanceNucleicAcid((FHIR_Marshalling.SubstanceNucleicAcid*)resource);
+		case FHIR_Marshalling.ResourceType.SubstancePolymer: return (Hl7.Fhir.Model.Resource?)Marshal_SubstancePolymer((FHIR_Marshalling.SubstancePolymer*)resource);
+		case FHIR_Marshalling.ResourceType.SubstanceProtein: return (Hl7.Fhir.Model.Resource?)Marshal_SubstanceProtein((FHIR_Marshalling.SubstanceProtein*)resource);
+		case FHIR_Marshalling.ResourceType.SubstanceReferenceInformation: return (Hl7.Fhir.Model.Resource?)Marshal_SubstanceReferenceInformation((FHIR_Marshalling.SubstanceReferenceInformation*)resource);
+		case FHIR_Marshalling.ResourceType.SubstanceSourceMaterial: return (Hl7.Fhir.Model.Resource?)Marshal_SubstanceSourceMaterial((FHIR_Marshalling.SubstanceSourceMaterial*)resource);
+		case FHIR_Marshalling.ResourceType.SubstanceSpecification: return (Hl7.Fhir.Model.Resource?)Marshal_SubstanceSpecification((FHIR_Marshalling.SubstanceSpecification*)resource);
+		case FHIR_Marshalling.ResourceType.SupplyDelivery: return (Hl7.Fhir.Model.Resource?)Marshal_SupplyDelivery((FHIR_Marshalling.SupplyDelivery*)resource);
+		case FHIR_Marshalling.ResourceType.SupplyRequest: return (Hl7.Fhir.Model.Resource?)Marshal_SupplyRequest((FHIR_Marshalling.SupplyRequest*)resource);
+		case FHIR_Marshalling.ResourceType.Task: return (Hl7.Fhir.Model.Resource?)Marshal_Task((FHIR_Marshalling.Task*)resource);
+		case FHIR_Marshalling.ResourceType.TerminologyCapabilities: return (Hl7.Fhir.Model.Resource?)Marshal_TerminologyCapabilities((FHIR_Marshalling.TerminologyCapabilities*)resource);
+		case FHIR_Marshalling.ResourceType.TestReport: return (Hl7.Fhir.Model.Resource?)Marshal_TestReport((FHIR_Marshalling.TestReport*)resource);
+		case FHIR_Marshalling.ResourceType.TestScript: return (Hl7.Fhir.Model.Resource?)Marshal_TestScript((FHIR_Marshalling.TestScript*)resource);
+		case FHIR_Marshalling.ResourceType.ValueSet: return (Hl7.Fhir.Model.Resource?)Marshal_ValueSet((FHIR_Marshalling.ValueSet*)resource);
+		case FHIR_Marshalling.ResourceType.VerificationResult: return (Hl7.Fhir.Model.Resource?)Marshal_VerificationResult((FHIR_Marshalling.VerificationResult*)resource);
+		case FHIR_Marshalling.ResourceType.VisionPrescription: return (Hl7.Fhir.Model.Resource?)Marshal_VisionPrescription((FHIR_Marshalling.VisionPrescription*)resource);
 	}
 	throw new NotImplementedException();
 }
