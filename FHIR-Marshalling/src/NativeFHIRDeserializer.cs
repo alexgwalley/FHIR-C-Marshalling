@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using Hl7.Fhir.Specification;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -46,28 +47,71 @@ namespace FHIR_Marshalling
         public static extern void ND_FreeContext(IntPtr context);
     }
 
-    public class NativeFHIRDeserializer
+    public class NativeFHIRDeserializer : IDisposable
     {
         public NativeFHIRDeserializer(int num_contexts = 0)
         {
             NativeDeserializerMethods.ND_Init(num_contexts);
         }
 
-        ~NativeFHIRDeserializer()
+        protected virtual void Dispose(bool disposing)
         {
-            NativeDeserializerMethods.ND_Cleanup();
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // NOTE(agw): Dispose of all managed state (managed objects)
+                }
+
+                // NOTE(agw): Dispose of all un-managed state
+                NativeDeserializerMethods.ND_Cleanup();
+                disposedValue = true;
+            }
         }
 
-        public static readonly int SIMDJSON_PADDING = 64;
+        ~NativeFHIRDeserializer()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        public static readonly byte[] SIMDJSON_PADDING = new byte[64];
+        private bool disposedValue;
+
         public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
         {
-            using MemoryStream memoryStream = new MemoryStream();
-            stream.CopyTo(memoryStream);
+            byte[]? bytes = null;
+            if (!stream.CanSeek)
+            {
+                // NOTE(agw): We do not know the length, do buffered copy
+                using MemoryStream memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
 
-            byte[] buffer = new byte[SIMDJSON_PADDING];
-            memoryStream.Write(buffer, 0, buffer.Length);
+                memoryStream.Write(SIMDJSON_PADDING, 0, SIMDJSON_PADDING.Length);
 
-            byte[] bytes = memoryStream.ToArray();
+                bytes = memoryStream.GetBuffer();
+            }
+            else
+            {
+                // NOTE(agw): If we _do_ know the length, just copy everything directly
+                bytes = new byte[stream.Length + SIMDJSON_PADDING.Length];
+                if (stream.Length <= int.MaxValue)
+                {
+                    stream.Write(bytes, 0, (int)stream.Length);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+
 
             IntPtr intPtr = IntPtr.Zero;
             IntPtr context = (IntPtr)0;
@@ -90,5 +134,6 @@ namespace FHIR_Marshalling
 
             return res;
         }
+
     }
 }
