@@ -715,7 +715,13 @@ public enum ResourceType {
 	Cdshooksserviceplandefinition,
 	Elementdefinition_de,
 	Ehrsrle_auditevent,
-	Ehrsrle_provenance
+	Ehrsrle_provenance,
+	ViewDefinition,
+	ViewDefinition_Constant,
+	ViewDefinition_Select,
+	ViewDefinition_Select_Column,
+	ViewDefinition_Select_Column_Tag,
+	ViewDefinition_Where
 };
 [StructLayout(LayoutKind.Explicit)]
 public unsafe class Resource {
@@ -31783,4 +31789,236 @@ public unsafe class Ehrsrle_provenance {
 [FhirNameAttribute("signature")]
 [FieldOffset(288)]	public readonly Signature** _signature;
 };
-}
+[StructLayout(LayoutKind.Explicit)]
+public unsafe class ViewDefinition {
+[FhirNameAttribute("resourceType")]
+[FieldOffset(0)]	public readonly ResourceType resourceType;
+[FhirNameAttribute("url")]
+[FieldOffset(8)]	public readonly NullableString8 _url;
+[FhirNameAttribute("identifier")]
+[FieldOffset(32)]	public readonly Identifier* _identifier;
+[FhirNameAttribute("name")]
+[FieldOffset(40)]	public readonly NullableString8 _name;
+[FhirNameAttribute("title")]
+[FieldOffset(64)]	public readonly NullableString8 _title;
+[FhirNameAttribute("meta")]
+[FieldOffset(88)]	public readonly Meta* _meta;
+[FhirNameAttribute("status")]
+[FieldOffset(96)]	public readonly NullableString8 _status;
+[FhirNameAttribute("experimental")]
+[FieldOffset(120)]	public readonly NullableBoolean _experimental;
+[FhirNameAttribute("publisher")]
+[FieldOffset(128)]	public readonly NullableString8 _publisher;
+[FieldOffset(152)]	public readonly UIntPtr _contact_count;
+[FhirNameAttribute("contact")]
+[FieldOffset(160)]	public readonly ContactDetail** _contact;
+[FhirNameAttribute("description")]
+[FieldOffset(168)]	public readonly NullableString8 _description;
+[FieldOffset(192)]	public readonly UIntPtr _useContext_count;
+[FhirNameAttribute("useContext")]
+[FieldOffset(200)]	public readonly UsageContext** _useContext;
+[FhirNameAttribute("copyright")]
+[FieldOffset(208)]	public readonly NullableString8 _copyright;
+[FhirNameAttribute("resource")]
+[FieldOffset(232)]	public readonly NullableString8 _resource;
+[FieldOffset(256)]	public readonly UIntPtr _fhirVersion_count;
+[FhirNameAttribute("fhirVersion")]
+[FieldOffset(264)]	public readonly NullableString8* _fhirVersion;
+[FieldOffset(272)]	public readonly UIntPtr _constant_count;
+[FhirNameAttribute("constant")]
+[FieldOffset(280)]	public readonly ViewDefinition_Constant** _constant;
+[FieldOffset(288)]	public readonly UIntPtr _select_count;
+[FhirNameAttribute("select")]
+[FieldOffset(296)]	public readonly ViewDefinition_Select** _select;
+[FieldOffset(304)]	public readonly UIntPtr _where_count;
+[FhirNameAttribute("where")]
+[FieldOffset(312)]	public readonly ViewDefinition_Where** _where;
+};
+[StructLayout(LayoutKind.Explicit)]
+public unsafe class ViewDefinition_Constant {
+[FhirNameAttribute("resourceType")]
+[FieldOffset(0)]	public readonly ResourceType resourceType;
+[FhirNameAttribute("id")]
+[FieldOffset(8)]	public readonly NullableString8 _id;
+[FieldOffset(32)]	public readonly UIntPtr _extension_count;
+[FhirNameAttribute("extension")]
+[FieldOffset(40)]	public readonly Extension** _extension;
+[FieldOffset(48)]	public readonly UIntPtr _modifierExtension_count;
+[FhirNameAttribute("modifierExtension")]
+[FieldOffset(56)]	public readonly Extension** _modifierExtension;
+[FhirNameAttribute("name")]
+[FieldOffset(64)]	public readonly NullableString8 _name;
+	[System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
+	public unsafe struct ValueUnion {
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Base64Binary))]
+		public NullableString8 _valueBase64Binary;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.FhirBoolean))]
+		public NullableBoolean _valueBoolean;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Canonical))]
+		public NullableString8 _valueCanonical;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Code))]
+		public NullableString8 _valueCode;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Date))]
+		public ISO8601_Time _valueDate;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.FhirDateTime))]
+		public ISO8601_Time _valueDateTime;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.FhirDecimal))]
+		public NullableString8 _valueDecimal;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Id))]
+		public NullableString8 _valueId;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Instant))]
+		public ISO8601_Time _valueInstant;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Integer))]
+		public NullableInt32 _valueInteger;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Integer64))]
+		public NullableInt64 _valueInteger64;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Oid))]
+		public NullableString8 _valueOid;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.FhirString))]
+		public NullableString8 _valueString;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.PositiveInt))]
+		public NullableInt32 _valuePositiveInt;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Time))]
+		public ISO8601_Time _valueTime;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.UnsignedInt))]
+		public NullableInt32 _valueUnsignedInt;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.FhirUri))]
+		public NullableString8 _valueUri;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.FhirUrl))]
+		public NullableString8 _valueUrl;
+		[System.Runtime.InteropServices.FieldOffset(0)]
+		[NativeFhirType(typeof(Hl7.Fhir.Model.Uuid))]
+		public NullableString8 _valueUuid;
+	};
+	[FhirNameAttribute("value")]
+	[FieldOffset(88)] public ValueUnion _value;
+
+	public enum ValueType {
+		Base64Binary,
+		Boolean,
+		Canonical,
+		Code,
+		Date,
+		DateTime,
+		Decimal,
+		Id,
+		Instant,
+		Integer,
+		Integer64,
+		Oid,
+		String,
+		PositiveInt,
+		Time,
+		UnsignedInt,
+		Uri,
+		Url,
+		Uuid
+	};
+[FieldOffset(112)] public ValueType _value_type;
+
+};
+[StructLayout(LayoutKind.Explicit)]
+public unsafe class ViewDefinition_Select {
+[FhirNameAttribute("resourceType")]
+[FieldOffset(0)]	public readonly ResourceType resourceType;
+[FhirNameAttribute("id")]
+[FieldOffset(8)]	public readonly NullableString8 _id;
+[FieldOffset(32)]	public readonly UIntPtr _extension_count;
+[FhirNameAttribute("extension")]
+[FieldOffset(40)]	public readonly Extension** _extension;
+[FieldOffset(48)]	public readonly UIntPtr _modifierExtension_count;
+[FhirNameAttribute("modifierExtension")]
+[FieldOffset(56)]	public readonly Extension** _modifierExtension;
+[FieldOffset(64)]	public readonly UIntPtr _column_count;
+[FhirNameAttribute("column")]
+[FieldOffset(72)]	public readonly ViewDefinition_Select_Column** _column;
+[FieldOffset(80)]	public readonly UIntPtr _select_count;
+[FhirNameAttribute("select")]
+[FieldOffset(88)]	public readonly ViewDefinition_Select** _select;
+[FhirNameAttribute("forEach")]
+[FieldOffset(96)]	public readonly NullableString8 _forEach;
+[FhirNameAttribute("forEachOrNull")]
+[FieldOffset(120)]	public readonly NullableString8 _forEachOrNull;
+[FieldOffset(144)]	public readonly UIntPtr _unionAll_count;
+[FhirNameAttribute("unionAll")]
+[FieldOffset(152)]	public readonly ViewDefinition_Select** _unionAll;
+};
+[StructLayout(LayoutKind.Explicit)]
+public unsafe class ViewDefinition_Select_Column {
+[FhirNameAttribute("resourceType")]
+[FieldOffset(0)]	public readonly ResourceType resourceType;
+[FhirNameAttribute("id")]
+[FieldOffset(8)]	public readonly NullableString8 _id;
+[FieldOffset(32)]	public readonly UIntPtr _extension_count;
+[FhirNameAttribute("extension")]
+[FieldOffset(40)]	public readonly Extension** _extension;
+[FieldOffset(48)]	public readonly UIntPtr _modifierExtension_count;
+[FhirNameAttribute("modifierExtension")]
+[FieldOffset(56)]	public readonly Extension** _modifierExtension;
+[FhirNameAttribute("path")]
+[FieldOffset(64)]	public readonly NullableString8 _path;
+[FhirNameAttribute("name")]
+[FieldOffset(88)]	public readonly NullableString8 _name;
+[FhirNameAttribute("description")]
+[FieldOffset(112)]	public readonly NullableString8 _description;
+[FhirNameAttribute("collection")]
+[FieldOffset(136)]	public readonly NullableBoolean _collection;
+[FhirNameAttribute("type")]
+[FieldOffset(144)]	public readonly NullableString8 _type;
+[FieldOffset(168)]	public readonly UIntPtr _tag_count;
+[FhirNameAttribute("tag")]
+[FieldOffset(176)]	public readonly ViewDefinition_Select_Column_Tag** _tag;
+};
+[StructLayout(LayoutKind.Explicit)]
+public unsafe class ViewDefinition_Select_Column_Tag {
+[FhirNameAttribute("resourceType")]
+[FieldOffset(0)]	public readonly ResourceType resourceType;
+[FhirNameAttribute("id")]
+[FieldOffset(8)]	public readonly NullableString8 _id;
+[FieldOffset(32)]	public readonly UIntPtr _extension_count;
+[FhirNameAttribute("extension")]
+[FieldOffset(40)]	public readonly Extension** _extension;
+[FieldOffset(48)]	public readonly UIntPtr _modifierExtension_count;
+[FhirNameAttribute("modifierExtension")]
+[FieldOffset(56)]	public readonly Extension** _modifierExtension;
+[FhirNameAttribute("name")]
+[FieldOffset(64)]	public readonly NullableString8 _name;
+[FhirNameAttribute("value")]
+[FieldOffset(88)]	public readonly NullableString8 _value;
+};
+[StructLayout(LayoutKind.Explicit)]
+public unsafe class ViewDefinition_Where {
+[FhirNameAttribute("resourceType")]
+[FieldOffset(0)]	public readonly ResourceType resourceType;
+[FhirNameAttribute("id")]
+[FieldOffset(8)]	public readonly NullableString8 _id;
+[FieldOffset(32)]	public readonly UIntPtr _extension_count;
+[FhirNameAttribute("extension")]
+[FieldOffset(40)]	public readonly Extension** _extension;
+[FieldOffset(48)]	public readonly UIntPtr _modifierExtension_count;
+[FhirNameAttribute("modifierExtension")]
+[FieldOffset(56)]	public readonly Extension** _modifierExtension;
+[FhirNameAttribute("path")]
+[FieldOffset(64)]	public readonly NullableString8 _path;
+[FhirNameAttribute("description")]
+[FieldOffset(88)]	public readonly NullableString8 _description;
+};
+};

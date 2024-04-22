@@ -33,6 +33,7 @@ using System.Threading.Tasks;
 
 namespace FHIR_Marshalling
 {
+
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct NullableString8
     {
@@ -105,6 +106,25 @@ namespace FHIR_Marshalling
 
     };
 
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct NullableInt64
+    {
+        public readonly Int32 HasValue;
+        public readonly Int64 Value;
+        public long? GetValue()
+        {
+            if(HasValue == 0) return null;
+            return Value;
+        }
+
+        public Integer64? ToFhirInteger64()
+        {
+            if (HasValue == 0) return null;
+            return new Integer64(Value);
+        }
+
+    };
+
 
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct NullableDouble
@@ -158,8 +178,9 @@ namespace FHIR_Marshalling
         public byte timezone_minute;
 
         public ushort year;
-        public ushort millisecond;
         public Precision precision;
+        public Precision min_precision;
+        public UInt32 millisecond;
 
         public enum Precision
         {
@@ -186,7 +207,21 @@ namespace FHIR_Marshalling
 
             if (precision >= Precision.Millisecond)
             {
-                return new DateTimeOffset(year, month, day, hour, minute, second, (int)millisecond, timespan);
+                if (millisecond > 1000)
+                {
+                    string timezone = "";
+                    if (timezone_char > 0)
+                    { 
+                        timezone = timezone_char == 'Z' ? "Z" : $"{(timezone_char == '-' ? "-" : "+")}{timezone_hour:D2}:{timezone_minute:D2}";
+                    }
+                    string str = $"{year}-{month}-{day}T{hour}:{minute}:{second}.{millisecond}{timezone}";
+                    DateTime dt = DateTime.Parse(str);
+                    return dt;
+                }
+                else
+                {
+                    return new DateTimeOffset(year, month, day, hour, minute, second, (int)millisecond, timespan);
+                }
             }
             else if (precision == Precision.Second)
             {
