@@ -182,18 +182,18 @@ namespace FHIR_Marshalling
         public Precision min_precision;
         public UInt32 millisecond;
 
-        public enum Precision
+        public enum Precision : byte
         {
-            Unknown,
-            Year,
-            Month,
-            Day,
-            Hour,
-            Minute,
-            Second,
-            Millisecond,
-            TimezoneMinute,
-            TimezoneSecond,
+            Unknown = 0,
+            Year = 4,
+            Month = 6,
+            Day = 8,
+            Hour = 10,
+            Minute = 12,
+            Second = 14,
+            Millisecond = 17,
+            TimezoneHour = 19,
+            TimezoneMinute = 21,
         };
 
         public DateTimeOffset? ToDateTimeOffset()
