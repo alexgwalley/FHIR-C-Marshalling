@@ -214,7 +214,7 @@ namespace FHIR_Marshalling
                     { 
                         timezone = timezone_char == 'Z' ? "Z" : $"{(timezone_char == '-' ? "-" : "+")}{timezone_hour:D2}:{timezone_minute:D2}";
                     }
-                    string str = $"{year}-{month}-{day}T{hour}:{minute}:{second}.{millisecond}{timezone}";
+                    string str = $"{year:D2}-{month:D2}-{day:D2}T{hour:D2}:{minute:D2}:{second:D2}.{millisecond:D3}{timezone}";
                     DateTime dt = DateTime.Parse(str);
                     return dt;
                 }
