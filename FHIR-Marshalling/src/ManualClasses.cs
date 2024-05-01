@@ -41,7 +41,7 @@ namespace FHIR_Marshalling
         [FieldOffset(8)] public readonly UIntPtr size;
         [FieldOffset(16)] public readonly Int32 hasValue;
 
-        public string? ToString()
+        public override string? ToString()
         {
             if (hasValue == 0) return null;
             return Encoding.UTF8.GetString(str, (int)size);
@@ -60,6 +60,72 @@ namespace FHIR_Marshalling
             return new FhirDecimal(decimal.Parse(ToString()));
         }
     }
+
+    [StructLayout(LayoutKind.Explicit)]
+    public unsafe struct String8
+    {
+        [FieldOffset(0)] public readonly byte* str;
+        [FieldOffset(8)] public readonly UIntPtr size;
+
+        public override string? ToString()
+        {
+            return Encoding.UTF8.GetString(str, (int)size);
+        }
+    }
+
+    public enum LogType
+    {
+        Unknown,
+        Information,
+        Warning,
+        Error
+    };
+
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct LogNode
+    {
+        public LogNode* next;
+        public LogType type;
+        public String8 log_message;
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct LogList 
+    {
+        public LogNode* first;
+        public LogNode* last;
+        public UIntPtr node_count;
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct Log
+    {
+        public IntPtr arena;
+        public LogList logs;
+    };
+
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct ND_Context
+    {
+       public IntPtr main_arena;
+       public IntPtr rscratch_arena1;
+       public IntPtr rscratch_arena2;
+       public Log log;
+        /*
+        DeserializationOptions options;
+        simdjson::ondemand::parser* parser;
+        */
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct ND_ContextNode
+    {
+        public ND_ContextNode* next;
+        public ND_Context value;
+    };
+
 
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct String16

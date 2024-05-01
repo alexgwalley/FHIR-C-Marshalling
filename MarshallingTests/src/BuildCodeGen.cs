@@ -104,5 +104,14 @@ SOFTWARE.
                 file.WriteLine("}");
             }
         }
+
+        [TestMethod]
+        public void Test()
+        {
+            var d = new NativeFHIRDeserializer(1);
+            var res = d.DeserializeFile("C:\\Users\\awalley\\Code\\FHIR-in-C\\test_bundles\\130849.json");
+
+            int a = 0;
+        }
     }
 }

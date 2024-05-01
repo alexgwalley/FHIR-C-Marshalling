@@ -26,114 +26,132 @@ using Hl7.Fhir.Specification;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
-    namespace FHIR_Marshalling
+namespace FHIR_Marshalling
+{
+    internal unsafe static class NativeDeserializerMethods
     {
-        internal unsafe static class NativeDeserializerMethods
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void ND_Init(Int32 num_contexts);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void ND_Cleanup();
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_ContextNode* ND_DeserializeFile(string file_name, ref IntPtr ptr);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_ContextNode* ND_DeserializeString(byte* bytes, Int64 length, ref IntPtr ptr);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void ND_FreeContext(ND_ContextNode* context);
+    }
+
+    public class NativeFHIRDeserializer : IDisposable
+    {
+        public NativeFHIRDeserializer(int num_contexts = 0)
         {
-            [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-            public static extern void ND_Init(Int32 num_contexts);
-
-            [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-            public static extern void ND_Cleanup();
-
-            [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-            public static extern IntPtr ND_DeserializeFile(string file_name, ref IntPtr ptr);
-
-            [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-            public static extern IntPtr ND_DeserializeString(byte* bytes, Int64 length, ref IntPtr ptr);
-
-            [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-            public static extern void ND_FreeContext(IntPtr context);
+            NativeDeserializerMethods.ND_Init(num_contexts);
         }
 
-        public class NativeFHIRDeserializer : IDisposable
+        protected virtual void Dispose(bool disposing)
         {
-            public NativeFHIRDeserializer(int num_contexts = 0)
+            if (!disposedValue)
             {
-                NativeDeserializerMethods.ND_Init(num_contexts);
-            }
-
-            protected virtual void Dispose(bool disposing)
-            {
-                if (!disposedValue)
+                if (disposing)
                 {
-                    if (disposing)
-                    {
-                        // NOTE(agw): Dispose of all managed state (managed objects)
-                    }
-
-                    // NOTE(agw): Dispose of all un-managed state
-                    NativeDeserializerMethods.ND_Cleanup();
-                    disposedValue = true;
+                    // NOTE(agw): Dispose of all managed state (managed objects)
                 }
+
+                // NOTE(agw): Dispose of all un-managed state
+                NativeDeserializerMethods.ND_Cleanup();
+                disposedValue = true;
             }
+        }
 
-            ~NativeFHIRDeserializer()
+        ~NativeFHIRDeserializer()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        public static readonly byte[] SIMDJSON_PADDING = new byte[64];
+        private bool disposedValue;
+
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
+        {
+            byte[]? bytes = null;
+            if (!stream.CanSeek)
             {
-                // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-                Dispose(disposing: false);
+                // NOTE(agw): We do not know the length, do buffered copy
+                using MemoryStream memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
+
+                memoryStream.Write(SIMDJSON_PADDING, 0, SIMDJSON_PADDING.Length);
+
+                bytes = memoryStream.ToArray();
             }
-
-            public void Dispose()
+            else
             {
-                // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-                Dispose(disposing: true);
-                GC.SuppressFinalize(this);
-            }
-
-            public static readonly byte[] SIMDJSON_PADDING = new byte[64];
-            private bool disposedValue;
-
-            public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
-            {
-                byte[]? bytes = null;
-                if (!stream.CanSeek)
+                // NOTE(agw): If we _do_ know the length, just copy everything directly
+                bytes = new byte[stream.Length + SIMDJSON_PADDING.Length];
+                if (stream.Length <= int.MaxValue)
                 {
-                    // NOTE(agw): We do not know the length, do buffered copy
-                    using MemoryStream memoryStream = new MemoryStream();
-                    stream.CopyTo(memoryStream);
-
-                    memoryStream.Write(SIMDJSON_PADDING, 0, SIMDJSON_PADDING.Length);
-
-                    bytes = memoryStream.ToArray();
+                    stream.Write(bytes, 0, (int)stream.Length);
                 }
                 else
                 {
-                    // NOTE(agw): If we _do_ know the length, just copy everything directly
-                    bytes = new byte[stream.Length + SIMDJSON_PADDING.Length];
-                    if (stream.Length <= int.MaxValue)
-                    {
-                        stream.Write(bytes, 0, (int)stream.Length);
-                    }
-                    else
-                    {
-                        throw new Exception();
-                    }
+                    throw new Exception();
                 }
-
-
-                IntPtr intPtr = IntPtr.Zero;
-                IntPtr context = (IntPtr)0;
-                fixed (byte* byte_ptr = bytes)
-                {
-                    context = NativeDeserializerMethods.ND_DeserializeString(byte_ptr, bytes.Length, ref intPtr);
-                }
-
-                var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
-                NativeDeserializerMethods.ND_FreeContext(context);
-                return res;
             }
 
-            public unsafe Hl7.Fhir.Model.Resource? DeserializeFile(string fileName)
+
+            IntPtr intPtr = IntPtr.Zero;
+            ND_ContextNode* context = null;
+            fixed (byte* byte_ptr = bytes)
             {
-                IntPtr intPtr = IntPtr.Zero;
-                var context = NativeDeserializerMethods.ND_DeserializeFile(fileName, ref intPtr);
-                var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
-                NativeDeserializerMethods.ND_FreeContext(context);
-
-                return res;
+                context = NativeDeserializerMethods.ND_DeserializeString(byte_ptr, bytes.Length, ref intPtr);
             }
 
+
+            if ((long)context->value.log.logs.node_count > 0)
+            {
+                StringBuilder builder = new StringBuilder();
+                LogList list = context->value.log.logs;
+                for (LogNode* node = list.first; node != null; node = node->next)
+                {
+                    if (node->type == LogType.Error)
+                    {
+                        string msg = node->log_message.ToString();
+                        builder.AppendLine(msg);
+                    }
+                }
+                string str = builder.ToString();
+                throw new Exception(str);
+            }
+
+            var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
+            NativeDeserializerMethods.ND_FreeContext(context);
+            return res;
         }
+
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeFile(string fileName)
+        {
+            IntPtr intPtr = IntPtr.Zero;
+            var context = NativeDeserializerMethods.ND_DeserializeFile(fileName, ref intPtr);
+            var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
+            NativeDeserializerMethods.ND_FreeContext(context);
+
+            return res;
+        }
+
     }
+}
