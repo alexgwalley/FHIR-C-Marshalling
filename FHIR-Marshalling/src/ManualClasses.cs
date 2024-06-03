@@ -245,6 +245,7 @@ namespace FHIR_Marshalling
 
         public ushort year;
         public Precision precision;
+        // TODO(agw): this is old, we now have a FHIRType column
         public Precision min_precision;
         public UInt32 millisecond;
 

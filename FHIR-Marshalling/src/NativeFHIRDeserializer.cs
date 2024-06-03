@@ -89,28 +89,13 @@ namespace FHIR_Marshalling
         public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
         {
             byte[]? bytes = null;
-            if (!stream.CanSeek)
             {
-                // NOTE(agw): We do not know the length, do buffered copy
                 using MemoryStream memoryStream = new MemoryStream();
                 stream.CopyTo(memoryStream);
 
                 memoryStream.Write(SIMDJSON_PADDING, 0, SIMDJSON_PADDING.Length);
 
                 bytes = memoryStream.ToArray();
-            }
-            else
-            {
-                // NOTE(agw): If we _do_ know the length, just copy everything directly
-                bytes = new byte[stream.Length + SIMDJSON_PADDING.Length];
-                if (stream.Length <= int.MaxValue)
-                {
-                    stream.Write(bytes, 0, (int)stream.Length);
-                }
-                else
-                {
-                    throw new Exception();
-                }
             }
 
 
