@@ -120,7 +120,7 @@ namespace FHIR_Marshalling
                     }
                 }
                 string str = builder.ToString();
-                throw new Exception(str);
+                //throw new Exception(str);
             }
 
             var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);

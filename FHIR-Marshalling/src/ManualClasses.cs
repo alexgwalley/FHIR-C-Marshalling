@@ -371,6 +371,18 @@ namespace FHIR_Marshalling
         }
 
     };
+
+
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct FieldExtensionNode
+    {
+        public FieldExtensionNode* next;
+        public readonly String8 name;
+        public int extension_count;
+        public void** extensions; // FHIR_Marshalling.Extension
+    }
+
     public enum Cardinality
     {
         Unknown,
