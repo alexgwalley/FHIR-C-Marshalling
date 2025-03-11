@@ -582,6 +582,67 @@ namespace FHIR_Marshalling
                 }
             }
 
+            // add field extensions
+            {
+
+                string starting = @"if ((ulong)(*(System.UIntPtr*)((byte*)in_native + 8)) > 0)
+    {
+        FieldExtensionNode* node = (FieldExtensionNode*)((byte*)in_native + 8);
+
+        while(node != null)
+        {
+
+            FHIR_Marshalling.Extension** extensions = (FHIR_Marshalling.Extension**)node->extensions;
+            if (node->extension_count > 0 && fhirInstance.Extension == null)
+            {
+
+                fhirInstance.Extension = new List<Hl7.Fhir.Model.Extension>();
+            }
+
+            for (int i = 0; i < node->extension_count; i += 1)
+            {
+                FHIR_Marshalling.Extension* ext = extensions[i];
+                Hl7.Fhir.Model.Extension marshalled = Marshal_Extension(ext);
+                string node_name = node->name.ToString();
+                switch (node_name)
+                {";
+
+                builder.AppendLine(starting);
+                // generate based on FhirAttributeName
+                builder.IndentedAmount += 4;
+
+                var nativeFields = nativeType.GetFields();
+                foreach (var field in nativeFields)
+                {
+                    FhirNameAttribute fhirAttribute = (FhirNameAttribute) field.GetCustomAttribute(typeof(FhirNameAttribute));
+                    string fhirName = "";
+                    if (fhirAttribute != null)
+                    {
+                        fhirName = fhirAttribute.FhirName;
+                    }
+
+                    if (fhirName != "" && fhirName != "resourceType" && fhirName != "__field_extensions")
+                    {
+                        string elementName = fhirName.Capitalize() + "Element";
+                        string switchCase = @"case ""{0}"": fhirInstance.{1}.Extension.Add(marshalled); break;".FormatWith(fhirName, elementName);
+                        builder.AppendLine(switchCase);
+                    }
+                }
+
+
+                builder.IndentedAmount -= 4;
+
+                string ending = @"
+                }
+            }
+
+            node = node->next;
+        }
+    }";
+
+                builder.AppendLine(ending);
+            }
+
             builder.AppendLine($"return {firelyInstance};");
             builder.IndentedAmount -= 1;
             builder.AppendLine("}");

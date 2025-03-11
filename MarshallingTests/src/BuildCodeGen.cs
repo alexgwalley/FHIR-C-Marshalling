@@ -112,10 +112,10 @@ SOFTWARE.
             using(var file = File.Open("C:\\Users\\awalley\\Downloads\\patient.2024.acp.0.95000.json", FileMode.Open))
             {
                 var res = d.DeserializeStream(file);
+                int a = 0;
             }
 
 
-            int a = 0;
         }
     }
 }
