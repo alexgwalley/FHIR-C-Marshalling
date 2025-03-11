@@ -109,7 +109,11 @@ SOFTWARE.
         public void Test()
         {
             var d = new NativeFHIRDeserializer(1);
-            var res = d.DeserializeFile("C:\\Users\\awalley\\Code\\FHIR-in-C\\test_bundles\\130849.json");
+            using(var file = File.Open("C:\\Users\\awalley\\Downloads\\patient.2024.acp.0.95000.json", FileMode.Open))
+            {
+                var res = d.DeserializeStream(file);
+            }
+
 
             int a = 0;
         }

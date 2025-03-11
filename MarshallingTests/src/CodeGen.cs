@@ -664,7 +664,7 @@ namespace FHIR_Marshalling
                 }
 
                 string fhirName = ((FhirNameAttribute)fhirAttribute).FhirName;
-                if (fhirName == "resourceType") continue;
+                if (fhirName == "resourceType" || fhirName == "__field_extensions") continue;
 
                 memberMapping.FhirName = fhirName;
                 memberMapping.NativeField = field;
