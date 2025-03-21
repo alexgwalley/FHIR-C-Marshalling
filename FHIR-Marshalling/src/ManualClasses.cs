@@ -69,6 +69,7 @@ namespace FHIR_Marshalling
 
         public override string? ToString()
         {
+            if ((long)size == 0) return "";
             return Encoding.UTF8.GetString(str, (int)size);
         }
     }
@@ -124,6 +125,20 @@ namespace FHIR_Marshalling
     {
         public ND_ContextNode* next;
         public ND_Context value;
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct ND_Result
+    {
+        public IntPtr resource;
+        public String8 error_message;
+        public LogList logs;
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ND_Handle
+    {
+        UInt64 u64;
     };
 
 

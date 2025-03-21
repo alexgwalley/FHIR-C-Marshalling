@@ -32,27 +32,48 @@ namespace FHIR_Marshalling
 {
     internal unsafe static class NativeDeserializerMethods
     {
+#if WINDOWS
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void Init();
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void Cleanup();
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Result DeserializeFile(ND_Handle context, string file_name);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Result DeserializeString(ND_Handle context, byte* bytes, Int64 length);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Handle CreateContext();
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void FreeContext(ND_Handle context);
+#endif
+
+#if LINUX
+        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ND_Init(Int32 num_contexts);
 
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ND_Cleanup();
 
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_ContextNode* ND_DeserializeFile(string file_name, ref IntPtr ptr);
 
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_ContextNode* ND_DeserializeString(byte* bytes, Int64 length, ref IntPtr ptr);
 
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ND_FreeContext(ND_ContextNode* context);
+#endif
     }
 
     public class NativeFHIRDeserializer : IDisposable
     {
         public NativeFHIRDeserializer(int num_contexts = 0)
         {
-            NativeDeserializerMethods.ND_Init(num_contexts);
+            NativeDeserializerMethods.Init();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -65,7 +86,7 @@ namespace FHIR_Marshalling
                 }
 
                 // NOTE(agw): Dispose of all un-managed state
-                NativeDeserializerMethods.ND_Cleanup();
+                NativeDeserializerMethods.Cleanup();
                 disposedValue = true;
             }
         }
@@ -88,6 +109,8 @@ namespace FHIR_Marshalling
 
         public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
         {
+            Hl7.Fhir.Model.Resource result = null;
+
             byte[]? bytes = null;
             {
                 using MemoryStream memoryStream = new MemoryStream();
@@ -99,41 +122,49 @@ namespace FHIR_Marshalling
             }
 
 
-            IntPtr intPtr = IntPtr.Zero;
-            ND_ContextNode* context = null;
+            // TODO(agw): re-use contexts
+            ND_Handle context = NativeDeserializerMethods.CreateContext();
+
+            ND_Result deserialization_result = new ND_Result();
             fixed (byte* byte_ptr = bytes)
             {
-                context = NativeDeserializerMethods.ND_DeserializeString(byte_ptr, bytes.Length, ref intPtr);
+                deserialization_result = NativeDeserializerMethods.DeserializeString(context, byte_ptr, bytes.Length);
             }
 
 
-            if ((long)context->value.log.logs.node_count > 0)
+            string error_string = deserialization_result.error_message.ToString();
+            if (error_string.Length > 0)
             {
-                StringBuilder builder = new StringBuilder();
-                LogList list = context->value.log.logs;
-                for (LogNode* node = list.first; node != null; node = node->next)
+                /*
+                for (LogNode* log = result.logs.first; log != null; log = log->next)
                 {
-                    if (node->type == LogType.Error)
+                    if (log->type == LogType.Error)
                     {
-                        string msg = node->log_message.ToString();
-                        builder.AppendLine(msg);
+                        log->log_message.ToString();
                     }
                 }
-                string str = builder.ToString();
+                */
                 //throw new Exception(str);
             }
+            if(deserialization_result.resource != IntPtr.Zero)
+            {
+                result = GeneratedMarshalling.Marshal_Resource((Resource*)deserialization_result.resource);
+            }
 
-            var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
-            NativeDeserializerMethods.ND_FreeContext(context);
-            return res;
+            NativeDeserializerMethods.FreeContext(context);
+            return result;
         }
 
         public unsafe Hl7.Fhir.Model.Resource? DeserializeFile(string fileName)
         {
-            IntPtr intPtr = IntPtr.Zero;
-            var context = NativeDeserializerMethods.ND_DeserializeFile(fileName, ref intPtr);
-            var res = GeneratedMarshalling.Marshal_Resource((Resource*)intPtr);
-            NativeDeserializerMethods.ND_FreeContext(context);
+            // now we can create / destroy from C#
+            ND_Handle context = NativeDeserializerMethods.CreateContext();
+
+            ND_Result result = NativeDeserializerMethods.DeserializeFile(context, fileName);
+
+            var res = GeneratedMarshalling.Marshal_Resource((Resource*)result.resource);
+
+            NativeDeserializerMethods.FreeContext(context);
 
             return res;
         }

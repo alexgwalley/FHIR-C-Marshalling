@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MarshallingTests": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
