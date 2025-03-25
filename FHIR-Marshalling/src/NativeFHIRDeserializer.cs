@@ -53,19 +53,22 @@ namespace FHIR_Marshalling
 
 #if LINUX
         [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void ND_Init(Int32 num_contexts);
+        public static extern void Init();
 
         [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void ND_Cleanup();
+        public static extern void Cleanup();
 
         [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_ContextNode* ND_DeserializeFile(string file_name, ref IntPtr ptr);
+        public static extern ND_Result DeserializeFile(ND_Handle context, string file_name);
 
         [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_ContextNode* ND_DeserializeString(byte* bytes, Int64 length, ref IntPtr ptr);
+        public static extern ND_Result DeserializeString(ND_Handle context, byte* bytes, Int64 length);
 
         [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void ND_FreeContext(ND_ContextNode* context);
+        public static extern ND_Handle CreateContext();
+
+        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void FreeContext(ND_Handle context);
 #endif
     }
 
