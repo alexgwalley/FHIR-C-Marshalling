@@ -138,7 +138,7 @@ namespace FHIR_Marshalling
     [StructLayout(LayoutKind.Sequential)]
     public struct ND_Handle
     {
-        UInt64 u64;
+        public UInt64 u64;
     };
 
 

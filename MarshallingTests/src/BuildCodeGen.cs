@@ -24,6 +24,7 @@ SOFTWARE.
 
 using FHIR_Marshalling;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 
 namespace MarshallingTests
 {
@@ -108,10 +109,15 @@ SOFTWARE.
         [TestMethod]
         public void Test()
         {
-            var d = new NativeFHIRDeserializer(1);
-            using(var file = File.Open("C:\\Users\\awalley\\Downloads\\patient.2024.acp.0.95000.json", FileMode.Open))
+
+            string fileName = "/mnt/c/Users/awalley/Code/native/test_bundles/patient.2024.acp.0.95000.json";
+            Console.WriteLine("Hello! Loading file: " + fileName);
+            var d = new NativeFHIRDeserializer();
+            using (var file = File.Open(fileName, FileMode.Open))
             {
+                Console.WriteLine("Loaded File" + fileName);
                 var res = d.DeserializeStream(file);
+                Debug.WriteLine(res.Id);
                 int a = 0;
             }
 

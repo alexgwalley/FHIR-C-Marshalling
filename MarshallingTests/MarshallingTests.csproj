@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
@@ -11,27 +11,27 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600</NoWarn>
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600</NoWarn>
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600</NoWarn>
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600</NoWarn>
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600</NoWarn>
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600</NoWarn>
+    <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />

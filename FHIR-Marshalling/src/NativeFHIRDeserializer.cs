@@ -52,22 +52,22 @@ namespace FHIR_Marshalling
 #endif
 
 #if LINUX
-        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void Init();
 
-        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void Cleanup();
 
-        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Result DeserializeFile(ND_Handle context, string file_name);
 
-        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Result DeserializeString(ND_Handle context, byte* bytes, Int64 length);
 
-        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
 
-        [DllImport("deserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void FreeContext(ND_Handle context);
 #endif
     }
@@ -124,7 +124,6 @@ namespace FHIR_Marshalling
                 bytes = memoryStream.ToArray();
             }
 
-
             // TODO(agw): re-use contexts
             ND_Handle context = NativeDeserializerMethods.CreateContext();
 
@@ -138,17 +137,16 @@ namespace FHIR_Marshalling
             string error_string = deserialization_result.error_message.ToString();
             if (error_string.Length > 0)
             {
-                /*
-                for (LogNode* log = result.logs.first; log != null; log = log->next)
-                {
-                    if (log->type == LogType.Error)
-                    {
-                        log->log_message.ToString();
-                    }
-                }
-                */
                 //throw new Exception(str);
             }
+
+            /*
+            for (LogNode* log = deserialization_result.logs.first; log != null; log = log->next)
+            {
+                Console.WriteLine("Log: " + log->log_message.ToString());
+            }
+            */
+
             if(deserialization_result.resource != IntPtr.Zero)
             {
                 result = GeneratedMarshalling.Marshal_Resource((Resource*)deserialization_result.resource);
