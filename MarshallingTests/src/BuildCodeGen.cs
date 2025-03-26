@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json;
 
 namespace MarshallingTests
 {
@@ -123,5 +124,22 @@ SOFTWARE.
                 int a = 0;
             }
         }
-    }
+
+        [TestMethod]
+        public void InvalidJson()
+        {
+            string json = "{\"resourceType\": \"Bundle\"";
+            var deserializer = new NativeFHIRDeserializer();
+            bool hadException = false;
+            try
+            {
+                var resource = deserializer.DeserializeString(json);
+            }
+            catch(JsonException ex)
+            {
+                hadException = true;
+            }
+            Assert.IsTrue(hadException);
+        }
+    } 
 }

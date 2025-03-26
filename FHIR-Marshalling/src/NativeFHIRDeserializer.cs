@@ -24,9 +24,12 @@ SOFTWARE.
 
 using Hl7.Fhir.Specification;
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
 
 namespace FHIR_Marshalling
 {
@@ -77,7 +80,138 @@ namespace FHIR_Marshalling
         public NativeFHIRDeserializer(int num_contexts = 0)
         {
             NativeDeserializerMethods.Init();
+            _contexts = new ConcurrentStack<ND_Handle>();
         }
+
+        private ConcurrentStack<ND_Handle> _contexts;
+
+        private ND_Handle GetContext()
+        {
+            ND_Handle result = new ND_Handle{};
+            if(_contexts.TryPop(out result) == false)
+            {
+                result = NativeDeserializerMethods.CreateContext();
+            }
+            return result;
+        }
+
+        private void ReleaseContext(ND_Handle context)
+        {
+            _contexts.Push(context);
+        }
+
+        public static readonly byte[] SIMDJSON_PADDING = new byte[64];
+        private bool disposedValue;
+
+        private void HandleExceptions(ND_Result deserialization_result)
+        {
+            // ~ TODO(agw): do stuff with errors
+            string error_string = deserialization_result.error_message.ToString();
+            if (error_string.Length > 0)
+            {
+                throw new JsonException(error_string);
+            }
+
+            StringBuilder error_builder = new StringBuilder();
+            unsafe
+            {
+                for (LogNode* log = deserialization_result.logs.first; log != null; log = log->next)
+                {
+                    if(log->type == LogType.Error)
+                    {
+                        error_builder.AppendLine(log->log_message.ToString());
+                    }
+                }
+            }
+
+            string log_error_string = error_builder.ToString();
+            if(log_error_string.Length > 0)
+            {
+                throw new JsonException(log_error_string);
+            }
+        }
+
+        private unsafe Hl7.Fhir.Model.Resource? DeserializeBytes(byte[] bytes)
+        {
+            Hl7.Fhir.Model.Resource result = null;
+
+            // ~ Get ND Context (memory arenas, re-use simdjson parser, etc.)
+            ND_Handle context = this.GetContext();
+
+            // ~ Deserialize
+            ND_Result deserialization_result = new ND_Result();
+            if (bytes.Length > 0)
+            {
+                fixed (byte* byte_ptr = bytes)
+                {
+                    deserialization_result = NativeDeserializerMethods.DeserializeString(context, byte_ptr, bytes.Length);
+                }
+            }
+
+            // ~ Marshal to Managed Memory
+            if (deserialization_result.resource != IntPtr.Zero)
+            {
+                result = GeneratedMarshalling.Marshal_Resource((Resource*)deserialization_result.resource);
+            }
+
+            // ~ Reuse context for later
+            this.ReleaseContext(context);
+
+            HandleExceptions(deserialization_result);
+
+            return result;
+
+        }
+
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeString(string json)
+        {
+            Hl7.Fhir.Model.Resource? result = null;
+
+            byte[] utf8Bytes = Encoding.UTF8.GetBytes(json);
+            byte[] bytes = new byte[utf8Bytes.Length + SIMDJSON_PADDING.Length];
+            Buffer.BlockCopy(utf8Bytes, 0, bytes, 0, utf8Bytes.Length);
+            Buffer.BlockCopy(SIMDJSON_PADDING, 0, bytes, utf8Bytes.Length, SIMDJSON_PADDING.Length);
+
+            result = DeserializeBytes(bytes);
+            return result;
+        }
+
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
+        {
+            Hl7.Fhir.Model.Resource result = null;
+
+            // ~ Copy Entire Stream
+            byte[]? bytes = null;
+            {
+                using MemoryStream memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
+
+                memoryStream.Write(SIMDJSON_PADDING, 0, SIMDJSON_PADDING.Length);
+
+                bytes = memoryStream.ToArray();
+            }
+
+            result = DeserializeBytes(bytes);
+            return result;
+        }
+
+        public Hl7.Fhir.Model.Resource? DeserializeFile(string file_name)
+        {
+            Hl7.Fhir.Model.Resource? result = null;
+
+            ND_Handle context = this.GetContext();
+            ND_Result deserialization_result = NativeDeserializerMethods.DeserializeFile(context, file_name);
+
+            this.ReleaseContext(context);
+
+            HandleExceptions(deserialization_result);
+
+            return result;
+        }
+
+        ////////////////////////////////////////////////////////////
+        // ~ IDisposable Implementation
+        ////////////////////////////////////////////////////////////
 
         protected virtual void Dispose(bool disposing)
         {
@@ -89,7 +223,14 @@ namespace FHIR_Marshalling
                 }
 
                 // NOTE(agw): Dispose of all un-managed state
+                foreach (var context in _contexts)
+                {
+                    NativeDeserializerMethods.FreeContext(context);
+                }
+                _contexts.Clear();
+
                 NativeDeserializerMethods.Cleanup();
+
                 disposedValue = true;
             }
         }
@@ -105,69 +246,6 @@ namespace FHIR_Marshalling
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
-        }
-
-        public static readonly byte[] SIMDJSON_PADDING = new byte[64];
-        private bool disposedValue;
-
-        public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
-        {
-            Hl7.Fhir.Model.Resource result = null;
-
-            byte[]? bytes = null;
-            {
-                using MemoryStream memoryStream = new MemoryStream();
-                stream.CopyTo(memoryStream);
-
-                memoryStream.Write(SIMDJSON_PADDING, 0, SIMDJSON_PADDING.Length);
-
-                bytes = memoryStream.ToArray();
-            }
-
-            // TODO(agw): re-use contexts
-            ND_Handle context = NativeDeserializerMethods.CreateContext();
-
-            ND_Result deserialization_result = new ND_Result();
-            fixed (byte* byte_ptr = bytes)
-            {
-                deserialization_result = NativeDeserializerMethods.DeserializeString(context, byte_ptr, bytes.Length);
-            }
-
-
-            string error_string = deserialization_result.error_message.ToString();
-            if (error_string.Length > 0)
-            {
-                //throw new Exception(str);
-            }
-
-            /*
-            for (LogNode* log = deserialization_result.logs.first; log != null; log = log->next)
-            {
-                Console.WriteLine("Log: " + log->log_message.ToString());
-            }
-            */
-
-            if(deserialization_result.resource != IntPtr.Zero)
-            {
-                result = GeneratedMarshalling.Marshal_Resource((Resource*)deserialization_result.resource);
-            }
-
-            NativeDeserializerMethods.FreeContext(context);
-            return result;
-        }
-
-        public unsafe Hl7.Fhir.Model.Resource? DeserializeFile(string fileName)
-        {
-            // now we can create / destroy from C#
-            ND_Handle context = NativeDeserializerMethods.CreateContext();
-
-            ND_Result result = NativeDeserializerMethods.DeserializeFile(context, fileName);
-
-            var res = GeneratedMarshalling.Marshal_Resource((Resource*)result.resource);
-
-            NativeDeserializerMethods.FreeContext(context);
-
-            return res;
         }
 
     }
