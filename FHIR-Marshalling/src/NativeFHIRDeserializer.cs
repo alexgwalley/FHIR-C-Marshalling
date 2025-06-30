@@ -43,15 +43,15 @@ namespace FHIR_Marshalling
         public static extern void Cleanup();
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeFile(ND_Handle context, string file_name);
+        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeString(ND_Handle context, byte* bytes, Int64 length);
+        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void FreeContext(ND_Handle context);
+        public static extern void FreeContext(ND_Handle Context);
 #endif
 
 #if LINUX
@@ -62,42 +62,44 @@ namespace FHIR_Marshalling
         public static extern void Cleanup();
 
         [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeFile(ND_Handle context, string file_name);
+        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name);
 
         [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeString(ND_Handle context, byte* bytes, Int64 length);
+        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length);
 
         [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
 
         [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void FreeContext(ND_Handle context);
+        public static extern void FreeContext(ND_Handle Context);
 #endif
     }
 
     public class NativeFHIRDeserializer : IDisposable
     {
-        public NativeFHIRDeserializer(int num_contexts = 0)
+        public NativeFHIRDeserializer(int num_Contexts = 0, bool throwOnErrors = false)
         {
             NativeDeserializerMethods.Init();
-            _contexts = new ConcurrentStack<ND_Handle>();
+            _Contexts = new ConcurrentStack<ND_Handle>();
+            _ThrowOnErrors = throwOnErrors;
         }
 
-        private ConcurrentStack<ND_Handle> _contexts;
+        private ConcurrentStack<ND_Handle> _Contexts;
+        private bool _ThrowOnErrors = false;
 
         private ND_Handle GetContext()
         {
             ND_Handle result = new ND_Handle{};
-            if(_contexts.TryPop(out result) == false)
+            if(_Contexts.TryPop(out result) == false)
             {
                 result = NativeDeserializerMethods.CreateContext();
             }
             return result;
         }
 
-        private void ReleaseContext(ND_Handle context)
+        private void ReleaseContext(ND_Handle Context)
         {
-            _contexts.Push(context);
+            _Contexts.Push(Context);
         }
 
         public static readonly byte[] SIMDJSON_PADDING = new byte[64];
@@ -125,7 +127,7 @@ namespace FHIR_Marshalling
             }
 
             string log_error_string = error_builder.ToString();
-            if(log_error_string.Length > 0)
+            if(log_error_string.Length > 0 && _ThrowOnErrors)
             {
                 throw new JsonException(log_error_string);
             }
@@ -136,7 +138,7 @@ namespace FHIR_Marshalling
             Hl7.Fhir.Model.Resource result = null;
 
             // ~ Get ND Context (memory arenas, re-use simdjson parser, etc.)
-            ND_Handle context = this.GetContext();
+            ND_Handle Context = this.GetContext();
 
             // ~ Deserialize
             ND_Result deserialization_result = new ND_Result();
@@ -144,7 +146,7 @@ namespace FHIR_Marshalling
             {
                 fixed (byte* byte_ptr = bytes)
                 {
-                    deserialization_result = NativeDeserializerMethods.DeserializeString(context, byte_ptr, bytes.Length);
+                    deserialization_result = NativeDeserializerMethods.DeserializeString(Context, byte_ptr, bytes.Length);
                 }
             }
 
@@ -154,8 +156,8 @@ namespace FHIR_Marshalling
                 result = GeneratedMarshalling.Marshal_Resource((Resource*)deserialization_result.resource);
             }
 
-            // ~ Reuse context for later
-            this.ReleaseContext(context);
+            // ~ Reuse Context for later
+            this.ReleaseContext(Context);
 
             HandleExceptions(deserialization_result);
 
@@ -199,10 +201,10 @@ namespace FHIR_Marshalling
         {
             Hl7.Fhir.Model.Resource? result = null;
 
-            ND_Handle context = this.GetContext();
-            ND_Result deserialization_result = NativeDeserializerMethods.DeserializeFile(context, file_name);
+            ND_Handle Context = this.GetContext();
+            ND_Result deserialization_result = NativeDeserializerMethods.DeserializeFile(Context, file_name);
 
-            this.ReleaseContext(context);
+            this.ReleaseContext(Context);
 
             HandleExceptions(deserialization_result);
 
@@ -223,11 +225,11 @@ namespace FHIR_Marshalling
                 }
 
                 // NOTE(agw): Dispose of all un-managed state
-                foreach (var context in _contexts)
+                foreach (var Context in _Contexts)
                 {
-                    NativeDeserializerMethods.FreeContext(context);
+                    NativeDeserializerMethods.FreeContext(Context);
                 }
-                _contexts.Clear();
+                _Contexts.Clear();
 
                 NativeDeserializerMethods.Cleanup();
 
