@@ -142,5 +142,58 @@ SOFTWARE.
             }
             Assert.IsTrue(hadException);
         }
+
+
+        [TestMethod]
+        public void FilterTest()
+        {
+            string json = """
+{
+	"resourceType": "Bundle",
+	"entry": [
+			{
+				"resource": {
+					"resourceType": "Condition",
+					"id": "condition-0",
+					"code": {
+						"coding": [{
+								"code": "G9473",
+								"system": "http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets"
+							}]
+					}
+				}
+			},
+			{
+				"resource": {
+					"resourceType": "Patient",
+					"id": "patient-0"
+				}
+			},
+			{
+				"resource": {
+					"resourceType": "Encounter",
+					"id": "encounter-0",
+					"class": {
+						"code": "bad_code",
+						"system": "http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets"
+					}
+				}
+			}
+	]
+}
+""";
+            string vsdFolder = "C:/Users/awalley/Code/Ncqa.IMAS/Ncqa.IMAS.MeasureCompiler/TerminologyServer/ValueSets/2025-03-31";
+            var deserializer = new NativeFHIRDeserializer(valueSetDictionaryFolder: vsdFolder);
+            bool hadException = false;
+            try
+            {
+                var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
+                Assert.IsTrue(resource.Entry.Count == 2);
+            }
+            catch(JsonException ex)
+            {
+                hadException = true;
+            }
+        }
     } 
 }
