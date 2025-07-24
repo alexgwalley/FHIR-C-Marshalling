@@ -43,10 +43,16 @@ namespace FHIR_Marshalling
         public static extern void Cleanup();
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name);
+        public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length);
+        public static extern void ValueSetDictionary_Free(VSD_Handle handle);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name, ND_DeserializeOptions* opts);
+
+        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length, ND_DeserializeOptions* opts);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
@@ -77,15 +83,26 @@ namespace FHIR_Marshalling
 
     public class NativeFHIRDeserializer : IDisposable
     {
-        public NativeFHIRDeserializer(int num_Contexts = 0, bool throwOnErrors = false)
+        public NativeFHIRDeserializer(int num_Contexts = 0, string valueSetDictionaryFolder = "", bool throwOnErrors = false)
         {
             NativeDeserializerMethods.Init();
             _Contexts = new ConcurrentStack<ND_Handle>();
             _ThrowOnErrors = throwOnErrors;
+
+            if (valueSetDictionaryFolder.Length > 0)
+            {
+                if (!System.IO.Directory.Exists(valueSetDictionaryFolder))
+                {
+                    throw new Exception("Folder does not exist: " + valueSetDictionaryFolder);
+                }
+
+                 vsdHandle = NativeDeserializerMethods.ValueSetDictionary_Load(valueSetDictionaryFolder);
+            }
         }
 
         private ConcurrentStack<ND_Handle> _Contexts;
         private bool _ThrowOnErrors = false;
+        private VSD_Handle vsdHandle;
 
         private ND_Handle GetContext()
         {
@@ -133,7 +150,7 @@ namespace FHIR_Marshalling
             }
         }
 
-        private unsafe Hl7.Fhir.Model.Resource? DeserializeBytes(byte[] bytes)
+        private unsafe Hl7.Fhir.Model.Resource? DeserializeBytes(byte[] bytes, bool filterOutBadCodes = false)
         {
             Hl7.Fhir.Model.Resource result = null;
 
@@ -144,9 +161,19 @@ namespace FHIR_Marshalling
             ND_Result deserialization_result = new ND_Result();
             if (bytes.Length > 0)
             {
+                ND_DeserializeOptions opts = new ND_DeserializeOptions();
+                opts.valueset = vsdHandle;
+                if (filterOutBadCodes)
+                {
+                    if (vsdHandle.u64 == 0)
+                    {
+                        throw new Exception("Value set dictionary not loaded. Include path when instantiating NativeFHIRDeserializer");
+                    }
+                    opts.flags |= ND_DeserializeFlags.FilterCodesByResource;
+                }
                 fixed (byte* byte_ptr = bytes)
                 {
-                    deserialization_result = NativeDeserializerMethods.DeserializeString(Context, byte_ptr, bytes.Length);
+                    deserialization_result = NativeDeserializerMethods.DeserializeString(Context, byte_ptr, bytes.Length, &opts);
                 }
             }
 
@@ -165,7 +192,7 @@ namespace FHIR_Marshalling
 
         }
 
-        public unsafe Hl7.Fhir.Model.Resource? DeserializeString(string json)
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeString(string json, bool filterOutBadCodes = false)
         {
             Hl7.Fhir.Model.Resource? result = null;
 
@@ -174,11 +201,11 @@ namespace FHIR_Marshalling
             Buffer.BlockCopy(utf8Bytes, 0, bytes, 0, utf8Bytes.Length);
             Buffer.BlockCopy(SIMDJSON_PADDING, 0, bytes, utf8Bytes.Length, SIMDJSON_PADDING.Length);
 
-            result = DeserializeBytes(bytes);
+            result = DeserializeBytes(bytes, filterOutBadCodes);
             return result;
         }
 
-        public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream)
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeStream(Stream stream, bool filterOutBadCodes = false)
         {
             Hl7.Fhir.Model.Resource result = null;
 
@@ -193,16 +220,32 @@ namespace FHIR_Marshalling
                 bytes = memoryStream.ToArray();
             }
 
-            result = DeserializeBytes(bytes);
+            result = DeserializeBytes(bytes, filterOutBadCodes);
             return result;
         }
 
-        public Hl7.Fhir.Model.Resource? DeserializeFile(string file_name)
+        public Hl7.Fhir.Model.Resource? DeserializeFile(string file_name, bool filterOutBadCodes = false)
         {
             Hl7.Fhir.Model.Resource? result = null;
 
             ND_Handle Context = this.GetContext();
-            ND_Result deserialization_result = NativeDeserializerMethods.DeserializeFile(Context, file_name);
+
+            ND_DeserializeOptions opts = new ND_DeserializeOptions();
+            opts.valueset = vsdHandle;
+            if (filterOutBadCodes)
+            {
+                if (vsdHandle.u64 == 0)
+                {
+                    throw new Exception("Value set dictionary not loaded. Include path when instantiating NativeFHIRDeserializer");
+                }
+                opts.flags |= ND_DeserializeFlags.FilterCodesByResource;
+            }
+
+            ND_Result deserialization_result = new ND_Result();
+            unsafe
+            {
+                deserialization_result = NativeDeserializerMethods.DeserializeFile(Context, file_name, &opts);
+            }
 
             this.ReleaseContext(Context);
 
@@ -231,6 +274,7 @@ namespace FHIR_Marshalling
                 }
                 _Contexts.Clear();
 
+                NativeDeserializerMethods.ValueSetDictionary_Free(vsdHandle);
                 NativeDeserializerMethods.Cleanup();
 
                 disposedValue = true;

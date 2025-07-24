@@ -136,6 +136,25 @@ namespace FHIR_Marshalling
     };
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct VSD_Handle
+    {
+        public UInt64 u64;
+    };
+
+    public enum ND_DeserializeFlags
+    {
+        Reserved = (1 << 0), 
+        FilterCodesByResource = (1 << 1),
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct ND_DeserializeOptions
+    {
+		public VSD_Handle valueset;
+		public ND_DeserializeFlags flags;
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct ND_Handle
     {
         public UInt64 u64;
