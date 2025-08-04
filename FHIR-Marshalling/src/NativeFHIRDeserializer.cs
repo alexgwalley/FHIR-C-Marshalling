@@ -49,10 +49,10 @@ namespace FHIR_Marshalling
         public static extern void ValueSetDictionary_Free(VSD_Handle handle);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name, ND_DeserializeOptions* opts);
+        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name, ref ND_DeserializeOptions opts);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length, ND_DeserializeOptions* opts);
+        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length, ref ND_DeserializeOptions opts);
 
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
@@ -102,7 +102,7 @@ namespace FHIR_Marshalling
 
         private ConcurrentStack<ND_Handle> _Contexts;
         private bool _ThrowOnErrors = false;
-        private VSD_Handle vsdHandle;
+        private VSD_Handle vsdHandle = new VSD_Handle();
 
         private ND_Handle GetContext()
         {
@@ -162,7 +162,7 @@ namespace FHIR_Marshalling
             if (bytes.Length > 0)
             {
                 ND_DeserializeOptions opts = new ND_DeserializeOptions();
-                opts.valueset = vsdHandle;
+                opts.valueset_handle = vsdHandle.u64;
                 if (filterOutBadCodes)
                 {
                     if (vsdHandle.u64 == 0)
@@ -173,7 +173,7 @@ namespace FHIR_Marshalling
                 }
                 fixed (byte* byte_ptr = bytes)
                 {
-                    deserialization_result = NativeDeserializerMethods.DeserializeString(Context, byte_ptr, bytes.Length, &opts);
+                    deserialization_result = NativeDeserializerMethods.DeserializeString(Context, byte_ptr, bytes.Length, ref opts);
                 }
             }
 
@@ -231,7 +231,7 @@ namespace FHIR_Marshalling
             ND_Handle Context = this.GetContext();
 
             ND_DeserializeOptions opts = new ND_DeserializeOptions();
-            opts.valueset = vsdHandle;
+            opts.valueset_handle = vsdHandle.u64;
             if (filterOutBadCodes)
             {
                 if (vsdHandle.u64 == 0)
@@ -244,7 +244,7 @@ namespace FHIR_Marshalling
             ND_Result deserialization_result = new ND_Result();
             unsafe
             {
-                deserialization_result = NativeDeserializerMethods.DeserializeFile(Context, file_name, &opts);
+                deserialization_result = NativeDeserializerMethods.DeserializeFile(Context, file_name, ref opts);
             }
 
             this.ReleaseContext(Context);

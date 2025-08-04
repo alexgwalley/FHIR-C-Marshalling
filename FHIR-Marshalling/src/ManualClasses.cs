@@ -135,22 +135,23 @@ namespace FHIR_Marshalling
         public LogList logs;
     };
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack=1)]
     public struct VSD_Handle
     {
         public UInt64 u64;
     };
 
-    public enum ND_DeserializeFlags
+    public enum ND_DeserializeFlags : int
     {
         Reserved = (1 << 0), 
         FilterCodesByResource = (1 << 1),
     };
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack=1)]
     public unsafe struct ND_DeserializeOptions
     {
-		public VSD_Handle valueset;
+		//public VSD_Handle valueset;
+        public UInt64 valueset_handle;
 		public ND_DeserializeFlags flags;
     };
 
