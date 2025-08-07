@@ -26,6 +26,7 @@ using Hl7.Fhir.Specification;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -150,7 +151,8 @@ namespace FHIR_Marshalling
             }
         }
 
-        private unsafe Hl7.Fhir.Model.Resource? DeserializeBytes(byte[] bytes, bool filterOutBadCodes = false)
+        // NOTE(agw): this assumes a buffer with at least 64 bytes of padding at the end (zero'ed)
+        public unsafe Hl7.Fhir.Model.Resource? DeserializeBytes(Span<byte> bytes, bool filterOutBadCodes = false)
         {
             Hl7.Fhir.Model.Resource result = null;
 
@@ -245,7 +247,12 @@ namespace FHIR_Marshalling
             unsafe
             {
                 deserialization_result = NativeDeserializerMethods.DeserializeFile(Context, file_name, ref opts);
+                if (deserialization_result.resource != IntPtr.Zero)
+                {
+                    result = GeneratedMarshalling.Marshal_Resource((Resource*)deserialization_result.resource);
+                }
             }
+
 
             this.ReleaseContext(Context);
 
