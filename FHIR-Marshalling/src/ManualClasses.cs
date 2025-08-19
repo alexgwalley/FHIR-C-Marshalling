@@ -370,7 +370,7 @@ namespace FHIR_Marshalling
         {
             if(precision >= Precision.Hour)
             {
-                new Time(hour, minute, second);
+                new Time($"{hour:D2}:{minute:D2}:{second:D2}");
             }
 
             return null;

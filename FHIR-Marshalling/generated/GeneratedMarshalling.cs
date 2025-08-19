@@ -3799,7 +3799,7 @@ public static Hl7.Fhir.Model.CapabilityStatement.ImplementationComponent? Marsha
 	
 	var _description_temp = (*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 72)).ToString();
 	if(_description_temp != null) {
-		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.Markdown(_description_temp);
+		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
 	}
 	
 	var _url_temp = (*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 96)).ToString();
@@ -62899,7 +62899,7 @@ public static Hl7.Fhir.Model.Attachment? Marshal_Attachment(FHIR_Marshalling.Att
 	
 	var _url_temp = (*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 128)).ToString();
 	if(_url_temp != null) {
-		fhirInstance.UrlElement = new Hl7.Fhir.Model.FhirUri(_url_temp);
+		fhirInstance.UrlElement = new Hl7.Fhir.Model.FhirUrl(_url_temp);
 	}
 	
 	var _size_temp = new Integer64((*(FHIR_Marshalling.NullableInt32*)((byte*)in_native + 152)).GetValue());
