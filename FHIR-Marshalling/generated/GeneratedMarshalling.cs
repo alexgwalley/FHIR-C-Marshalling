@@ -3799,7 +3799,7 @@ public static Hl7.Fhir.Model.CapabilityStatement.ImplementationComponent? Marsha
 	
 	var _description_temp = (*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 72)).ToString();
 	if(_description_temp != null) {
-		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.FhirString(_description_temp);
+		fhirInstance.DescriptionElement = new Hl7.Fhir.Model.Markdown(_description_temp);
 	}
 	
 	var _url_temp = (*(FHIR_Marshalling.NullableString8*)((byte*)in_native + 96)).ToString();
