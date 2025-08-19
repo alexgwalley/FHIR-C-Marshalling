@@ -30,13 +30,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Text.Json;
 
 namespace FHIR_Marshalling
 {
-    internal unsafe static class NativeDeserializerMethods
+    internal unsafe static class WindowsNativeMethods
     {
-#if WINDOWS
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void Init();
 
@@ -58,6 +56,34 @@ namespace FHIR_Marshalling
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
         [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void FreeContext(ND_Handle Context);
+    };
+
+    internal unsafe static class NativeDeserializerMethods
+    {
+#if WINDOWS
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void Init();
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void Cleanup();
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void ValueSetDictionary_Free(VSD_Handle handle);
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name, ref ND_DeserializeOptions opts);
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length, ref ND_DeserializeOptions opts);
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern ND_Handle CreateContext();
+
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void FreeContext(ND_Handle Context);
 #endif
 
@@ -129,7 +155,7 @@ namespace FHIR_Marshalling
             string error_string = deserialization_result.error_message.ToString();
             if (error_string.Length > 0)
             {
-                throw new JsonException(error_string);
+                throw new Exception(error_string);
             }
 
             StringBuilder error_builder = new StringBuilder();
@@ -147,7 +173,7 @@ namespace FHIR_Marshalling
             string log_error_string = error_builder.ToString();
             if(log_error_string.Length > 0 && _ThrowOnErrors)
             {
-                throw new JsonException(log_error_string);
+                throw new Exception(log_error_string);
             }
         }
 

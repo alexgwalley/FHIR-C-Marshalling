@@ -44,8 +44,8 @@
     <ProjectReference Include="..\FHIR-Marshalling\FHIR-Marshalling.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="bin\Debug\net6\Output\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="bin\Debug\net6\Output\" />
+    </ItemGroup>
 
 </Project>

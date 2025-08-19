@@ -5,8 +5,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <OutputType>Library</OutputType>
     <PlatformTarget>x64</PlatformTarget>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;8500;8604</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <NoWarn>1701;1702;8500;8604</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -18,10 +22,21 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NoWarn>1701;1702;8500;8604</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NoWarn>1701;1702;8500;8604</NoWarn>
+  </PropertyGroup>
 
     <PropertyGroup>
         <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
         <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+        <PackageId>fhir-native-deserializer</PackageId>
+        <Title>FHIR Native Deserializer</Title>
+        <Authors>Alex Walley</Authors>
+        <Company>NCQA</Company>
+        <RepositoryUrl>https://github.com/alexgwalley/FHIR-C-Marshalling</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>fhir, deserializer, serialization, json</PackageTags>
+        <Version>1.0.4</Version>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <DefineConstants>WINDOWS</DefineConstants>
@@ -31,16 +46,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R4" Version="5.5.1" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="[5.0.0,6.0.0)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="deserialization_dll.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="libdeserialization_dll.so">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  
+    <ItemGroup>
+        <Content Include="runtimes\**" PackagePath="runtimes" Visible="false">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>
