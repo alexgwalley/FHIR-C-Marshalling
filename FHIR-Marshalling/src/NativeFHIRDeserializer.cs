@@ -33,32 +33,6 @@ using System.Text;
 
 namespace FHIR_Marshalling
 {
-    internal unsafe static class WindowsNativeMethods
-    {
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void Init();
-
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void Cleanup();
-
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
-
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void ValueSetDictionary_Free(VSD_Handle handle);
-
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name, ref ND_DeserializeOptions opts);
-
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length, ref ND_DeserializeOptions opts);
-
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Handle CreateContext();
-        [DllImport("deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void FreeContext(ND_Handle Context);
-    };
-
     internal unsafe static class NativeDeserializerMethods
     {
 #if WINDOWS
@@ -88,22 +62,28 @@ namespace FHIR_Marshalling
 #endif
 
 #if LINUX
-        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void Init();
 
-        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void Cleanup();
 
-        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
+
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void ValueSetDictionary_Free(VSD_Handle handle);
+
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name);
 
-        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length);
 
-        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
 
-        [DllImport("libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void FreeContext(ND_Handle Context);
 #endif
     }
