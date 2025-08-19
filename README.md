@@ -2,9 +2,6 @@
 
 This project is a C# wrapper to use the native FHIR deserializer from the FHIR-in-C project.
 
-Provides and average `8x` speed performance boost compared to Firely's SDK Ostrich mode deserializer.
-
-
 ### Example usage:
 ```c#
 using FHIR_Marshalling;
@@ -40,6 +37,5 @@ For performance reasons, do not construct a new deserializer in each thread.
  - Copy `CSGeneratedClasses.cs` and the deserialize dll from FHIR-in-C project.
 
 ### Limitations:
- - Currently only works on windows machines, with linux support in the works
  - Only works on FHIR R4 JSON, no other versions supported (yet)
 
