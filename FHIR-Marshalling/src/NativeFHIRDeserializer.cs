@@ -44,6 +44,8 @@ namespace FHIR_Marshalling
 
         [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
+        [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern VSD_Handle ValueSetDictionary_LoadFromTxtFile(string txt_file_name);
 
         [DllImport("runtimes/win-x64/native/deserialization_dll.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ValueSetDictionary_Free(VSD_Handle handle);
@@ -72,6 +74,9 @@ namespace FHIR_Marshalling
         public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern VSD_Handle ValueSetDictionary_LoadFromTextFile(string txt_file_name);
+
+        [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ValueSetDictionary_Free(VSD_Handle handle);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
@@ -90,6 +95,7 @@ namespace FHIR_Marshalling
 
     public class NativeFHIRDeserializer : IDisposable
     {
+        // NOTE(agw): can pass in either a folder or .txt file path for codes
         public NativeFHIRDeserializer(int num_Contexts = 0, string valueSetDictionaryFolder = "", bool throwOnErrors = false)
         {
             NativeDeserializerMethods.Init();
@@ -98,12 +104,23 @@ namespace FHIR_Marshalling
 
             if (valueSetDictionaryFolder.Length > 0)
             {
-                if (!System.IO.Directory.Exists(valueSetDictionaryFolder))
-                {
-                    throw new Exception("Folder does not exist: " + valueSetDictionaryFolder);
-                }
 
-                 vsdHandle = NativeDeserializerMethods.ValueSetDictionary_Load(valueSetDictionaryFolder);
+                if (valueSetDictionaryFolder.EndsWith(".txt"))
+                {
+                    if (!System.IO.File.Exists(valueSetDictionaryFolder))
+                    {
+                        throw new Exception("File does not exist: " + valueSetDictionaryFolder);
+                    }
+                    vsdHandle = NativeDeserializerMethods.ValueSetDictionary_LoadFromTxtFile(valueSetDictionaryFolder);
+                }
+                else
+                {
+                    if (!System.IO.Directory.Exists(valueSetDictionaryFolder))
+                    {
+                        throw new Exception("Folder does not exist: " + valueSetDictionaryFolder);
+                    }
+                    vsdHandle = NativeDeserializerMethods.ValueSetDictionary_Load(valueSetDictionaryFolder);
+                }
             }
         }
 
