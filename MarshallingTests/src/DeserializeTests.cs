@@ -96,6 +96,12 @@ namespace MarshallingTests
 			},
 			{
 				"resource": {
+					"resourceType": "Coverage",
+					"id": "coverage-0"
+				}
+			},
+			{
+				"resource": {
 					"resourceType": "Encounter",
 					"id": "encounter-0",
 					"class": {
@@ -114,7 +120,7 @@ namespace MarshallingTests
             try
             {
                 var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
-                Assert.IsTrue(resource.Entry.Count == 2);
+                Assert.IsTrue(resource.Entry.Count == 3);
             }
             catch (JsonException ex)
             {
