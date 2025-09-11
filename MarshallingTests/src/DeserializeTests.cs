@@ -103,6 +103,15 @@ namespace MarshallingTests
 			{
 				"resource": {
 					"resourceType": "Encounter",
+					"id": "encounter-1",
+                    "subject": {
+                        "reference": "Condition/condition-0"
+                    }
+				}
+			},
+			{
+				"resource": {
+					"resourceType": "Encounter",
 					"id": "encounter-0",
 					"class": {
 						"code": "bad_code",
@@ -120,7 +129,27 @@ namespace MarshallingTests
             try
             {
                 var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
-                Assert.IsTrue(resource.Entry.Count == 3);
+                Assert.IsTrue(resource.Entry.Count == 4);
+            }
+            catch (JsonException ex)
+            {
+                hadException = true;
+            }
+        }
+
+
+        [TestMethod]
+        public void FilterTest2()
+        {
+            string json = File.ReadAllText("C:/Users/awalley/Downloads/patient.2024.aab.0.95719.json");
+            //string vsdFolder = "C:/Users/awalley/Code/Ncqa.IMAS/Ncqa.IMAS.MeasureCompiler/TerminologyServer/ValueSets/2025-03-31";
+            string vsdFolder = "C:/Users/awalley/Downloads/MY25_AllCodes.txt";
+            var deserializer = new NativeFHIRDeserializer(valueSetDictionaryFolder: vsdFolder);
+            bool hadException = false;
+            try
+            {
+                var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
+                int a = 0;
             }
             catch (JsonException ex)
             {
