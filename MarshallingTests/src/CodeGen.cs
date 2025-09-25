@@ -31,6 +31,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Linq;
 
 namespace FHIR_Marshalling
 {
@@ -583,6 +584,7 @@ namespace FHIR_Marshalling
             }
 
             // add field extensions
+            if (info.FirelyType.GetProperty("Extension") != null)
             {
 
                 string starting = @"if ((ulong)(*(System.UIntPtr*)((byte*)in_native + 8)) > 0)
@@ -607,32 +609,43 @@ namespace FHIR_Marshalling
                 switch (node_name)
                 {";
 
-                builder.AppendLine(starting);
-                // generate based on FhirAttributeName
-                builder.IndentedAmount += 4;
+                    builder.AppendLine(starting);
+                    // generate based on FhirAttributeName
+                    builder.IndentedAmount += 4;
 
-                var nativeFields = nativeType.GetFields();
-                foreach (var field in nativeFields)
-                {
-                    FhirNameAttribute fhirAttribute = (FhirNameAttribute) field.GetCustomAttribute(typeof(FhirNameAttribute));
-                    string fhirName = "";
-                    if (fhirAttribute != null)
+                    var nativeFields = nativeType.GetFields();
+                    foreach (var field in nativeFields)
                     {
-                        fhirName = fhirAttribute.FhirName;
+                        FhirNameAttribute fhirAttribute = (FhirNameAttribute)field.GetCustomAttribute(typeof(FhirNameAttribute));
+                        string fhirName = "";
+                        if (fhirAttribute != null)
+                        {
+                            fhirName = fhirAttribute.FhirName;
+                        }
+
+
+                        if (fhirName != "" && fhirName != "resourceType" && fhirName != "__field_extensions")
+                        {
+                            string elementName = fhirName.Capitalize() + "Element";
+                            var elem = info.FirelyType.GetProperty(elementName);
+                            bool hasExtension = elem != null && elem.PropertyType.GetProperty("Extension") != null;
+                            if (elem != null && hasExtension == true)
+                            {
+                            builder.AppendLine($"case \"{fhirName}\":");
+                            builder.AppendLine("{");
+                            builder.IndentedAmount += 1;
+                            builder.AppendLine($"if(fhirInstance.{elementName} == null) {{ fhirInstance.{elementName} = new {GetCSharpTypeName(elem.PropertyType)}(); }}");
+                            builder.AppendLine($"fhirInstance.{elementName}.Extension.Add(marshalled);");
+                            builder.IndentedAmount -= 1;
+                            builder.AppendLine("} break;");
+                            }
+                        }
                     }
 
-                    if (fhirName != "" && fhirName != "resourceType" && fhirName != "__field_extensions")
-                    {
-                        string elementName = fhirName.Capitalize() + "Element";
-                        string switchCase = @"case ""{0}"": fhirInstance.{1}.Extension.Add(marshalled); break;".FormatWith(fhirName, elementName);
-                        builder.AppendLine(switchCase);
-                    }
-                }
 
+                    builder.IndentedAmount -= 4;
 
-                builder.IndentedAmount -= 4;
-
-                string ending = @"
+                    string ending = @"
                 }
             }
 
@@ -640,7 +653,7 @@ namespace FHIR_Marshalling
         }
     }";
 
-                builder.AppendLine(ending);
+                    builder.AppendLine(ending);
             }
 
             builder.AppendLine($"return {firelyInstance};");
@@ -649,6 +662,25 @@ namespace FHIR_Marshalling
 
             return builder.ToString();
         }
+
+public static string GetCSharpTypeName(Type type)
+{
+    if (type.IsGenericType)
+    {
+        var genericTypeDefName = type.GetGenericTypeDefinition().FullName!;
+        genericTypeDefName = genericTypeDefName.Substring(0, genericTypeDefName.IndexOf('`'));
+        genericTypeDefName = genericTypeDefName.Replace('+', '.'); // nested types
+
+        var genericArgs = type.GetGenericArguments()
+                              .Select(GetCSharpTypeName);
+
+        return $"{genericTypeDefName}<{string.Join(", ", genericArgs)}>";
+    }
+    else
+    {
+        return type.FullName!.Replace('+', '.'); // nested types
+    }
+}
 
         public static string GetDeserializeResource(Dictionary<Type, Type> typeMap) 
         {
