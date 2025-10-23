@@ -150,7 +150,7 @@ namespace FHIR_Marshalling
         {
             // ~ TODO(agw): do stuff with errors
             string error_string = deserialization_result.error_message.ToString();
-            if (error_string.Length > 0)
+            if (error_string.Length > 0 && _ThrowOnErrors)
             {
                 throw new Exception(error_string);
             }

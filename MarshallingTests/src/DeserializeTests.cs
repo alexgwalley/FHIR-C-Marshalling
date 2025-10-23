@@ -85,7 +85,16 @@ namespace MarshallingTests
 								"code": "G9473",
 								"system": "http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets"
 							}]
-					}
+					},
+                    "encounter": {
+                        "reference": "Encounter/random-encounter-1"
+                    }
+				}
+			},
+			{
+				"resource": {
+					"resourceType": "Encounter",
+					"id": "random-encounter-1"
 				}
 			},
 			{
@@ -149,7 +158,7 @@ namespace MarshallingTests
             try
             {
                 var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
-                int a = 0;
+                Assert.IsTrue(resource.Entry.Count == 3);
             }
             catch (JsonException ex)
             {
