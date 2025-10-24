@@ -88,6 +88,9 @@ namespace MarshallingTests
 					},
                     "encounter": {
                         "reference": "Encounter/random-encounter-1"
+                    },
+                    "subject": {
+                        "reference": "Patient/patient-0"
                     }
 				}
 			},
@@ -138,7 +141,7 @@ namespace MarshallingTests
             try
             {
                 var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
-                Assert.IsTrue(resource.Entry.Count == 4);
+                Assert.IsTrue(resource.Entry.Count == 5);
             }
             catch (JsonException ex)
             {
