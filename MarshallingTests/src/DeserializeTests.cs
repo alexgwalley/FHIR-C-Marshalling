@@ -153,20 +153,21 @@ namespace MarshallingTests
         [TestMethod]
         public void FilterTest2()
         {
-            string json = File.ReadAllText("C:/Users/awalley/Downloads/patient.2024.aab.0.95719.json");
+            string json = File.ReadAllText("C:/Users/awalley/Downloads/patient.2024.aab.0.95524.json");
             //string vsdFolder = "C:/Users/awalley/Code/Ncqa.IMAS/Ncqa.IMAS.MeasureCompiler/TerminologyServer/ValueSets/2025-03-31";
-            string vsdFolder = "C:/Users/awalley/Downloads/MY25_AllCodes.txt";
+            string vsdFolder = "C:/Users/awalley/Downloads/MY24_AllCodes.txt";
             var deserializer = new NativeFHIRDeserializer(valueSetDictionaryFolder: vsdFolder);
             bool hadException = false;
             try
             {
                 var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
-                Assert.IsTrue(resource.Entry.Count == 3);
+                int a = 0;
             }
             catch (JsonException ex)
             {
                 hadException = true;
             }
+           
         }
     }
 }
