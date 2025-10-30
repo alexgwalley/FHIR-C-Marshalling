@@ -158,15 +158,21 @@ namespace MarshallingTests
             string vsdFolder = "C:/Users/awalley/Downloads/MY24_AllCodes.txt";
             var deserializer = new NativeFHIRDeserializer(valueSetDictionaryFolder: vsdFolder);
             bool hadException = false;
+            Stopwatch sw = Stopwatch.StartNew();
             try
             {
-                var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
+                for (int i = 0; i < 1000; i += 1)
+                {
+                    var resource = deserializer.DeserializeString(json, filterOutBadCodes: true) as Hl7.Fhir.Model.Bundle;
+                }
                 int a = 0;
             }
             catch (JsonException ex)
             {
                 hadException = true;
             }
+            sw.Stop();
+            Debug.WriteLine("Total Elapsed: " + sw.Elapsed.TotalMilliseconds);
            
         }
     }
