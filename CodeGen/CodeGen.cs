@@ -213,6 +213,10 @@ namespace CodeGen
         public static string AppendValueCreation(IndentedStringBuilder builder, Type nativeType, string nativeFieldName, string nativeAccessor, Type firelyType)
         {
             string primativeName = $"{nativeFieldName}_primative";
+            if(primativeName == "_profile_primative")
+            {
+                int a = 0;
+            }
 
             if (firelyType == typeof(Base64Binary))
             {
@@ -249,6 +253,11 @@ namespace CodeGen
                             builder.AppendLine($"var {primativeName} = {nativeAccessor};");
                         }
 
+                        if(firelyType == typeof(Hl7.Fhir.Model.PrimitiveType))
+                        {
+                            firelyType = typeof(Hl7.Fhir.Model.Canonical);
+                        }
+
                         var constructor = firelyType.GetConstructor(new Type[] { csType });
                         if (constructor != null)
                         {
@@ -257,6 +266,10 @@ namespace CodeGen
                             builder.AppendLine($"var {temp} = {csPrimative};");
                             builder.AppendLine($"var {primativeName} =  ({temp} == null) ? null : new {firelyType.FullName}({temp});");
                             //return $"new {firelyType.FullName}({})";
+                        }
+                        else
+                        {
+                            throw new NotImplementedException();
                         }
                     }
 
@@ -413,7 +426,7 @@ namespace CodeGen
                             builder.IndentedAmount += 1;
                             var newCode = $"new Code<{underlyingFullName}> ()";
                             builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName} = {newCode};");
-                            builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.ObjectValue = {tempCodeName};");
+                            builder.AppendLine($"{firelyInstance}.{member.FirelyFieldName}.JsonValue = {tempCodeName};");
                             builder.IndentedAmount -= 1;
                             builder.AppendLine($"}}");
                         }
@@ -474,7 +487,7 @@ namespace CodeGen
                         builder.IndentedAmount += 1;
                             var newCode = $"new Code<{underlyingFullName}> ()";
                             builder.AppendLine($"var __code = {newCode};");
-                            builder.AppendLine($"__code.ObjectValue = {nativeFieldAccessor}.ToString();");
+                            builder.AppendLine($"__code.JsonValue = {nativeFieldAccessor}.ToString();");
                             builder.AppendLine($"{listName}.Add(__code);");
                         builder.AppendLine("}");
                         builder.AppendLine("");
@@ -584,6 +597,8 @@ namespace CodeGen
             }
 
             // add field extensions
+            bool hasExtension = info.FirelyType.GetProperties().Where(p => p.Name == "Extension").FirstOrDefault() != null;
+            if(hasExtension)
             {
 
                 string starting = @"if ((ulong)(*(System.UIntPtr*)((byte*)in_native + 8)) > 0)
@@ -608,10 +623,8 @@ namespace CodeGen
                 switch (node_name)
                 {";
 
-                builder.AppendLine(starting);
-                // generate based on FhirAttributeName
-                builder.IndentedAmount += 4;
 
+                List<string> cases = new List<string>();
                 var nativeFields = nativeType.GetFields();
                 foreach (var field in nativeFields)
                 {
@@ -624,16 +637,50 @@ namespace CodeGen
 
                     if (fhirName != "" && fhirName != "resourceType" && fhirName != "__field_extensions")
                     {
+                        bool matchFound = false;
+
                         string elementName = fhirName.Capitalize() + "Element";
-                        string switchCase = @"case ""{0}"": fhirInstance.{1}.Extension.Add(marshalled); break;".FormatWith(fhirName, elementName);
-                        builder.AppendLine(switchCase);
+                        PropertyInfo? propertyInfo = info.FirelyType.GetProperty(elementName);
+                        bool hasElementEnding = propertyInfo != null;
+                        matchFound = hasElementEnding;
+
+                        if(hasElementEnding == false)
+                        {
+                            elementName = fhirName.Capitalize();
+                            propertyInfo = info.FirelyType.GetProperties().Where(p => p.Name == elementName).FirstOrDefault();
+                            bool found = propertyInfo != null;
+                            matchFound = found;
+                        }
+
+                        if(propertyInfo != null)
+                        {
+                            var props = propertyInfo.PropertyType.GetProperties();
+                            matchFound = props.Where(p => p.Name == "Extension").FirstOrDefault() != null;
+                        }
+
+                        if (matchFound)
+                        {
+                            string switchCase = @"case ""{0}"": fhirInstance.{1}.Extension.Add(marshalled); break;".FormatWith(fhirName, elementName);
+                            cases.Add(switchCase);
+                        }
                     }
                 }
 
+                if (cases.Count > 0)
+                {
+                    // check if fhirInstance even has extension property
+                    builder.AppendLine(starting);
+                    // generate based on FhirAttributeName
+                    builder.IndentedAmount += 4;
 
-                builder.IndentedAmount -= 4;
+                    foreach (var c in cases)
+                    {
+                        builder.AppendLine(c);
+                    }
 
-                string ending = @"
+                    builder.IndentedAmount -= 4;
+
+                    string ending = @"
                 }
             }
 
@@ -641,7 +688,8 @@ namespace CodeGen
         }
     }";
 
-                builder.AppendLine(ending);
+                    builder.AppendLine(ending);
+                }
             }
 
             builder.AppendLine($"return {firelyInstance};");

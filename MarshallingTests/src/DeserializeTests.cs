@@ -39,7 +39,7 @@ namespace MarshallingTests
         public void Test()
         {
             //string fileName = "/mnt/c/Users/awalley/Code/native/test_bundles/patient.2024.acp.0.95000.json";
-            string fileName = "C:/Users/awalley/Code/native/test_bundles/patient.2024.acp.0.95000.json";
+            string fileName = "C:/Users/awalley/Downloads/output_file.json";
             Console.WriteLine("Hello! Loading file: " + fileName);
             var d = new NativeFHIRDeserializer();
             using (var file = File.Open(fileName, FileMode.Open))

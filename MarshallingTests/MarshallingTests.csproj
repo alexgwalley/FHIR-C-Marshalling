@@ -34,6 +34,7 @@
     <NoWarn>1701;1702;8602;8600;8500;8618;0436;0433;8600;SYSLIB0050</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Hl7.Fhir.R4" Version="6.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
