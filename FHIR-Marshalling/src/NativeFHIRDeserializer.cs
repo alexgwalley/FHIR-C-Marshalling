@@ -74,7 +74,7 @@ namespace FHIR_Marshalling
         public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern VSD_Handle ValueSetDictionary_LoadFromTextFile(string txt_file_name);
+        public static extern VSD_Handle ValueSetDictionary_LoadFromTxtFile(string txt_file_name);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ValueSetDictionary_Free(VSD_Handle handle);
