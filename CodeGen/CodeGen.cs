@@ -658,9 +658,11 @@ namespace CodeGen
                             matchFound = props.Where(p => p.Name == "Extension").FirstOrDefault() != null;
                         }
 
-                        if (matchFound)
+                        if (matchFound && propertyInfo.PropertyType.IsAbstract == false)
                         {
-                            string switchCase = @"case ""{0}"": fhirInstance.{1}.Extension.Add(marshalled); break;".FormatWith(fhirName, elementName);
+                            string fhirType = GetCSharpTypeName(propertyInfo.PropertyType);
+                            string switchCase =
+                                $"case \"{fhirName}\": {{ if (fhirInstance.{elementName} == null) {{ fhirInstance.{elementName} = new {fhirType}(); }} fhirInstance.{elementName}.Extension.Add(marshalled); break; }}";
                             cases.Add(switchCase);
                         }
                     }
@@ -697,6 +699,25 @@ namespace CodeGen
             builder.AppendLine("}");
 
             return builder.ToString();
+        }
+
+        public static string GetCSharpTypeName(Type type)
+        {
+            if (type.IsGenericType)
+            {
+                var genericTypeDefName = type.GetGenericTypeDefinition().FullName!;
+                genericTypeDefName = genericTypeDefName.Substring(0, genericTypeDefName.IndexOf('`'));
+                genericTypeDefName = genericTypeDefName.Replace('+', '.'); // nested types
+
+                var genericArgs = type.GetGenericArguments()
+                                      .Select(GetCSharpTypeName);
+
+                return $"{genericTypeDefName}<{string.Join(", ", genericArgs)}>";
+            }
+            else
+            {
+                return type.FullName!.Replace('+', '.'); // nested types
+            }
         }
 
         public static string GetDeserializeResource(Dictionary<Type, Type> typeMap) 
