@@ -74,16 +74,16 @@ namespace FHIR_Marshalling
         public static extern VSD_Handle ValueSetDictionary_Load(string folder_name);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern VSD_Handle ValueSetDictionary_LoadFromTextFile(string txt_file_name);
+        public static extern VSD_Handle ValueSetDictionary_LoadFromTxtFile(string txt_file_name);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void ValueSetDictionary_Free(VSD_Handle handle);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name);
+        public static extern ND_Result DeserializeFile(ND_Handle Context, string file_name, ref ND_DeserializeOptions opts);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length);
+        public static extern ND_Result DeserializeString(ND_Handle Context, byte* bytes, Int64 length, ref ND_DeserializeOptions opts);
 
         [DllImport("runtimes/linux-x64/native/libdeserialization_dll.so", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern ND_Handle CreateContext();
