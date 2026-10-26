@@ -94715,7 +94715,7 @@ public static Hl7.Fhir.Model.Meta? Marshal_Meta(FHIR_Marshalling.Meta* in_native
 	}
 	
 	if((ulong)(*(System.UIntPtr*)((byte*)in_native + 120)) > 0) {
-		var _profile_list  = new List<FhirUri>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
+		var _profile_list  = new List<PrimitiveType>((int)(*(System.UIntPtr*)((byte*)in_native + 120)));
 		for(ulong i = 0; i < (ulong)(*(System.UIntPtr*)((byte*)in_native + 120)); i++)
 		{
 			var _profile_primative_temp = (*(FHIR_Marshalling.NullableString8**)((byte*)in_native + 128))[i].ToString();
